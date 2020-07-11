@@ -1,0 +1,31 @@
+{
+ "short_name": "SurveyBuilder",
+  "name": "SurveyBuilder",
+  "description": "SurveyBuilder is a easy survey builder for both Personal and Education",
+"icons": [
+    {
+      "src": "./images/icon/favicon.png",
+      "type": "image/png",
+      "sizes": "48x48",
+	  "purpose": "maskable"
+    },
+	{
+	"src": "./images/icon/favicon_1.png",
+	"type": "image/png",
+	"sizes": "144x144"
+	}
+	],
+	"start_url": "/SurveyBuilder",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "theme_color": "#3367D6",
+   "scope": "/SurveyBuilder",
+  
+"serviceworker": {
+  "src": "./serviceworker.js",
+  "scope": "/SurveyBuilder",
+  "type": "",
+  "update_via_cache": "none"
+}
+  
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+<!--
+Format: 
+<users>
+<name>
+[Enter Name here]
+</name>
+<cpanel>
+[true/false]
+</cpanel>
+<webAllow>
+[true/false] //http,https,localhost file are set to true
+</webAllow>
+<encoding>
+[UTF-8]
+</encoding>
+<lang>
+[Specify Lang.]
+</lang>
+<codeLang>
+[List the Code lang.]
+</codeLang>
+<config>
+[True/False]
+</config>
+<API>
+[Enter API key]
+</API>
+</users>
+-->
+<!--Example-->
+<users>
+<name>
+SurveyBuilder-Admin
+</name>
+<cpanel>
+True
+</cpanel>
+<webAllow>
+True
+</webAllow>
+<encoding>
+UTF-8
+</encoding>
+<lang>
+English
+</lang>
+<codeLang>
+Html, Js, Css, PHP, XML
+</codeLang>
+<config>
+True
+</config>
+<API>
+sfsdmgiodsjpogu89493523805834hf8uer894590534689383279hvnesrv9849t3yt29855nv38y5239
+</API>
+</users>
+</database>

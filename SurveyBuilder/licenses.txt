@@ -1,0 +1,17 @@
+Installment:
+As in as a installment you must install XAMPP from there website. This is using file that can't be generarted normally.
+ Like PHP, SQL, and etc.
+
+Editing:
+This is a demo you can edit any of the files as you wish.
+
+Policies:
+You CANNOT share this folder/files to anyone at all and make it your own.
+
+Credits:
+©SurveyBuilder
+
+Agreement and terms:
+
+Once you agree to this, you agreed to all the policies and terms aggrements. You also won't share any of the files
+to anyone.  

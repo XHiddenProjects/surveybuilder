@@ -1,0 +1,281 @@
+//Admin Config Panel
+//Allow and disable certain items
+//Everything is eaither True/False
+
+	//Set Variable here
+var Allow_Banner_display = true; //Allow to display SurveyBuilder footer(banner)
+var Allow_Console_attribute = true; //Enables the Console Log
+var Allow_Pop_up = false; //Allow alert_box to popup when a user joins
+var limit_list = ["not"]; //Removes any category on your choice. 
+var Allow_Inspect_element = true; //Allows users to use the Inspect Element
+var Allow_location_tracking = false; //Allows you to know there location.. sends this to the console.
+var Allow_API_config = false; //Enables a password that works only when a API is enabled. Password will popup when a player joins.
+var get_users_lang = true; //Gives the user lang. to the console
+var get_users_platform = true; //Give the users platform to the console.
+var get_users_usersAngent = true; //Give the users userAgent to the console.
+var test_users_cookieEnable = true; //Displays if the console should replay back if the cookie was enable
+var Collect_IP = false //The Console will display there IP_address. 
+var Allow_cPanel = true //Allow's users to have cPanel
+
+//ingore these code below[Unless something goes wrong]
+
+//Test any error of a none corrosponding data
+setTimeout(testCorrospond, 0);
+console.time();
+function testCorrospond(){
+	if(typeof(Allow_Banner_display) !== "boolean"){
+		console.error("Allow_Banner_display must be a boolean");
+			return false;
+	}
+	if(typeof(Allow_Console_attribute) !== "boolean"){
+		console.error("Allow_Console_attribute must be a boolean");
+			return false;
+	}
+	if(typeof(Allow_Pop_up) !== "boolean"){
+		console.error("Allow_Pop_up must be a boolean");
+			return false;
+	}
+	if(Array.isArray(limit_list) !== true){
+		console.error("limit_list must be an array");
+			return false;
+	}
+	if(typeof(Allow_Inspect_element) !== "boolean"){
+		console.error("Allow_Inspect_element must be a boolean");
+			return false;
+	}
+	if(typeof(Allow_location_tracking) !== "boolean"){
+		console.error("Allow_location_tracking must be a boolean");
+			return false;
+	}
+	if(typeof(Allow_API_config) !== "boolean"){
+		console.error("Allow_API_config must be a boolean");
+			return false;
+	}
+	if(typeof(get_users_lang) !== "boolean"){
+		console.error("get_users_lang must be a boolean");
+			return false;
+	}
+	if(typeof(get_users_platform) !== "boolean"){
+		console.error("get_users_platform must be a boolean");
+			return false;
+	}
+	if(typeof(get_users_usersAngent) !== "boolean"){
+		console.error("get_users_usersAngent must be a boolean");
+			return false;
+	}
+	if(typeof(test_users_cookieEnable) !== "boolean"){
+		console.error("test_users_cookieEnable must be a boolean");
+			return false;
+	}
+	if(typeof(Collect_IP) !== "boolean"){
+		console.error("Collect_IP must be a boolean");
+			return false;
+	}
+	if(typeof(Allow_cPanel) !== "boolean"){
+		console.error("Collect_IP must be a boolean");
+			return false;
+	}
+	setTimeout(config, 0);
+
+}
+//if clear do this
+function config(){
+	
+	//Banner
+	if(Allow_Banner_display == true){
+		document.getElementById("SurveyMakerBanner").hidden = false;
+		console.log("Banner Display: true");
+	}
+	if(Allow_Banner_display == false){
+		document.getElementById("SurveyMakerBanner").hidden = true;
+		console.log("Banner Display: false");
+	}
+	//Console
+    if(Allow_Console_attribute == true){
+		document.getElementById("Cosnole-Log").hidden = false;
+		console.log("Console Display: true");
+	}
+	if(Allow_Console_attribute == false){
+		document.getElementById("Cosnole-Log").hidden = true;
+		console.log("Console Display: false");
+	}
+	//Popup
+	 if(Allow_Pop_up == true){
+		alert("Welcome to SurveyBuilder Popup");
+		console.log("Console Display: true");
+	}
+	if(Allow_Pop_up == false){
+		console.log("Pop Up Display: false");
+	}
+	/*List*/
+	//Copy code to keep add limited items
+	//Change '0' to any number (0 < #) this will take a certain ID and hide it
+	document.getElementById(limit_list[0]).hidden = true;
+
+	/*End list here*/
+	
+	//Inspect Element
+    if(Allow_Inspect_element == true){
+		document.body.oncontextmenu = "";
+		console.log("Inspect Element Display: true");
+	}
+	if(Allow_Inspect_element == false){
+	document.body.oncontextmenu = function(){return false;}
+		console.log("Inspect Element Display: false");
+	}	
+	//Location tracking
+	 if(Allow_location_tracking == true){
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(showPosition);
+		}
+		console.log("Location: true");
+	}
+	if(Allow_location_tracking == false){
+		console.log("Location: false");
+	}	
+//API
+if(Allow_API_config == false){
+		console.log("API: false");
+	}
+ if(Allow_API_config == true){
+		
+		
+		console.log("API: true");
+
+	  $.get("\\SurveyBuilder\\API.txt", function(data){
+let x = prompt("Enter API key", "");
+	if(x !== data){
+		alert("Sorry wrong API key. Please contact the administrator");
+		setTimeout(API_config, 0);
+		console.error("API key was Invalid");
+	}
+
+
+});
+
+	
+	
+	
+}
+//Get Users Lang
+    if(get_users_lang == true){
+		let lang = navigator.language;
+		console.log("Language:" + lang);
+	}
+	if(get_users_lang == false){
+	console.log("Language: false");
+	}	
+	//Get Users Platform
+    if(get_users_platform == true){
+		let platform = navigator.platform;
+		console.log("Platform:" + platform);
+	}
+	if(get_users_platform == false){
+	console.log("Platform: false");
+	}	
+	//Get UsersAngent
+    if(get_users_platform == true){
+		let Agent = navigator.userAgent;
+		console.log("userAgent:" + Agent);
+	}
+	if(get_users_platform == false){
+	console.log("userAgent: false");
+	}
+	
+	//test cookieEnable 
+    if(test_users_cookieEnable == true){
+		let cookie = navigator.cookieEnabled;
+		console.log("cookieEnable:" + cookie);
+	}
+	if(test_users_cookieEnable == false){
+	console.log("cookieEnable: N/A");
+	}
+	
+	//IP
+	if(Collect_IP == true){
+	
+       $.getJSON("https://api.ipify.org?format=json", 
+                                          function(data) { 
+  
+            // Setting text of element P with id gfg 
+			
+            console.log("IP_Collecting: "+ data.ip); 
+        }) 
+
+    
+	}
+	if(Collect_IP == false){
+		console.log("IP_Collecting: False");
+	}
+	
+	
+	//Location tracking
+	 if(Allow_location_tracking == true){
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(showPosition);
+		}
+		console.log("Location: true");
+	}
+	if(Allow_location_tracking == false){
+		console.log("Location: false");
+	}	
+
+	
+   //End Location
+	function showPosition(position) {
+  console.log("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
+}
+//End location
+//API
+function API_config(){
+	
+
+	
+		
+	
+		
+		
+
+	  $.get("\\SurveyBuilder\\API.txt", function(data){
+let x = prompt("Enter API key", "");
+	if(x !== data){
+		alert("Sorry wrong API key. Please contact the administrator");
+		setTimeout(API_config, 0);
+		console.error("API key was Invalid");
+	}
+	if(x === data){
+		return false;
+	}
+
+});
+
+
+    
+  
+	
+	
+}
+//End of API
+console.timeEnd();
+setTimeout(Warning, 0);
+
+//cPanel
+if(Allow_cPanel == true){
+	document.getElementById("cpanel-form").hidden = false;
+	console.log("cPanel: true");
+}	
+if(Allow_cPanel == false){
+	document.getElementById("cpanel-form").hidden = true;
+	console.log("cPanel: false");
+}
+
+}
+function Warning(){
+	console.warn("Some functions might not work");
+	console.warn("Current Update: v16.0.0 - Is up-to-date");
+	
+}
+
+
+	
+

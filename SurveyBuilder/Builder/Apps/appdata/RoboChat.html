@@ -1,0 +1,457 @@
+<html>
+<head>
+<title>RoboChat</title>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<style type="text/css">
+.container{
+max-width:500 !important;
+margin:auto;
+margin-top:4%;
+font-family: sans-serif;
+letter-spacing:0.5px;
+}
+img{
+max-width:100%;
+border-radius:50%;
+}
+.msg-header{
+border: 1px solid #ccc;
+width:100%;
+height:10%;
+border-bottom:none;
+display:inline-block;
+background-color:#007bff;
+}
+.msg-header-img{
+border-radius: 50%;
+width:40px;
+margin-left:5%;
+margin-top: 12px;
+float:left;
+
+}
+.active{
+width:120px;
+float:left;
+margin-top:10px;
+}
+.active h4{
+font-size:20px;
+margin-left:10px;
+color: #fff;
+}
+.active h6{
+font-size:10px;
+margin-left:10px;
+line-height:2px;
+color:#fff;
+}
+.header-icons{
+width:120px;
+float:right;
+margin-top:12px;
+margin-right:10px;
+}
+.header-icons .fa{
+color:#fff;
+cursor:pointer;
+margin:10px;
+}
+.chat-page{
+padding:0 0 50px 0;
+}
+.msg-inbox{
+border:1px solid #ccc;
+overflow:hidden;
+padding-bottom:30px;
+}
+.chats{
+padding:30px 15px 0 25px;
+}
+.msg-page{
+height: 516px;
+overflow-y:auto;
+}
+.received-chats-img{
+display: inline-block;
+width:20px;
+float:left;
+}
+.received-msg{
+display:inline-block;
+padding:0 0 0 10px;
+vertical-align:top;
+width:92%;
+}
+.received-msg-inbox{
+width:57%;
+}
+.received-msg-inbox p{
+background: #efefef none repeat scroll 0 0;
+border-radius:10px;
+color: #646464;
+font-size:14px;
+margin: 0;
+padding: 5px 10px 5px 12px;
+width:100%;
+}
+.time{
+color:#777;
+display:block;
+font-size:12px;
+margin:8px 0 0;
+}
+.outgoing-chats{
+overflow:hidden;
+margin:26px 20px;
+}
+.outgoing-chats-msg p{
+background:#007bff none repeat scroll 0 0;
+color: #fff;
+border-radius:10px;
+font-size:14px;
+margin: 0;
+color:#fff;
+padding: 5px 10px 5px 12px;
+width:100%;
+}
+.outgoing-chats-msg{
+float:left;
+width:46%;
+margin-left:45%;
+}
+.outgoing-chats-img{
+display:inline-block;
+width:20px;
+float:right;
+}
+.msg-bottom{
+position: relative;
+height:10%;
+background-color:#007bff;
+}
+.input-group{
+float:right;
+margin-top:13px;
+margin-right:20px;
+outline: none !important;
+border-radius:20px;
+width:61% !important;
+background-color: #fff;
+
+}
+.form-control{
+border:none !important;
+border-radius: 20px !important;
+
+}
+.input-group-text{
+background:transparent !important;
+border: none !important;
+}
+.input-group .fa{
+color:#007bff;
+float:right;
+}
+.bottom-icons{
+float:left;
+margin-top:17px;
+width:30% !important;
+margin-left:22px;
+}
+.bottom-icons .fa{
+color: #fff;
+padding: 5px;
+cursor:pointer !important;
+}
+.form-control:focus{
+border-color: none !important;
+box-shadow:none !important;
+border-radius:20px;
+
+}
+.Emoji-field{
+z-index:1;
+border:1px solid black;
+background-color:lightgray;
+position:absolute;
+top:-60%;
+left:0%;
+width:320px;
+overflow:auto;
+}
+.Emoji-field Icon{
+cursor:pointer;
+outline:none;
+}
+</style>
+<link rel="shortcut icon" href="/SurveyBuilder/favicon.ico"/>
+<!--v16-->
+</head>
+<body>
+<div class="container">
+<div class="msg-header">
+<div class="msg-header-img">
+<!--Enter any image here-->
+<img src="./RoboChat/Robo.jpg"/>
+
+</div>
+<div class="active">
+<!--Change the title an stuff here-->
+<h4>SurveyBuilder help</h4>
+<!--Create your own Js to make this see if the AI looks like a real person, otherwise it is on 24/7-->
+<h6>When online: 24/7</h6>
+</div>
+<div class="header-icons">
+<a href="tel:[enterP#, no-dashes]"><i class="fa fa-phone" title="ContactLabel"></i></a>
+<a href="mailto:[emailaddress]"><i class="fa fa-envelope-o" title="Contact us"></i></a>
+<i class="fa fa-info-circle" onclick="InfoPerson()"></i>
+<script>
+function InfoPerson(){
+let info = {
+"name": "AI chat",
+"Age": "N/A",
+"Contact": "Phone, mail" 
+}
+let x = JSON.stringify(info);
+
+alert(x)
+}
+</script>
+</div>
+</div>
+<div class="chat-page">
+<div class="msg-inbox">
+<div class="chats">
+<div class="msg-page" id="msg-Page">
+
+<!--Replay-->
+<!--
+<div class='received-chats'>
+<div class='received-chats-img'>
+<img src='./RoboChat/Person.png'/>
+</div>
+<div class='received-msg'>
+  <div class='received-msg-inbox'>
+    <p>Hi!! this is a messgae</p>
+	<span class='time'>11:01 PM | October 11</span>
+   </div>
+</div>
+</div>
+-->
+
+<!--Outgoing-->
+<!--
+<div class='outgoing-chats'>
+
+<div class='outgoing-chats-msg'>
+ 
+    <p>Hi!! this is a messgae 2</p>
+	<span class='time'>11:03 PM | October 11</span>
+  
+  
+</div>
+ <div class='outgoing-chats-img'>
+<img src='./RoboChat/Robo.jpg'/>
+</div>
+</div>
+-->
+
+
+
+</div>
+</div>
+</div>
+<div class="msg-bottom">
+<div class="bottom-icons">
+<!--<i class="fa fa-plus-circle" title="File Uploader"></i>
+<i class="fa fa-file-code-o" title="Style"></i>-->
+<i class="fa fa-smile-o" title="Emoji's" onclick="displayEmoji()"></i>
+<span class="Emoji-field" hidden="true">
+<icon class="smile" onclick="InsertHappyEm()" title="Happy Face Emoji">😀</icon>
+<icon class="sep">|</icon>
+<icon class="Sad" onclick="InsertSadEm()" title="Sad Face Emoji">😢</icon>
+<icon class="sep">|</icon>
+<icon class="Angery" onclick="InsertAngeryEm()" title="Angery Face Emoji">😡</icon>
+<icon class="sep">|</icon>
+<icon class="Love" onclick="InsertLoveEm()" title="Love Face Emoji">😍</icon>
+<icon class="sep">|</icon>
+<icon class="Sleepy" onclick="InsertSleepyEm()" title="Sleepy Face Emoji">😴</icon>
+<icon class="sep">|</icon>
+<icon class="Expressionless" onclick="InsertExpresslessEm()" title="Expressionless Face Emoji">😑</icon>
+<icon class="sep">|</icon>
+<icon class="Money" onclick="InsertMoneyEm()" title="Money face Emoji">🤑</icon>
+<icon class="sep">|</icon>
+<icon class="Poop" onclick="InsertPoopEm()" title="Poop Emoji">💩</icon>
+<icon class="sep">|</icon>
+<icon class="Sick" onclick="InsertSickEm()" title="Sneezing face Emoji">🤧</icon>
+<!--Add more by using the icon tag-->
+</span>
+</div>
+<div class="input-group">
+<input type="text" class="form-control" id="Message-Text" placeholder="Write message..." />
+<div class="input-group-append">
+<span class="input-group-text" onclick="sendMessage()"><i class="fa fa-paper-plane"></i></span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<script type="text/javascript">
+//Test if user hits "Enter"
+   document.getElementById("Message-Text").addEventListener("keypress", function(e){
+        if(e.which == 13){
+            setTimeout(sendMessage, 0);
+        }
+   });
+</script>
+<script type="text/javascript">
+//Trigger
+function displayEmoji(){
+let emoji = document.querySelector(".Emoji-field");
+if(emoji.hidden == true){
+emoji.hidden = false;
+}else{
+emoji.hidden = true;
+}
+}
+
+//Emojis
+function InsertHappyEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "😀";
+}
+function InsertSadEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "😢";
+}
+function InsertAngeryEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "😡";
+}
+function InsertLoveEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "😍";
+}
+function InsertSleepyEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "😴";
+}
+function InsertExpresslessEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "😑";
+}
+function InsertMoneyEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "🤑";
+}
+function InsertPoopEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "💩";
+}
+function InsertSickEm(){
+let x = document.getElementById("Message-Text");
+x.value = x.value + "🤧";
+}
+</script>
+    
+<script type="text/javascript">
+function sendMessage(){
+if(document.getElementById("Message-Text").value == ""){
+alert("You must enter a messgae");
+return false;
+}
+//step 1
+let setup1 = document.createElement("DIV");
+setup1.className = "received-chats";
+let d = new Date();
+var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+//date 
+ let M = months[d.getMonth()];
+ let D = d.getDate();
+ let Y = d.getFullYear();
+//time
+    Hrs = d.getHours();
+	Min = d.getMinutes();
+	var en = "AM";
+	if(Hrs >= 12){
+		en = "PM";
+	}
+	if(Hrs > 12){
+		Hrs = Hrs - 12;
+	}
+	if(Hrs == 0){
+		Hrs = 12;
+	}
+	if(Hrs < 10){
+		Hrs = "0" + Hrs;
+	}
+	if(Min < 10){
+		Min = "0" + Min;
+	}
+	let val = document.getElementById("Message-Text").value;
+setup1.innerHTML = "<div class='received-chats'> <div class='received-chats-img'> <img src='./RoboChat/Person.png'/> </div> <div class='received-msg'> <div class='received-msg-inbox'> <p>" + val + "</p> <span class='time'>" + Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y +"</span> </div> </div> </div>"
+document.getElementById("msg-Page").appendChild(setup1);
+setTimeout(AIrespond, 0);
+}
+</script>
+<script type="text/javascript">
+function AIrespond(){
+let x = document.getElementById("Message-Text");
+let setup2 = document.createElement("DIV");
+setup2.className = "outgoing-chats";
+//get Date
+let d = new Date();
+var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+//date 
+ let M = months[d.getMonth()];
+ let D = d.getDate();
+ let Y = d.getFullYear();
+//time
+    Hrs = d.getHours();
+	Min = d.getMinutes();
+	var en = "AM";
+	if(Hrs >= 12){
+		en = "PM";
+	}
+	if(Hrs > 12){
+		Hrs = Hrs - 12;
+	}
+	if(Hrs == 0){
+		Hrs = 12;
+	}
+	if(Hrs < 10){
+		Hrs = "0" + Hrs;
+	}
+	if(Min < 10){
+		Min = "0" + Min;
+	}
+	//set 
+	/*
+	//Function
+	setup2.innerHTML = "<div class='outgoing-chats-msg'> <p>[Mesage]</p> <span class='time'>"+ Hrs + ":" + Min + ' ' + en + " | " + M + "/" + D + "/" + Y + "</span> </div> <div class='outgoing-chats-img'> <img src='./RoboChat/Robo.jpg'/> </div>"
+    */
+	// Add/remove AI repsponce here
+
+	if(x.value.match("Hi") || x.value.match("Hello") || x.value.match("hi") || x.value.match("hello")){
+	setup2.innerHTML = "<div class='outgoing-chats-msg'> <p>Hi User. What can I help you today?</p> <span class='time'>"+ Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y + "</span> </div> <div class='outgoing-chats-img'> <img src='./RoboChat/Robo.jpg'/> </div>";
+	
+	}
+	if(x.value.match("/clearmsg") || x.value.match("/cmsg")){
+	document.getElementById("msg-Page").innerHTML = "";
+	}
+	
+
+	//Don't go pass here
+	let audio = new Audio("./RoboChat/Ring.mp3");
+	audio.play();
+	document.getElementById("msg-Page").appendChild(setup2);
+	document.getElementById("Message-Text").value = "";
+}
+</script>
+</body>
+</html>

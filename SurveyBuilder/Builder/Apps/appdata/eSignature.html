@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>eSignature</title>
+<link rel="shortcut icon" href="/SurveyBuilder/favicon.ico"/>
+<meta charset="UTF-8"/>
+<style>
+#sign{
+border: 4px solid #ccc;
+background-color:#00ff1a;
+}
+
+body{
+margin:0;
+padding:0;
+background:#05deff;
+overflow-x:hidden;
+}
+#resetSign{
+border-radius: 25px;
+outline:none;
+border:0;
+font-size:35px;
+cursor:pointer !important;
+}
+ 
+</style>
+</head>
+<body>
+
+<canvas id="sign">
+
+</canvas>
+<p><button id="resetSign" title="Clear">Clear</button></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./eSign/sign.js"></script>
+<script>
+$(document).ready(function(){
+$("#sign").sign({
+resetButton: $("#resetSign"),
+lineWidth: 5,
+width: 1050,
+height: 65
+
+   })
+})
+</script>
+
+</body>
+</html>
