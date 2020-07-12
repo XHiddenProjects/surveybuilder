@@ -3,7 +3,7 @@
 //Everything is eaither True/False
 
 	//Set Variable here
-var Allow_Banner_display = true; //Allow to display SurveyBuilder footer(banner)
+var Allow_Banner_display = false; //Allow to display SurveyBuilder footer(banner)
 var Allow_Console_attribute = true; //Enables the Console Log
 var Allow_Pop_up = false; //Allow alert_box to popup when a user joins
 var limit_list = ["not"]; //Removes any category on your choice. 

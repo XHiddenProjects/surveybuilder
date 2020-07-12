@@ -485,7 +485,7 @@ return false;
 <div id="Style-editor-container">
 <div id="Style"><button title="Style" onclick="OpenStyle()" id="Style-btn">Style</div>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div id="Style-clipboard" hidden="true">
-<div id="BgColor"><span style="color:lightgray;font-weight:bold;">Background Color:</span>  <input type="color" oninput="ChageColor()" id="color" value="#9acd32"  list="presetColors"/>
+<div id="BgColor"><span style="color:lightgray;font-weight:bold;">Background Color:</span>  <input type="color" oninput="ChageColor()" id="color" value="#9acd32"  list="presetColors"/></div>
 <datalist id="presetColors">
   <option value="#ff0000" title="red"/>
   <option value="#00ff00" title="green"/>
@@ -503,7 +503,7 @@ return false;
 <div id="Titlecolor"><span style="color:lightgray;font-weight:bold;">Title Color: <input type="color" oninput="ChageTColor()" id="Tcolor"  list="presetColors"/></div>
 </div>
 </div>
-</div>
+
 <br>
 <br>
 <br>
@@ -622,7 +622,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 
 
-<div id="Conditions"><button id="Conditions-btn" title="Conditions">Conditions</button></div>
+
 
 
 
