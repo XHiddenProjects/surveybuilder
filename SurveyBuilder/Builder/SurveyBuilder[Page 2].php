@@ -482,7 +482,7 @@ return false;
 
 <!--Style-->
 <div id="Editor-Control-Form">
-<div id="Style-editor-container">
+<div id="Style-editor-container" style="position:absolute;">
 <div id="Style"><button title="Style" onclick="OpenStyle()" id="Style-btn">Style</div>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div id="Style-clipboard" hidden="true">
 <div id="BgColor"><span style="color:lightgray;font-weight:bold;">Background Color:</span>  <input type="color" oninput="ChageColor()" id="color" value="#9acd32"  list="presetColors"/></div>
@@ -521,7 +521,9 @@ return false;
 <label class="switch">
 <input type="checkbox" id="CheckPre" oninput="Preview()"> 
 <span class="slider round"></span></label> 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button onclick="Publish()" id="Publish">Publish</button></div>  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<button onclick="Publish()" id="Publish">Publish</button>
+</div>  
 </div>
 <script>
 function Publish(){
@@ -563,7 +565,7 @@ function Publish(){
 <!--<div id="save"><button title="Save" id="save-btn">Save<button></div>-->
 
 <!--Contact-->
-<div id="contact-btn"><button id="contact-btn" title="Contact" onclick="ShowcontactUpdate()">Contact</button></div>
+<div id="contact-btn"><a href="mailto:mcmastergames2020@gmail.com"><button id="contact-btn" title="Contact">Contact</button></a></div>
 <br>
 <br>
 <br>
@@ -608,18 +610,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <button id="Data" onclick="DeleteData()" title="Clear Data">Clear Data</button>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 
 

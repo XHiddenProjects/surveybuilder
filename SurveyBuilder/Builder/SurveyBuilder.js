@@ -593,7 +593,7 @@ function DeleteData(){
 	}
 }
 //Default Settings
-document.cookie = "Supported=SurveyMaker license, SurveyBuilder license; expires=Fri, Nov 27 2020, 17:00:00 UTC; path=/";//Use Chart for Time in Hours
+document.cookie = "Supported=SurveyBuilder license;expires=Fri, Dec 31 2021, 5:00:00 UTC; path=/"; //Use Chart for Time in Hours
 
 
 /*

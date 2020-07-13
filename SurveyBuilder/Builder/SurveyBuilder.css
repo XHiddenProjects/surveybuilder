@@ -391,8 +391,13 @@ border-right:3px solid black;
 
 #BgColor{
 	position:absolute;
-	right:-400px;
+	right:-300px;
 	
+}
+#Titlecolor{
+	position:absolute;
+	right:-300px;
+	top:12%;
 }
 .switch {
   position: relative;
@@ -454,7 +459,7 @@ input:checked + .slider:before {
 #Slider-Con{
 	position:absolute;
 	right:-255px;
-	top:-110px;
+	top:-80px;
 }
 #CheckPre{
 	position:absolute;

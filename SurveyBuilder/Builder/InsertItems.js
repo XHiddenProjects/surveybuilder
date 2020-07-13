@@ -476,7 +476,7 @@ function InsertSocial(){
 	"<a href='" + FourSquare + "' target='_blank'><img src='https://www.shareicon.net/data/2015/09/16/101980_foursquare_512x512.png'/></a>",	   
 	"<a href='" + Tumblr + "' target='_blank'><img src='http://icons.iconarchive.com/icons/limav/flat-gradient-social/512/Tumblr-icon.png'/></a>",	   
 	"<a href='" + Pinterest + "' target='_blank'><img src='https://cdn0.iconfinder.com/data/icons/Pinterest/Pinterest_Favicon.png'/></a>",	   
-	"<a href='" + StumbleUpon + "' target='_blank'><img src='http://files.softicons.com/download/social-media-icons/free-social-media-icons-by-uiconstock/png/512x512/StumbleUpon-Icon.png'/></a>",	   
+	"<a href='" + StumbleUpon + "' target='_blank'><img src='https://logonoid.com/images/stumbleupon-logo.png'/></a>",	   
 	"<a href='" + Digg + "' target='_blank'><img src='https://cdn3.iconfinder.com/data/icons/social-1/100/digg-512.png'/></a>",
     "<a href='" + reddit + "' target='_blank'><img src='https://th.bing.com/th/id/OIP.OeceGPWbsENrkTpe9Pby6gHaHa?pid=Api&rs=1'/></a>"   
 	
