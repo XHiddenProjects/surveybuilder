@@ -55,16 +55,16 @@ $(function(){
 
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
-<style type="text/css" rel="stylesheet" id="customCSS">
 
-</style>
 
 </head>
 <div id="not"></div>
 
 
 <body onload="Update()" id="SurveyBuilderBody">
+<style type="text/css" rel="stylesheet" id="customCSS">
 
+</style>
 <div id="custom-scripts"></div>
 <div id="custom-addons"></div>
 <!--<div id="custom-alertbox" style="display:none;">

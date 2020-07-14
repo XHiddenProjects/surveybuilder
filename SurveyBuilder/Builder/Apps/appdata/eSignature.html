@@ -15,7 +15,7 @@ padding:0;
 background:#05deff;
 overflow-x:hidden;
 }
-#resetSign{
+#resetSign, #Donebtn{
 border-radius: 25px;
 outline:none;
 border:0;
@@ -26,11 +26,12 @@ cursor:pointer !important;
 </style>
 </head>
 <body>
-
+<div hidden="true"><a id="imgDonwload" href=""></a></div>
 <canvas id="sign">
 
 </canvas>
 <p><button id="resetSign" title="Clear">Clear</button></p>
+<p><button id="Donebtn" title="Done" onclick="Done()">Done</button></p>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./eSign/sign.js"></script>
@@ -39,11 +40,24 @@ $(document).ready(function(){
 $("#sign").sign({
 resetButton: $("#resetSign"),
 lineWidth: 5,
-width: 1050,
-height: 65
+width: 1100,
+height: 95
 
    })
 })
+</script>
+<script>
+function Done(){
+var canvas = document.getElementById("sign");
+    var img  = canvas.toDataURL("image/png");
+    
+	document.getElementById("imgDonwload").href = img;
+	document.getElementById("imgDonwload").download = "signature.png";
+	setTimeout(download, 1000);
+}
+function download(){
+document.getElementById("imgDonwload").click();
+}
 </script>
 
 </body>
