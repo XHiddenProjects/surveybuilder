@@ -79,104 +79,9 @@ function SaveDatFileBro(localstorage) {
   });
 }
 */
-//title save
-var Span = 0;
-function savetitle(){
-	
-	var s = document.getElementById("titleSave");
-	var Title = document.getElementById("yourTitle");
-	var Displaytitle = document.getElementById("UserTitle");
-	let val = s.value;
-	//val = val.match( /\w+/g );
-	//val = val.length;
-	//document.getElementById("Wcount").innerHTML = val;
-	if(val.length <= 0|| val.length > 25){
-		Displaytitle.innerText = "Untitled" +" - Survey Builder";
-		Title.innerText = "Untitled";
-	var E = document.getElementById("Error");
-	E.hidden = false;
-	setTimeout(hideError, 10000);
-	return false;
-	}
-	
-	else{
-	Displaytitle.innerText = s.value + " - SurveyBuilder";
-	Title.innerText = s.value
-	 Span += 1;
-	document.getElementById("Count").innerHTML = Span;
-	/*if(s.value == s.value){
-		Span = Span + 0;
-	}*/
-	if(Span <= 3){
-		console.log("Spam Count: " + "%c" + Span , "color:green;background:lightgray;");
-	}
-	
-	if(Span > 3){
-		document.getElementById("SpanError").hidden = false;
-		setTimeout(HideSpanError, 10000);
-		console.log("%cError:" + "%cSpam Count: " + "%c" + Span, "color:#f22011;background:black;", "color:lightgray;", "color:green;background:lightgray;");
-	}
-	if(Span == 10){
-		alert("Lost Connection");
-		window.location.reload();
-		
-	
-	}
-	
-	}
-	
-	
-	
-	}
-	//
-	
-	function testback(event){
-	if(event.keyCode == "8" || event.which == "8"){
-		setTimeout(wcount, 0);
-		
-	}
-	
-	
-	}
-	function wcount(){
-		let now = document.getElementById("titleSave").value;
-	//now = now.match(/\w+/g );
-	now = now.length;
-	if(now == 0 || now > 25){
-		document.getElementById("Wcount").style.color = "red";
-	}
-	if(now > 0 && now <= 25){
-		document.getElementById("Wcount").style.color = "black";
-	}
-	
-	let loop = setInterval(function(){
-	
-	document.getElementById("Wcount").innerHTML = now;
-	
-	
-	}, 0);
-	let loop2 = setInterval(function(){
-	clearInterval(loop);
-	clearInterval(loop2);
-	}, 100);
-	
-	let loop3 = setInterval(function(){
-		setTimeout(wcount, 0);
-		clearInterval(loop3);
-	}, 105);
-	
-	}
-	
-	function hideError(){
-		var E = document.getElementById("Error");
-	E.hidden = true;
-	}
-	
-	function HideSpanError(){
-	var E = document.getElementById("SpanError");
-	E.hidden = true;
-	}
 
+	
+	
 //Contact diplay
 function ShowcontactUpdate(){
 	var x = document.getElementById("contact");
@@ -593,7 +498,10 @@ function DeleteData(){
 	}
 }
 //Default Settings
-document.cookie = "Supported=SurveyBuilder license;expires=Fri, Dec 31 2021, 5:00:00 UTC; path=/"; //Use Chart for Time in Hours
+document.cookie = "License=SurveyBuilder license;expires=Fri, Dec 31 2021, 5:00:00 UTC; path=/"; 
+document.cookie = "Supportive=IFrames, language, data, save, copyright;expires=Fri, Dec 31 2021, 5:00:00 UTC; path=/";
+
+//Use Chart for Time in Hours
 
 
 /*

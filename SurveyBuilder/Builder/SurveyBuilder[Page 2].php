@@ -10,6 +10,7 @@
  }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://kit.fontawesome.com/46bb4793e2.js"></script>
 <script>
 $(function(){
@@ -56,6 +57,7 @@ $(function(){
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
 
+<script src="./users/usernames.json"></script>
 
 </head>
 <div id="not"></div>
@@ -99,8 +101,8 @@ $(function(){
 <error id="SpanError" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry spam block as been added. Your Clicks: <span id="Count" style="color:white;"></span> times</error>
 <br>
 <br>
-<input type="text" id="titleSave" autocomplete="off" title="Enter Title" onkeydown="testback(event);" onkeypress="wcount()" pattern="[a-zA-Z0-9]{,15}"  placeholder="Enter a title (25 Chars. max)" required><input id="titleSave-btn" title="Save Title" onclick="savetitle()" type="submit" value="Save">
-<div id="wcc" style="position:absolute;left:65%; top:13.5%;font-size:25px;"><span id="Wcount" style="color:red;">0</span><span>/25 characters</span></div>
+<input type="text" id="titleSave" autocomplete="off" title="Enter Title" onkeydown="testback(event);" onkeypress="wcount()" pattern="[a-zA-Z0-9]{,15}"  placeholder="Enter a title" required><input id="titleSave-btn" title="Save Title" onclick="savetitle()" type="submit" value="Save">
+<div id="wcc" style="position:absolute;left:65%; top:13.5%;font-size:25px;"><span id="Wcount" style="color:red;">0</span><span>/</span><span id="maxTitle">25</span>&nbsp;<span>characters</span></div>
 
  </div>
  
@@ -148,7 +150,6 @@ $(function(){
 <li id="Insert-T&C" title="Terms and Conditions" onclick="TaC()" class="Upgrade"><i class="fas fa-scroll"></i>&nbsp;&nbsp;Terms and Conditions</li>
 <li id="Insert-Audio" title="Audio" onclick="InsertAudio()" class="Upgrade"><i class="far fa-file-audio"></i>&nbsp;&nbsp;Audio</li>
 <li id="Insert-YouTube" title="YouTube" onclick="InsertYouTube()" class="Upgrade"><i class="fab fa-youtube"></i>&nbsp;&nbsp;YouTube</li>
-
 
 </span>
 <li id="New">Elements</li>
@@ -296,6 +297,27 @@ return false;
 }
 </script>
 
+<li id="Insert-recorder" title="Recorder" onclick="rec()" class="rec apps-config"><i class="fas fa-video"></i>&nbsp;&nbsp;Recorder
+<li class="InfoApp" onclick="recInfo()">Information</li>
+<li class="Unistall" onclick="recUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Google map Installmeant
+//Info
+function recInfo(){
+alert("AppName: Recorder\n\nCreator: SurveyBuilder \n\nDescription: Capture audio and facecam video, make it downloadable\n\nDependencies: N/A\n\nNeedsCofig: Yes");
+}
+//Unistall
+function recUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Recorder on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".rec-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
 </span>
 <span id="cpanel-form">
 <span id="cPanel">
@@ -359,7 +381,7 @@ return false;
 <option value="">--Select App--</option>
 <option value="GoogleMaps">Google Maps</option>
 <option value="RoboChat">RoboChat</option>
-
+<option value="Recorder">Recorder</option>
 </select>
 <br/>
 <br/>
@@ -386,7 +408,12 @@ $.get(".\\Apps\\appdata\\RoboChat.html", function(data){
 x.value = data;
 });
 }
+if(x.value == "/app Recorder"){
+$.get(".\\Apps\\appdata\\recorder.html", function(data){
 
+x.value = data;
+});
+}
 
 }
 
@@ -403,7 +430,9 @@ y.action = ".\\Apps\\appdata\\GoogleMaps.php";
 if(x.selectedIndex == 2){
 y.action = ".\\Apps\\appdata\\RoboChat.php";
 }
-
+if(x.selectedIndex == 3){
+y.action = ".\\Apps\\appdata\\recorder.php";
+}
 
 }
 </script>
@@ -415,6 +444,7 @@ y.action = ".\\Apps\\appdata\\RoboChat.php";
 
 <br/>
 <textarea placeholder="Console" required="true" name="Console" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditFormFromConsole()" class="lined" id="Console"></textarea>
+
 <script type="text/javascript">
 autodisplay();
 function autodisplay(){
@@ -443,8 +473,10 @@ setTimeout(loop, 0);
 </form>
 </span>
 </span>
+
 <span id="remove-element">
-<li>Remove Element<input type="text" id="DelID" placeholder="Enter ID"/></li>
+<li id="New">Remove Element</li>
+<li><input type="text" id="DelID" placeholder="Enter ID"/></li>
 <li class="Unistall" onclick="RemoveElement()">Delete Element</li>
 <script type="text/javascript">
 function RemoveElement(){

@@ -16,8 +16,11 @@ var get_users_usersAngent = true; //Give the users userAgent to the console.
 var test_users_cookieEnable = true; //Displays if the console should replay back if the cookie was enable
 var Collect_IP = false //The Console will display there IP_address. 
 var Allow_cPanel = true //Allow's users to have cPanel
+var maxTitle = 25; //Change the length of the title
+var username = "admin" //Enter username here 
 
-//ingore these code below[Unless something goes wrong]
+
+//ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
 //Test any error of a none corrosponding data
 setTimeout(testCorrospond, 0);
@@ -75,11 +78,25 @@ function testCorrospond(){
 		console.error("Collect_IP must be a boolean");
 			return false;
 	}
+	if(typeof(maxTitle) !== "number" || maxTitle < 10 || maxTitle > 40){
+		console.error("maxTitle must be a number | maxTitle must be >= to 10.| maxTitle must be <= 40.");
+		setInterval(function(){alert("maxTitle error:\n-maxTitle must be a number.\n-maxTitle needs to be >= then 10\n-maxTitle must be <= 40.")},0)
+	}
+	if(typeof(username) !== "string"){
+		console.error("username must be a string");
+		return false;
+	}
+	
 	setTimeout(config, 0);
 
 }
 //if clear do this
 function config(){
+	
+
+    
+	
+	
 	
 	//Banner
 	if(Allow_Banner_display == true){
@@ -276,6 +293,89 @@ function Warning(){
 	
 }
 
+//title save
 
+setTimeout(function(){
+	document.getElementById("maxTitle").innerHTML = maxTitle;
 	
+},0)
 
+function savetitle(){
+	
+	var s = document.getElementById("titleSave");
+	var Title = document.getElementById("yourTitle");
+	var Displaytitle = document.getElementById("UserTitle");
+	let val = s.value;
+	//val = val.match( /\w+/g );
+	//val = val.length;
+	//document.getElementById("Wcount").innerHTML = val;
+	if(val.length <= 0|| val.length > maxTitle){
+		Displaytitle.innerText = "Untitled" +" - Survey Builder";
+		Title.innerText = "Untitled";
+	var E = document.getElementById("Error");
+	E.hidden = false;
+	setTimeout(hideError, 10000);
+	return false;
+	}
+	
+	else{
+	Displaytitle.innerText = s.value + " - SurveyBuilder";
+	Title.innerText = s.value
+	 
+	
+	
+	
+	
+	}
+	
+	
+	
+	}
+	//title save
+	
+	function testback(event){
+	if(event.keyCode == "8" || event.which == "8"){
+		setTimeout(wcount, 0);
+		
+	}
+	
+	
+	}
+	function wcount(){
+		let now = document.getElementById("titleSave").value;
+	//now = now.match(/\w+/g );
+	now = now.length;
+	if(now == 0 || now > maxTitle){
+		document.getElementById("Wcount").style.color = "red";
+	}
+	if(now > 0 && now <= maxTitle){
+		document.getElementById("Wcount").style.color = "black";
+	}
+	
+	let loop = setInterval(function(){
+	
+	document.getElementById("Wcount").innerHTML = now;
+	
+	
+	}, 0);
+	let loop2 = setInterval(function(){
+	clearInterval(loop);
+	clearInterval(loop2);
+	}, 100);
+	
+	let loop3 = setInterval(function(){
+		setTimeout(wcount, 0);
+		clearInterval(loop3);
+	}, 105);
+	
+	}
+	
+	function hideError(){
+		var E = document.getElementById("Error");
+	E.hidden = true;
+	}
+	
+	//username
+	let userEx = "username=" + username + ";expires=Fri, Dec 31 2028, 5:00:00 UTC; path=/"
+    document.cookie = userEx;
+    

@@ -1,0 +1,11 @@
+{
+"Username": "Fname",
+"websiteURL": ["http://example.com", "https://example.com"],
+"confirm": true,
+"WebsiteReleaseDate": "mm/dd/yyyy",
+"API": "Enter API here",
+"source": "path=/",
+"age": 20,
+"coords": "true"
+}
+

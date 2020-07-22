@@ -8,8 +8,12 @@ if /I "%c%" EQU "N" goto :end
 goto :choice
 
 :del
-del /s /q "C:\xampp\htdocs\SurveyBuilder\*.*"
-for /d %%p in ("C:\xampp\htdocs\SurveyBuilder\*.*") do rmdir "%%p" /s /q
+cls
+set /p select= Select a folder path that the folder "SurveyBuilder"(main directory), also end it with a \.
+
+pause>nul
+del /s /q "%select%*.*"
+for /d %%p in ("%select%*.*") do rmdir "%%p" /s /q
 exit
 :end
 exit

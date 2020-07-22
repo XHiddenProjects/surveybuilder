@@ -18,7 +18,20 @@ $stat = "Console-" . $gen . ".txt";
 $set = fopen("$stat", "w+");
 fwrite($set, $txt);
 fclose($set);
-echo "location: http://localhost/SurveyBuilder/Console/" . $stat;
+
+$server_port = $_SERVER['SERVER_PORT'];
+if ($server_port == 443)
+{
+  $server_name = "https://".$_SERVER['SERVER_NAME'];
+}
+else if ($server_port != 80) {
+  $server_name = "http://".$_SERVER['SERVER_NAME']. ':' . $_SERVER['SERVER_PORT'];
+}
+else {
+  $server_name = "http://".$_SERVER['SERVER_NAME'];
+}
+
+echo "location:" . $server_name . "/SurveyBuilder/Console/" . $stat;
 
 //End the code here
 ?>

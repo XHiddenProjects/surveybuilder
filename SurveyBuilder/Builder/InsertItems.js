@@ -294,8 +294,12 @@ function InsertTime(){
 		let file = document.createElement("INPUT");
 		file.type = "file";
 		file.id = "file";
+		let accept = prompt("Enter a file acceptence: ex: image(video/audio)/* or .fileType", "");
+		file.accept = accept;
 		file.required = true;
 		insert.appendChild(file);
+	
+		
 		document.getElementById("Insert-Object").appendChild(insert);
 		return false;
 	}
@@ -303,6 +307,8 @@ function InsertTime(){
 		let file = document.createElement("INPUT");
 		file.type = "file";
 		file.id = "file";
+		let accept = prompt("Enter a file acceptence: ex: image(video/audio)/* or .fileType", "");
+		file.accept = accept;
 		file.required = false;
 		insert.appendChild(file);
 		document.getElementById("Insert-Object").appendChild(insert);
