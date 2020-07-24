@@ -1,0 +1,5 @@
+- Fixed bugs
+- Added New Config
+- Added New App
+- Fixed Uninstaller
+- And more.
