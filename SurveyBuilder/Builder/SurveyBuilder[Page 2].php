@@ -662,7 +662,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 
 <footer id="SurveyMakerBanner"><div id="Banner"><span id="Icon"><img src="favicon.ico" width="50" height="50" title="SurveyMaker" alt="SurveyMaker Icon"/></span><span id="Text1">Join SurveyBuilder TODAY! <span id="Text2">Join Our <a id="FourmLink" title="Fourm" href="https://surveybuilder.boards.net/" target="_blank">Fourm</a></span><span id="Text3">&copy;SurveyBuilder</span></div></footer>
-<div id="copyright-print" style="display:none;">&copy; SurveyBuilder</div>
+<div id="copyright-print">&copy; SurveyBuilder</div>
 </div>
 <script src="./Config/Config.js" type="text/javascript"></script>
 </body>                                                                      

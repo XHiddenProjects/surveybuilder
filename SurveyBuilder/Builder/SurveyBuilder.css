@@ -334,13 +334,13 @@ button:hover{
 	width:850px;
 	position:absolute;
 	border:1px solid black;
-	overflow:auto;
-	height:650px;
 	background:blue;
 	top:50%;
 	left:-50%;
 	margin-top:15px;
+	display:inline-block;
 }
+
 #Editors-Form #Insert-Object div{
 	font-size:15px;
 	color:black;
@@ -560,9 +560,29 @@ input:checked + .slider:before {
 	}
 	
 }
+#copyright-print{
+	display:none;
+}
 @media print{
 	#Editors-Form{
-       display:block;
+       display:inline-block;
+	   position:absolute !important;
+	   left:-95% !important;
+	   top:-10% !important;
+	   float:left;
+	   
+	}
+
+	#wcc{
+	display:none;	
+	}
+	
+	#Editors-Form input{
+		border:1px solid black !important;
+	}
+	
+	#Editors-Form input::placeholder{
+		color:transparent;
 	}
 	#Sidebar{
 		display:none;
@@ -581,6 +601,9 @@ input:checked + .slider:before {
 	}
 	#copyright-print{
 		display:block;
+		position:absolute;
+		top:0%;
+		
 	}
 	#SurveyMakerBanner{
 display:none;
