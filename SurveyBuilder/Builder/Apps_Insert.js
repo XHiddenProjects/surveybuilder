@@ -7,8 +7,8 @@
 	  x.className += " Gmap-app";
 	  let fRam = document.createElement("IFRAME");
 	  fRam.src = ".\\Apps\\appdata\\GoogleMaps.html";
-	  fRam.style.width = "100%";
-	  fRam.style.height = "100%";
+	  fRam.width = "837";
+	  fRam.height = "520";
 	  x.appendChild(fRam);
 	  document.getElementById("Insert-Object").appendChild(x);
   }
@@ -20,8 +20,8 @@
 	  x.className += " RoboChat-app";
 	  let fRam = document.createElement("IFRAME");
 	  fRam.src = ".\\Apps\\appdata\\RoboChat.html";
-	  fRam.style.width = "100%";
-	  fRam.style.height = "100%";
+	  fRam.width = "837";
+	  fRam.height = "520";
 	  x.appendChild(fRam);
 	  document.getElementById("Insert-Object").appendChild(x);
   }
@@ -34,10 +34,9 @@
 	  x.className += " eSign-app";
 	  let fRam = document.createElement("IFRAME");
 	  fRam.src = ".\\Apps\\appdata\\eSignature.html";
-	  fRam.style.width = "100%";
-	  fRam.style.height = "18%";
-	  fRam.style.overflow = "hidden";
-	  x.appendChild(fRam);
+	 fRam.width = "837";
+	  fRam.height = "520";
+	 x.appendChild(fRam);
 	  document.getElementById("Insert-Object").appendChild(x);
 	  
   }
@@ -49,10 +48,9 @@
 	  x.className += " rec-app";
 	  let fRam = document.createElement("IFRAME");
 	  fRam.src = ".\\Apps\\appdata\\recorder.html";
-	  fRam.style.width = "100%";
-	  fRam.style.height = "100%";
-	  fRam.style.overflow = "hidden";
-	  x.appendChild(fRam);
+	  fRam.width = "837";
+	  fRam.height = "520";
+	 x.appendChild(fRam);
 	  document.getElementById("Insert-Object").appendChild(x);
 	  
   }

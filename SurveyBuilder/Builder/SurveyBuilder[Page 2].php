@@ -41,6 +41,7 @@ $(function(){
 <meta name="keywords" content="Survey Builder, Free, Test, Quiz, and Survey's">
 <meta name="author" content="©SurveyMaker">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
  <meta name content="SurveyMaker">
  <meta name="UsersForm" hidden="hidden" content="SurveyBuilderId:19494sbybfdyfuy47grfrfureuyervchfiuerhgyuer748gryru435943578347f">
  <meta name="Forum" property="og:url" content="https://surveymaker.boards.net">
@@ -112,11 +113,7 @@ $(function(){
 <br>
 <center id="Form-Center" onload="Autosave()">
 <form id="Editors-Form" method="post" action="">
-<div id="Insert-Object" contenteditable="true">
-
-
-
-</div>
+<div id="Insert-Object" contenteditable="true"></div>
 </form>
 </center>
  <!--Sidebar-->
