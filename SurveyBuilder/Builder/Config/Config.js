@@ -18,7 +18,7 @@ var Collect_IP = false //The Console will display there IP_address.
 var Allow_cPanel = true //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
 var username = "admin" //Enter username here 
-
+var banIP = [] //Enter IP adderess here
 
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
@@ -86,13 +86,17 @@ function testCorrospond(){
 		console.error("username must be a string");
 		return false;
 	}
-	
+	if(Array.isArray(banIP) !== true){
+		console.error("banIP must be a array.");
+		return false;
+	}
 	setTimeout(config, 0);
 
 }
 //if clear do this
 function config(){
-	
+	//Settings
+	console.log("%c---Set Config---","color:green;");
 
     
 	
@@ -174,6 +178,8 @@ let x = prompt("Enter API key", "");
 	
 	
 }
+
+
 //Get Users Lang
     if(get_users_lang == true){
 		let lang = navigator.language;
@@ -224,7 +230,18 @@ let x = prompt("Enter API key", "");
 	if(Collect_IP == false){
 		console.log("IP_Collecting: False");
 	}
-	
+	//ban IP
+	  
+	  $.getJSON("https://api.ipify.org?format=json", 
+                                          function(data) { 
+			//Add more or remove this
+			//Adding: make sure you change {current Number} to {current Number} + 1 
+            if(banIP[0] === data.ip){
+				setInterval(function(){alert("Your account is banned");}, 0);
+			} 
+			
+			
+        }); 
 	
 	//Location tracking
 	 if(Allow_location_tracking == true){
