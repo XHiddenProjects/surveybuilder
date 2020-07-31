@@ -368,8 +368,8 @@ function InsertTextEdit(){
 	insert.className = "RichTextEditor";
 	let eframes = document.createElement("IFRAME");
 	eframes.id = "RichTextEditorFrame";
-	eframes.style.width = "100%";
-	eframes.style.height = "100%";
+	eframes.width = "837";
+	eframes.height = "520";
 	eframes.src = "./Elements/richtexteditor.html";
 	insert.appendChild(eframes);
 	document.getElementById("Insert-Object").appendChild(insert);
@@ -963,6 +963,21 @@ function InsertStripe(){
 	ifrm.width = "837";
 	ifrm.height = "320";
 	
+	insert.appendChild(ifrm);
+	document.getElementById("Insert-Object").appendChild(insert);
+}
+
+//IframeEmbeder
+function InsertIframeEmbeder(){
+	let insert = document.createElement("DIV");
+	let id = prompt("Enter ID");
+	insert.id = id;
+	insert.className = "Widgets";
+	let ifrm = document.createElement("IFRAME");
+	let links = prompt("Enter File/URL", "");
+	ifrm.src = links;
+	ifrm.width = "837";
+	ifrm.height = "320";
 	insert.appendChild(ifrm);
 	document.getElementById("Insert-Object").appendChild(insert);
 }

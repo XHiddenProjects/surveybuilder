@@ -52,7 +52,7 @@ function togglesidebar(){
 	
 	//TimeOut
 
-setTimeout(BdayBash, 0);
+
 }
 
 
@@ -129,19 +129,7 @@ function Update(){
 }
 
 
-function BdayBash(){
-	var d = new Date();
-	var Month = d.getMonth()+1;
-	var Day = d.getDate();
-	var x = document.getElementById("B-DayBash");
-	
-	if(Month == 8 && Day ==29){
-		x.hidden = false;
-	}
-	else{
-		x.hidden = true;
-	}
-}
+
 /*function changeBGcolor(){
 	var x = new Date();
 	var Month = x.getMonth() + 1;

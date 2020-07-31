@@ -41,7 +41,7 @@ $(function(){
 <meta name="keywords" content="Survey Builder, Free, Test, Quiz, and Survey's">
 <meta name="author" content="©SurveyMaker">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="stylesheet" href="SurveyBuilderMobile.css"/>
  <meta name content="SurveyMaker">
  <meta name="UsersForm" hidden="hidden" content="SurveyBuilderId:19494sbybfdyfuy47grfrfureuyervchfiuerhgyuer748gryru435943578347f">
  <meta name="Forum" property="og:url" content="https://surveymaker.boards.net">
@@ -99,11 +99,11 @@ $(function(){
 <!--Change title-->
 <div id="YourTitleTag">
 <error id="Error" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry you need a title before saving it or its to long</error>
-<error id="SpanError" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry spam block as been added. Your Clicks: <span id="Count" style="color:white;"></span> times</error>
+<!--<error id="SpanError" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry spam block as been added. Your Clicks: <span id="Count" style="color:white;"></span> times</error>-->
 <br>
 <br>
-<input type="text" id="titleSave" autocomplete="off" title="Enter Title" onkeydown="testback(event);" onkeypress="wcount()" pattern="[a-zA-Z0-9]{,15}"  placeholder="Enter a title" required><input id="titleSave-btn" title="Save Title" onclick="savetitle()" type="submit" value="Save">
-<div id="wcc" style="position:absolute;left:65%; top:13.5%;font-size:25px;"><span id="Wcount" style="color:red;">0</span><span>/</span><span id="maxTitle">25</span>&nbsp;<span>characters</span></div>
+<span class="title title-input title-execute"><input type="text" id="titleSave" autocomplete="off" title="Enter Title" onkeydown="testback(event);" onkeypress="wcount()" pattern="[a-zA-Z0-9]{,15}"  placeholder="Enter a title" required><input id="titleSave-btn" title="Save Title" onclick="savetitle()" type="submit" value="Save"></span>
+<div id="wcc" style="position:absolute;left:65%; top:13.5%;font-size:25px;"><span id="Wcount" style="color:red;">0</span><span>/</span><span id="maxTitle">25</span>&nbsp;<span>char.</span></div>
 
  </div>
  
@@ -147,7 +147,7 @@ $(function(){
 <li id="Insert-T&C" title="Terms and Conditions" onclick="TaC()" class="Upgrade"><i class="fas fa-scroll"></i>&nbsp;&nbsp;Terms and Conditions</li>
 <li id="Insert-Audio" title="Audio" onclick="InsertAudio()" class="Upgrade"><i class="far fa-file-audio"></i>&nbsp;&nbsp;Audio</li>
 <li id="Insert-YouTube" title="YouTube" onclick="InsertYouTube()" class="Upgrade"><i class="fab fa-youtube"></i>&nbsp;&nbsp;YouTube</li>
-
+<li id="Insert-Iframe-Embed" title="Iframe Embed" onclick="InsertIframeEmbeder()" class="Upgrade"><i class="far fa-window-restore"></i>&nbsp;&nbsp;Iframe Embeder</li>
 </span>
 <li id="New">Elements</li>
 <li id="Insert-text" title="Short text" onclick="InsertsText()"><i class="fas fa-keyboard"></i>&nbsp;&nbsp;Short text</li>
@@ -191,15 +191,13 @@ function removeRow(){
 </li>
 
 <!--<li id="Insert-slider" title="Slider" onclick=""><i class="fas fa-sliders-h"></i>&nbsp;&nbsp;Slider</li>-->
-<span id="B-DayBash">
-<li id="New">Yearly Prize</li>
-<li id="Insert-Iframe-Embed" title="Iframe Embed" onclick="" class="Upgrade">Iframe Embeder</li>
-</span>
+
 <span id="eCommerce">
 <li id="New" name="eCommerce">eCommerce</li>
 <li id="Insert-PayPal" title="PayPal" onclick="InsertPayPal()" class="Upgrade"><i class="fab fa-paypal"></i>&nbsp;&nbsp;PayPal</li>
 <li id="Insert-Stripe" title="Stripe" onclick="InsertStripe()" class="Upgrade"><i class="fab fa-stripe"></i>&nbsp;&nbsp;Stripe</li>
 </span>
+<!--Apps-->
 <span id="Apps">
 <style>
 .InfoApp{
@@ -315,6 +313,9 @@ return false;
 }
 }
 </script>
+
+<!--Add Apps below-->
+
 </span>
 <span id="cpanel-form">
 <span id="cPanel">
@@ -362,6 +363,7 @@ return false;
 </span>
 
 </span>
+<!--Config-->
 <span id="Config">
 <li id="New">Configuration&nbsp;&nbsp;<i class="fas fa-wrench"></i></li>
 <li id="Config-settings">

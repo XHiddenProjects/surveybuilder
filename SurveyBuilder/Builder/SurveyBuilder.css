@@ -545,21 +545,6 @@ input:checked + .slider:before {
 	color:green;	
 }
 
-/*Mobile device*/
-@media only screen and (max-width: 400px){
-	#Editors-Form{
-		width:350px;
-	}
-	#Editor-Control-Form{
-		position:absolute;
-	right:-20px;
-	}
-	#contact{
-		position:absolute;
-		right:-10px;
-	}
-	
-}
 #copyright-print{
 	display:none;
 }
@@ -587,6 +572,7 @@ input:checked + .slider:before {
 	#Sidebar{
 		display:none;
 	}
+	
 	#Orgtitle{
 		display:none;
 	}

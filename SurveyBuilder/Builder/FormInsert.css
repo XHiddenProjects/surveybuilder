@@ -431,3 +431,13 @@ border:1px solid black;
 	padding:2px;
 }
 
+/*Widgets*/
+.Widgets{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
