@@ -50,7 +50,7 @@ Admins can do:
 * edit and change the .htaccess
 * display or "allow build" to be preformed
 * limit the amount of work that can be used
-* Add cuustom apps
+* Add custom apps
 * and more
 
 ***
