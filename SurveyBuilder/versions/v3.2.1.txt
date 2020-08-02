@@ -1,0 +1,2 @@
+- Added .htaccess and errordocuments
+- Added errorfolder

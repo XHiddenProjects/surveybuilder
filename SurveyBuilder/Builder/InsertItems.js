@@ -332,7 +332,7 @@ function InsertNumber(){
 		num.min = min;
 		let max = prompt("Enter Max number");
 		num.max = max;
-		
+
 		insert.appendChild(num);
 		document.getElementById("Insert-Object").appendChild(insert);
 		return false;

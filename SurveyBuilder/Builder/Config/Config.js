@@ -19,7 +19,6 @@ var Allow_cPanel = true //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
 var username = "admin" //Enter username here 
 var banIP = [] //Enter IP adderess here
-
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
 //Test any error of a none corrosponding data
