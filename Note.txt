@@ -1,0 +1,4 @@
+Take these 2 files
+
+1. "SurveyBuilder" folder
+2. .htaccess file
