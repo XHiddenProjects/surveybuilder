@@ -40,3 +40,24 @@ take out "surveybuilder" folder
 # Website
 
 > Here is a website [SurveyBuilder](http://linkshorty.epizy.com/SurveyBuilder) - You can now build your form on the website
+
+***
+
+# What can Admin do?
+
+Admins can do:
+* Config form for public uses
+* edit and change the .htaccess
+* display or "allow build" to be preformed
+* limit the amount of work that can be used
+* Add cuustom apps
+* and more
+
+***
+
+# What can Public do?
+
+Public can do:
+* Build or fill out forms
+* Check and edit Consoles 
+* add Elements
