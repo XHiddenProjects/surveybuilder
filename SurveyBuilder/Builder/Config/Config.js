@@ -3,6 +3,7 @@
 //Everything is eaither True/False
 
 	//Set Variable here
+	
 var Allow_Banner_display = true; //Allow to display SurveyBuilder footer(banner)
 var Allow_Console_attribute = true; //Enables the Console Log
 var Allow_Pop_up = false; //Allow alert_box to popup when a user joins
@@ -14,17 +15,26 @@ var get_users_lang = true; //Gives the user lang. to the console
 var get_users_platform = true; //Give the users platform to the console.
 var get_users_usersAngent = true; //Give the users userAgent to the console.
 var test_users_cookieEnable = true; //Displays if the console should replay back if the cookie was enable
-var Collect_IP = false //The Console will display there IP_address. 
-var Allow_cPanel = true //Allow's users to have cPanel
+var Collect_IP = false; //The Console will display there IP_address. 
+var Allow_cPanel = true; //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
-var username = "admin" //Enter username here 
-var banIP = [] //Enter IP adderess here
+var username = "admin"; //Enter username here 
+var banIP = []; //Enter IP adderess here
+var Enable_Config_File = "Enable" //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
+
+
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
+
+
 
 //Test any error of a none corrosponding data
 setTimeout(testCorrospond, 0);
 console.time();
 function testCorrospond(){
+	if(typeof(Enable_Config_File) !== "string"){
+		console.error("Enable-Config-File must be a string");
+		return false;
+	}
 	if(typeof(Allow_Banner_display) !== "boolean"){
 		console.error("Allow_Banner_display must be a boolean");
 			return false;
@@ -95,6 +105,12 @@ function testCorrospond(){
 //if clear do this
 function config(){
 	//Settings
+	if(Enable_Config_File === "Disable"){
+		alert("Config file is off");
+		return false;
+	}
+	else if(Enable_Config_File === "Enable"){
+	
 	console.log("%c---Set Config---","color:green;");
 
     
@@ -301,8 +317,11 @@ if(Allow_cPanel == false){
 	document.getElementById("cpanel-form").hidden = true;
 	console.log("cPanel: false");
 }
-
+setTimeout(MaxTitle, 0);
 }
+}
+
+
 function Warning(){
 	console.warn("Some functions might not work");
 	console.warn("Current Update: v16.0.0 - Is up-to-date");
@@ -311,10 +330,10 @@ function Warning(){
 
 //title save
 
-setTimeout(function(){
+function MaxTitle(){
 	document.getElementById("maxTitle").innerHTML = maxTitle;
 	
-},0)
+}
 
 function savetitle(){
 	
@@ -394,4 +413,5 @@ function savetitle(){
 	//username
 	let userEx = "username=" + username + ";expires=Fri, Dec 31 2028, 5:00:00 UTC; path=/"
     document.cookie = userEx;
+
     

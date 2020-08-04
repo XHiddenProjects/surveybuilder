@@ -1,0 +1,2 @@
+- Now added a new config option
+- Enable_Config_File = [Enable/Disable] this effects if the config file should run, except banIP(this will ALWAYS run).

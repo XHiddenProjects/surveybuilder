@@ -59,6 +59,8 @@ echo API was found
 )
 
 echo.
+echo -----------------------------------------------------------------------------------------------------------
+echo.
 echo 1 means pass 0 means failed:
 echo Xampp: %num1%
 echo htdocs: %num2%
