@@ -9,11 +9,19 @@ goto :choice
 
 :del
 cls
-set /p select= Select a folder path that the folder "SurveyBuilder"(main directory), also end it with a \.
 
+set /p filePath=Enter folder where the dir. startes at "/SurveyBuilder/..."
+
+
+del /s /q "%filePath%*"
+for /d %%p in ("%filePath%*.*") do rmdir "%%p" /s /q
+
+
+echo Successfully unistalled
 pause>nul
-del /s /q "%select%*.*"
-for /d %%p in ("%select%*.*") do rmdir "%%p" /s /q
+
+
+
 exit
 :end
 exit
