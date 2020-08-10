@@ -20,8 +20,12 @@ var Allow_cPanel = true; //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
 var username = "admin"; //Enter username here 
 var banIP = []; //Enter IP adderess here
-var Enable_Config_File = "Enable" //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
-
+var Enable_Config_File = "Enable"; //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
+var Allow_Database = "mySQL"; 
+/*
+- this supports [mySQL/SQLite] or set to [false] to disable SQL database, this will require you to have a SQL server
+- SQLite is not Supported yet
+*/ 
 
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
@@ -99,6 +103,10 @@ function testCorrospond(){
 		console.error("banIP must be a array.");
 		return false;
 	}
+	if(typeof(Allow_Database) !== "string"){
+		console.error("Allow_Database must be a string");
+		return false;
+	}
 	setTimeout(config, 0);
 
 }
@@ -114,8 +122,23 @@ function config(){
 	console.log("%c---Set Config---","color:green;");
 
     
+	//Database
+	if(Allow_Database === "false"){
+		document.getElementById("sql").hidden = true;
+		document.getElementById("sqlite").hidden = true;
+		console.log("Database: False");
+	}
 	
-	
+	if(Allow_Database === "mySQL"){
+		document.getElementById("sql").hidden = false;
+		document.getElementById("sqlite").hidden = true;
+		console.log("Database: mySQL");
+	}
+	if(Allow_Database === "SQLite"){
+		document.getElementById("sql").hidden = true;
+		document.getElementById("sqlite").hidden = false;
+		console.log("Database: SQLite");
+	}
 	
 	//Banner
 	if(Allow_Banner_display == true){
