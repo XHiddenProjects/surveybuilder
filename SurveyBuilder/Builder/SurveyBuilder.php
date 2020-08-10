@@ -357,7 +357,7 @@ function RemoveFolder(){
 	window.open("./db/SQLite/Users/RemoveFolder.php", "", "width=320", "height=320");
 }
 function AddPublished(){
-	window.open("/SurveyBuilder/Builder/db/SQLite/Users/AddPublished.php", "", "width=320", "height=320");
+	window.open("./db/SQLite/Users/AddPublished.php", "", "width=320", "height=320");
 }
 </script>
 
