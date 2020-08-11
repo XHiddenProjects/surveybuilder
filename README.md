@@ -8,8 +8,8 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 You can use a batch file to use to find the dependicys, otherwise here is what it's depended.
 
-* **SQL Server**
-* **API.txt**
+* ## **SQL Server**
+* ## **API.txt**
 
 ***
 
