@@ -54,4 +54,4 @@ Public can do:
 
 # Issues
 
-Report any issues here (issues)[https://github.com/MasterGames2020/SurveyBuilder/issues]
+Report any issues here [issues](https://github.com/MasterGames2020/SurveyBuilder/issues)
