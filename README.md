@@ -4,6 +4,15 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
+# Dependicys 
+
+You can use a batch file to use to find the dependicys, otherwise here is what it's depended.
+
+* SQL Server
+* API.txt
+
+***
+
 # How to use
 
 > Download and attach this to your website/localhost
