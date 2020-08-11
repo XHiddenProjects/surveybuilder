@@ -49,3 +49,9 @@ Public can do:
 * Build or fill out forms
 * Check and edit Consoles 
 * add Elements
+
+***
+
+# Issues
+
+Report any issues here (issues)[https://github.com/MasterGames2020/SurveyBuilder/issues]
