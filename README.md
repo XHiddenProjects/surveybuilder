@@ -5,19 +5,21 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 # How to use
 
 > Download and attach this to your website/localhost
---------------------------------------------------------------------------------------------------------------------
+
+***
+
 # What folder do I take when download
 
 go to this path surveybuilder-master/surveybuilder
 take out "surveybuilder" folder
 
----------------------------------------------------------------------------------------------------------------------
+***
 
 # How can I add in my own app?
 
 > Go to this link: [AppsCode](https://github.com/MasterGames2020/SurveyBuilder-Apps-code) - To get the Javascript and HTML code
 
--------------------------------------------------------------------------------------------------------------------------------------
+***
 
 # Wiki 
 
