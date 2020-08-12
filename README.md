@@ -13,6 +13,12 @@ You can use a batch file to use to find the dependicys, otherwise here is what i
 
 ***
 
+# Device Support
+
+* PC/Computer
+
+***
+
 # How to use
 
 > Download and attach this to your website/localhost
