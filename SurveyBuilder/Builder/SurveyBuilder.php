@@ -65,6 +65,16 @@ $(function(){
 
 
 <body onload="Update()" id="SurveyBuilderBody">
+<?php
+$file = "./API/API.txt";
+
+if(!file_exists($file)){
+	echo "<script>document.body.hidden = true;setInterval(function(){alert('You are missing API key')}, 0);</script>";
+}else{
+	echo "";
+}
+
+?>
 <style type="text/css" rel="stylesheet" id="customCSS">
 
 </style>
@@ -98,7 +108,7 @@ $(function(){
 
 <!--Change title-->
 <div id="YourTitleTag">
-<error id="Error" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry you need a title before saving it or its to long</error>
+<error id="Error" class="error" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry you need a title before saving it or its to long</error>
 <!--<error id="SpanError" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry spam block as been added. Your Clicks: <span id="Count" style="color:white;"></span> times</error>-->
 <br>
 <br>
@@ -128,7 +138,24 @@ $(function(){
 <ul>
 <li id="New" class="exit" onclick="togglesidebar()" title="Close Elements" style="cursor:pointer;">Exit Sidebar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X</li>
 <li id="exit-btn" style="cursor:default; border:none;"></li>
-
+<span id="scroll-container-top">
+<li id="Scroll-top" onclick="scrollDown()" class="scroll scroll-to-bottom">Scroll to Bottom&nbsp;&nbsp;<i class="far fa-arrow-alt-circle-down"></i></li>
+<style>
+.scroll{
+	cursor:pointer !important;
+	background-color:blue;
+}
+.scroll:hover{
+	background-color:#22f063;
+}
+</style>
+<script>
+function scrollDown(){
+var elmnt = document.getElementById("Scroll-bottom");
+elmnt.scrollIntoView();
+}
+</script>
+</span>
 <li id="New">Defualt Inserts</li>
 <li id="Insert-header" title="Header" onclick="InsertHeadings()"><i class="fas fa-heading"></i>&nbsp;&nbsp; Header</li>
 <li id="Insert-Paragraph" title="Pharagraph" onclick="InsertPara()"><i class="fas fa-paragraph"></i>&nbsp;&nbsp; Paragraph</li>
@@ -341,13 +368,15 @@ return false;
 <!--<a href="./db/EditDatabase.php">-->
 <button type="button" onclick="EditData()">Edit Database</button>
 </span>
+<!--
 <span id="sqlite" hidden="true">
 <li id="New">Add Database(SQLite)</li>
-<!--<button onclick="CreateFolder()">Create Folder(Required)</button>-->
+<button onclick="CreateFolder()">Create Folder(Required)</button>
 <button onclick="RemoveFolder()">Remove Folder</button>
 <button onclick="AddPublished()">Add Publish Survey(Required)</button>
 
-<!--Write database script-->
+//Write database script//
+
 <script>
 //SQLite
 function CreateFolder(){
@@ -362,6 +391,7 @@ function AddPublished(){
 </script>
 
 </span>
+-->
 <!--<span id="API">
 <li id="New">Add Your API(Custom JS)</li>
 <textarea rows="10" cols="30" placeholder="Custom API system" spellcheck="false"  autocorrect="off" id="APIFormat" onchange="APIInserts()">{&#10;&#10;}</textarea>
@@ -492,6 +522,206 @@ setTimeout(loop, 0);
 
 </form>
 </span>
+<span id="cmdprompt">
+<li id="New">Command Prompt</li>
+
+<br/>
+<textarea placeholder="Command" required="true" name="CmdPrompt" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditCmdPrompt()" class="lined" id="cmdPrompt"></textarea>
+
+</span>
+<script>
+var toggleBlob = 0;
+var selectNum = 0;
+function EditCmdPrompt(){
+	/*
+	- Note: the if statements will only have one command. 
+	  Unless you see '||' aka 'or' this means it has allies that can also run commands 
+	*/
+	
+	
+	//data
+	let getMsg = document.getElementById("cmdPrompt");
+	let getData = document.getElementById("Insert-Object");
+	
+	/*clear*/
+	if(getMsg.value.match("clear.all") || getMsg.value.match("cls.all")){
+		document.getElementById("Insert-Object").innerHTML = "";
+	}
+	if(getMsg.value.match("clear.id") || getMsg.value.match("cls.id")){
+				let idData = prompt("Enter ID Name");
+				let seek = document.getElementById(idData);
+			document.getElementById("Insert-Object").removeChild(seek);
+
+	}
+	
+	/*clsmsg*/
+	if(getMsg.value.match("clsmsg.no")){
+		toggleBlob = 0; //doesn't clear form and stops loop from auto
+	}
+	if(getMsg.value.match("clsmsg.auto")){
+		toggleBlob = 1; //auto clears everytime your not in focus
+	}
+	if(getMsg.value.match("clsmsg.yes")){
+		toggleBlob = 2; //auto clears
+	}
+	
+	if(toggleBlob == 0){
+         
+	}
+	
+	if(toggleBlob == 1){
+		setTimeout(loop1, 0);
+	}
+	
+	if(toggleBlob == 2){
+		document.getElementById("cmdPrompt").value = "";
+		toggleBlob = 0;
+	}
+	/*help*/
+	if(getMsg.value.match("help")){
+		alert("clear command - clears the object or the whole form: format: clear.<id|all>" + 
+		"\n\nclsmsg command - clears cmd promt: format: clsmsg.<no|auto|yes>" +
+		"\n\nhelp command - gives you the list of commands: format: help" +
+		"\n\ntrigger command - triggers a function/option: format: trigger.<click|focus>.<element>[.<subelement>(optional)]" +
+		"\n\nAutohelp command - fills in the command in the command prompt: format: autohelp.<command>"+
+		"\n\nHidden command - hides a element. This is in a UI: format: hidden.<ui|UI>"+
+		"\n\ncmd command - styles the command prompt: format: cmd.<style>"
+		
+		
+		);
+	}
+	
+	/*trigger*/
+	
+	if(getMsg.value.match("trigger.click.sidebar")){
+		getMsg.value = "";
+	document.querySelector(".exit").click();	
+	}
+	if(getMsg.value.match("trigger.focus.title")){
+	document.querySelector("#titleSave").focus();	
+	}
+	
+	if(getMsg.value.match("trigger.click.style.bgcolor")){
+		document.querySelector("#Style-btn").click();
+	document.querySelector("#color").click();	
+	}
+	if(getMsg.value.match("trigger.click.style.Tcolor")){
+		document.querySelector("#Style-btn").click();
+	document.querySelector("#Tcolor").click();	
+	}
+	
+	if(getMsg.value.match("trigger.click.prop.preview")){
+		document.querySelector("#Properties-btn").click();
+	document.querySelector("#CheckPre").click();	
+	}
+	if(getMsg.value.match("trigger.click.save")){
+	document.querySelector("#Save").click();	
+	}
+	if(getMsg.value.match("trigger.click.load")){
+	document.querySelector("#Load").click();	
+	}
+	if(getMsg.value.match("trigger.click.clsData")){
+	document.querySelector("#Data").click();	
+	}
+	
+	/*Autohelp*/
+	
+	if(getMsg.value.match("autohelp.clear")){
+		getMsg.value = "clear.<id|all>";
+	}
+	if(getMsg.value.match("autohelp.clsmsg")){
+		getMsg.value = "clsmsg.<no|auto|yes>";
+	}
+	if(getMsg.value.match("autohelp.help")){
+		getMsg.value = "cmd.<help|?>";
+	}
+	if(getMsg.value.match("autohelp.trigger")){
+		getMsg.value = "trigger.<click|focus>.<element>[.<subelement>(optional)]";
+	}
+	if(getMsg.value.match("autohelp.hidden")){
+		getMsg.value = "hidden.<ui|UI>";
+	}
+	if(getMsg.value.match("autohelp.cmd")){
+		getMsg.value = "cmd.<style>";
+	}
+	/*hidden*/
+	if(getMsg.value.match("hidden.ui") || getMsg.value.match("hidden.UI")){
+		let hiddenDev = prompt("hidden or visable?", "hidden");
+		if(hiddenDev == "hidden"){
+		let sel = prompt("Element ClassName or ID", "className");
+		
+		if(sel == "className"){
+			let className = prompt("Enter element's className");
+			let mainClassName = "." + className;
+			document.querySelector(mainClassName).hidden = true
+		}
+		if(sel == "ID"){
+			let ID = prompt("Enter element's className");
+			let mainID = "#" + ID;
+			document.querySelector(mainID).hidden = true
+		}
+		
+		}
+		if(hiddenDev == "visable"){
+			let sel = prompt("Element ClassName or ID", "className");
+		
+		if(sel == "className"){
+			let className = prompt("Enter element's className");
+			let mainClassName = "." + className;
+			document.querySelector(mainClassName).hidden = false
+		}
+		if(sel == "ID"){
+			let ID = prompt("Enter element's className");
+			let mainID = "#" + ID;
+			document.querySelector(mainID).hidden = false;
+		}
+			
+		}
+		
+	}
+	
+	/*cmd*/
+	if(getMsg.value.match("cmd.bgcolor")){
+		let bgcolor = prompt("Enter a color or a hexdec");
+		getMsg.style.backgroundColor = bgcolor;
+	}
+	
+	
+	if(getMsg.value.match("cmd.color")){
+		let color = prompt("Enter a color or a hexdec");
+		getMsg.style.color = color;
+	}
+
+	
+	if(getMsg.value.match("cmd.fontSize")){
+		let size = prompt("Enter a font size(Will be measured in pixals[px])");
+		
+		let fixed = size + "px";
+		getMsg.style.fontSize = fixed;
+	}
+	
+	
+	
+}
+
+
+
+
+/*loops for autoclear*/
+function loop1(){
+	if(toggleBlob == 1){
+if(document.activeElement.id === "cmdPrompt"){
+setTimeout(loop1, 0);
+}else{
+	document.getElementById("cmdPrompt").value = "";
+setTimeout(loop1, 0);
+}
+	} else{
+		return false;
+	}
+}
+
+</script>
 </span>
 
 <span id="remove-element">
@@ -517,7 +747,15 @@ return false;
 }
 </script>
 </span>
-
+<span id="scroll-container-bottom">
+<li id="Scroll-bottom" onclick="scrollUp()" class="scroll scroll-to-top">Scroll to Top&nbsp;&nbsp;<i class="far fa-arrow-alt-circle-up"></i></li>
+<script>
+function scrollUp(){
+var elmnt = document.getElementById("Scroll-top");
+elmnt.scrollIntoView();
+}
+</script>
+</span>
 <li id="space" style="cursor:default; border:none;"></li>
 <li id="space" style="cursor:default; border:none;"></li>
 <li id="space" style="cursor:default; border:none;"></li>
@@ -594,7 +832,7 @@ function Publish(){
 	f.hidden = true;
 	g.contentEditable = false;
 	let links = document.createElement("A");
-	links.href = "SurveyBuilder[Page 2].php";
+	links.href = "SurveyBuilder.php";
 	links.setAttribute("download", "YourPage.php");
 	links.id = "DownloadLinkNow";
 	document.getElementById("links-doc").appendChild(links);
