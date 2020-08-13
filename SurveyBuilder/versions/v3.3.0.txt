@@ -1,0 +1,14 @@
+- Added Scroll button to go directly to bottom to top
+- Added SQL database in config file
+- Reloacted the API key
+- Was going to add SQLite, until file locations wasn't having it. 
+- Added Command Prompt
+ Commands:
+  * clear.<id|all>
+  * clsmsg.<no|auto|yes>
+  * help
+  * trigger.<click|focus>.<element>[.<subelement>(optional)]
+  * autohelp.<command>
+  * hidden.<ui|UI>
+  * cmd.<style>
+ 
