@@ -17,6 +17,10 @@ You can use a batch file to use to find the dependicys, otherwise here is what i
 
 * PC/Computer
 
+### Mobile
+
+* IPhone 6/7/8
+
 ***
 
 # How to use
