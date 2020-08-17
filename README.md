@@ -15,7 +15,10 @@ You can use a batch file to use to find the dependicys, otherwise here is what i
 
 # Device Support
 
-* PC/Computer
+### PC/Computer
+
+* Windows{Microsoft(any version)}
+* Mac
 
 ### Mobile
 
