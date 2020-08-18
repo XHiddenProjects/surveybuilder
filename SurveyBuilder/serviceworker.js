@@ -10,8 +10,7 @@ if('serviceWorker' in navigator){
 let cacheName = "v16";
 let cacheAssets = [
 "Home.php",
-"/SurveyBuilder/Builder/Directions[Page 1].html",
-"/SurveyBuilder/Builder/SurveyBuilder[Page 2].html",
+"/SurveyBuilder/Builder/SurveyBuilder.html",
 "/SurveyBuilder/Builder/FormInsert.css",
 "/SurveyBuilder/Builder/SurveyBuilder.css",
 "/SurveyBuilder/Builder/InsertItems.js",
