@@ -21,11 +21,10 @@ var maxTitle = 25; //Change the length of the title
 var username = "admin"; //Enter username here 
 var banIP = []; //Enter IP adderess here
 var Enable_Config_File = "Enable"; //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
-var Allow_Database = "mySQL"; 
-/*
-- this supports [mySQL/SQLite] or set to [false] to disable SQL database, this will require you to have a SQL server
-- SQLite is not Supported yet
-*/ 
+var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supported-- or set to [false] to disable SQL database, this will require you to have a SQL server if using 'mySQL'
+var redirFormLink = "false" //Enter URL to execute the form to add. Use 'false' to deny action
+
+
 
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
@@ -107,10 +106,14 @@ function testCorrospond(){
 		console.error("Allow_Database must be a string");
 		return false;
 	}
+	if(typeof(redirFormLink) !== "string"){
+		console.error("redirFormLink must be a string");
+	}
 	setTimeout(config, 0);
 
 }
 //if clear do this
+dir = 0;
 function config(){
 	//Settings
 	if(Enable_Config_File === "Disable"){
@@ -120,25 +123,42 @@ function config(){
 	else if(Enable_Config_File === "Enable"){
 	
 	console.log("%c---Set Config---","color:green;");
-
+	
+   //redirect link
+   
+   if(redirFormLink === "false"){
+	   console.log("Using SurveyBuilder");
+	  
+   }
+    if(redirFormLink !== "false"){
+		document.body.style.backgroundColor = "white";
+	   document.getElementById("redirect-link").hidden = false;
+	   document.getElementById("Body-Container").hidden = true;
+	   let redirMeta = document.createElement("META");
+	   let dir = "5;" + redirFormLink;
+	   redirMeta.setAttribute("http-equiv", "refresh"); 
+	    redirMeta.setAttribute("content", dir);
+	   document.getElementById("Headers").appendChild(redirMeta);
+	   console.log("Using data");
+   }
     
 	//Database
 	if(Allow_Database === "false"){
 		document.getElementById("sql").hidden = true;
-		document.getElementById("sqlite").hidden = true;
+		//document.getElementById("sqlite").hidden = true;
 		console.log("Database: False");
 	}
 	
 	if(Allow_Database === "mySQL"){
 		document.getElementById("sql").hidden = false;
-		document.getElementById("sqlite").hidden = true;
+		//document.getElementById("sqlite").hidden = true;
 		console.log("Database: mySQL");
 	}
-	if(Allow_Database === "SQLite"){
+	/*if(Allow_Database === "SQLite"){
 		document.getElementById("sql").hidden = true;
 		document.getElementById("sqlite").hidden = false;
 		console.log("Database: SQLite");
-	}
+	}*/
 	
 	//Banner
 	if(Allow_Banner_display == true){
@@ -201,7 +221,7 @@ if(Allow_API_config == false){
 		
 		console.log("API: true");
 
-	  $.get("\\SurveyBuilder\\API.txt", function(data){
+	  $.get("./API/API.txt", function(data){
 let x = prompt("Enter API key", "");
 	if(x !== data){
 		alert("Sorry wrong API key. Please contact the administrator");
@@ -308,7 +328,7 @@ function API_config(){
 		
 		
 
-	  $.get("\\SurveyBuilder\\API.txt", function(data){
+	  $.get("./API/API.txt", function(data){
 let x = prompt("Enter API key", "");
 	if(x !== data){
 		alert("Sorry wrong API key. Please contact the administrator");
