@@ -1,0 +1,443 @@
+/*Insert form*/
+
+/*Css*/
+*{
+	margin:0;
+	padding:0;
+}
+/*Payments*/
+.payments{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+/*Containers*/
+.Container, .Con{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+/*IFrames*/
+iframe{
+	border:0;
+}
+/*Header*/
+.Heading{
+		border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+/*Paragraph*/
+.para{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+/*Name*/
+.Name{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.Name input{
+	border:0;
+	font-size:32px;
+	margin:5px;
+}
+.Name input[type=text]:focus{
+	outline-color:#284bd4;
+	outline-style:outset;
+	border: 2px solid #284bd4;
+}
+.Name input[type=text]::placeholder{
+	color:#4de873;
+}
+.Name label{
+	color:#1a44ed;
+	font-weight:bold;
+	font-size:32px;
+}
+/*Email*/
+.Email{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.Email input{
+	border:0;
+	font-size:32px;
+	margin:5px;
+}
+.Email input[type=email]:focus{
+	outline-color:#284bd4;
+	outline-style:outset;
+	border: 2px solid #284bd4;
+}
+.Email input[type=email]::placeholder{
+	color:#4de873;
+}
+.Email label{
+	color:#1a44ed;
+	font-weight:bold;
+	font-size:32px;
+}
+
+/*Address*/
+.Address{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+
+.Address input{
+	border:0;
+	font-size:32px;
+	margin:5px;
+}
+.Address input[type=text]:focus{
+	outline-color:#284bd4;
+	outline-style:outset;
+	border: 2px solid #284bd4;
+}
+.Address input[type=text]::placeholder{
+	color:#4de873;
+}
+.Address select{
+	font-size:32px;
+}
+.Address label{
+	color:#1a44ed;
+	font-weight:bold;
+	font-size:32px;
+}
+
+/*Phone*/
+.Phone{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.Phone input{
+	border:0;
+	font-size:32px;
+	margin:5px;
+}
+.Phone input[type=tel]:focus{
+	outline-color:#284bd4;
+	outline-style:outset;
+	border: 2px solid #284bd4;
+}
+.Phone input[type=tel]::placeholder{
+	color:#4de873;
+}
+.Phone label{
+	color:#1a44ed;
+	font-weight:bold;
+	font-size:32px;
+}
+/*Date*/
+.Date{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.Date input{
+	border:0;
+	font-size:32px;
+	margin:5px;
+}
+.Date input[type=date]:focus{
+	outline-color:#284bd4;
+	outline-style:outset;
+	border: 2px solid #284bd4;
+}
+/*.Date input[type=date]::placeholder{
+	color:#4de873;
+}*/
+.Date label{
+	color:#1a44ed;
+	font-weight:bold;
+	font-size:32px;
+}
+/*Time*/
+.Time{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.Time input{
+	border:0;
+	font-size:32px;
+	margin:5px;
+}
+.Time input[type=date]:focus{
+	outline-color:#284bd4;
+	outline-style:outset;
+	border: 2px solid #284bd4;
+}
+
+.Time label{
+	color:#1a44ed;
+	font-weight:bold;
+	font-size:32px;
+}
+/*File*/
+.File-Uploader{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.File-Uploader input{
+	border:0;
+	font-size:32px;
+	margin:5px;
+}
+.File-Uploader input[type=file]:focus{
+	outline-color:#284bd4;
+	outline-style:outset;
+	border: 2px solid #284bd4;
+}
+
+.File-Uploader label{
+	color:#1a44ed;
+	font-weight:bold;
+	font-size:32px;
+}
+/*Number*/
+.number{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.number input{
+	border:0;
+	font-size:32px;
+	margin:5px;
+}
+.number input[type=file]:focus{
+	outline-color:#284bd4;
+	outline-style:outset;
+	border: 2px solid #284bd4;
+}
+
+.number label{
+	color:#1a44ed;
+	font-weight:bold;
+	font-size:32px;
+}
+/*Texteditor*/
+.RichTextEditorFrame{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+/*QR*/
+.QRCode{
+	text-align:center;
+	background-color:white;
+	font-size:35px;
+}
+/*Social Media*/
+.SocialMedia{
+		border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.SocialMedia img{
+	width:35px;
+	height:35px;
+	background-color:white;
+	cursor:pointer;
+}
+.SocialMedia a::after{
+	content: "";
+}
+/*Terms and condtions*/
+.TaC{
+    border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.TaC input{
+	width:35px;
+	height:35px;
+	margin-top:5px;
+}
+.TaC a{
+	margin-bottom:10px;
+}
+/*Audio*/
+.Audio{
+		border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+/*YouTube*/
+.YouTube{
+		border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+
+/*Inputs*/
+.input{
+border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.input input[type=submit]{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:52px;
+	font-weight:bold;
+	padding:2px;
+	border-radius:50px;
+	text-align:center;
+	width:100%;
+	background-color:#23cee8;
+	color:black;
+	transition:linear 0.3s;
+}
+.input input[type=submit]:hover{
+	background-color:#ff4203;
+	cursor:pointer !important;
+}
+/*tables*/
+.table-con{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+.table{
+	
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color:white;
+}
+
+.table td, .table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.table tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+
+
+
+
+/*Plugins*/
+.Plugin{
+border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+
+/*Apps*/
+.Apps{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
+
+/*Widgets*/
+.Widgets{
+	border:1px solid black;
+	margin:3px;
+	background-color:#10e871;
+	color:#fcc40d;
+	font-size:32px;
+	font-weight:bold;
+	padding:2px;
+}
