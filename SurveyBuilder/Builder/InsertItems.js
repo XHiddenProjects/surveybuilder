@@ -152,6 +152,7 @@ function InsertAddress(){
 	    let Zip = "<i class='fas fa-asterisk' style='color:red;'></i> Zip Code: <input type='text' placeholder='Zip code' pattern='[0-9]{3,5}' id='Zip' required='true'/>";
 	    let Country = "<i class='fas fa-asterisk' style='color:red;'></i> Country: <select id='countries-select' required='true'><option value='dnt' disabled='true'>[Do Not Touch]</option></select>";
 		let allData = street + "<br>" + street2 + "<br>" + City + "<br>" + Zip + "<br>" + Country;
+	
 	insert.innerHTML = allData;
 	document.getElementById("Insert-Object").appendChild(insert);
 	
@@ -223,11 +224,11 @@ function InsertPhone(){
 	insert.className = "Phone";
 	let require = prompt("DO you want to require this?\n\nYes or No");
 	if(require == "Yes"){
-		insert.innerHTML = "<i class='fas fa-asterisk' style='color:red;'></i> Phone Number: <input type='tel' placeholder='+##(##)####-####' id='phoneNum' required='true' pattern='[\\+]\\d{2}[\\(]\\d{2}[\\)]\\d{4}[\\-]\\d{4}'/><br><i class='fas fa-asterisk' style='color:red;'></i> Area Code: <input type='text' placeholder='Area Code' required='true' pattern='[0-9]{3}'/>";
+		insert.innerHTML = "<i class='fas fa-asterisk' style='color:red;'></i> Phone Number: <input type='tel' placeholder='+#{##}(##)####-####' id='phoneNum' required='true' pattern='[\\+]\\d{1,3}[\\(]\\d{3}[\\)]\\d{3}[\\-]\\d{4}'/><br><i class='fas fa-asterisk' style='color:red;'></i> Area Code: <input type='text' placeholder='Area Code' required='true' pattern='[0-9]{3}'/>";
 	document.getElementById("Insert-Object").appendChild(insert);
 	}
 	if(require == "No"){
-		insert.innerHTML = "Phone Number: <input type='tel' placeholder='+##(##)####-####' id='phoneNum' pattern='[\\+]\\d{2}[\\(]\\d{2}[\\)]\\d{4}[\-]\\d{4}'/><br>Area Code: <input type='text' placeholder='Area Code' pattern='[0-9]{3}'/>";
+	insert.innerHTML = "Phone Number: <input type='tel' placeholder='+#{##}(##)####-####' id='phoneNum' pattern='[\\+]\\d{1,3}[\\(]\\d{3}[\\)]\\d{3}[\-]\\d{4}'/><br>Area Code: <input type='text' placeholder='Area Code' pattern='[0-9]{3}'/>";
 	    document.getElementById("Insert-Object").appendChild(insert);
 	}
 	
@@ -814,10 +815,10 @@ function InsertImages(){
 
 /*Database*/
 function CreateData(){
-window.open("./db/AddDatabase.php", "", "width=320", "height=320");	
+window.open("./db/SQL/AddDatabase.php", "", "width=320", "height=320");	
 }
 function EditData(){
-	window.open("./db/EditDatabase.php", "", "width=320", "height=320");	
+	window.open("./db/SQL/EditDatabase.php", "", "width=320", "height=320");	
 }
 /*Delete attribute*/
 

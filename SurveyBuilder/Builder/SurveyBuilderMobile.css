@@ -29,6 +29,11 @@
 	#SurveyMakerBanner{
 		display:none !important;
 	}
+	#Editor-Control-Form{
+		width:150px !important;
+		position:absolute !important;
+		right:-150px !important;
+	}
 }
 /*When mobile is side to side
 @media only screen and (min-width: 667px){

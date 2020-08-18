@@ -163,6 +163,7 @@ button{
 	border-color:blue;
 	font-size:20px;
 	
+	
 }
 #save,#save-btn,#Load, #Data{
 	color:red;
@@ -173,6 +174,17 @@ button{
 	width:50px;
 	height:50px;
 	float:right;
+}
+#temp{
+	color:#3da896;
+	font-size:20px;
+	background:#ff00d4;
+	border-radius:50px;
+	border:none;
+	width:105px;
+	height:105px;
+	float:right;
+
 }
 #save-text-instruct,#Cant-show{
 	background:transparent;
@@ -371,7 +383,7 @@ border-right:3px solid black;
 	padding:0;
 	position:absolute;
 	right:220px;
-	top:30%;
+	top:85%;
 }
 #Form-Center{
 	width:250px;
@@ -386,7 +398,7 @@ border-right:3px solid black;
 	padding:0;
 	position:absolute;
 	right:367px;
-	top:25px;
+	top:75px;
 }
 
 #BgColor{
@@ -493,7 +505,15 @@ input:checked + .slider:before {
 }
 #Editor-Control-Form{
 	position:absolute;
-	right:80px;
+	right:15px;
+	overflow:auto;
+	height:500px;
+	width:320px;
+	background-color:#00ffd5;
+	float:right;
+}
+#Editor-Control-Form h1{
+	text-align:center;
 }
 /*Thank you*/
 

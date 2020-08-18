@@ -1,5 +1,3 @@
-
-
 <html>
 <head id="Headers">
 <script>
@@ -37,14 +35,15 @@ $(function(){
 
 
 <!-- End Google Tag Manager -->
-<meta charset="UTF-8">
-<meta name="keywords" content="Survey Builder, Free, Test, Quiz, and Survey's">
-<meta name="author" content="©SurveyMaker">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"/>
+<meta name="keywords" content="Survey Builder, Free, Test, Quiz, and Survey's"/>
+<meta name="author" content="©SurveyMaker"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" href="SurveyBuilderMobile.css"/>
- <meta name content="SurveyMaker">
- <meta name="UsersForm" hidden="hidden" content="SurveyBuilderId:19494sbybfdyfuy47grfrfureuyervchfiuerhgyuer748gryru435943578347f">
- <meta name="Forum" property="og:url" content="https://surveymaker.boards.net">
+ <meta name content="SurveyMaker"/>
+ <meta name="UsersForm" hidden="hidden" content="SurveyBuilderId:19494sbybfdyfuy47grfrfureuyervchfiuerhgyuer748gryru435943578347f"/>
+ <meta name="Forum" property="og:url" content="https://surveymaker.boards.net"/>
 <title id="UserTitle">Untitled - Survey Builder</title>
 <!--<link rel="stylesheet" href="./fontawesome/css/all.css"/>-->
 <link rel="stylesheet" type="text/css" href="SurveyBuilder.css"/>
@@ -57,6 +56,11 @@ $(function(){
 
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
+<!--Templeates-->
+<script src="./templetes/Medical_temp.js"></script>
+<script src="./templetes/blank_temp.js"></script>
+<script src="./templetes/police_incident_report_temp.js"></script>
+<!--end Templeate script-->
 
 <script src="./users/usernames.json"></script>
 
@@ -85,8 +89,28 @@ if(!file_exists($file)){
 </div>-->
 <!--<div id="custom-API"></div>-->
 <!--onkeydown="Key(event)" in body allow shortcut-->
+<div id="redirect-link" class="redirect-link redirect" hidden="true">
+<h1 style="font-size:52px; color:black;">Redirecting Form link...</h1>
+</div>
 <div id="Body-Container">
-
+<!--<style>
+.loading-temp{
+	z-index:1;
+	position:absolute;
+	font-size:60px;
+	top:30%;
+	left:10%;
+	border:1px solid black;
+	background-color:lightgray;
+	display:none;
+}
+.loading-temp .fa{
+	color:#00ccff;
+}
+</style>
+<div class="loading-temp" id="loading-temp-id">
+<i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;<span class="loading-title">Loading Templeate... This will take 30 sec.</span>
+</div>-->
 
 <!-- End Google Tag Manager (noscript) -->
 <div id="body-container" onload="changeBGcolor()">
@@ -260,7 +284,7 @@ border:0 !important;
 //Google map Installmeant
 //Info
 function GMapInfo(){
-alert("AppName: GoogleMaps\n\nCreator: Google co.\n\nDescription: Find local businesses, view maps and get driving directions in Google Maps. When you have eliminated the JavaScript , whatever remains must be an empty page. Enable JavaScript to see Google Maps.\n\nDependencies: N/A\n\nVersion: 5.46\n\nNeedsCofig: Yes");
+alert("AppName: GoogleMaps\n\nCreator: Google co.\n\nDescription: Find local businesses, view maps and get driving directions in Google Maps. When you have eliminated the JavaScript , whatever remains must be an empty page. Enable JavaScript to see Google Maps.\n\nLanguages: C++ (back-end), JavaScript, XML, Ajax (UI)\n\nDependencies: N/A\n\nVersion: 3.41.0\n\nNeedsCofig: Yes");
 }
 //Unistall
 function GmapUnistall(){
@@ -282,7 +306,7 @@ return false;
 //Google map Installmeant
 //Info
 function RoboChatInfo(){
-alert("AppName: RoboChat\n\nCreator: SurveyBuilder \n\nDescription: Create and Edit your own 24/7 chat station w/ an AI\n\nDependencies: Boostrap Css(v4.5.0), Boostrap FontAwesome Icons(v4.7.0)\n\nVersion: 16.0.0\n\nNeedsCofig: yes");
+alert("AppName: RoboChat\n\nCreator: SurveyBuilder \n\nDescription: Create and Edit your own 24/7 chat station w/ an AI\n\nDependencies: Boostrap Css(v4.5.0), Boostrap FontAwesome Icons(v4.7.0)\n\nLanguages: HTML, CSS, JS\n\nVersion: 16.0.0\n\nNeedsCofig: yes");
 }
 //Unistall
 function RoboChatUnistall(){
@@ -305,7 +329,7 @@ return false;
 //Google map Installmeant
 //Info
 function eSignInfo(){
-alert("AppName: eSignature\n\nCreator: SurveyBuilder \n\nDescription: Get Users signature\n\nDependencies: jQuery 3.5.1+, Sign.js\n\nNeedsCofig: No");
+alert("AppName: eSignature\n\nCreator: SurveyBuilder \n\nDescription: Get Users signature\n\nDependencies: jQuery 3.5.1+, Sign.js\n\nLanguages: JQuery, JavaScript, HTML, CSS\n\nVersion:16.0.0\n\nNeedsCofig: No");
 }
 //Unistall
 function eSignUnistall(){
@@ -327,7 +351,7 @@ return false;
 //Google map Installmeant
 //Info
 function recInfo(){
-alert("AppName: Recorder\n\nCreator: SurveyBuilder \n\nDescription: Capture audio and facecam video, make it downloadable\n\nDependencies: N/A\n\nNeedsCofig: Yes");
+alert("AppName: Recorder\n\nCreator: SurveyBuilder \n\nDescription: Capture audio and facecam video, make it downloadable\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript\n\nVersion:16.0.0\n\nNeedsCofig: Yes");
 }
 //Unistall
 function recUnistall(){
@@ -751,7 +775,7 @@ return false;
 <li id="Scroll-bottom" onclick="scrollUp()" class="scroll scroll-to-top">Scroll to Top&nbsp;&nbsp;<i class="far fa-arrow-alt-circle-up"></i></li>
 <script>
 function scrollUp(){
-var elmnt = document.getElementById("Scroll-top");
+var elmnt = document.querySelector(".exit");
 elmnt.scrollIntoView();
 }
 </script>
@@ -772,10 +796,14 @@ elmnt.scrollIntoView();
 
 <!--Style-->
 <div id="Editor-Control-Form">
-<div id="Style-editor-container" style="position:absolute;">
+<h1>Editor's tool</h1>
+<br/>
+<hr/>
+<br/>
+<div id="Style-editor-container">
 <div id="Style"><button title="Style" onclick="OpenStyle()" id="Style-btn">Style</div>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div id="Style-clipboard" hidden="true">
-<div id="BgColor"><span style="color:lightgray;font-weight:bold;">Background Color:</span>  <input type="color" oninput="ChageColor()" id="color" value="#9acd32"  list="presetColors"/></div>
+<div id="BgColor"><span style="color:lightgray;font-weight:bold;">Background Color:</span>  <input type="color" title="background Color" oninput="ChageColor()" id="color" value="#9acd32"  list="presetColors"/></div>
 <datalist id="presetColors">
   <option value="#ff0000" title="red"/>
   <option value="#00ff00" title="green"/>
@@ -790,7 +818,7 @@ elmnt.scrollIntoView();
 </datalist> 
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<div id="Titlecolor"><span style="color:lightgray;font-weight:bold;">Title Color: <input type="color" oninput="ChageTColor()" id="Tcolor"  list="presetColors"/></div>
+<div id="Titlecolor"><span style="color:lightgray;font-weight:bold;">Title Color: <input type="color" title="Title Color" oninput="ChageTColor()" id="Tcolor"  list="presetColors"/></div>
 </div>
 </div>
 
@@ -900,10 +928,49 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <button id="Data" onclick="DeleteData()" title="Clear Data">Clear Data</button>
-
-
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr/>
+<br/>
+<h1>Templeate's</h1>
+<br/>
+<button id="temp" onclick="setupBlank()" title="Blank Templeate">Blank Templeate</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<button id="temp" onclick="setupMedTemp()" title="Medical Templeate">Medical Templeate</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<button id="temp" onclick="setupPoliceIncidentReportTemp()" title="Police Incident Report Template">Police Incident Report</button>
 
 
 
