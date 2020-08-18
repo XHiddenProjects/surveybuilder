@@ -1,0 +1,8 @@
+- Added a new config file: redirect URL(link): helps you redirect your form to a different form
+- Made a more flexable Editors sidebar
+- Made a auto-scroll on sidebar
+- Added 3 Templates
+ * Blank Template
+ * Medical Template
+ * Police Incident Report Template
+ - More better for mobile(iPhone 6/7/8)
