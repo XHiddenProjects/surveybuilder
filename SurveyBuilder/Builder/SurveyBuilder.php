@@ -36,7 +36,6 @@ $(function(){
 
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8"/>
-<meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"/>
 <meta name="keywords" content="Survey Builder, Free, Test, Quiz, and Survey's"/>
 <meta name="author" content="©SurveyMaker"/>
  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -53,7 +52,7 @@ $(function(){
 <script src="SurveyBuilder.js" type="text/javascript"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
  <script src="https://kit.fontawesome.com/46bb4793e2.js" crossorigin="anonymous"></script>
-
+<script src="serviceworker.js"></script>
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
 <!--Templeates-->
@@ -62,7 +61,7 @@ $(function(){
 <script src="./templetes/police_incident_report_temp.js"></script>
 <!--end Templeate script-->
 
-<script src="./users/usernames.json"></script>
+
 
 </head>
 <div id="not"></div>
@@ -92,6 +91,7 @@ if(!file_exists($file)){
 <div id="redirect-link" class="redirect-link redirect" hidden="true">
 <h1 style="font-size:52px; color:black;">Redirecting Form link...</h1>
 </div>
+
 <div id="Body-Container">
 <!--<style>
 .loading-temp{
@@ -121,15 +121,12 @@ if(!file_exists($file)){
   <center><h6 id="Lastest">Last Updated:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<time id="Timedate" onload="Update()"></time></h6></center><br>
  <br>
 <center><h1 id="Orgtitle">SurveyBuilder</h1></center>
-<div id="Activate-Password-Protact" onload="PP()" style="display:none;"></div>
 	 <br>
 	 <br>
 	<br>
 	<br>
 	<br>
 	 <center><h1 id="yourTitle">Untitled</h1></center><br>
-	 <!--Password Check-->
-
 <!--Change title-->
 <div id="YourTitleTag">
 <error id="Error" class="error" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry you need a title before saving it or its to long</error>
@@ -149,7 +146,70 @@ if(!file_exists($file)){
 <form id="Editors-Form" method="post" action="">
 <div id="Insert-Object" contenteditable="true"></div>
 </form>
-</center>
+</center
+	 <!--Ad blocker Check-->
+<style>
+.con-ad-error{
+	background-color:red;
+	position:absolute;
+	top:0;
+	z-index:3;
+	width:100%;
+	height:100%;
+	display:none;
+}
+.heading-ad-error-title{
+	text-align:center;
+	font-size:45px;
+	position:absolute;
+	top:20%;
+	left:35%;
+}
+.heading-ad-error-subtitle{
+	text-align:center;
+	font-size:25px;
+	position:absolute;
+	top:30%;
+	left:35%;
+}
+.close-ad-btn{
+	text-align:center;
+	font-size:25px;
+	position:absolute;
+	top:40%;
+	left:50%;
+}
+.close-ad-btn .btn-ad-con{
+	border:0;
+	color:black;
+	background:gray;
+	font-size:32px;
+	border:1px soldi black;
+	border-radius:50px;
+}
+</style>
+<script>
+var countdownCounter = 3;
+function closeAdError(){
+	let countdown = document.querySelector(".countdown");
+	setInterval(function(){
+	document.querySelector(".countdown").innerHTML = countdownCounter;
+	if(countdownCounter>=0){
+		countdownCounter = countdownCounter - 1;
+	}
+	if(countdownCounter<0){
+		document.querySelector(".con-ad-block").style.display = "none";
+	}
+     	
+	
+	}, 1000);
+}
+</script>
+<div class="con-Ad-blocker-error con-ad-block con-ad-error">
+<div class="heading-ad-error-title">Ad blocker is enable <i class="fas fa-sad-tear"></i></div>
+<div class="heading-ad-error-subtitle">Please disable your ad blocker to activate this.</div>
+<div class="close-ad-btn"><button class="btn-ad-con" onclick="closeAdError()">Continue <span class="countdown"></span></button></div>
+</div>
  <!--Sidebar-->
               
 
@@ -794,8 +854,8 @@ elmnt.scrollIntoView();
 <br>
 <br>
 
-<!--Style-->
 <div id="Editor-Control-Form">
+
 <h1>Editor's tool</h1>
 <br/>
 <hr/>
