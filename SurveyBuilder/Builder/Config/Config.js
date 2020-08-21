@@ -23,7 +23,7 @@ var banIP = []; //Enter IP adderess here
 var Enable_Config_File = "Enable"; //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
 var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supported-- or set to [false] to disable SQL database, this will require you to have a SQL server if using 'mySQL'
 var redirFormLink = "false" //Enter URL to execute the form to add. Use 'false' to deny action
-
+var Allow_ad_blocker = false //Gives an error if a person is using any ad-blockers
 
 
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
@@ -108,6 +108,10 @@ function testCorrospond(){
 	}
 	if(typeof(redirFormLink) !== "string"){
 		console.error("redirFormLink must be a string");
+		return false;
+	}
+	if(typeof(Allow_ad_blocker) !== "boolean"){
+		console.error("Allow_ad_blocker must be a boolean");
 	}
 	setTimeout(config, 0);
 
@@ -361,6 +365,23 @@ if(Allow_cPanel == false){
 	console.log("cPanel: false");
 }
 setTimeout(MaxTitle, 0);
+
+//adblocker
+if(Allow_ad_blocker == true){
+	
+if(typeof(window.google_render_ad)=="undefined") 
+{ 
+    document.querySelector(".con-ad-block").style.display = "block";
+}
+else{
+	document.querySelector(".con-ad-block").style.display = "none";
+}
+
+}
+if(Allow_ad_blocker == false){
+	console.log("Ad_blocker: false")
+}
+
 }
 }
 
