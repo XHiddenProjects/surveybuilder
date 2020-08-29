@@ -18,7 +18,7 @@ var test_users_cookieEnable = true; //Displays if the console should replay back
 var Collect_IP = false; //The Console will display there IP_address. 
 var Allow_cPanel = true; //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
-var username = "admin"; //Enter username here 
+var username = ""; //Enter username here 
 var banIP = []; //Enter IP adderess here
 var Enable_Config_File = "Enable"; //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
 var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supported-- or set to [false] to disable SQL database, this will require you to have a SQL server if using 'mySQL'
@@ -395,7 +395,8 @@ function Warning(){
 //title save
 
 function MaxTitle(){
-	document.getElementById("maxTitle").innerHTML = maxTitle;
+	FullMaxTitle = parseInt(maxTitle);
+	document.getElementById("maxTitle").innerHTML = FullMaxTitle;
 	
 }
 
@@ -409,7 +410,7 @@ function savetitle(){
 	//val = val.length;
 	//document.getElementById("Wcount").innerHTML = val;
 	if(val.length <= 0|| val.length > maxTitle){
-		Displaytitle.innerText = "Untitled" +" - Survey Builder";
+		Displaytitle.innerText = "Untitled" + " - Survey Builder";
 		Title.innerText = "Untitled";
 	var E = document.getElementById("Error");
 	E.hidden = false;
@@ -418,7 +419,7 @@ function savetitle(){
 	}
 	
 	else{
-	Displaytitle.innerText = s.value + " - SurveyBuilder";
+	Displaytitle.innerText = s.value + " - " + username + " - SurveyBuilder";
 	Title.innerText = s.value
 	 
 	
