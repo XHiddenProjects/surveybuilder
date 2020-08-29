@@ -1,0 +1,3 @@
+- Fixed Config.js
+- Added "Web Config" you can change the configuration in the "editors form". Note: some elements may not be configerable and needs manual attation.
+- Bugs an glitches are fixed
