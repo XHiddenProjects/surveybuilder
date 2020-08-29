@@ -129,7 +129,7 @@ if(!file_exists($file)){
 	 <center><h1 id="yourTitle">Untitled</h1></center><br>
 <!--Change title-->
 <div id="YourTitleTag">
-<error id="Error" class="error" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry you need a title before saving it or its to long</error>
+<error id="Error" role="tooltip" class="error" aria-label="error" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry you need a title before saving it or its to long</error>
 <!--<error id="SpanError" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry spam block as been added. Your Clicks: <span id="Count" style="color:white;"></span> times</error>-->
 <br>
 <br>
@@ -195,17 +195,23 @@ function closeAdError(){
 	setInterval(function(){
 	document.querySelector(".countdown").innerHTML = countdownCounter;
 	if(countdownCounter>=0){
+		document.querySelector(".ad-checkbox").disabled = true;
 		countdownCounter = countdownCounter - 1;
 	}
 	if(countdownCounter<0){
 		document.querySelector(".con-ad-block").style.display = "none";
+		setTimeout(resetScore, 3000);
 	}
      	
 	
 	}, 1000);
 }
+function resetScore(){
+	document.querySelector(".ad-checkbox").disabled = false;
+	countdownCounter = 3;
+}
 </script>
-<div class="con-Ad-blocker-error con-ad-block con-ad-error">
+<div class="con-Ad-blocker-error con-ad-block con-ad-error" role="tooltip" aria-label="error">
 <div class="heading-ad-error-title">Ad blocker is enable <i class="fas fa-sad-tear"></i></div>
 <div class="heading-ad-error-subtitle">Please disable your ad blocker to activate this.</div>
 <div class="close-ad-btn"><button class="btn-ad-con" onclick="closeAdError()">Continue <span class="countdown"></span></button></div>
@@ -213,8 +219,8 @@ function closeAdError(){
  <!--Sidebar-->
               
 
-<div id="Sidebar">
-<div class="toggle-sidebar-btn" onclick="togglesidebar()" title="Add Elements" style="cursor:pointer;">
+<div id="Sidebar" role="sidebar">
+<div class="toggle-sidebar-btn" role="sidebar-button"  onclick="togglesidebar()" title="Add Elements" style="cursor:pointer;">
 <span></span>                                                                                                                                       
 <span></span>
 <span></span>
@@ -1031,8 +1037,307 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <button id="temp" onclick="setupPoliceIncidentReportTemp()" title="Police Incident Report Template">Police Incident Report</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr/>
+<br/>
+<h1>Web Config <i class="fas fa-tools"></i></h1>
+<!--<script>
+function disableAllActions(){
+document.querySelector(".check1").checked = false;
+document.querySelector(".check2").checked = false;
+document.querySelector(".check3").checked = false;
+document.querySelector(".check4").checked = false;
+document.querySelector(".check5").checked = false;
+document.querySelector(".check6").checked = false;
+document.querySelector(".check7").checked = false;
+document.querySelector(".check8").checked = false;
+document.querySelector(".check9").checked = false;
+document.querySelector(".check10").checked = false;
+document.querySelector(".check11").checked = false;
+document.querySelector(".check12").checked = false;
+document.querySelector(".check13").checked = false;
+
+document.querySelector(".check1").click();
+document.querySelector(".check2").click();
+document.querySelector(".check3").click();
+document.querySelector(".check4").click();
+document.querySelector(".check5").click();
+document.querySelector(".check6").click();
+document.querySelector(".check7").click();
+document.querySelector(".check8").click();
+document.querySelector(".check9").click();
+document.querySelector(".check10").click();
+document.querySelector(".check11").click();
+document.querySelector(".check12").click();
+document.querySelector(".check13").click();
 
 
+}
+function enableAllActions(){
+document.querySelector(".check1").checked = true;
+document.querySelector(".check2").checked = true;
+document.querySelector(".check3").checked = true;
+document.querySelector(".check4").checked = true;
+document.querySelector(".check5").checked = true;
+document.querySelector(".check6").checked = true;
+document.querySelector(".check7").checked = true;
+document.querySelector(".check8").checked = true;
+document.querySelector(".check9").checked = true;
+document.querySelector(".check10").checked = true;
+document.querySelector(".check11").checked = true;
+document.querySelector(".check12").checked = true;
+document.querySelector(".check13").checked = true;
+
+document.querySelector(".check1").click();
+document.querySelector(".check2").click();
+document.querySelector(".check3").click();
+document.querySelector(".check4").click();
+document.querySelector(".check5").click();
+document.querySelector(".check6").click();
+document.querySelector(".check7").click();
+document.querySelector(".check8").click();
+document.querySelector(".check9").click();
+document.querySelector(".check10").click();
+document.querySelector(".check11").click();
+document.querySelector(".check12").click();
+document.querySelector(".check13").click();
+
+}
+function resetAllActions(){
+	document.querySelector(".check1").checked = true;
+document.querySelector(".check2").checked = true;
+document.querySelector(".check3").checked = false;
+document.querySelector(".check4").checked = true;
+document.querySelector(".check5").checked = false;
+document.querySelector(".check6").checked = false;
+document.querySelector(".check7").checked = true;
+document.querySelector(".check8").checked = true;
+document.querySelector(".check9").checked = true;
+document.querySelector(".check10").checked = true;
+document.querySelector(".check11").checked = false;
+document.querySelector(".check12").checked = true;
+document.querySelector(".check13").checked = false;
+
+
+}
+</script>
+<br/>
+<button role="disable" class="DisableWeb" onclick="disableAllActions()">Disable All</button>
+<button role="enable" class="EnableWeb" onclick="enableAllActions()">Enable All</button>
+<button role="reset" class="ResetWeb" onclick="resetAllActions()">Reset All</button>
+-->
+<br/>
+
+<style>
+/*config checkbox*/
+.checkbox{
+	position:relative;
+	height:40px;
+	width:100px;
+	background:#2e394d;
+	border-radius:30px;
+}
+.checkbox-input{
+	position:absolute;
+	height:100%;
+	width:100%;
+	outline:none;
+	z-index:1;
+	-webkit-appearance:none;
+	cursor:pointer;
+}
+.checkbox-icons::before{
+	position:absolute;
+	content:"\f00d";
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	color:white;
+	width:35px;
+	height:35px;
+	background:#c34a4a;
+	border-radius:50%;
+	left:3px;
+	top:50%;
+	transform:translateY(-50%);
+	font-size:20px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	transition:0.4s;
+}
+.checkbox-input:checked + label .checkbox-icons::before{
+	background:#8bc34a;
+	transform:translateY(-50%) rotate(360deg);
+	left:calc(100% - 38px);
+	content: "\f00c";
+	
+}
+.label_config{
+	font-size:25px;
+}
+.Warning-input{
+	background-color:red;
+}
+.dbselect{
+	font-size:25px;
+}
+.maxTitleInput{
+	width:315px;
+	font-size:25px;
+}
+</style>
+<span class="label_config">Allow_Banner_display:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check1" checked="" onclick="setBanner()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">Allow_Console_attribute:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check2" checked="" onclick="setConsoleAttri()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">Allow_Pop_up:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check3" onclick="setPopUp()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">limit_list:</span>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
+</div>
+<br/>
+<span class="label_config">Allow_Inspect_element:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check4" checked="" onclick="setInspectElement()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">Allow_location_tracking:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check5" onclick="setLocationTrack()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">Allow_API_config:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check6" onclick="setApiConfig()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">get_users_lang:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check7" checked="" onclick="setUserLang()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">get_users_platform:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check8" checked="" onclick="setUserPlatform()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">get_users_usersAngent:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check9" checked="" onclick="setUserAngent()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">test_users_cookieEnable:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check10" checked="" onclick="setTestCookie()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">Collect_IP:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check11" onclick="setCollectIP()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">Allow_cPanel:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check12" checked="" onclick="setcPanel()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
+<br/>
+<span class="label_config">maxTitle:</span>
+<div class="NumTitle">
+<input type="number" placeholder="Enter a number from 10-40" title="Number must be more then 10 and less than 40" min="10" max="40" onchange="setMaxTitle()" class="maxTitleInput"/>
+</div>
+<br/>
+<span class="label_config">username:</span>
+<div class="user username-con">
+<input type="text" placeholder="Enter Username" style="width:320px;font-size:25px;" class="username-input" oninput="setUsername()"/>
+</div>
+<br/>
+<span class="label_config">banIp:</span>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
+</div>
+<br/>
+<span class="label_config">Enable_Config_File:</span>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
+</div>
+<br/>
+<span class="label_config">Allow_Database:</span>
+<div class="database-input">
+<select class="dbselect" oninput="setDb()">
+<option value="false">false</option>
+<option value="mySQL" selected="selected">mySQL</option>
+</select>
+</div>
+<br/>
+<span class="label_config">redirFormLink:</span>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
+</div>
+<br/>
+<span class="label_config">Allow_ad_blocker:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input ad-checkbox check13" onclick="setAdBlocker()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>
 
 </div>
 
@@ -1046,9 +1351,164 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 
-<footer id="SurveyMakerBanner"><div id="Banner"><span id="Icon"><img src="favicon.ico" width="50" height="50" title="SurveyMaker" alt="SurveyMaker Icon"/></span><span id="Text1">Join SurveyBuilder TODAY! <span id="Text2">Join Our <a id="FourmLink" title="Fourm" href="https://surveybuilder.boards.net/" target="_blank">Fourm</a></span><span id="Text3">&copy;SurveyBuilder</span></div></footer>
+<footer id="SurveyMakerBanner" role="banner"><div id="Banner"><span id="Icon"><img src="favicon.ico" width="50" height="50" title="SurveyMaker" alt="SurveyMaker Icon"/></span><span id="Text1">Join SurveyBuilder TODAY! <span id="Text2">Join Our <a id="FourmLink" title="Fourm" href="https://surveybuilder.boards.net/" target="_blank">Fourm</a></span><span id="Text3">&copy;SurveyBuilder</span></div></footer>
 <div id="copyright-print">&copy; SurveyBuilder</div>
 </div>
 <script src="./Config/Config.js" type="text/javascript"></script>
+<script>
+//coords:
+var check1 = document.querySelector(".check1");//banner
+var check2 = document.querySelector(".check2");//console
+var check3 = document.querySelector(".check3");//popup
+var check4 = document.querySelector(".check4");//inspect
+var check5 = document.querySelector(".check5");//location
+var check6 = document.querySelector(".check6");//api
+var check7 = document.querySelector(".check7");//lang
+var check8 = document.querySelector(".check8");//platform
+var check9 = document.querySelector(".check9");//angent
+var check10 = document.querySelector(".check10");//cookie
+var check11 = document.querySelector(".check11");//ip
+var check12 = document.querySelector(".check12");//cpanel
+var check13 = document.querySelector(".check13");//adblocker
+
+function setBanner(){
+	if(Allow_Banner_display == true && check1.checked == false){
+		Allow_Banner_display = false;
+	}else{
+		Allow_Banner_display = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setConsoleAttri(){
+	if(Allow_Console_attribute == true && check2.checked == false){
+		Allow_Console_attribute = false;
+	}else{
+		Allow_Console_attribute = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setPopUp(){
+	if(Allow_Pop_up == true && check3.checked == true){
+		Allow_Pop_up = false;
+	}else{
+		Allow_Pop_up = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setInspectElement(){
+	if(Allow_Inspect_element == true && check4.checked == false){
+		Allow_Inspect_element = false;
+	}else{
+		Allow_Inspect_element = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setLocationTrack(){
+		if(Allow_location_tracking == true && check5.checked == true){
+		Allow_location_tracking = false;
+	}else{
+		Allow_location_tracking = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setApiConfig(){
+	if(Allow_API_config == true && check6.checked == true){
+		Allow_API_config = false;
+	}else{
+		Allow_API_config = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setUserLang(){
+	if(get_users_lang == true && check7.checked == false){
+		get_users_lang = false;
+	}else{
+		get_users_lang = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setUserPlatform(){
+	if(get_users_platform == true && check8.checked == false){
+		get_users_platform = false;
+	}else{
+		get_users_platform = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setUserAngent(){
+	if(get_users_usersAngent == true && check9.checked == false){
+		get_users_usersAngent = false;
+	}else{
+		get_users_usersAngent = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setTestCookie(){
+	if(test_users_cookieEnable == true && check10.checked == false){
+		test_users_cookieEnable = false;
+	}else{
+		test_users_cookieEnable = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setCollectIP(){
+	if(Collect_IP == true && check11.checked == true){
+		Collect_IP = false;
+	}else{
+		Collect_IP = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setcPanel(){
+	if(Allow_cPanel == true && check12.checked == false){
+		Allow_cPanel = false;
+	}else{
+		Allow_cPanel = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setAdBlocker(){
+	if(Allow_ad_blocker == true && check13.checked == true){
+		Allow_ad_blocker = false;
+	}else{
+		Allow_ad_blocker = true;
+	}
+	setTimeout(testCorrospond, 0);
+}
+function setDb(){
+	let db = document.querySelector(".dbselect");
+	Allow_Database = db.value;
+	setTimeout(testCorrospond, 0);
+}
+function setMaxTitle(){
+	let numMax = document.querySelector(".maxTitleInput");
+	
+    if(numMax.value < "10" || numMax.value < 10){
+		numMax.value = "10";
+		alert("Can't have number's lower then 10");
+		return false;
+	}
+	if(numMax.value > "40" || numMax.value > 40){
+		numMax.value = "40";
+		alert("Can't have number's bigger then 40");
+		return false;
+	}
+	maxTitle = parseInt(numMax.value);
+	
+	setTimeout(testCorrospond, 0);
+	
+}
+function setUsername(){
+	let user = document.querySelector(".username-input");
+	if(user.value.match("admin") || user.value.match("Admin")){
+		alert("You can't use the word 'admin'|'Admin' in the username");
+		user.value = "";
+		return false;
+	}
+	username = user.value;
+		setTimeout(testCorrospond, 0);
+	
+} 
+</script>
 </body>                                                                      
 </html>         
