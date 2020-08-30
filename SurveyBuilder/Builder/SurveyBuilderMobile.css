@@ -1,7 +1,7 @@
 /*Mobile device*/
 
 /*When Mobile is up and down*/
-@media only screen and (max-width: 375px){
+@media only screen and (max-width: 415px){
 	body{
 		font-size:arial;
 	}
@@ -12,7 +12,7 @@
 	}
 	#Editor-Control-Form{
 		position:absolute !important;
-	right:-50px !important;
+	    right:-50px !important;
 	}
 	.title-input{
 		position:absolute;
