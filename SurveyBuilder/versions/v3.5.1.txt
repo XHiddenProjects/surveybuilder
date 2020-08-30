@@ -1,0 +1,2 @@
+- Now supports iPhone 6/7/8 Plus
+- Updated ReadMe.md
