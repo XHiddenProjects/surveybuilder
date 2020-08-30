@@ -82,3 +82,9 @@ Public can do:
 # Issues
 
 Report any issues here [issues](https://github.com/MasterGames2020/SurveyBuilder/issues)
+
+***
+
+# Bot
+
+We provide a bot that will read and commit on any issues.
