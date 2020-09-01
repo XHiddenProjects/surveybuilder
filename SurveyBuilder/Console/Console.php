@@ -1,5 +1,5 @@
 <?php
-
+echo "<head><title>Console-SurveyBuilder</title><link href='/SurveyBuilder/favicon.ico' rel='shortcut icon'/></head>";
 $char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 $gen = substr(str_shuffle($char),0,8);
 $txt = $_POST['Console'];
@@ -32,6 +32,8 @@ else {
 }
 
 echo "location:" . $server_name . "/SurveyBuilder/Console/" . $stat;
-
+echo "<br>";
+echo "<br>";
+echo "Console ID:" . $gen;
 //End the code here
 ?>
