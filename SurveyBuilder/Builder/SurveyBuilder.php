@@ -39,13 +39,13 @@ $(function(){
 <meta name="keywords" content="Survey Builder, Free, Test, Quiz, and Survey's"/>
 <meta name="author" content="©SurveyMaker"/>
  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="stylesheet" href="SurveyBuilderMobile.css"/>
  <meta name content="SurveyMaker"/>
  <meta name="UsersForm" hidden="hidden" content="SurveyBuilderId:19494sbybfdyfuy47grfrfureuyervchfiuerhgyuer748gryru435943578347f"/>
  <meta name="Forum" property="og:url" content="https://surveymaker.boards.net"/>
 <title id="UserTitle">Untitled - Survey Builder</title>
 <!--<link rel="stylesheet" href="./fontawesome/css/all.css"/>-->
 <link rel="stylesheet" type="text/css" href="SurveyBuilder.css"/>
+<link rel="stylesheet" href="SurveyBuilderMobile.css"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" type="text/css" href="FormInsert.css"/>
 <link rel="shortcut icon" href="favicon.ico"/>
@@ -581,7 +581,17 @@ y.action = ".\\Apps\\appdata\\recorder.php";
 <span id="Cosnole-Log">
 <form action="/SurveyBuilder/Console/Console.php" method="post">
 <li id="New">Console Log &nbsp;&nbsp;<button type="submit" title="Share Log" style="outline:none;border:none;font-size:15px;"><i class="fas fa-share-square"></i></button></li>
-
+<br/>
+<style>
+.search, .import{
+	width:120px;
+}
+</style>
+<input type="search" class="search search-word serach-input" placeholder="Search"/><button type="button" class="search-btn" onclick="SearchValue()">Search <i class="fas fa-search"></i></button>
+<br/>
+<br/>
+<span style="color:white;">Enter Console ID: ex(2M5xhjJu)</span><input type="textarea" class="import import-code" placeholder="Enter Console ID"/><button onclick="ImportConsole()" type="button">Import <i class="fas fa-upload"></i></button>
+<br/>
 <br/>
 <textarea placeholder="Console" required="true" name="Console" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditFormFromConsole()" class="lined" id="Console"></textarea>
 
@@ -593,7 +603,7 @@ document.getElementById("Console").value = document.getElementById("Insert-Objec
 }
 
 function EditFormFromConsole(){
-document.getElementById("Insert-Object").innerHTML = document.getElementById("Console").value + "&#13;&#13;";
+document.getElementById("Insert-Object").innerHTML = document.getElementById("Console").value;
 setTimeout(autodisplay, 0);
 }
 
@@ -609,7 +619,32 @@ setTimeout(loop, 0);
 
 
 </script>
+<script>
+function SearchValue(){
+	var SearchTerm = document.querySelector(".search").value;
+  var TextSearch = document.getElementById("Console").value;
 
+  if (SearchTerm.length > 0 && TextSearch.indexOf(SearchTerm) > -1) {
+	  SearchTerm = SearchTerm.toString()
+    window.find(SearchTerm);
+	
+  } else {
+    alert("No Data found in Console");
+  }
+}
+</script>
+<script>
+function ImportConsole(){
+	let ID = document.querySelector(".import").value;
+	let FullURL = "/SurveyBuilder/Console/Console-" + ID + ".txt";
+	$.get(FullURL, function(data){
+document.getElementById("Console").value = data;
+document.getElementById("Insert-Object").innerHTML = data;
+});
+let PushURL = "?import=Success";
+history.pushState("", "", PushURL);
+}
+</script>
 </form>
 </span>
 <span id="cmdprompt">
