@@ -872,6 +872,321 @@ return false;
 }
 </script>
 </span>
+<li id="New">Folder/File Map</li>
+<style>
+.Folder-Location{
+	color:white; 
+	font-size:12px;
+	margin-top:10px;
+	margin-bottom:10px;
+	cursor:pointer !important;
+}
+.Folder-Location p{
+	margin:5px;
+}
+
+</style>
+<span class="Folder-Location">
+<details class="Folder-Location-Map">
+<summary><i class="fas fa-folder"></i> htdocs</summary>
+<details>
+<summary><i class="fas fa-folder"></i> SurveyBuilder</summary>
+<details>
+<summary><i class="fas fa-folder"></i> .vs</summary>
+<details>
+<summary><i class="fas fa-folder"></i> v16</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/.vs/v16/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/.vs/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> bot</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/bot/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+  echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> Builder</summary>
+<details>
+<summary><i class="fas fa-folder"></i> API</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/API/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> Apps</summary>
+<details>
+<summary><i class="fas fa-folder"></i> appdata</summary>
+<details>
+<summary><i class="fas fa-folder"></i> eSign</summary>
+<details>
+<summary><i class="fas fa-folder"></i> assets</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/Apps/appdata/eSign/assets/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> RoboChat</summary>
+<details>
+<summary><i class="fas fa-folder"></i> assets</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/Apps/appdata/RoboChat/assets/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+</details>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/Apps/appdata/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> Config</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/Config/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> db</summary>
+<details>
+<summary><i class="fas fa-folder"></i> SQL</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/db/SQL/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> Elements</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/Elements/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+
+<details>
+<summary><i class="fas fa-folder"></i> Music</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/Music/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> QR_Code</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/QR_Code/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> Templetes</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/templetes/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> users</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/users/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> Console</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Console/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> Credits</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Credits/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> errors</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/errors/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> images</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/images/icon/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details> 
+</details>
+</span>
+<li id="New">Scroll Top</li>
 <span id="scroll-container-bottom">
 <li id="Scroll-bottom" onclick="scrollUp()" class="scroll scroll-to-top">Scroll to Top&nbsp;&nbsp;<i class="far fa-arrow-alt-circle-up"></i></li>
 <script>
