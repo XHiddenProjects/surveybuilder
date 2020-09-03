@@ -9,6 +9,6 @@
 - Any additional info/context
 
 # Checklist
-- [] Tested
-- [] Documentation
-- [] Translations
+- [X] Tested
+- [X] Documentation
+- [X] Translations
