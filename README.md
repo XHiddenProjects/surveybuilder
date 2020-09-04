@@ -22,8 +22,11 @@ You can use a batch file to use to find the dependicys, otherwise here is what i
 
 ### Mobile
 
-* IPhone 6/7/8
-* IPhone 6/7/8 Plus
+* iPhone 6/7/8
+* iPhone 6/7/8 Plus
+* iPhone 11
+* iPhone 11 Pro
+* iPhone 11 Pro Max
 
 ***
 
