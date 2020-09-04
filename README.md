@@ -27,6 +27,7 @@ You can use a batch file to use to find the dependicys, otherwise here is what i
 * iPhone 11
 * iPhone 11 Pro
 * iPhone 11 Pro Max
+* iPhone X
 
 ***
 
