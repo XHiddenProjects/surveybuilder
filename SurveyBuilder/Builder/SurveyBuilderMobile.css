@@ -1,7 +1,5 @@
 /*Mobile device*/
-
-/*When Mobile is up and down*/
-@media only screen and (max-width: 415px){
+@media only screen and (device-width: 375px) and (device-height: 667px){
 	body{
 		font-size:arial;
 	}
@@ -35,6 +33,150 @@
 		right:-150px !important;
 	}
 }
+
+/*iPhone 6/7/8 Plus*/
+@media only screen and (device-width: 414px) and (device-height: 736px){
+	body{
+		font-size:arial;
+	}
+	#Editors-Form{
+		width:250px !important;
+		position:absolute !important;
+		left:-7% !important;
+	}
+	#Editor-Control-Form{
+		position:absolute !important;
+	    right:-50px !important;
+	}
+	.title-input{
+		position:absolute;
+		left:-140%;
+		top:0;
+	}
+	#titleSave{
+		width:120px !important;
+	}
+	#wcc{
+		position:absolute !important;
+		left:80% !important;
+	}
+	#SurveyMakerBanner{
+		display:none !important;
+	}
+	#Editor-Control-Form{
+		width:150px !important;
+		position:absolute !important;
+		right:-150px !important;
+	}
+}
+/*iPhone 11*/
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) { 
+ body{
+		font-size:arial;
+	}
+	#Editors-Form{
+		width:250px !important;
+		position:absolute !important;
+		left:-7% !important;
+	}
+	#Editor-Control-Form{
+		position:absolute !important;
+	    right:-50px !important;
+	}
+	.title-input{
+		position:absolute;
+		left:-135%;
+		top:0;
+	}
+	#titleSave{
+		width:120px !important;
+	}
+	#wcc{
+		position:absolute !important;
+		left:70% !important;
+		top: 10% !important;
+	}
+	#SurveyMakerBanner{
+		display:none !important;
+	}
+	#Editor-Control-Form{
+		width:150px !important;
+		position:absolute !important;
+		right:-150px !important;
+	}
+ } 
+/*iPhone 11 pro*/
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) { 
+ body{
+		font-size:arial;
+	}
+	#Editors-Form{
+		width:250px !important;
+		position:absolute !important;
+		left:-7% !important;
+	}
+	#Editor-Control-Form{
+		position:absolute !important;
+	    right:-50px !important;
+	}
+	.title-input{
+		position:absolute;
+		left:-140%;
+		top:0;
+	}
+	#titleSave{
+		width:120px !important;
+	}
+	#wcc{
+		position:absolute !important;
+		left:80% !important;
+	}
+	#SurveyMakerBanner{
+		display:none !important;
+	}
+	#Editor-Control-Form{
+		width:150px !important;
+		position:absolute !important;
+		right:-150px !important;
+	}
+ }
+ /*iPhone 11 pro*/
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) { 
+ body{
+		font-size:arial;
+	}
+	#Editors-Form{
+		width:250px !important;
+		position:absolute !important;
+		left:-7% !important;
+	}
+	#Editor-Control-Form{
+		position:absolute !important;
+	    right:-50px !important;
+	}
+	.title-input{
+		position:absolute;
+		left:-130%;
+		top:0;
+	}
+	#titleSave{
+		width:120px !important;
+	}
+	#wcc{
+		position:absolute !important;
+		left:70% !important;
+		top: 10% !important;
+	}
+	#SurveyMakerBanner{
+		display:none !important;
+	}
+	#Editor-Control-Form{
+		width:150px !important;
+		position:absolute !important;
+		right:-150px !important;
+	}
+ }
+ 
 /*When mobile is side to side
 @media only screen and (min-width: 667px){
 	body{
