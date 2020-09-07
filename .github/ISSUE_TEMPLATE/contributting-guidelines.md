@@ -1,7 +1,7 @@
 ---
 name: Contributting Guidelines
 about: Helps users get better way of being part of the team
-title: (Contributing title)
+title: _**Contributing title**_
 labels: Contributing-Guidelines, Team, Template
 assignees: SurveyBuilderAdmin, SurveyBuilder-bot
 
