@@ -1,11 +1,20 @@
 ---
+name: Contributting Guidelines
+about: Helps users get better way of being part of the team
+title: Contributting Guidelines
+labels: Contributing-Guidelines
+assignees: SurveyBuilderAdmin, SurveyBuilder-bot
+
+---
+
+---
 
 name: Enter your username
 About: tell use about yourself
 title: Enter a title that your contributing
 labels: team
 projects: Have any project that your working on
-device: ''
+device: ''"
 
 ---
 
@@ -25,4 +34,4 @@ Make sure you label the issue '_**team**_'
 Make sure you list the devices that you are using to help us (ex. Windows 10)
 
 # How will you know you got accepted?
-You will recive a commit from me to allow acceptence/declines 
+You will recive a commit from me to allow acceptence/declines
