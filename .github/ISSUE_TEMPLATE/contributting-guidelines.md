@@ -3,8 +3,7 @@ name: Contributting Guidelines
 about: Helps users get better way of being part of the team
 title: ''
 labels: Team
-assignees: SurveyBuilderAdmin, SurveyBuilder-bot
-
+assignees: ''
 ---
 
 
