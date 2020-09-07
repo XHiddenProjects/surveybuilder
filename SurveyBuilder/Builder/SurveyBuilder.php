@@ -583,14 +583,18 @@ y.action = ".\\Apps\\appdata\\recorder.php";
 <li id="New">Console Log &nbsp;&nbsp;<button type="submit" title="Share Log" style="outline:none;border:none;font-size:15px;"><i class="fas fa-share-square"></i></button></li>
 <br/>
 <style>
-.search, .import{
+.search, .import, .import-code{
 	width:120px;
 }
 </style>
 <input type="search" class="search search-word serach-input" placeholder="Search"/><button type="button" class="search-btn" onclick="SearchValue()">Search <i class="fas fa-search"></i></button>
 <br/>
 <br/>
-<span style="color:white;">Enter Console ID: ex(2M5xhjJu)</span><input type="textarea" class="import import-code" placeholder="Enter Console ID"/><button onclick="ImportConsole()" type="button">Import <i class="fas fa-upload"></i></button>
+<span style="color:white;">Enter Console ID: ex(PC7VbBpG)</span><input type="textarea" class="import import-code" placeholder="Enter Console ID"/><button onclick="ImportConsole()" type="button">Import <i class="fas fa-upload"></i></button>
+
+<br/>
+<br/>
+<span style="color:white;">Enter Console (<a href="https://github.com/" title="GitHub" target="_blank" style="cursor:pointer;background-color:transparent;color:white;"><i class="fab fa-github"></i></a> raw)</span><input type="textarea" class="import-code github-import github-import-code" placeholder="Enter GitHub Raw"/><button onclick="ImportConsoleRaw()" type="button">Import <i class="fas fa-upload"></i></button>
 <br/>
 <br/>
 <textarea placeholder="Console" required="true" name="Console" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditFormFromConsole()" class="lined" id="Console"></textarea>
@@ -634,15 +638,93 @@ function SearchValue(){
 }
 </script>
 <script>
+var checkedDataCount = 0;
 function ImportConsole(){
 	let ID = document.querySelector(".import").value;
+	if(ID == null || ID == ""){
+		let PushURL = "?reg-import=null";
+history.pushState("", "", PushURL);
+alert("You cannot leave textbox blank(null)");
+document.getElementById("Console").value = "";
+		 document.getElementById("Insert-Object").innerHTML = "";
+return false;
+	}
 	let FullURL = "/SurveyBuilder/Console/Console-" + ID + ".txt";
+	$.get(FullURL, function(data){
+		
+	
+
+document.getElementById("Console").value = data;
+document.getElementById("Insert-Object").innerHTML = data;
+let PushURL = "?reg-import=Success";
+history.pushState("", "", PushURL);
+checkedDataCount = 1;
+return false;
+
+
+});
+
+setTimeout(checkData, 500);
+checkedDataCount = 0;
+}
+function checkData(){
+	if(checkedDataCount == 0){
+let PushURL = "?reg-import=Failed";
+history.pushState("", "", PushURL);
+         document.getElementById("Console").value = "";
+		 document.getElementById("Insert-Object").innerHTML = "";
+alert("Cannot Find console ID");
+return false;
+}
+}
+</script>
+<script>
+var GitHubCheckCount = 0;
+function ImportConsoleRaw(){
+	let URLData = document.querySelector(".github-import").value;
+	if(URLData == null || URLData == ""){
+		let PushURL = "?GitHub-import=null";
+         history.pushState("", "", PushURL);
+		 alert("Cannot have textbox null");
+		 document.getElementById("Console").value = "";
+		 document.getElementById("Insert-Object").innerHTML = "";
+return false;
+		return false;
+	}
+	if(!URLData.match("https://raw.githubusercontent.com/")){
+		let PushURL = "?GitHub-import=invalid_URL&requiredURL=https://raw.githubusercontent.com/";
+         history.pushState("", "", PushURL);
+		 alert("URL must start with: https://raw.githubusercontent.com/");
+		 document.querySelector("#Console").value = "";
+return false;
+		return false;
+	}
+	let FullURL = URLData
 	$.get(FullURL, function(data){
 document.getElementById("Console").value = data;
 document.getElementById("Insert-Object").innerHTML = data;
-});
-let PushURL = "?import=Success";
+let PushURL = "?GitHub-import=Success";
 history.pushState("", "", PushURL);
+GitHubCheckCount = 1;
+return false;
+
+
+});
+ 
+ setTimeout(GitHubCheck, 500);
+ GitHubCheckCount = 0;
+ 
+}
+function GitHubCheck(){
+	if(GitHubCheckCount == 0){
+	let PushURL = "?GitHub-import=Failed";
+history.pushState("", "", PushURL);
+alert("GitHub Raw Data not found!");
+		 document.getElementById("Console").value = "";
+		 document.getElementById("Insert-Object").innerHTML = "";
+		 GitHubCheckCount = 0;
+return false;
+	}
 }
 </script>
 </form>
