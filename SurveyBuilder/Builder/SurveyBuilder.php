@@ -1820,7 +1820,7 @@ function setConsoleAttri(){
 	setTimeout(testCorrospond, 0);
 }
 function setPopUp(){
-	if(Allow_Pop_up == true && check3.checked == true){
+	if(Allow_Pop_up == true && check3.checked == false){
 		Allow_Pop_up = false;
 	}else{
 		Allow_Pop_up = true;
@@ -1900,7 +1900,7 @@ function setcPanel(){
 	setTimeout(testCorrospond, 0);
 }
 function setAdBlocker(){
-	if(Allow_ad_blocker == true && check13.checked == true){
+	if(Allow_ad_blocker == true && check13.checked == false){
 		Allow_ad_blocker = false;
 	}else{
 		Allow_ad_blocker = true;
