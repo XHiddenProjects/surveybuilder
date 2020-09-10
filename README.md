@@ -20,7 +20,7 @@ You can use a batch file to use to find the dependicys, otherwise here is what i
 * Windows(any version)
 * Mac
 
-### Mobile
+### Mobile [Not Supported, due to lack of influence]
 
 * iPhone 6/7/8
 * iPhone 6/7/8 Plus
