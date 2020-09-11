@@ -1,5 +1,5 @@
 <?php
-$title = $_POST['title'];
+$title = $_POST['title-data'];
 
 $text = $_POST['Editor'];
 
