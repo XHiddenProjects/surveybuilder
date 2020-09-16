@@ -9,5 +9,8 @@
   "dependencies": {
     "mysql": ">=2.5.0"
   },
-  "devdependencies":{}
+  "devdependencies":{},
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
+  }
 }
