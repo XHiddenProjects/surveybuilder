@@ -1,0 +1,15 @@
+{
+  "name": "SurveyBuilder",
+  "version": "1.0.0",
+  "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
+  "main": "master",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    
+  }
+}
