@@ -10,10 +10,5 @@
     "mysql": ">=2.5.0"
   },
   "devdependencies":{},
-  "publishConfig": { 
-    "registry": "https://npm.pkg.github.com/",
-    "type" : "git",
-    "url": "ssh://git@github.com/SurveyBuilderAdmin/SurveyBuilder.git",
-    "directory": "SurveyBuilderAdmin/SurveyBuilder"
-  }
+ 
 }
