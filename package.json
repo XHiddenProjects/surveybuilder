@@ -1,6 +1,6 @@
 {
   "name": "SurveyBuilder",
-  "version": "1.0.0",
+  "version": "3.5.7",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
   "main": "master",
   "scripts": {
