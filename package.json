@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "mysql": ">=2.5.0",
-    "SurveyBuilder": "/SurveyBuilder/Builder/API/API.txt"
+    "SurveyBuilderAdmin/SurveyBuilder": "/SurveyBuilder/Builder/API/API.txt"
   },
   "devdependencies":{},
  
