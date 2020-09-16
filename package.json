@@ -8,5 +8,6 @@
   "license": "MIT",
   "dependencies": {
     "mysql": ">=2.5.0"
-  }
+  },
+  "devdependencies":{}
 }
