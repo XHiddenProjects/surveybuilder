@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "mysql": ">=2.5.0",
-    "SurveyBuilder": "^3.5.8"
+    "surveybuilder": "^3.5.8"
   },
   "devdependencies":{},
  
