@@ -1,5 +1,5 @@
 {
-  "name": "SurveyBuilder",
+  "name": "surveybuilder",
   "version": "3.5.8",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
   "main": "master",
@@ -10,5 +10,6 @@
     "mysql": ">=2.5.0"
   },
   "devdependencies":{},
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
  
 }
