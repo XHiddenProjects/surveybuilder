@@ -1,13 +1,20 @@
 {
-  "name": "surveybuilder",
+  "name": "@SurveyBuilderAdmin/SurveyBuilder",
   "version": "3.5.8",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
-  "main": "master",
+  "main": "index.js",
+  "scripts":{
+      "test":"echo \"Error:no test specified\" && exit 1"
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "mysql": ">=2.5.0"
+  },
+  "repository":{
+    "type" : "git",
+     "url": "git://github.com/SurveyBuilderAdmin/SurveyBuilder.git" 
   },
   "devdependencies":{},
   "publishConfig": { "registry": "https://npm.pkg.github.com/" }
