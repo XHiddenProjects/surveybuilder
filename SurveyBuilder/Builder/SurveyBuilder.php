@@ -10,24 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://kit.fontawesome.com/46bb4793e2.js"></script>
-<script>
-$(function(){
 
-    var requiredCheckboxes = $(':checkbox[required]');
-
-    requiredCheckboxes.change(function(){
-
-        if(requiredCheckboxes.is(':checked')) {
-            requiredCheckboxes.removeAttr('required');
-        }
-
-        else {
-            requiredCheckboxes.attr('required', 'required');
-        }
-    });
-
-});
-</script>
 
 
 <script src="Apps_Insert.js" type="text/javascript"></script>
@@ -211,6 +194,7 @@ function resetScore(){
 	countdownCounter = 3;
 }
 </script>
+
 <div class="con-Ad-blocker-error con-ad-block con-ad-error" role="tooltip" aria-label="error">
 <div class="heading-ad-error-title">Ad blocker is enable <i class="fas fa-sad-tear"></i></div>
 <div class="heading-ad-error-subtitle">Please disable your ad blocker to activate this.</div>
@@ -273,6 +257,7 @@ elmnt.scrollIntoView();
 <li id="Insert-Mutiple" title="Mutiple choices" onclick="InsertCheckboxs()"><i class="fas fa-check-square"></i>&nbsp;&nbsp;Mutiple choices</li>
 <li id="Insert-Dropdown" title="Dropdown" onclick="InsertDropdown()"><i class="fas fa-caret-square-down"></i>&nbsp;&nbsp;Dropdown</li>
 <li id="Insert-Image" title="Image" onclick="InsertImages()"><i class="far fa-image"></i>&nbsp;&nbsp;Image</li>
+<li id="Insert-Video" title="Video" onclick="InsertVideo()"><i class="fas fa-file-video"></i>&nbsp;&nbsp;Video</li>
 <li id="Insert-File" title="File Uploader" onclick="IntertFileUploader()" class="Upgrade"><i class="fas fa-file"></i>&nbsp;&nbsp;File Uploader</li>
 <li id="Insert-number" title="Number" onclick="InsertNumber()"><i class="fas fa-sort-numeric-up-alt"></i>&nbsp;&nbsp;Number</li>
 <li id="Insert-submitbtn" title="Submit" onclick="InsertSubBtn()">Submit button</li>
@@ -347,7 +332,6 @@ border:0 !important;
 
 
 <script type="text/javascript">
-//Google map Installmeant
 //Info
 function GMapInfo(){
 alert("AppName: GoogleMaps\n\nCreator: Google co.\n\nDescription: Find local businesses, view maps and get driving directions in Google Maps. When you have eliminated the JavaScript , whatever remains must be an empty page. Enable JavaScript to see Google Maps.\n\nLanguages: C++ (back-end), JavaScript, XML, Ajax (UI)\n\nDependencies: N/A\n\nVersion: 3.41.0\n\nNeedsCofig: Yes");
@@ -369,7 +353,6 @@ return false;
 <li class="Unistall" onclick="RoboChatUnistall()">Unistall APP</li>
 </li>
 <script type="text/javascript">
-//Google map Installmeant
 //Info
 function RoboChatInfo(){
 alert("AppName: RoboChat\n\nCreator: SurveyBuilder \n\nDescription: Create and Edit your own 24/7 chat station w/ an AI\n\nDependencies: Boostrap Css(v4.5.0), Boostrap FontAwesome Icons(v4.7.0)\n\nLanguages: HTML, CSS, JS\n\nVersion: 16.0.0\n\nNeedsCofig: yes");
@@ -392,7 +375,6 @@ return false;
 <li class="Unistall" onclick="eSignUnistall()">Unistall APP</li>
 </li>
 <script type="text/javascript">
-//Google map Installmeant
 //Info
 function eSignInfo(){
 alert("AppName: eSignature\n\nCreator: SurveyBuilder \n\nDescription: Get Users signature\n\nDependencies: jQuery 3.5.1+, Sign.js\n\nLanguages: JQuery, JavaScript, HTML, CSS\n\nVersion:16.0.0\n\nNeedsCofig: No");
@@ -414,7 +396,6 @@ return false;
 <li class="Unistall" onclick="recUnistall()">Unistall APP</li>
 </li>
 <script type="text/javascript">
-//Google map Installmeant
 //Info
 function recInfo(){
 alert("AppName: Recorder\n\nCreator: SurveyBuilder \n\nDescription: Capture audio and facecam video, make it downloadable\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript\n\nVersion:16.0.0\n\nNeedsCofig: Yes");
@@ -430,6 +411,10 @@ return false;
 }
 }
 </script>
+
+
+
+
 
 <!--Add Apps below-->
 
@@ -537,23 +522,25 @@ function testCmd(){
 let x = document.getElementById("Textformat");
 
 if(x.value == "/app GoogleMaps"){
-$.get(".\\Apps\\appdata\\GoogleMaps.html", function(data){
+$.get("./Apps/appdata/GoogleMaps.html", function(data){
 
 x.value = data;
 });
 }
 if(x.value == "/app RoboChat"){
-$.get(".\\Apps\\appdata\\RoboChat.html", function(data){
+$.get("./Apps/appdata/RoboChat.html", function(data){
 
 x.value = data;
 });
 }
 if(x.value == "/app Recorder"){
-$.get(".\\Apps\\appdata\\recorder.html", function(data){
+$.get("./Apps/appdata/recorder.html", function(data){
 
 x.value = data;
 });
 }
+
+
 
 }
 
@@ -565,13 +552,16 @@ if(x.selectedIndex == 0){
 y.action = "";
 }
 if(x.selectedIndex == 1){
-y.action = ".\\Apps\\appdata\\GoogleMaps.php";
+y.action = "./Apps/appdata/GoogleMaps.php";
 }
 if(x.selectedIndex == 2){
-y.action = ".\\Apps\\appdata\\RoboChat.php";
+y.action = "./Apps/appdata/RoboChat.php";
 }
 if(x.selectedIndex == 3){
-y.action = ".\\Apps\\appdata\\recorder.php";
+y.action = "./Apps/appdata/recorder.php";
+}
+if(x.selectedIndex == 4){
+y.action = "./Apps/appdata/BadWordBlocker.php";
 }
 
 }
@@ -1293,7 +1283,34 @@ elmnt.scrollIntoView();
 <br>
 
 <div id="Editor-Control-Form">
-
+<h1>Internet Check</h1>
+<script>
+setTimeout(checkInternetConnection, 0);
+function checkInternetConnection(){
+let InternetStatus = window.navigator.onLine;
+if(InternetStatus){
+	let codeWifiConnected = "<svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-wifi' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z'/><path d='M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z'/></svg>";
+	document.querySelector(".Internet-Status").innerHTML = codeWifiConnected + "Connected";
+	document.querySelector(".Internet-Status").style.fontSize = "32px";
+	document.querySelector(".Internet-Status").style.color = "green";
+	document.querySelector(".Internet-Status").style.textAlign = "center";
+	   document.querySelector("#Sidebar").hidden = false;
+}else{
+	let codeWifiDisconnected = "<svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-wifi-off' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M10.706 3.294A12.545 12.545 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c.63 0 1.249.05 1.852.148l.854-.854zM8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065 8.448 8.448 0 0 1 3.51-1.27L8 6zm2.596 1.404l.785-.785c.63.24 1.228.545 1.785.907a.482.482 0 0 1 .063.745.525.525 0 0 1-.652.065 8.462 8.462 0 0 0-1.98-.932zM8 10l.934-.933a6.454 6.454 0 0 1 2.012.637c.285.145.326.524.1.75l-.015.015a.532.532 0 0 1-.611.09A5.478 5.478 0 0 0 8 10zm4.905-4.905l.747-.747c.59.3 1.153.645 1.685 1.03a.485.485 0 0 1 .048.737.518.518 0 0 1-.668.05 11.496 11.496 0 0 0-1.812-1.07zM9.02 11.78c.238.14.236.464.04.66l-.706.706a.5.5 0 0 1-.708 0l-.707-.707c-.195-.195-.197-.518.04-.66A1.99 1.99 0 0 1 8 11.5c.373 0 .722.102 1.02.28zm4.355-9.905a.53.53 0 1 1 .75.75l-10.75 10.75a.53.53 0 0 1-.75-.75l10.75-10.75z'/></svg>";
+	document.querySelector(".Internet-Status").innerHTML = codeWifiDisconnected + "Disconnected";
+	document.querySelector(".Internet-Status").style.fontSize = "32px";
+	document.querySelector(".Internet-Status").style.color = "red";
+	document.querySelector(".Internet-Status").style.textAlign = "center";
+    document.querySelector("#Sidebar").hidden = true;
+	
+}
+setTimeout(checkInternetConnection, 0);
+}
+</script>
+<h3 class="Internet-Status"></h3>
+<br/>
+<hr/>
+<br/>
 <h1>Editor's tool</h1>
 <br/>
 <hr/>
@@ -1481,94 +1498,11 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <br>
+<span class="web-config-data">
 <hr/>
 <br/>
 <h1>Web Config <i class="fas fa-tools"></i></h1>
-<!--<script>
-function disableAllActions(){
-document.querySelector(".check1").checked = false;
-document.querySelector(".check2").checked = false;
-document.querySelector(".check3").checked = false;
-document.querySelector(".check4").checked = false;
-document.querySelector(".check5").checked = false;
-document.querySelector(".check6").checked = false;
-document.querySelector(".check7").checked = false;
-document.querySelector(".check8").checked = false;
-document.querySelector(".check9").checked = false;
-document.querySelector(".check10").checked = false;
-document.querySelector(".check11").checked = false;
-document.querySelector(".check12").checked = false;
-document.querySelector(".check13").checked = false;
 
-document.querySelector(".check1").click();
-document.querySelector(".check2").click();
-document.querySelector(".check3").click();
-document.querySelector(".check4").click();
-document.querySelector(".check5").click();
-document.querySelector(".check6").click();
-document.querySelector(".check7").click();
-document.querySelector(".check8").click();
-document.querySelector(".check9").click();
-document.querySelector(".check10").click();
-document.querySelector(".check11").click();
-document.querySelector(".check12").click();
-document.querySelector(".check13").click();
-
-
-}
-function enableAllActions(){
-document.querySelector(".check1").checked = true;
-document.querySelector(".check2").checked = true;
-document.querySelector(".check3").checked = true;
-document.querySelector(".check4").checked = true;
-document.querySelector(".check5").checked = true;
-document.querySelector(".check6").checked = true;
-document.querySelector(".check7").checked = true;
-document.querySelector(".check8").checked = true;
-document.querySelector(".check9").checked = true;
-document.querySelector(".check10").checked = true;
-document.querySelector(".check11").checked = true;
-document.querySelector(".check12").checked = true;
-document.querySelector(".check13").checked = true;
-
-document.querySelector(".check1").click();
-document.querySelector(".check2").click();
-document.querySelector(".check3").click();
-document.querySelector(".check4").click();
-document.querySelector(".check5").click();
-document.querySelector(".check6").click();
-document.querySelector(".check7").click();
-document.querySelector(".check8").click();
-document.querySelector(".check9").click();
-document.querySelector(".check10").click();
-document.querySelector(".check11").click();
-document.querySelector(".check12").click();
-document.querySelector(".check13").click();
-
-}
-function resetAllActions(){
-	document.querySelector(".check1").checked = true;
-document.querySelector(".check2").checked = true;
-document.querySelector(".check3").checked = false;
-document.querySelector(".check4").checked = true;
-document.querySelector(".check5").checked = false;
-document.querySelector(".check6").checked = false;
-document.querySelector(".check7").checked = true;
-document.querySelector(".check8").checked = true;
-document.querySelector(".check9").checked = true;
-document.querySelector(".check10").checked = true;
-document.querySelector(".check11").checked = false;
-document.querySelector(".check12").checked = true;
-document.querySelector(".check13").checked = false;
-
-
-}
-</script>
-<br/>
-<button role="disable" class="DisableWeb" onclick="disableAllActions()">Disable All</button>
-<button role="enable" class="EnableWeb" onclick="enableAllActions()">Enable All</button>
-<button role="reset" class="ResetWeb" onclick="resetAllActions()">Reset All</button>
--->
 <br/>
 
 <style>
@@ -1770,7 +1704,7 @@ document.querySelector(".check13").checked = false;
 <div class="checkbox-icons"></div>
 </label>
 </div>
-
+</span>
 </div>
 
 <br>
