@@ -1,0 +1,3 @@
+* Updated the README.md
+* Now doesn't support mobile device when being built/uploaded
+* Fixed the config on the "Editor's tool"
