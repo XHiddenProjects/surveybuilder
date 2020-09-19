@@ -1,1 +1,1 @@
-* Can view PhP for SQL and copy and paste codes this will only work if you DON'T add < ?php ? >
+* Can view PhP for SQL and copy and paste codes this will only work if you DON'T add <?php ?>
