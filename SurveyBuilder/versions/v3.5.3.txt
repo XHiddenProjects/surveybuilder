@@ -1,1 +1,3 @@
-
+* Now supports iPhone 11(Pro, Pro Max)
+* Updated ReadMe.md
+* Added files to meet requirements
