@@ -1,0 +1,1 @@
+* Added Internet check(This will see if you have internet); If false it will remove sidebar until reconnected.
