@@ -4,6 +4,12 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
+# Notice:
+
+I won't be adding any extra downloads to the release ex. SurveyBuilderInstaller.exe
+
+***
+
 # Dependicys 
 
 You can use a batch file to use to find the dependicys, otherwise here is what it's depended.
