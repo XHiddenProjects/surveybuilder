@@ -1,6 +1,6 @@
 {
   "name": "@surveybuilderadmin/surveybuilder",
-  "version": "3.5.8",
+  "version": "3.6.0",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,10 @@
   "devdependencies": {},
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/SurveyBuilderAdmin/SurveyBuilder/issues"
+  },
+  "homepage": "https://github.com/SurveyBuilderAdmin/SurveyBuilder#readme",
+  "devDependencies": {}
 }
