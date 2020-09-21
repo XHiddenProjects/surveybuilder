@@ -1,5 +1,5 @@
 {
-  "name": "@surveybuilderadmin/surveybuilder",
+  "name": "@surveybuilderteam/surveybuilder",
   "version": "3.6.0",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
   "main": "index.js",
@@ -13,8 +13,7 @@
     "mysql": "^2.18.1"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/SurveyBuilderAdmin/SurveyBuilder.git"
+    "url": "ssh://git@github.com/surveybuilderteam/surveybuilder.git"
   },
   "devdependencies": {},
   "publishConfig": {
