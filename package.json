@@ -16,7 +16,6 @@
   "repository": {
     "url": "ssh://git@github.com/surveybuilder-admin/surveybuilder.git"
   },
-  "devdependencies": {},
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
