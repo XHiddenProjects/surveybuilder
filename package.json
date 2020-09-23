@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/surveybuilder-admin/surveybuilder#readme",
   "devDependencies": {
-    "@surveybuilder/Builder/API/API.txt": "3.6.1"
+    "surveybuilder-admin/surveybuilder": "^3.6.1"
   }
 }
