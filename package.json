@@ -1,8 +1,8 @@
 {
-  "name": "@surveybuilder-admin/surveybuilder",
-  "version": "3.6.1",
+  "name": "surveybuilder",
+  "version": "^3.6.1",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error:no test specified\" && exit 1"
   },
@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/surveybuilder-admin/surveybuilder#readme",
   "devDependencies": {
-    "surveybuilder-admin/surveybuilder": "3.6.1"
+   
   }
 }
