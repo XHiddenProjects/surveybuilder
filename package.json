@@ -1,6 +1,6 @@
 {
   "name": "@surveybuilder-admin/surveybuilder",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
   "main": "index.js",
   "scripts": {
