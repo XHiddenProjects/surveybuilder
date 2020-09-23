@@ -5,18 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Attach to Chrome",
+            "port": 443,
+            "request": "attach",
+            "type": "pwa-chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+
+        {
+            "name": "Launch Edge",
+            "request": "launch",
+            "type": "pwa-msedge",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "name": "Attach to Edge",
-            "port": 9222,
+            "port": 443,
             "request": "attach",
             "type": "pwa-msedge",
             "webRoot": "${workspaceFolder}"
         },
-        {
-            "type": "pwa-chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        }
+        
     ]
 }
