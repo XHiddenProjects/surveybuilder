@@ -11,8 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "mysql": "^2.18.1",
-    "webshot": "^0.18.0"
+    "mysql": "^2.18.1"
   },
   "repository": {
     "url": "ssh://git@github.com:surveybuilder-admin/surveybuilder.git"
