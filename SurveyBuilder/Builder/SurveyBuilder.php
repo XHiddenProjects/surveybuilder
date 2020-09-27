@@ -1,12 +1,12 @@
 <html>
 <head id="Headers">
-<script>
+<!--<script>
 //prevents users for iframing this
  if(self != top) { 
   document.querySelector("html").innerHTML = "";
   top.location = self.location;
  }
-</script>
+</script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <!--<script src="https://kit.fontawesome.com/46bb4793e2.js"></script>-->
@@ -26,7 +26,6 @@
  <meta name="UsersForm" hidden="hidden" content="SurveyBuilderId:19494sbybfdyfuy47grfrfureuyervchfiuerhgyuer748gryru435943578347f"/>
  <meta name="Forum" property="og:url" content="https://surveymaker.boards.net"/>
 <title id="UserTitle">Untitled - Survey Builder</title>
-<link rel="stylesheet" href="./fontawesome/css/all.css"/>
 <link rel="stylesheet" type="text/css" href="SurveyBuilder.css"/>
 <link rel="stylesheet" href="SurveyBuilderMobile.css"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -117,7 +116,7 @@ if(!file_exists($file)){
 <!--<error id="SpanError" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry spam block as been added. Your Clicks: <span id="Count" style="color:white;"></span> times</error>-->
 <br>
 <br>
-<span class="title title-input title-execute"><input type="text" id="titleSave" autocomplete="off" title="Enter Title" onkeydown="testback(event);" onkeypress="wcount()" pattern="[a-zA-Z0-9]{,15}"  placeholder="Enter a title" required><input id="titleSave-btn" title="Save Title" onclick="savetitle()" type="submit" value="Save"></span>
+<span class="title title-input title-execute"><input type="text" id="titleSave" autocomplete="off" title="Enter Title" onkeydown="testback(event);" onkeypress="wcount()" pattern="[a-zA-Z0-9]{,15}"  placeholder="Enter a title" required><button id="titleSave-btn" title="Save Title" onclick="savetitle()" type="submit">Save</button></span>
 <div id="wcc" style="position:absolute;left:65%; top:13.5%;font-size:25px;"><span id="Wcount" style="color:red;">0</span><span>/</span><span id="maxTitle">25</span>&nbsp;<span>char.</span></div>
 
  </div>
@@ -425,12 +424,12 @@ return false;
 <li id="New"><i class="fab fa-cpanel" style="font-size:52px;"></i></li>
 </span>
 <span id="CSS">
-<li id="New">Custom CSS</li>
+<li id="New">Custom CSS&nbsp;&nbsp;<i class="fab fa-css3"></i></li>
 <textarea rows="10" cols="30" placeholder="Custom CSS" spellcheck="false"  autocorrect="off" id="cssFormat" onchange="CSSInsert()"></textarea>
 </span>
 
 <span id="Js">
-<li id="New">Custom Javascript/Jquery</li>
+<li id="New">Custom Javascript/Jquery&nbsp;&nbsp;<i class="fab fa-js"></i></li>
 <textarea rows="10" cols="30" placeholder="Custom Javascript/Jquery" spellcheck="false"  autocorrect="off" id="jsFormat" onchange="JSInsert()"></textarea>
 </span>
 <span id="addons">
@@ -438,7 +437,7 @@ return false;
 <button type="button" onclick="AddonInsert()">Add Addon</button>
 </span>
 <span id="sql">
-<li id="New">Add Database(SQL)</li>
+<li id="New">Database(SQL)&nbsp;&nbsp;<i class="fas fa-database"></i></li>
 <!--<a href="./db/AddDatabase.php">-->
 <button type="button" onclick="CreateData()">Add Database</button>
 <!--<a href="./db/EditDatabase.php">-->
@@ -473,7 +472,7 @@ function AddPublished(){
 <textarea rows="10" cols="30" placeholder="Custom API system" spellcheck="false"  autocorrect="off" id="APIFormat" onchange="APIInserts()">{&#10;&#10;}</textarea>
 </span>-->
 <span id="Form-edit">
-<li id="New">Edit Form</li>
+<li id="New">Edit Form&nbsp;&nbsp;<i class="fas fa-edit"></i></li>
 
 <li id="method">
 <select onchange="Formset()" id="formmethod"><optgroup label="Method"><option value="POST">POST</option><option value="GET">GET</option></optgroup></select>
@@ -482,7 +481,7 @@ function AddPublished(){
 
 </li>
 <span id="Plugin">
-<li id="New">Insert Plugin</li>
+<li id="New">Insert Plugin&nbsp;&nbsp;<i class="fas fa-puzzle-piece"></i></li>
 <br/>
 <form method='post'>
 <input type="file" id="PluginFile" accept=".html" onchange="InsertPlugin(event)" style="outline:none;"/>
@@ -585,7 +584,53 @@ y.action = "./Apps/appdata/BadWordBlocker.php";
 
 <br/>
 <br/>
-<span style="color:white;">Enter Console (<a href="https://github.com/" title="GitHub" target="_blank" style="cursor:pointer;background-color:transparent;color:white;"><i class="fab fa-github"></i></a> raw)</span><input type="textarea" class="import-code github-import github-import-code" placeholder="Enter GitHub Raw"/><button onclick="ImportConsoleRaw()" type="button">Import <i class="fas fa-upload"></i></button>
+<span style="color:white;">Enter Console (<a href="https://github.com/" title="GitHub" target="_blank" style="cursor:pointer;background-color:transparent;color:white;"><i class="fab fa-github"></i></a> GitHub)</span><input type="textarea" class="import-code github-import github-import-code" placeholder="Enter GitHub Raw"/><button onclick="ImportConsoleRaw()" type="button">Import <i class="fas fa-upload"></i></button>
+<br/>
+<br/>
+<button type="button" class="import_console_btn" onclick="importTxtFile()"><i class="fas fa-file-alt"></i> Upload TXT file</button>
+<input type="file" class="import_console_file_text" accept=".txt"/>
+<style>
+.import_console_file_text{ 
+    width: 1px; 
+    visibility: hidden;
+}
+</style>
+<script>
+$(function(){
+    $('.import_console_btn').click(function(){
+        $('.import_console_file_text').click();
+    });
+});
+$(function(){
+	$('.import_console_file_text').change(function(event){
+		let temppath = URL.createObjectURL(event.target.files[0]);
+		
+		//getFile
+		let fp = $('.import_console_file_text');
+		let lg = fp[0].files.length;
+		var items = fp[0].files;
+		
+		//testFile
+		if(lg>0){
+			for(let i=0;i<lg;i++){
+				 var fileName = items[i].type;
+			}
+		}
+		if(fileName !== "text/plain"){
+			alert("Invalid file");
+			return false;
+		}
+		
+		
+		//otherwise
+		$.get(temppath, function(data){
+			
+			document.querySelector("#Console").value = data;
+			document.getElementById("Insert-Object").innerHTML = data;
+		});
+	});
+});
+</script>
 <br/>
 <br/>
 <textarea placeholder="Console" required="true" name="Console" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditFormFromConsole()" class="lined" id="Console"></textarea>
@@ -721,7 +766,7 @@ return false;
 </form>
 </span>
 <span id="cmdprompt">
-<li id="New">Command Prompt</li>
+<li id="New">Command Prompt&nbsp;&nbsp;<i class="fas fa-terminal"></i></li>
 
 <br/>
 <textarea placeholder="Command" required="true" name="CmdPrompt" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditCmdPrompt()" class="lined" id="cmdPrompt"></textarea>
@@ -923,7 +968,7 @@ setTimeout(loop1, 0);
 </span>
 
 <span id="remove-element">
-<li id="New">Remove Element</li>
+<li id="New">Remove Element&nbsp;&nbsp;<i class="fas fa-trash"></i></li>
 <li><input type="text" id="DelID" placeholder="Enter ID"/></li>
 <li class="Unistall" onclick="RemoveElement()">Delete Element</li>
 <script type="text/javascript">
@@ -945,7 +990,7 @@ return false;
 }
 </script>
 </span>
-<li id="New">Folder/File Map</li>
+<li id="New">Folder/File Map&nbsp;&nbsp;<i class="far fa-file-archive"></i></li>
 <style>
 .Folder-Location{
 	color:white; 
@@ -1259,7 +1304,6 @@ echo "<br/>";
 </details> 
 </details>
 </span>
-<li id="New">Scroll Top</li>
 <span id="scroll-container-bottom">
 <li id="Scroll-bottom" onclick="scrollUp()" class="scroll scroll-to-top">Scroll to Top&nbsp;&nbsp;<i class="far fa-arrow-alt-circle-up"></i></li>
 <script>
@@ -1705,8 +1749,13 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <div class="checkbox-icons"></div>
 </label>
 </div>
+<!--<br/>
+<div id="google_translate_element"></div>-->
 </span>
 </div>
+
+
+<!--style="position:absolute;left:300%;"-->
 
 <br>
 <br>
@@ -1721,8 +1770,19 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <footer id="SurveyMakerBanner" role="banner"><div id="Banner"><span id="Icon"><img src="favicon.ico" width="50" height="50" title="SurveyMaker" alt="SurveyMaker Icon"/></span><span id="Text1">Join SurveyBuilder TODAY! <span id="Text2">Join Our <a id="FourmLink" title="Fourm" href="https://surveybuilder.boards.net/" target="_blank">Fourm</a></span><span id="Text3">&copy;SurveyBuilder</span></div></footer>
 <div id="copyright-print">&copy; SurveyBuilder</div>
 </div>
+
+<!--<div class="langDataSec"></div>-->
+<!--<script>
+function googleTranslateElementInit(){
+	new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');	
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
 <script src="./Config/Config.js" type="text/javascript"></script>
+
+
 <script>
+
 //coords:
 var check1 = document.querySelector(".check1");//banner
 var check2 = document.querySelector(".check2");//console
@@ -1877,5 +1937,6 @@ function setUsername(){
 	
 } 
 </script>
+
 </body>                                                                      
 </html>         
