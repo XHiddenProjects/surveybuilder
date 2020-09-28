@@ -1,7 +1,7 @@
 ![SurveyBuilder](https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/banner.png?raw=true)
 
 
-<a href="https://github.com/surveybuilderteams/surveybuilder/releases"><image src="https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/version.svg"/></a>
+<a href="https://github.com/surveybuilderteams/surveybuilder/releases" target="_blank"><image src="https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/version.svg"/></a>
 
 ***
 
