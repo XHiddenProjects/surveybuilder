@@ -16,7 +16,7 @@
         <text x="43" y="14">Download</text>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="111" y="13" fill="#010101" fill-opacity=".3">Zip Extractor</text>
-        <text x="110" y="12">Zip Extractor</text>
+        <text x="111" y="15" fill="#010101" fill-opacity=".3">Zip Extractor</text>
+        <text x="110" y="14">Zip Extractor</text>
     </g>
 </svg>
