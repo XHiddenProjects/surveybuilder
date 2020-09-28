@@ -15,7 +15,7 @@
         <text x="44" y="15" fill="#010101" fill-opacity=".3">Download</text>
         <text x="43" y="14">Download</text>
     </g>
-    <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <g fill="#fff" text-anchor="middle" width="320" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
         <text x="111" y="15" fill="#010101" fill-opacity=".3">Zip Extractor</text>
         <text x="110" y="14"> Zip Extractor</text>
     </g>
