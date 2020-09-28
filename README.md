@@ -1,5 +1,6 @@
 ![SurveyBuilder](https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/banner.png?raw=true)
-<br/>
+
+
 ![Version](https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/version.svg?raw=true)
 
 ***
