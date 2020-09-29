@@ -1,22 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="133" height="20">
-    <linearGradient id="b" x2="0" y2="100%">
-        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
-        <stop offset="1" stop-opacity=".1"/>
-    </linearGradient>
-    <mask id="a">
-        <rect width="133" height="20" rx="3" fill="#fff"/>
-    </mask>
-    <g mask="url(#a)">
-        <path fill="#555" d="M0 0h87v20H0z"/>
-        <path fill="#97CA00" d="M87 0h46v20H87z"/>
-        <path fill="url(#b)" d="M0 0h133v20H0z"/>
-    </g>
-    <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="44" y="15" fill="#010101" fill-opacity=".3">Dev Release</text>
-        <text x="43" y="14">Dev Release</text>
-    </g>
-    <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="111" y="15" fill="#010101" fill-opacity=".3">Passing</text>
-        <text x="110" y="14">Passing</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="198.5" height="28" role="img" aria-label="DEV RELEASE: PASSING">
+    <title>DEV RELEASE: PASSING</title><g shape-rendering="crispEdges"><rect width="113.5" height="28" fill="#555"/>
+    <rect x="113.5" width="85" height="28" fill="#4c1"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="100"/>
+    <text fill="#fff" x="567.5" y="175" transform="scale(.1)" textLength="895">DEV RELEASE</text>
+    <text fill="#fff" x="1560" y="175" font-weight="bold" transform="scale(.1)" textLength="610">PASSING</text>
     </g>
 </svg>
