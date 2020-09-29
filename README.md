@@ -4,7 +4,9 @@
 <a href="https://github.com/surveybuilderteams/surveybuilder/releases" target="_blank"><image src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/version.svg"/></a>
 ![build](https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/build_pass.svg)
 ![Dev Release](https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/DevRelease.svg)
-
+<a href="https://github.com/surveybuilderteams/surveybuilder/archive/master.zip" target="_blank">
+<image src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/download.svg"/>
+</a>
 ***
 
 
