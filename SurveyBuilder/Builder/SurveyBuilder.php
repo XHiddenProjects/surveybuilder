@@ -112,7 +112,7 @@ if(!file_exists($file)){
 	 <center><h1 id="yourTitle">Untitled</h1></center><br>
 <!--Change title-->
 <div id="YourTitleTag">
-<error id="Error" role="tooltip" class="error" aria-label="error" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry you need a title before saving it or its to long</error>
+<error id="Error" role="tooltip" class="error" aria-label="error" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry you need a title before saving it or its to long or username is blank</error>
 <!--<error id="SpanError" hidden="true">X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sorry spam block as been added. Your Clicks: <span id="Count" style="color:white;"></span> times</error>-->
 <br>
 <br>
@@ -226,7 +226,10 @@ function resetScore(){
 <script>
 function scrollDown(){
 var elmnt = document.getElementById("Scroll-bottom");
-elmnt.scrollIntoView();
+elmnt.scrollIntoView({
+	behavior: 'smooth',
+    block: 'start'
+});
 }
 </script>
 </span>
@@ -483,9 +486,42 @@ function AddPublished(){
 <span id="Plugin">
 <li id="New">Insert Plugin&nbsp;&nbsp;<i class="fas fa-puzzle-piece"></i></li>
 <br/>
-<form method='post'>
-<input type="file" id="PluginFile" accept=".html" onchange="InsertPlugin(event)" style="outline:none;"/>
-</form>
+<input type="file" id="PluginFile" accept=".html" style="outline:none;"/>
+<script>
+$(function(){
+	$('#PluginFile').change(function(event){
+		let temppath = URL.createObjectURL(event.target.files[0]);
+		
+		//getFile
+		let fp = $('#PluginFile');
+		let lg = fp[0].files.length;
+		var items = fp[0].files;
+		
+		//testFile
+		if(lg>0){
+			for(let i=0;i<lg;i++){
+				 var pluginType = items[i].type;
+				 var pluginSize = items[i].size;
+			}
+		}
+		if(pluginType !== "text/html"){
+			alert("Invalid file");
+			return false;
+		}
+		if(pluginSize > 10000){
+			alert("File Size must be 10KB or less.");
+			return false;
+		}
+		
+		//otherwise
+		$.get(temppath, function(data){
+			
+			document.querySelector("#Console").value = data;
+			document.getElementById("Insert-Object").innerHTML = data;
+		});
+	});
+});
+</script>
 </span>
 
 </span>
@@ -1309,7 +1345,10 @@ echo "<br/>";
 <script>
 function scrollUp(){
 var elmnt = document.querySelector(".exit");
-elmnt.scrollIntoView();
+elmnt.scrollIntoView({
+	behavior: 'smooth',
+    block: 'start'
+});
 }
 </script>
 </span>
@@ -1703,7 +1742,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br/>
 <span class="label_config">Allow_cPanel:</span>
 <div class="checkbox">
-<input type="checkbox" class="checkbox-input check12" checked="" onclick="setcPanel()"/>
+<input type="checkbox" class="checkbox-input check12" checked="" onclick="setcPanels()"/>
 <label for="checkbox-input">
 <div class="checkbox-icons"></div>
 </label>
@@ -1714,9 +1753,10 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <input type="number" placeholder="Enter a number from 10-40" title="Number must be more then 10 and less than 40" min="10" max="40" onchange="setMaxTitle()" class="maxTitleInput"/>
 </div>
 <br/>
+
 <span class="label_config">username:</span>
 <div class="user username-con">
-<input type="text" placeholder="Enter Username" style="width:320px;font-size:25px;" class="username-input" oninput="setUsername()"/>
+<input type="text" placeholder="Enter Username" id="userCode" style="width:320px;font-size:25px;" class="username-input username-data" oninput="setUsername()"/>
 </div>
 <br/>
 <span class="label_config">banIp:</span>
@@ -1886,7 +1926,7 @@ function setCollectIP(){
 	}
 	setTimeout(testCorrospond, 0);
 }
-function setcPanel(){
+function setcPanels(){
 	if(Allow_cPanel == true && check12.checked == false){
 		Allow_cPanel = false;
 	}else{
