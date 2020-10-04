@@ -76,6 +76,7 @@ if(!file_exists($file)){
 </div>
 
 <div id="Body-Container">
+
 <!--<style>
 .loading-temp{
 	z-index:1;
@@ -504,7 +505,8 @@ $(function(){
 				 var pluginSize = items[i].size;
 			}
 		}
-		if(pluginType !== "text/html"){
+		
+		if(pluginType !== ".sbconsole"){
 			alert("Invalid file");
 			return false;
 		}
@@ -623,8 +625,8 @@ y.action = "./Apps/appdata/BadWordBlocker.php";
 <span style="color:white;">Enter Console (<a href="https://github.com/" title="GitHub" target="_blank" style="cursor:pointer;background-color:transparent;color:white;"><i class="fab fa-github"></i></a> GitHub)</span><input type="textarea" class="import-code github-import github-import-code" placeholder="Enter GitHub Raw"/><button onclick="ImportConsoleRaw()" type="button">Import <i class="fas fa-upload"></i></button>
 <br/>
 <br/>
-<button type="button" class="import_console_btn" onclick="importTxtFile()"><i class="fas fa-file-alt"></i> Upload TXT file</button>
-<input type="file" class="import_console_file_text" accept=".txt"/>
+<button type="button" class="import_console_btn"><i class="fas fa-file-alt"></i> Upload .sbconsole file</button>
+<input type="file" class="import_console_file_text" accept=".sbconsole"/>
 <style>
 .import_console_file_text{ 
     width: 1px; 
@@ -637,23 +639,36 @@ $(function(){
         $('.import_console_file_text').click();
     });
 });
+
+
+
+</script>
+<script>
 $(function(){
 	$('.import_console_file_text').change(function(event){
 		let temppath = URL.createObjectURL(event.target.files[0]);
 		
 		//getFile
-		let fp = $('.import_console_file_text');
-		let lg = fp[0].files.length;
-		var items = fp[0].files;
-		
-		//testFile
-		if(lg>0){
-			for(let i=0;i<lg;i++){
-				 var fileName = items[i].type;
-			}
-		}
-		if(fileName !== "text/plain"){
-			alert("Invalid file");
+     let fp = $(".import_console_file_text");
+    let lg = fp[0].files.length; // get length
+    let items = fp[0].files;
+ 
+    
+    if (lg > 0) {
+        for (var i = 0; i < lg; i++) {
+            var fileName = items[i].name; // get file name  
+			
+        }
+	}
+	//Gets file type
+		let getFileName = fileName.split('.sbconsole');
+		let string = getFileName.toString();
+		let removeComma = string.replace(",", "");
+		   let submax = removeComma + ".sbconsole";
+		   //test fileName w/ submax
+		   
+		if(fileName !== submax){
+	alert("Invalid file");
 			return false;
 		}
 		
@@ -721,7 +736,7 @@ document.getElementById("Console").value = "";
 		 document.getElementById("Insert-Object").innerHTML = "";
 return false;
 	}
-	let FullURL = "/SurveyBuilder/Console/Console-" + ID + ".txt";
+	let FullURL = "/SurveyBuilder/Console/Console-" + ID + ".sbconsole";
 	$.get(FullURL, function(data){
 		
 	
@@ -1041,9 +1056,30 @@ return false;
 
 </style>
 <span class="Folder-Location">
+<button onclick="ExpandAll()">Expand all</button>&nbsp;&nbsp;<button onclick="DexpandAll()">Dexpand all</button>
+<script>
+function ExpandAll(){
+	let folders = document.querySelectorAll("details");
+	let i;
+	for (i = 0; i < folders.length; i++) {
+		folders[i].open=true;
+	}
+	
+}
+function DexpandAll(){
+	let folders = document.querySelectorAll("details");
+	let i;
+	for (i = 0; i < folders.length; i++) {
+		folders[i].open=false;
+	}
+	
+}
+</script>
+<br/>
+<br/>
 <details class="Folder-Location-Map">
 <summary><i class="fas fa-folder"></i> htdocs</summary>
-<details>
+<details class="Folder-Location-Map">
 <summary><i class="fas fa-folder"></i> SurveyBuilder</summary>
 <details>
 <summary><i class="fas fa-folder"></i> .vs</summary>
@@ -1758,6 +1794,20 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <div class="user username-con">
 <input type="text" placeholder="Enter Username" id="userCode" style="width:320px;font-size:25px;" class="username-input username-data" oninput="setUsername()"/>
 </div>
+<script>
+document.querySelector(".username-input").onchange(function(){
+let userIn = document.querySelector(".username-input").value;
+ $.get("./users/usernames.json", function(data){
+	let str = JSON.stringify(data);
+	if(userIn !== str.Username[0]){
+		alert("Username is not valid");
+		return false;
+	}else{
+		return false;
+	}
+ });
+ });
+</script>
 <br/>
 <span class="label_config">banIp:</span>
 <div class="Warning-input">
@@ -1789,8 +1839,121 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <div class="checkbox-icons"></div>
 </label>
 </div>
-<!--<br/>
-<div id="google_translate_element"></div>-->
+<br>
+<br>
+<br>
+<br>
+<hr/>
+<h1>Stylist <i class="fas fa-palette"></i></h1>
+<br/>
+<i class="fas fa-asterisk" style="color:red;"></i> <span class="data-id-con">Enter ID: <input type="text" title="Enter ID" class="style-id" placeholder="Style ID"/></span>
+<br/>
+<br/>
+Bold(<i class="fas fa-bold" title="Bold"></i>): <input type="checkbox" class="style style-checkbox style-bold" onclick="setBold()"/><br/>
+Italic(<i class="fas fa-italic" title="Italic"></i>): <input type="checkbox" class="style style-checkbox style-italic" onclick="setItalic()"/><br/>
+Underline(<i class="fas fa-underline" title="Underline"></i>): <input type="checkbox" class="style style-checkbox style-underline" onclick="setUnderline()"/><br/>
+Strikethrough(<i class="fas fa-strikethrough" title="Strikethrough"></i>): <input type="checkbox" class="style style-checkbox style-strikethrough" onclick="setStrikethrough()"/><br/>
+Color(<i class="fas fa-paint-brush" title="Font Color"></i>): <input type="color" value="#000" class="style style-color style-fontColor" oninput="setColor()"/><br/>
+BGColor(<i class="fas fa-paint-roller" title="Font Background Color"></i>): <input type="color" value="#000" class="style style-color style-fontBgColor" oninput="setBgColor()"/> Transparent: <input type="checkbox" class="style style-checkbox style-fontBgColor-Transparent" onclick="setBgColor()"/><br/>
+Font Size(<i class="fas fa-text-height" title="Font Size"></i>) <input type="number" min="0" value="" placeholder="Enter int(number[px])" class="style style-number style-fontSize" oninput="setFontSize()"/><br/>
+Font Family(<i class="fas fa-font" title="Font Family"></i>): <input type="text" value="" placeholder="Enter Font Family Name" class="style style-text style-fontFamily" oninput="setFontFamily()"/><br/>
+Text align:(<i class="fas fa-align-justify" title="Text Align"></i>):
+<select class="style style-select style-align" onchange="setTextAlign()">
+<option value="left-align">Left align</option>
+<option value="center-align">Center align</option>
+<option value="right-align">Right align</option>
+<option value="justify-align">Justify align</option>
+</select><br/>
+Text dents:(<i class="fas fa-indent" title="Text Dent"></i>): <input type="number" min="0" oninput="setTextDent()" placeholder="Enter a int(number[%])" class="style-dent"/>
+<!--Style script-->
+<script>
+//setData 
+var System = document.querySelector(".style-id");
+var Bold = document.querySelector(".style-bold");
+var Italic = document.querySelector(".style-italic");
+var Underline = document.querySelector(".style-underline");
+var Strikethrough = document.querySelector(".style-strikethrough");
+var Color = document.querySelector(".style-fontColor");
+var BgColor = document.querySelector(".style-fontBgColor");
+var BgColorTrans = document.querySelector(".style-fontBgColor-Transparent");
+var Fsize = document.querySelector(".style-fontSize");
+var Ffamily = document.querySelector(".style-fontFamily");
+var txtAlign = document.querySelector(".style-align");
+var txtDent = document.querySelector(".style-dent");
+//bold
+function setBold(){
+	if(Bold.checked){
+		document.getElementById(System.value).style.fontWeight = "bold";
+	}else{
+		document.getElementById(System.value).style.fontWeight = "normal";
+	}
+	
+}
+function setItalic(){
+	if(Italic.checked){
+		document.getElementById(System.value).style.fontStyle = "italic";
+	}else{
+		document.getElementById(System.value).style.fontStyle = "normal";
+	}
+	
+}
+function setUnderline(){
+	if(Underline.checked){
+		document.getElementById(System.value).style.textDecoration = "underline";
+	}else{
+		document.getElementById(System.value).style.textDecoration = "none";
+	}
+	
+}
+function setStrikethrough(){
+	if(Strikethrough.checked){
+		document.getElementById(System.value).style.textDecoration = "line-through";
+	}else{
+		document.getElementById(System.value).style.textDecoration = "none";
+	}
+	
+}
+function setColor(){
+document.getElementById(System.value).style.color = Color.value;
+}
+function setBgColor(){
+	if(BgColorTrans.checked){
+		document.getElementById(System.value).style.backgroundColor = "transparent";
+	}else{
+		BgColorTrans.checked = false;
+		document.getElementById(System.value).style.background = BgColor.value;
+	}
+
+}
+function setFontSize(){
+	document.getElementById(System.value).style.fontSize = Fsize.value;
+}
+function setFontFamily(){
+	document.getElementById(System.value).style.fontFamily = Ffamily.value;
+}
+function setTextAlign(){
+	if(txtAlign.selectedIndex == "0"){
+		document.getElementById(System.value).style.textAlign = "left";
+	}
+	if(txtAlign.selectedIndex == "1"){
+		document.getElementById(System.value).style.textAlign = "center";
+	}
+	if(txtAlign.selectedIndex == "2"){
+		document.getElementById(System.value).style.textAlign = "right";
+	}
+	if(txtAlign.selectedIndex == "3"){
+		document.getElementById(System.value).style.textAlign = "justify";
+	}
+}
+function setTextDent(){
+		let percent = txtDent.value + "%";
+		document.getElementById(System.value).style.textIndent = percent;	
+}
+</script>
+<!--Style script(End)-->
+<!--Style script(End)-->
+
+
 </span>
 </div>
 
