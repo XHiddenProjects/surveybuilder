@@ -16,6 +16,12 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
+# Custom File(.sbconsole)
+
+Check out how you can add .sbconsole file to your PC: <a href="https://github.com/surveybuilderteams/SurevyBuilderConsoleFile/tree/main">.sbconsole file</a>
+
+***
+
 # Notice:
 
 I won't be adding any extra downloads to the release ex. SurveyBuilderInstaller.exe
