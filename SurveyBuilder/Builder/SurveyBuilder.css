@@ -398,7 +398,7 @@ border-right:3px solid black;
 	padding:0;
 	position:absolute;
 	right:367px;
-	top:75px;
+	top:180px;
 }
 
 #BgColor{
@@ -470,8 +470,8 @@ input:checked + .slider:before {
 }
 #Slider-Con{
 	position:absolute;
-	right:-255px;
-	top:-80px;
+	right:-160px;
+	top:-40px;
 }
 #CheckPre{
 	position:absolute;
@@ -510,11 +510,12 @@ input:checked + .slider:before {
 	height:500px;
 	width:320px;
 	background-color:#00ffd5;
-	float:right;
+	
 }
 #Editor-Control-Form h1{
 	text-align:center;
 }
+
 /*Thank you*/
 
 
