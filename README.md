@@ -24,7 +24,7 @@ Check out how you can add .sbconsole file to your PC: <a href="https://github.co
 
 # Videos
 
-<video src="https://www.youtube.com/embed/4GFmW5ZGass" style="width:100%; height:32%;"></video>
+[![](https://i.ytimg.com/vi/4GFmW5ZGass/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAoUEGGx8hN7nKfEZIWFOXGqjT4fg)](https://www.youtube.com/watch?v=4GFmW5ZGass)
 
 ***
 
