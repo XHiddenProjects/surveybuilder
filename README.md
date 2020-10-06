@@ -22,6 +22,12 @@ Check out how you can add .sbconsole file to your PC: <a href="https://github.co
 
 ***
 
+# Videos
+
+<video src="https://www.youtube.com/watch?v=4GFmW5ZGass"></video>
+
+***
+
 # Notice:
 
 I won't be adding any extra downloads to the release ex. SurveyBuilderInstaller.exe
