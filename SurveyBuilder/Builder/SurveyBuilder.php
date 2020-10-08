@@ -35,7 +35,7 @@
 <script src="SurveyBuilder.js" type="text/javascript"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
 <script src="https://kit.fontawesome.com/46bb4793e2.js" crossorigin="anonymous"></script>
-<script src="serviceworker.js"></script>
+<script src="serviceworker.js" type="text/javascript"></script>
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
 <!--Templeates-->
@@ -204,7 +204,7 @@ function resetScore(){
  <!--Sidebar-->
               
 
-<div id="Sidebar" role="sidebar">
+<div id="Sidebar">
 <div class="toggle-sidebar-btn" role="sidebar-button"  onclick="togglesidebar()" title="Add Elements" style="cursor:pointer;">
 <span></span>                                                                                                                                       
 <span></span>
@@ -1414,14 +1414,14 @@ if(InternetStatus){
 	document.querySelector(".Internet-Status").style.fontSize = "32px";
 	document.querySelector(".Internet-Status").style.color = "green";
 	document.querySelector(".Internet-Status").style.textAlign = "center";
-	   document.querySelector("#Sidebar").hidden = false;
+	  // document.querySelector("#Sidebar").hidden = false;
 }else{
 	let codeWifiDisconnected = "<i class='fad fa-wifi-slash'></i>";
 	document.querySelector(".Internet-Status").innerHTML = codeWifiDisconnected + " Disconnected";
 	document.querySelector(".Internet-Status").style.fontSize = "32px";
 	document.querySelector(".Internet-Status").style.color = "red";
 	document.querySelector(".Internet-Status").style.textAlign = "center";
-    document.querySelector("#Sidebar").hidden = true;
+    //document.querySelector("#Sidebar").hidden = true;
 	
 }
 setTimeout(checkInternetConnection, 0);
@@ -1473,38 +1473,16 @@ setTimeout(checkInternetConnection, 0);
 <div id="Slider-text">Preview: </div>
 <label class="switch">
 <input type="checkbox" id="CheckPre" oninput="Preview()"> 
+
 <span class="slider round"></span></label> 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <button onclick="Publish()" id="Publish">Publish</button>
-</div>  
-</div>
 <script>
-function Publish(){
-	let a = document.getElementById("Sidebar");
-	let b = document.getElementById("Orgtitle");
-	let c = document.getElementById("titleSave");
-	let d = document.getElementById("wcc");
-	let e = document.getElementById("Editor-Control-Form");
-	let f = document.getElementById("titleSave-btn");
-	let g = document.getElementById("Insert-Object");
-	a.hidden = true;
-	b.hidden = true;
-	c.hidden = true;
-	d.hidden = true;
-	e.hidden = true;
-	f.hidden = true;
-	g.contentEditable = false;
-	let links = document.createElement("A");
-	links.href = "SurveyBuilder.php";
-	links.setAttribute("download", "YourPage.php");
-	links.id = "DownloadLinkNow";
-	document.getElementById("links-doc").appendChild(links);
-	
-
-
-}
 
 </script>
+</div>  
+</div>
+
 <br>
 <br>
 <br>
@@ -1794,20 +1772,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <div class="user username-con">
 <input type="text" placeholder="Enter Username" id="userCode" style="width:320px;font-size:25px;" class="username-input username-data" oninput="setUsername()"/>
 </div>
-<script>
-document.querySelector(".username-input").onchange(function(){
-let userIn = document.querySelector(".username-input").value;
- $.get("./users/usernames.json", function(data){
-	let str = JSON.stringify(data);
-	if(userIn !== str.Username[0]){
-		alert("Username is not valid");
-		return false;
-	}else{
-		return false;
-	}
- });
- });
-</script>
+
 <br/>
 <span class="label_config">banIp:</span>
 <div class="Warning-input">
@@ -1832,7 +1797,7 @@ let userIn = document.querySelector(".username-input").value;
 <i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
 </div>
 <br/>
-<span class="label_config">Allow_ad_blocker:</span>
+<span class="label_config">Allow_ad_blocker _annoyance:</span>
 <div class="checkbox">
 <input type="checkbox" class="checkbox-input ad-checkbox check13" onclick="setAdBlocker()"/>
 <label for="checkbox-input">
@@ -1853,9 +1818,9 @@ Bold(<i class="fas fa-bold" title="Bold"></i>): <input type="checkbox" class="st
 Italic(<i class="fas fa-italic" title="Italic"></i>): <input type="checkbox" class="style style-checkbox style-italic" onclick="setItalic()"/><br/>
 Underline(<i class="fas fa-underline" title="Underline"></i>): <input type="checkbox" class="style style-checkbox style-underline" onclick="setUnderline()"/><br/>
 Strikethrough(<i class="fas fa-strikethrough" title="Strikethrough"></i>): <input type="checkbox" class="style style-checkbox style-strikethrough" onclick="setStrikethrough()"/><br/>
-Color(<i class="fas fa-paint-brush" title="Font Color"></i>): <input type="color" value="#000" class="style style-color style-fontColor" oninput="setColor()"/><br/>
-BGColor(<i class="fas fa-paint-roller" title="Font Background Color"></i>): <input type="color" value="#000" class="style style-color style-fontBgColor" oninput="setBgColor()"/> Transparent: <input type="checkbox" class="style style-checkbox style-fontBgColor-Transparent" onclick="setBgColor()"/><br/>
-Font Size(<i class="fas fa-text-height" title="Font Size"></i>) <input type="number" min="0" value="" placeholder="Enter int(number[px])" class="style style-number style-fontSize" oninput="setFontSize()"/><br/>
+Color(<i class="fas fa-paint-brush" title="Font Color"></i>): <input type="color" class="style style-color style-fontColor" oninput="setColor()"/><br/>
+BGColor(<i class="fas fa-paint-roller" title="Font Background Color"></i>): <input type="color" class="style style-color style-fontBgColor" oninput="setBgColor()"/> Transparent: <input type="checkbox" class="style style-checkbox style-fontBgColor-Transparent" onclick="setBgColor()"/><br/>
+Font Size(<i class="fas fa-text-height" title="Font Size"></i>) <input type="number" min="0" placeholder="Enter int(number[px])" class="style style-number style-fontSize" oninput="setFontSize()"/><br/>
 Font Family(<i class="fas fa-font" title="Font Family"></i>): <input type="text" value="" placeholder="Enter Font Family Name" class="style style-text style-fontFamily" oninput="setFontFamily()"/><br/>
 Text align:(<i class="fas fa-align-justify" title="Text Align"></i>):
 <select class="style style-select style-align" onchange="setTextAlign()">
@@ -1951,8 +1916,6 @@ function setTextDent(){
 }
 </script>
 <!--Style script(End)-->
-<!--Style script(End)-->
-
 
 </span>
 </div>
