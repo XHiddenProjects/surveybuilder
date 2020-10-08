@@ -10,7 +10,7 @@ var Allow_Pop_up = false; //Allow alert_box to popup when a user joins
 var limit_list = ["not"]; //Removes any category on your choice. 
 var Allow_Inspect_element = true; //Allows users to use the Inspect Element
 var Allow_location_tracking = false; //Allows you to know there location.. sends this to the console.
-var Allow_API_config = false; //Enables a password that works only when a API is enabled. Password will popup when a player joins.
+var Allow_API_config = [false,"{URL}"]; //Enables a password that works only when a API is enabled. Password will popup when a player joins.
 var get_users_lang = true; //Gives the user lang. to the console
 var get_users_platform = true; //Give the users platform to the console.
 var get_users_usersAngent = true; //Give the users userAgent to the console.
@@ -22,8 +22,8 @@ var username = ""; //Enter username here
 var banIP = []; //Enter IP adderess here
 var Enable_Config_File = "Enable"; //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
 var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supported-- or set to [false] to disable SQL database, this will require you to have a SQL server if using 'mySQL'
-var redirFormLink = "false" //Enter URL to execute the form to add. Use 'false' to deny action
-var Allow_ad_blocker = false //Gives an error if a person is using any ad-blockers
+var redirFormLink = "false"; //Enter URL to execute the form to add. Use 'false' to deny action
+var Allow_ad_blocker = false; //Gives an error if a person is using any ad-blockers(Used as a annoyence it really doesn't detect adblockers)
 
 
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
@@ -35,7 +35,7 @@ setTimeout(testCorrospond, 0);
 console.time();
 function testCorrospond(){
 	if(typeof(Enable_Config_File) !== "string"){
-		console.error("Enable-Config-File must be a string");
+		console.error("Enable_Config_File must be a string");
 		return false;
 	}
 	if(typeof(Allow_Banner_display) !== "boolean"){
@@ -62,10 +62,20 @@ function testCorrospond(){
 		console.error("Allow_location_tracking must be a boolean");
 			return false;
 	}
-	if(typeof(Allow_API_config) !== "boolean"){
-		console.error("Allow_API_config must be a boolean");
+	//API
+	if(Array.isArray(Allow_API_config) !== true){
+		console.error("Allow_API_config must be a Array");
 			return false;
 	}
+	if(typeof(Allow_API_config[0]) !== "boolean"){
+		console.error("Allow_API_config:0 must be a boolean");
+			return false;
+	}
+	if(typeof(Allow_API_config[1]) !== "string"){
+		console.error("Allow_API_config:1 must be a string");
+			return false;
+	}
+	//End of API
 	if(typeof(get_users_lang) !== "boolean"){
 		console.error("get_users_lang must be a boolean");
 			return false;
@@ -113,6 +123,8 @@ function testCorrospond(){
 	if(typeof(Allow_ad_blocker) !== "boolean"){
 		console.error("Allow_ad_blocker must be a boolean");
 	}
+	
+	
 	setTimeout(config, 0);
 
 }
@@ -121,6 +133,7 @@ dir = 0;
 function config(){
 	//Settings
 	if(Enable_Config_File === "Disable"){
+		document.querySelector(".web-config-data").hidden = true;
 		alert("Config file is off");
 		return false;
 	}
@@ -217,30 +230,36 @@ function config(){
 		console.log("Location: false");
 	}	
 //API
-if(Allow_API_config == false){
+if(Allow_API_config[0] == false){
 		console.log("API: false");
 	}
- if(Allow_API_config == true){
-		
-		
-		console.log("API: true");
+ if(Allow_API_config[0] == true){
+	let apiKeyEnable = 1;
 
+           
 	  $.get("./API/API.txt", function(data){
+		  	let url = Allow_API_config[1] + "?api=" + data;
+	if(window.location.href === url){
+		console.log("API: true[weblink]");
+		apiKeyEnable = 0;
+	}
+	if(apiKeyEnable == 1){
 let x = prompt("Enter API key", "");
 	if(x !== data){
 		alert("Sorry wrong API key. Please contact the administrator");
 		setTimeout(API_config, 0);
 		console.error("API key was Invalid");
 	}
-
-
+console.log("API: true[Manual]");
+	  }	  
 });
 
 	
 	
 	
 }
-
+	}
+	
 
 //Get Users Lang
     if(get_users_lang == true){
@@ -369,7 +388,7 @@ setTimeout(MaxTitle, 0);
 //adblocker
 if(Allow_ad_blocker == true){
 	
-if(typeof(window.google_render_ad)=="undefined") 
+if(typeof(window.google_jobrunner)=="undefined") 
 { 
     document.querySelector(".con-ad-block").style.display = "block";
 }
@@ -381,9 +400,8 @@ else{
 if(Allow_ad_blocker == false){
 	console.log("Ad_blocker: false")
 }
+}	
 
-}
-}
 
 
 function Warning(){
@@ -391,6 +409,7 @@ function Warning(){
 	console.warn("Current Update: v16.0.0 - Is up-to-date");
 	
 }
+
 
 //title save
 
@@ -404,18 +423,35 @@ function savetitle(){
 	
 	var s = document.getElementById("titleSave");
 	var Title = document.getElementById("yourTitle");
-	var Displaytitle = document.getElementById("UserTitle");
+	var Displaytitle = document.getElementById("UserTitle"); 
 	let val = s.value;
 	//val = val.match( /\w+/g );
 	//val = val.length;
 	//document.getElementById("Wcount").innerHTML = val;
+	if(username === "" || username === null){
+			Displaytitle.innerText = "Untitled" + " - Survey Builder";
+		Title.innerText = "Untitled";
+		let elmnt = document.getElementById("userCode");
+elmnt.scrollIntoView({
+	behavior: 'smooth',
+    block: 'start'
+});
+setTimeout(function(){elmnt.focus()}, 1000);
+//elmnt.focus();
+	var E = document.getElementById("Error");
+	E.hidden = false;
+	setTimeout(hideError, 10000);
+	return false;
+	}
 	if(val.length <= 0|| val.length > maxTitle){
+		
 		Displaytitle.innerText = "Untitled" + " - Survey Builder";
 		Title.innerText = "Untitled";
 	var E = document.getElementById("Error");
 	E.hidden = false;
 	setTimeout(hideError, 10000);
 	return false;
+		
 	}
 	
 	else{
