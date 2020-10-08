@@ -24,7 +24,7 @@ Check out how you can add .sbconsole file to your PC: <a href="https://github.co
 
 # Videos
 
-<a href="https://www.youtube.com/watch?v=4GFmW5ZGass" title="Welcome to SurveyBuilder"><img src="https://i.ytimg.com/vi/4GFmW5ZGass/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAoUEGGx8hN7nKfEZIWFOXGqjT4fg" widht="520" height="150"/></a>
+<a href="https://www.youtube.com/watch?v=4GFmW5ZGass" title="Welcome to SurveyBuilder"><img src="https://i.ytimg.com/vi/4GFmW5ZGass/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAoUEGGx8hN7nKfEZIWFOXGqjT4fg"/></a>
 <a href="https://www.youtube.com/watch?v=J8n8NwNCdJ0"><img src="https://i.ytimg.com/vi/J8n8NwNCdJ0/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBMLpzRZFibNAe8JYVnWo0U31-mbw"/></a>
 
 ***
