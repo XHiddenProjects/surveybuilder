@@ -125,6 +125,7 @@ if(!file_exists($file)){
  <!--Editor container-->
 <br>
 <br>
+
 <br>
 <center id="Form-Center" onload="Autosave()">
 <form id="Editors-Form" method="post" action="">
@@ -422,6 +423,7 @@ return false;
 
 <!--Add Apps below-->
 
+</script>
 </span>
 <span id="cpanel-form">
 <span id="cPanel">
@@ -1557,7 +1559,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br/>
 <h1>Templeate's</h1>
 <br/>
-<button id="temp" onclick="setupBlank()" title="Blank Templeate">Blank Templeate</button>
+<button id="temp" onclick="setupBlank()" class="blank_temp" title="Blank Templeate">Blank Templeate</button>
 <br>
 <br>
 <br>
@@ -1570,7 +1572,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <br>
-<button id="temp" onclick="setupMedTemp()" title="Medical Templeate">Medical Templeate</button>
+<button id="temp" onclick="setupMedTemp()" class="med_temp" title="Medical Templeate">Medical Templeate</button>
 <br>
 <br>
 <br>
@@ -1583,7 +1585,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <br>
-<button id="temp" onclick="setupPoliceIncidentReportTemp()" title="Police Incident Report Template">Police Incident Report</button>
+<button id="temp" onclick="setupPoliceIncidentReportTemp()" class="Police_temp" title="Police Incident Report Template">Police Incident Report</button>
 <br>
 <br>
 <br>
