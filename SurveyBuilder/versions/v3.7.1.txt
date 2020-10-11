@@ -1,0 +1,4 @@
+- Added new things in config(Now allows you to have URL config where URL has affects to the page)
+::List of URL commands::
+- "?setPreview=1" or "&setPreview=1"
+- "?temp={default template}" or "&temp={default template}"
