@@ -1,8 +1,18 @@
 //Admin Config Panel
 //Allow and disable certain items
 //Everything is eaither True/False
-
-	//Set Variable here
+/*
+system corrnation:
+{url} = url,
+{seperator} = '?' or '&',
+{string} = text,
+{int} = number,
+{boolean} = true/false(most of this already has a boolean...
+(ex:templateSelect:0) has a boolean of true) just to stop any error from occuring you will see tag if boolean is optional, 
+{:optional[string]} = optional format{null(blank)/string(value)}
+{:(int[number])} = you see this in error something:(int[number]) this means an error occured in a line
+*/
+	//web Config
 	
 var Allow_Banner_display = true; //Allow to display SurveyBuilder footer(banner)
 var Allow_Console_attribute = true; //Enables the Console Log
@@ -10,7 +20,7 @@ var Allow_Pop_up = false; //Allow alert_box to popup when a user joins
 var limit_list = ["not"]; //Removes any category on your choice. 
 var Allow_Inspect_element = true; //Allows users to use the Inspect Element
 var Allow_location_tracking = false; //Allows you to know there location.. sends this to the console.
-var Allow_API_config = [false,"{URL}"]; //Enables a password that works only when a API is enabled. Password will popup when a player joins.
+var Allow_API_config = [false, "{url}"]; //Enables a password that works only when a API is enabled. Password will popup when a player joins. type '?api={API}' in URL bar
 var get_users_lang = true; //Gives the user lang. to the console
 var get_users_platform = true; //Give the users platform to the console.
 var get_users_usersAngent = true; //Give the users userAgent to the console.
@@ -25,10 +35,27 @@ var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supporte
 var redirFormLink = "false"; //Enter URL to execute the form to add. Use 'false' to deny action
 var Allow_ad_blocker = false; //Gives an error if a person is using any ad-blockers(Used as a annoyence it really doesn't detect adblockers)
 
+//Config URL(Note this config how to url is preformed, there always set to an array) '?|&' API has the same function. This will automaticall add '?'|'&'
+
+var templateSelect = [true, "{url}", "{seperator:optional}", "{value:optional}"]; 
+/*
+- Allows the url to have '?temp={default template}' or '&temp={default template}'
+- format: enable:boolean, url:string, seperator:string, value:string
+*/
+
+var setPreview = [true, "http://localhost/SurveyBuilder/Builder/SurveyBuilder.php", "{seperator:optional}", "{value:optional}"]; 
+/*
+- Allows to set preview to form on join
+- format: enable:boolean, url:string, seperator:string, value:string
+*/
+
+
 
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
-
+//Do not mess with variable
+let skip = false; 
+let skip1 = false;
 
 //Test any error of a none corrosponding data
 setTimeout(testCorrospond, 0);
@@ -122,6 +149,55 @@ function testCorrospond(){
 	}
 	if(typeof(Allow_ad_blocker) !== "boolean"){
 		console.error("Allow_ad_blocker must be a boolean");
+	}
+	//(config url style)
+	//template URL
+	if(Array.isArray(templateSelect) !== true){
+		console.error("templateSelect must be a array");
+		return false;
+	}
+	if(typeof(templateSelect[0]) !== "boolean"){
+		console.error("templateSelect:0 must be a boolean");
+		return false;
+	}
+	if(typeof(templateSelect[1]) !== "string"){
+		console.error("templateSelect:1 must be a string");
+		return false;
+	}
+	if(typeof(templateSelect[2]) !== "string" || templateSelect[2] === "" || templateSelect[2] === "{seperator:optional}"){
+		console.warn("templateSelect:2 doesn't have a seperator");
+	 skip = true;
+	}
+	if(templateSelect[2] !== "?" && skip == false){
+		console.error("templateSelect:2 doesn't have a matching selector '?' ");
+		return false;
+	}
+	if(typeof(templateSelect[3]) !== "string" || templateSelect[3] === "" || templateSelect[3] === "{value:optional}"){
+		console.warn("templateSelect:3 doesn't have a value");
+	}
+	//preview URL
+	if(Array.isArray(setPreview) !== true){
+		console.error("setPreview must be an array");
+	}
+	if(typeof(setPreview[0]) !== "boolean"){
+		console.error("setPreview:0 must be a boolean");
+		return false;
+	}
+	if(typeof(setPreview[1]) !== "string"){
+		console.error("setPreview:1 must be a string");
+		return false;
+	}
+	if(typeof(setPreview[2]) !== "string" || setPreview[2] === "" || setPreview[2] === "{seperator:optional}"){
+		console.warn("setPreview:2 must be a string");
+		skip1 = true;
+	}
+	if(setPreview[2] !== "?" && skip1 == false){
+		console.error("setPreview:2 doesn't have a matching selector '?' ");
+		return false;
+	}
+	if(typeof(setPreview[3]) !== "string" || setPreview[3] === "" || setPreview[3] === "{value:optional}"){
+		console.warn("setPreview:3 must be a string");
+		
 	}
 	
 	
@@ -400,6 +476,34 @@ else{
 if(Allow_ad_blocker == false){
 	console.log("Ad_blocker: false")
 }
+//url config
+if(templateSelect[0] === false){
+	console.log("url[template_selector]: false");
+}
+if(templateSelect[0] === true){
+	console.log("url[template_selector]: true");
+	if(window.location.href === templateSelect[1] + "?temp=blank" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=blank"){
+		document.querySelector(".blank_temp").click();
+	}
+	if(window.location.href === templateSelect[1] + "?temp=medical" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=medical"){
+		document.querySelector(".med_temp").click();
+	}
+	if(window.location.href === templateSelect[1] + "?temp=police" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=police"){
+		document.querySelector(".police_temp").click();
+	}
+}
+
+if(setPreview[0] === false){
+	console.log("url[setPreview]: false");
+}
+if(setPreview[0] === true){
+	if(window.location.href === setPreview[1] + "?setPreview=1" || window.location.href === setPreview[1] + setPreview[2] + setPreview[3] + "&setPreview=1"){
+			document.getElementById("CheckPre").click();
+	}
+}
+
+
+
 }	
 
 
