@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="198.5" height="28" role="img" aria-label="License:MIT">
-    <title>License:MIT</title><g shape-rendering="crispEdges"><rect width="113" height="28" fill="#555"/>
+    <title>License:MIT</title><g shape-rendering="crispEdges"><rect width="100" height="28" fill="#555"/>
     <rect x="113.5" width="85" height="28" fill="#1ad1ff"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="100">
     <text fill="#fff" x="567.5" y="175" transform="scale(.1)" textLength="450">License</text>
     <text fill="#fff" x="1565" y="175" font-weight="bold" transform="scale(.1)" textLength="320">MIT</text>
