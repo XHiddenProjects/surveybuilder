@@ -3,6 +3,7 @@
     <rect x="113.5" width="85" height="28" fill="#1ad1ff"/></g>
     <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="100">
     <text fill="#fff" x="567.5" y="175" transform="scale(.1)" textLength="450">Licenses</text>
-    <text fill="#fff" x="1560" y="175" font-weight="bold" transform="scale(.1)" textLength="100">MIT</text>
+    <text fill="#fff" x="1560" y="175" font-weight="bold" transform="scale(.1)" textLength="320">MIT</text>
     </g>
 </svg>
+
