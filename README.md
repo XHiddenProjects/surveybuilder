@@ -7,7 +7,7 @@
 <a href="https://github.com/surveybuilderteams/surveybuilder/archive/master.zip" target="_blank">
 <image src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/download.svg"/>
 </a>
-<a href="https://github.com/surveybuilderteams/surveybuilder/blob/master/LICENSE"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/Licences.svg"/></a>
+<a href="https://github.com/surveybuilderteams/surveybuilder/blob/master/LICENSE"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/License.svg"/></a>
 ***
 
 
