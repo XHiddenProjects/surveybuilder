@@ -22,7 +22,7 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 | Supported Language(s)      | File                          |
 | -------------------------  | ---------------------         |
 | en(English)                | Redirected                    |
-| es(Spanish)                | Self  (./lang/es/)            |
+| es(Español)                | Self  (./lang/es/)            |
 
 
 ***
