@@ -17,6 +17,16 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
+# Languages
+
+| Language(s) | File            |
+| ----------------------------  |
+| en(English) | Redirected      |
+| es(Español) | Self(./lang/es) |
+
+
+***
+
 # Custom File(.sbconsole)
 
 Check out how you can add .sbconsole file to your PC: <a href="https://github.com/surveybuilderteams/SurevyBuilderConsoleFile/tree/main">.sbconsole file</a>
