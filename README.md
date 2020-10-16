@@ -19,10 +19,10 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 # Languages
 
-| Language(s) | File            |
-| ----------------------------  |
-| en(English) | Redirected      |
-| es(Español) | Self(./lang/es) |
+| Supported Language(s)      | File                          |
+| -------------------------  | ---------------------         |
+| en(English)                | Redirected                    |
+| es(Spanish)                | Self  (./lang/es/)            |
 
 
 ***
