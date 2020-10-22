@@ -17,15 +17,6 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
-# Languages
-
-| Supported Language(s)      | File                          |
-| -------------------------  | ---------------------         |
-| en(English)                | Redirected                    |
-| es(Español)                | Self  (./lang/es/)            |
-
-
-***
 
 # Custom File(.sbconsole)
 
