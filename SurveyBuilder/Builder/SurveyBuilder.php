@@ -417,7 +417,26 @@ return false;
 }
 </script>
 
-
+<li id="Insert-Img3D" title="3D Image Module" onclick="ThreeDIM()" class="3DIM apps-config"><i class="fas fa-cube"></i>&nbsp;&nbsp;3D Image module
+<li class="InfoApp" onclick="ThreeDIMInfo()">Information</li>
+<li class="Unistall" onclick="ThreeDIMUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Info
+function ThreeDIMInfo(){
+alert("AppName: 3D Image Module\n\nCreator: SurveyBuilder \n\nDescription: Upload an PNG Image to show your image a 3D experince\n\nDependencies: tilt.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion:16.0.0\n\nNeedsCofig: No");
+}
+//Unistall
+function ThreeDIMUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top 3D Image Module on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".Threedim-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
 
 
 
@@ -1918,6 +1937,71 @@ function setTextDent(){
 }
 </script>
 <!--Style script(End)-->
+<br>
+<br>
+<br>
+<br>
+<hr/>
+<h1>Scripter <i class="fab fa-js-square"></i></h1>
+<br/>
+<i class="fas fa-asterisk" style="color:red;"></i> <span class="data-id-con">Enter ID: <input type="text" title="Enter ID" onchange="checkID" class="script-id" placeholder="script ID"/></span>
+<br/>
+<br/>
+Action: <input type="text" class="action" placeholder="Enter Action"/>
+<br/>
+Function: <input type="text" class="function"  placeholder="Enter Function"/>
+<br/>
+Script:
+<br/>
+<textarea class="script-editor" placeholder="Enter Script" onchange="setFunction()" style="margin: 0px; width: 308px; height: 53px;"></textarea>
+<br/>
+<br/>
+<button onclick="BuildFunction()" type="button">Add Function</button>&nbsp;<button onclick="BuildHiddenFunction()" type="button">Insert Hidden Function</button>
+<script>
+//Add items
+function BuildFunction(){
+	let x = document.querySelector(".function").value;
+	let Format = x.replace("()", "");
+	document.querySelector(".script-editor").value = "function " + Format + "(){\n\n}";
+	//alert("built");
+}
+function BuildHiddenFunction(selector){
+	selector = prompt("Enter element ID", "");
+	if(selector == null || selector == ""){
+		alert("Cannot be built... Canceled");
+	}
+	
+	let x = document.querySelector(".function").value;
+	let Format = x.replace("()", "");
+	document.querySelector(".script-editor").value = "function " + Format + "(){\n"+ "document.getElementById('"+ selector + "').hidden=true" +"\n}";
+}
+</script>
+<script>
+function checkID(ID){
+	ID = document.querySelector(".script-id").value;
+	console.assert(document.getElementById(ID), 'There is no such ID as: ' + ID);
+}
+function setFunction(Dataid, action, functions, script){
+	Dataid=document.querySelector(".script-id").value;
+	action=document.querySelector(".action").value;
+	functions=document.querySelector(".function").value;
+	script=document.querySelector(".script-editor").value;
+	
+	if(Dataid == "" || action == "" || functions == "" || script == ""){
+		alert("Make sure you fill out everything");
+		return false;
+	}
+	else{
+		functions.replace("()", "");
+		document.getElementById(Dataid).setAttribute(action, functions + "()");
+		
+		let setScript = document.createElement("SCRIPT");
+		setScript.innerHTML = script;
+		document.querySelector(".setFormScript").appendChild(setScript);
+	}
+	
+}
+</script>
 
 </span>
 </div>
@@ -1934,7 +2018,9 @@ function setTextDent(){
 <br>
 <br>
 <br>
+<div class="setFormScript">
 
+</div>
 <footer id="SurveyMakerBanner" role="banner"><div id="Banner"><span id="Icon"><img src="favicon.ico" width="50" height="50" title="SurveyMaker" alt="SurveyMaker Icon"/></span><span id="Text1">Join SurveyBuilder TODAY! <span id="Text2">Join Our <a id="FourmLink" title="Fourm" href="https://surveybuilder.boards.net/" target="_blank">Fourm</a></span><span id="Text3">&copy;SurveyBuilder</span></div></footer>
 <div id="copyright-print">&copy; SurveyBuilder</div>
 </div>
