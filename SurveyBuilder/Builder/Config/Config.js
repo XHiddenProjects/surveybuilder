@@ -5,12 +5,12 @@
 system corrnation:
 {url} = url,
 {seperator} = '?' or '&',
-{string} = text,
-{int} = number,
-{boolean} = true/false(most of this already has a boolean...
+{:string} = text,
+{:int} = number,
+{:boolean} = true/false(most of this already has a boolean...
 (ex:templateSelect:0) has a boolean of true) just to stop any error from occuring you will see tag if boolean is optional, 
 {:optional[string]} = optional format{null(blank)/string(value)}
-{:(int[number])} = you see this in error something:(int[number]) this means an error occured in a line
+
 */
 	//web Config
 	
@@ -43,7 +43,7 @@ var templateSelect = [true, "{url}", "{seperator:optional}", "{value:optional}"]
 - format: enable:boolean, url:string, seperator:string, value:string
 */
 
-var setPreview = [true, "http://localhost/SurveyBuilder/Builder/SurveyBuilder.php", "{seperator:optional}", "{value:optional}"]; 
+var setPreview = [true, "{url}", "{seperator:optional}", "{value:optional}"]; 
 /*
 - Allows to set preview to form on join
 - format: enable:boolean, url:string, seperator:string, value:string
@@ -51,12 +51,13 @@ var setPreview = [true, "http://localhost/SurveyBuilder/Builder/SurveyBuilder.ph
 
 
 
+
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
 //Do not mess with variable
-let skip = false; 
-let skip1 = false;
-
+var skip = false; 
+var skip1 = false;
+//var skip2 = false;
 //Test any error of a none corrosponding data
 setTimeout(testCorrospond, 0);
 console.time();
@@ -199,7 +200,40 @@ function testCorrospond(){
 		console.warn("setPreview:3 must be a string");
 		
 	}
-	
+	/*system config
+	if(Array.isArray(systemConsole) !== true){
+		console.error("systemConsole must be a Array");
+		return false;
+	}
+	if(typeof(systemConsole[0]) !== "boolean"){
+		console.error("systemConsole:0 must be a boolean");
+		return false;
+	}
+	if(typeof(systemConsole[1]) !== "number"){
+		console.error("systemConsole:1 must be a int");
+		return false;
+	}
+	if(typeof(systemConsole[2]) !== "string"){
+		console.error("systemConsole:2 must be a string");
+		return false;
+	}
+	if(Array.isArray(clientSessionKey) !== true){
+		console.error("clientSessionKey must be a Array");
+		return false;
+	}
+	if(typeof(clientSessionKey[0]) !== "string"){
+		console.error("clientSessionKey:0 must be a string");
+		return false;
+	}
+	if(typeof(clientSessionKey[1]) !== "string"){
+		console.error("clientSessionKey:1 must be a string");
+		return false;
+	}
+	if(typeof(clientSessionKey[2]) !== "boolean"){
+		console.error("clientSessionKey:2 must be a boolean");
+	}*/
+		
+		
 	
 	setTimeout(config, 0);
 
@@ -502,6 +536,52 @@ if(setPreview[0] === true){
 	}
 }
 
+/*if(systemConsole[0] === false){
+	console.log("systemConsole is false");
+}
+if(systemConsole[0] === true){
+	if(systemConsole[2] === "" || systemConsole === "{attr:optional}"){
+		setTimeout(function(){
+		console.clear();
+	}, systemConsole[1]);
+	}
+	if(systemConsole[2] == "once"){
+	setTimeout(function(){
+		console.clear();
+	}, systemConsole[1]);
+	}
+	if(systemConsole[2] == "loop"){
+		setInterval(function(){
+			console.clear();
+		}, systemConsole[1]);
+	}
+	
+}
+
+
+if(clientSessionKey[2] === true){
+	
+	if(clientSessionKey[1] === "public"){
+   const lengths = 50;
+   const result           = '';
+   const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   const charactersLength = characters.length;
+   for ( var i = 0; i < lengths; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	  alert(result);
+   }
+   
+	}
+	
+	if(clientSessionKey[1] === "privite"){
+		
+	}
+	
+}
+if(clientSessionKey[2] === false){
+	
+}
+*/
 
 
 }	
