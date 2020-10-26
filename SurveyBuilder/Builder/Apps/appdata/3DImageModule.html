@@ -1,0 +1,184 @@
+<!Doctype html>
+<html>
+<head>
+<title>3D Object Module - SurveyBuilder</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style type="text/css">
+body{
+background:black;
+margin:0;
+padding:0;
+
+}
+h1{
+text-shadow: 2px 2px 3px #1ad1ff, 2px 2px 5px #1affa3;
+font-size:65px;
+text-align:center;
+color:white;
+}
+.Position{
+color:white;
+bottom:0%;
+font-size:32px;
+width:100%;
+position:absoulte;
+cursor:pointer;
+}
+.rotate-x{
+position:absolute;
+left:5%;
+top:90%;
+}
+.rotate-y{
+position:absolute;
+left:40%;
+top:90%;
+}
+.rotate-z{
+position:absolute;
+left:75%;
+top:90%;
+}
+.Uploader{
+visibility:hidden;
+}
+.file-upload-con{
+position:absolute;
+width:100%;
+background:#00e673;
+
+}
+.file-upload-con button{
+width:320px;
+border-radius:25px;
+background-color:#99ccff;
+cursor:pointer;
+outline:none;
+font-size:32px;
+}
+.file-upload-con span{
+color:white;
+font-size:32px;
+}
+
+*{
+margin:0;
+padding:0;
+font-family: "sans-serif";
+
+}
+.Image{
+height:520px;
+overflow:hidden;
+width:1020px;
+margin-top:15px;
+
+}
+.inner{
+margin:100px auto;
+width:320px;
+height:320px;
+/*background-image:url("./3DImageModule/assets/test.jpg");*/
+background-size:cover;
+background-position:center;
+position:relative;
+box-shadow: 0 0 20px 4px rgba(0,0,0,0.4);
+transform-style:preserve-3d;
+cursor:move;
+}
+.inner h1{
+width:250px;
+text-align:center;
+font-size:50px;
+color:#fff;
+border:2px solid #fff;
+left:50%;
+top:50%;
+position:absolute;
+transform:translateX(-50%) translateY(-50%) translateZ(50px);
+
+}
+</style>
+<script type="text/javascript">
+//open file
+$(function(){
+    $('.upload-btn').click(function(){
+        $('.upload-3d-object').click();
+    });
+});
+
+
+
+$(function(){
+	$('.upload-3d-object').change(function(event){
+	
+	
+		
+		
+		//getFile
+     let fp = $(".upload-3d-object");
+    let lg = fp[0].files.length; // get length
+    let items = fp[0].files;
+ 
+    if(lg == 0){
+	document.querySelector(".FileName").innerHTML = "No File Selected";
+	return false;
+	}
+
+	let temppath = URL.createObjectURL(event.target.files[0]);
+    if (lg > 0) {
+        for (var i = 0; i < lg; i++) {
+            var fileName = items[i].name; // get file name  
+			
+        }
+	}
+	//Gets file type
+		let getFileName = fileName.split('.png');
+		let string = getFileName.toString();
+		let removeComma = string.replace(",", "");
+		   let submax = removeComma + ".png";
+		   //test fileName w/ submax
+		   
+		if(fileName !== submax){
+	alert("Invalid file");
+			return false;
+		}
+		
+		
+		//otherwise
+		$.get(temppath, function(data){
+			document.querySelector(".FileName").innerHTML = temppath;
+			document.querySelector(".inner").style.backgroundImage = "url('" + temppath + "')";
+		});
+		
+	});
+});
+</script>
+</head>
+<body>
+<h1 class="heading item-heading">3D Object Module Show</h1>
+<br/>
+<div class="container">
+<div class="items">
+<div class="fileCon">
+<input type="file" accept="image/*" class="Uploader upload-3d-object"/>
+<div class="file-upload-con">
+<button class="upload-btn">Upload PNG file</button>
+<span class="FileName">No File Selected</span>
+</div>
+</div>
+<br/>
+<br/>
+<center>
+<div class="Image">
+<div data-tilt class="inner">
+<h1>Hover Me!</h1>
+
+</div>
+</div>
+</center>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js" type="text/javascript"></script>
+</body>
+</html>
