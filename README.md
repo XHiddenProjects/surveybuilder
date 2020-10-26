@@ -33,7 +33,7 @@ Check out how you can add .sbconsole file to your PC: <a href="https://github.co
 <a href="https://www.youtube.com/watch?v=J8n8NwNCdJ0" title="How to use SurveyBuilder+Web Config" style="width:100%"><img src="https://i.ytimg.com/vi/J8n8NwNCdJ0/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBMLpzRZFibNAe8JYVnWo0U31-mbw"/></a>
 <br/>
 ### How to add your own apps in SurveyBuilder
-<a href="https://www.youtube.com/watch?v=GvSuKRRAzyc" title="How to add your own apps in SurveyBuilder"><img src=https://i9.ytimg.com/vi/GvSuKRRAzyc/mq3.jpg?sqp=CODh2vwF&rs=AOn4CLDHmgDfLkZqftd-lXQP_NAs0Xe0Lw"/></a>
+<a href="https://www.youtube.com/watch?v=GvSuKRRAzyc" title="How to add your own apps in SurveyBuilder"><img src="https://i9.ytimg.com/vi/GvSuKRRAzyc/mq3.jpg?sqp=CODh2vwF&rs=AOn4CLDHmgDfLkZqftd-lXQP_NAs0Xe0Lw"/></a>
 ***
 
 # Notice:
