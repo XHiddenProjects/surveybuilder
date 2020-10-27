@@ -34,7 +34,7 @@ var Enable_Config_File = "Enable"; //- Use 'Enable' to enable this or type 'Disa
 var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supported-- or set to [false] to disable SQL database, this will require you to have a SQL server if using 'mySQL'
 var redirFormLink = "false"; //Enter URL to execute the form to add. Use 'false' to deny action
 var Allow_ad_blocker = false; //Gives an error if a person is using any ad-blockers(Used as a annoyence it really doesn't detect adblockers)
-
+var DarkTheme = false; //Allows Dark Theme
 //Config URL(Note this config how to url is preformed, there always set to an array) '?|&' API has the same function. This will automaticall add '?'|'&'
 
 var templateSelect = [true, "{url}", "{seperator:optional}", "{value:optional}"]; 
@@ -199,6 +199,10 @@ function testCorrospond(){
 	if(typeof(setPreview[3]) !== "string" || setPreview[3] === "" || setPreview[3] === "{value:optional}"){
 		console.warn("setPreview:3 must be a string");
 		
+	}
+	if(typeof(DarkTheme) !== "boolean"){
+		console.error("DarkTheme must be a boolean");
+		return false;
 	}
 	/*system config
 	if(Array.isArray(systemConsole) !== true){
@@ -582,7 +586,37 @@ if(clientSessionKey[2] === false){
 	
 }
 */
+if(DarkTheme == false){
+	console.log("DarkTheme:false");
+	document.body.style.backgroundColor = "#9acd32";
+	document.body.style.color = "black";
+	document.querySelector("#yourTitle").style.color = "black";
+	document.querySelector(".line1").style.backgroundColor = "black";
+	document.querySelector(".line2").style.backgroundColor = "black";
+	document.querySelector(".line3").style.backgroundColor = "black";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "black";
+	document.querySelector("#Timedate").style.color = "black";
+	//document.querySelector("#Wcount").style.color = "black";
+	document.querySelector("#Tcolor").value = "#000000";
+	document.querySelector("#color").value = "#9acd32";
+}
 
+if(DarkTheme == true){
+	console.log("DarkTheme:true");
+	document.body.style.backgroundColor = "black";
+	document.body.style.color = "white";
+	document.querySelector("#yourTitle").style.color = "white";
+	document.querySelector(".line1").style.backgroundColor = "white";
+	document.querySelector(".line2").style.backgroundColor = "white";
+	document.querySelector(".line3").style.backgroundColor = "white";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "white";
+	document.querySelector("#Timedate").style.color = "white";
+	//document.querySelector("#Wcount").style.color = "white";
+	document.querySelector("#Tcolor").value = "#ffffff";
+	document.querySelector("#color").value = "#000000";
+}
 
 }	
 
@@ -615,13 +649,7 @@ function savetitle(){
 	if(username === "" || username === null){
 			Displaytitle.innerText = "Untitled" + " - Survey Builder";
 		Title.innerText = "Untitled";
-		let elmnt = document.getElementById("userCode");
-elmnt.scrollIntoView({
-	behavior: 'smooth',
-    block: 'start'
-});
-setTimeout(function(){elmnt.focus()}, 1000);
-//elmnt.focus();
+		
 	var E = document.getElementById("Error");
 	E.hidden = false;
 	setTimeout(hideError, 10000);
@@ -669,7 +697,12 @@ setTimeout(function(){elmnt.focus()}, 1000);
 		document.getElementById("Wcount").style.color = "red";
 	}
 	if(now > 0 && now <= maxTitle){
+		if(DarkTheme == false){
 		document.getElementById("Wcount").style.color = "black";
+		}
+		if(DarkTheme == true){
+			document.getElementById("Wcount").style.color = "white";
+		}
 	}
 	
 	let loop = setInterval(function(){
