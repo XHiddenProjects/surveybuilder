@@ -207,9 +207,9 @@ function resetScore(){
 
 <div id="Sidebar">
 <div class="toggle-sidebar-btn" role="sidebar-button"  onclick="togglesidebar()" title="Add Elements" style="cursor:pointer;">
-<span></span>                                                                                                                                       
-<span></span>
-<span></span>
+<span class="line1"></span>                                                                                                                                       
+<span class="line2"></span>
+<span class="line3"></span>
 </div>
 <ul>
 <li id="New" class="exit" onclick="togglesidebar()" title="Close Elements" style="cursor:pointer;">Exit Sidebar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X</li>
@@ -1605,7 +1605,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <button id="temp" onclick="setupPoliceIncidentReportTemp()" class="Police_temp" title="Police Incident Report Template">Police Incident Report</button>
-<br>
+<!--<br>
 <br>
 <br>
 <br>
@@ -1825,11 +1825,25 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <div class="checkbox-icons"></div>
 </label>
 </div>
+<br/>
+<span class="label_config">DarkTheme:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check14" onclick="setdarkTheme()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>-->
 <br>
 <br>
 <br>
 <br>
-<hr/>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<br>
 <h1>Stylist <i class="fas fa-palette"></i></h1>
 <br/>
 <i class="fas fa-asterisk" style="color:red;"></i> <span class="data-id-con">Enter ID: <input type="text" title="Enter ID" class="style-id" placeholder="Style ID"/></span>
@@ -1942,6 +1956,7 @@ function setTextDent(){
 <br>
 <br>
 <hr/>
+<br>
 <h1>Scripter <i class="fab fa-js-square"></i></h1>
 <br/>
 <i class="fas fa-asterisk" style="color:red;"></i> <span class="data-id-con">Enter ID: <input type="text" title="Enter ID" onchange="checkID" class="script-id" placeholder="script ID"/></span>
@@ -2035,7 +2050,7 @@ function googleTranslateElementInit(){
 <script src="./Config/Config.js" type="text/javascript"></script>
 
 
-<script>
+<!--<script>
 
 //coords:
 var check1 = document.querySelector(".check1");//banner
@@ -2051,6 +2066,7 @@ var check10 = document.querySelector(".check10");//cookie
 var check11 = document.querySelector(".check11");//ip
 var check12 = document.querySelector(".check12");//cpanel
 var check13 = document.querySelector(".check13");//adblocker
+var check14 = document.querySelector(".check14");//DarkTheme
 
 function setBanner(){
 	if(Allow_Banner_display == true && check1.checked == false){
@@ -2190,7 +2206,17 @@ function setUsername(){
 		setTimeout(testCorrospond, 0);
 	
 } 
-</script>
+
+function setdarkTheme(){
+	if(DarkTheme == false && check14.checked == true){
+		DarkTheme = true;
+		
+	} else{
+		DarkTheme = false;
+	}
+	setTimeout(testCorrospond, 0);
+}
+</script>-->
 
 </body>                                                                      
 </html>         
