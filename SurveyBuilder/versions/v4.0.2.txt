@@ -1,0 +1,2 @@
+- Remove Web Config from the builder
+- New Config setting::DarkTheme(boolean)
