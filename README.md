@@ -24,24 +24,6 @@ Check out how you can add .sbconsole file to your PC: <a href="https://github.co
 
 ***
 
-# Videos
-
-### Welcome to SurveyBuilder
-<a href="https://www.youtube.com/watch?v=4GFmW5ZGass" title="Welcome to SurveyBuilder"><img src="https://i.ytimg.com/vi/4GFmW5ZGass/hqdefault.jpg"/></a>
-<br/>
-### How to use SurveyBuilder+Web Config
-<a href="https://www.youtube.com/watch?v=J8n8NwNCdJ0" title="How to use SurveyBuilder+Web Config" style="width:100%"><img src="https://i.ytimg.com/vi/J8n8NwNCdJ0/hqdefault.jpg"/></a>
-<br/>
-### How to add your own apps in SurveyBuilder
-<a href="https://www.youtube.com/watch?v=GvSuKRRAzyc" title="How to add your own apps in SurveyBuilder"><img src="https://i.ytimg.com/vi/GvSuKRRAzyc/hqdefault.jpg"/></a>
-***
-
-# Notice:
-
-I won't be adding any extra downloads to the release ex. SurveyBuilderInstaller.exe
-
-***
-
 # Dependicys 
 
 You can use a batch file to use to find the dependicys, otherwise here is what it's depended.
