@@ -1517,7 +1517,7 @@ setTimeout(checkInternetConnection, 0);
 <!--<div id="save"><button title="Save" id="save-btn">Save<button></div>-->
 
 <!--Contact-->
-<div id="contact-btn"><a href="mailto:mcmastergames2020@gmail.com"><button id="contact-btn" title="Contact">Contact</button></a></div>
+<div id="contact-btn"><a href="mailto:surveybuildersbot@gmail.com"><button id="contact-btn" title="Contact">Contact</button></a></div>
 <br>
 <br>
 <br>
@@ -2017,7 +2017,50 @@ function setFunction(Dataid, action, functions, script){
 	
 }
 </script>
+<br>
+<br>
+<br>
+<br>
+<hr/>
+<h1>Web Config</h1>
+<br/>
+<input type="file" accept=".js" class="encode-webconfig"/>
 
+
+<script>
+$(function(){
+	$('.encode-webconfig').change(function(event){
+		let temppath = URL.createObjectURL(event.target.files[0]);
+		
+		//getFile
+		let fp = $('.encode-webconfig');
+		let lg = fp[0].files.length;
+		var Myitems = fp[0].files;
+		
+		//testFile
+		if(lg>0){
+			for(let i=0;i<lg;i++){
+				 var configType = Myitems[i].type;
+				
+			}
+		}
+		
+		if(configType !== "text/javascript"){
+			alert("Must be a JavaScript file");
+			return false;
+		}
+		
+		
+		//otherwise
+		$.get(temppath, function(data){
+			let setConfig = document.createElement("SCRIPT");
+			setConfig.src = temppath;
+			setConfig.type = "text/javascript";
+			document.querySelector(".setConfigDatabase").appendChild(setConfig);
+		});
+	});
+});
+</script>
 </span>
 </div>
 
@@ -2048,7 +2091,9 @@ function googleTranslateElementInit(){
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
 <script src="./Config/Config.js" type="text/javascript"></script>
+<div class="setConfigDatabase">
 
+</div>
 
 <!--<script>
 
