@@ -432,7 +432,7 @@ console.log("API: true[Manual]");
 	  $.getJSON("https://api.ipify.org?format=json", function(data) { 
 		
 			for(setBanData=0;setBanData<banIP.length;setBanData++){
-				alert(data.ip);
+				//alert(data.ip);
             if(banIP[setBanData] === data.ip){
 				setInterval(function(){
 					window.open(BanLocation, "_self");
