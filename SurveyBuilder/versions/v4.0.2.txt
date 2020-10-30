@@ -1,3 +1,4 @@
 - Remove Web Config from the builder
 - New Config setting::DarkTheme(boolean)
 - You can Upload the "Configuration.js" file to activate your configuration without having to go to the "config.js" area
+- Better IP ban
