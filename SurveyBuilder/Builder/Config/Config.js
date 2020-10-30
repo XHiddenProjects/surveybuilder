@@ -28,8 +28,9 @@ var test_users_cookieEnable = true; //Displays if the console should replay back
 var Collect_IP = false; //The Console will display there IP_address. 
 var Allow_cPanel = true; //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
-var username = ""; //Enter username here 
+var username = ""; //Enter username 
 var banIP = []; //Enter IP adderess here
+var BanLocation = "{url}" //enter URL here to set a direction to a ban location
 var Enable_Config_File = "Enable"; //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
 var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supported-- or set to [false] to disable SQL database, this will require you to have a SQL server if using 'mySQL'
 var redirFormLink = "false"; //Enter URL to execute the form to add. Use 'false' to deny action
@@ -57,6 +58,7 @@ var setPreview = [true, "{url}", "{seperator:optional}", "{value:optional}"];
 //Do not mess with variable
 var skip = false; 
 var skip1 = false;
+
 //var skip2 = false;
 //Test any error of a none corrosponding data
 setTimeout(testCorrospond, 0);
@@ -427,14 +429,17 @@ console.log("API: true[Manual]");
 	}
 	//ban IP
 	  
-	  $.getJSON("https://api.ipify.org?format=json", 
-                                          function(data) { 
-			//Add more or remove this
-			//Adding: make sure you change {current Number} to {current Number} + 1 
-            if(banIP[0] === data.ip){
-				setInterval(function(){alert("Your account is banned");}, 0);
+	  $.getJSON("https://api.ipify.org?format=json", function(data) { 
+		
+			for(setBanData=0;setBanData<banIP.length;setBanData++){
+				alert(data.ip);
+            if(banIP[setBanData] === data.ip){
+				setInterval(function(){
+					window.open(BanLocation, "_self");
+					}, 0);
 			} 
 			
+			}
 			
         }); 
 	
