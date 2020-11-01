@@ -10,17 +10,18 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "file-saver": "^2.0.2",
     "mysql": "^2.18.1"
   },
   "repository": {
-    "url": "ssh://git@github.com:surveybuilder-admin/surveybuilder.git"
+    "url": "ssh://git@github.com:surveybuilderTeams/surveybuilder.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "bugs": {
-    "url": "https://github.com/surveybuilder-admin/surveybuilder/issues"
+    "url": "https://github.com/surveybuilderTeams/surveybuilder/issues"
   },
-  "homepage": "https://github.com/surveybuilder-admin/surveybuilder#readme",
+  "homepage": "https://github.com/surveybuilderTeams/surveybuilder#readme",
   "devDependencies": {}
 }
