@@ -1,8 +1,18 @@
 //Admin Config Panel
 //Allow and disable certain items
 //Everything is eaither True/False
+/*
+system corrnation:
+{url} = url,
+{seperator} = '?' or '&',
+{:string} = text,
+{:int} = number,
+{:boolean} = true/false(most of this already has a boolean...
+(ex:templateSelect:0) has a boolean of true) just to stop any error from occuring you will see tag if boolean is optional, 
+{:optional[string]} = optional format{null(blank)/string(value)}
 
-	//Set Variable here
+*/
+	//web Config
 	
 var Allow_Banner_display = true; //Allow to display SurveyBuilder footer(banner)
 var Allow_Console_attribute = true; //Enables the Console Log
@@ -10,7 +20,7 @@ var Allow_Pop_up = false; //Allow alert_box to popup when a user joins
 var limit_list = ["not"]; //Removes any category on your choice. 
 var Allow_Inspect_element = true; //Allows users to use the Inspect Element
 var Allow_location_tracking = false; //Allows you to know there location.. sends this to the console.
-var Allow_API_config = false; //Enables a password that works only when a API is enabled. Password will popup when a player joins.
+var Allow_API_config = [false, "{url}"]; //Enables a password that works only when a API is enabled. Password will popup when a player joins. type '?api={API}' in URL bar
 var get_users_lang = true; //Gives the user lang. to the console
 var get_users_platform = true; //Give the users platform to the console.
 var get_users_usersAngent = true; //Give the users userAgent to the console.
@@ -18,24 +28,44 @@ var test_users_cookieEnable = true; //Displays if the console should replay back
 var Collect_IP = false; //The Console will display there IP_address. 
 var Allow_cPanel = true; //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
-var username = ""; //Enter username here 
+var username = ""; //Enter username 
 var banIP = []; //Enter IP adderess here
+var BanLocation = "{url}" //enter URL here to set a direction to a ban location
 var Enable_Config_File = "Enable"; //- Use 'Enable' to enable this or type 'Disable'  this will allow config to activatet. - This will return false;
 var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supported-- or set to [false] to disable SQL database, this will require you to have a SQL server if using 'mySQL'
-var redirFormLink = "false" //Enter URL to execute the form to add. Use 'false' to deny action
-var Allow_ad_blocker = false //Gives an error if a person is using any ad-blockers
+var redirFormLink = "false"; //Enter URL to execute the form to add. Use 'false' to deny action
+var Allow_ad_blocker = false; //Gives an error if a person is using any ad-blockers(Used as a annoyence it really doesn't detect adblockers)
+var DarkTheme = false; //Allows Dark Theme
+//Config URL(Note this config how to url is preformed, there always set to an array) '?|&' API has the same function. This will automaticall add '?'|'&'
+
+var templateSelect = [true, "{url}", "{seperator:optional}", "{value:optional}"]; 
+/*
+- Allows the url to have '?temp={default template}' or '&temp={default template}'
+- format: enable:boolean, url:string, seperator:string, value:string
+*/
+
+var setPreview = [true, "{url}", "{seperator:optional}", "{value:optional}"]; 
+/*
+- Allows to set preview to form on join
+- format: enable:boolean, url:string, seperator:string, value:string
+*/
+
+
 
 
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
+//Do not mess with variable
+var skip = false; 
+var skip1 = false;
 
-
+//var skip2 = false;
 //Test any error of a none corrosponding data
 setTimeout(testCorrospond, 0);
 console.time();
 function testCorrospond(){
 	if(typeof(Enable_Config_File) !== "string"){
-		console.error("Enable-Config-File must be a string");
+		console.error("Enable_Config_File must be a string");
 		return false;
 	}
 	if(typeof(Allow_Banner_display) !== "boolean"){
@@ -62,10 +92,20 @@ function testCorrospond(){
 		console.error("Allow_location_tracking must be a boolean");
 			return false;
 	}
-	if(typeof(Allow_API_config) !== "boolean"){
-		console.error("Allow_API_config must be a boolean");
+	//API
+	if(Array.isArray(Allow_API_config) !== true){
+		console.error("Allow_API_config must be a Array");
 			return false;
 	}
+	if(typeof(Allow_API_config[0]) !== "boolean"){
+		console.error("Allow_API_config:0 must be a boolean");
+			return false;
+	}
+	if(typeof(Allow_API_config[1]) !== "string"){
+		console.error("Allow_API_config:1 must be a string");
+			return false;
+	}
+	//End of API
 	if(typeof(get_users_lang) !== "boolean"){
 		console.error("get_users_lang must be a boolean");
 			return false;
@@ -113,6 +153,94 @@ function testCorrospond(){
 	if(typeof(Allow_ad_blocker) !== "boolean"){
 		console.error("Allow_ad_blocker must be a boolean");
 	}
+	//(config url style)
+	//template URL
+	if(Array.isArray(templateSelect) !== true){
+		console.error("templateSelect must be a array");
+		return false;
+	}
+	if(typeof(templateSelect[0]) !== "boolean"){
+		console.error("templateSelect:0 must be a boolean");
+		return false;
+	}
+	if(typeof(templateSelect[1]) !== "string"){
+		console.error("templateSelect:1 must be a string");
+		return false;
+	}
+	if(typeof(templateSelect[2]) !== "string" || templateSelect[2] === "" || templateSelect[2] === "{seperator:optional}"){
+		console.warn("templateSelect:2 doesn't have a seperator");
+	 skip = true;
+	}
+	if(templateSelect[2] !== "?" && skip == false){
+		console.error("templateSelect:2 doesn't have a matching selector '?' ");
+		return false;
+	}
+	if(typeof(templateSelect[3]) !== "string" || templateSelect[3] === "" || templateSelect[3] === "{value:optional}"){
+		console.warn("templateSelect:3 doesn't have a value");
+	}
+	//preview URL
+	if(Array.isArray(setPreview) !== true){
+		console.error("setPreview must be an array");
+	}
+	if(typeof(setPreview[0]) !== "boolean"){
+		console.error("setPreview:0 must be a boolean");
+		return false;
+	}
+	if(typeof(setPreview[1]) !== "string"){
+		console.error("setPreview:1 must be a string");
+		return false;
+	}
+	if(typeof(setPreview[2]) !== "string" || setPreview[2] === "" || setPreview[2] === "{seperator:optional}"){
+		console.warn("setPreview:2 must be a string");
+		skip1 = true;
+	}
+	if(setPreview[2] !== "?" && skip1 == false){
+		console.error("setPreview:2 doesn't have a matching selector '?' ");
+		return false;
+	}
+	if(typeof(setPreview[3]) !== "string" || setPreview[3] === "" || setPreview[3] === "{value:optional}"){
+		console.warn("setPreview:3 must be a string");
+		
+	}
+	if(typeof(DarkTheme) !== "boolean"){
+		console.error("DarkTheme must be a boolean");
+		return false;
+	}
+	/*system config
+	if(Array.isArray(systemConsole) !== true){
+		console.error("systemConsole must be a Array");
+		return false;
+	}
+	if(typeof(systemConsole[0]) !== "boolean"){
+		console.error("systemConsole:0 must be a boolean");
+		return false;
+	}
+	if(typeof(systemConsole[1]) !== "number"){
+		console.error("systemConsole:1 must be a int");
+		return false;
+	}
+	if(typeof(systemConsole[2]) !== "string"){
+		console.error("systemConsole:2 must be a string");
+		return false;
+	}
+	if(Array.isArray(clientSessionKey) !== true){
+		console.error("clientSessionKey must be a Array");
+		return false;
+	}
+	if(typeof(clientSessionKey[0]) !== "string"){
+		console.error("clientSessionKey:0 must be a string");
+		return false;
+	}
+	if(typeof(clientSessionKey[1]) !== "string"){
+		console.error("clientSessionKey:1 must be a string");
+		return false;
+	}
+	if(typeof(clientSessionKey[2]) !== "boolean"){
+		console.error("clientSessionKey:2 must be a boolean");
+	}*/
+		
+		
+	
 	setTimeout(config, 0);
 
 }
@@ -121,6 +249,7 @@ dir = 0;
 function config(){
 	//Settings
 	if(Enable_Config_File === "Disable"){
+		document.querySelector(".web-config-data").hidden = true;
 		alert("Config file is off");
 		return false;
 	}
@@ -217,30 +346,36 @@ function config(){
 		console.log("Location: false");
 	}	
 //API
-if(Allow_API_config == false){
+if(Allow_API_config[0] == false){
 		console.log("API: false");
 	}
- if(Allow_API_config == true){
-		
-		
-		console.log("API: true");
+ if(Allow_API_config[0] == true){
+	let apiKeyEnable = 1;
 
+           
 	  $.get("./API/API.txt", function(data){
+		  	let url = Allow_API_config[1] + "?api=" + data;
+	if(window.location.href === url){
+		console.log("API: true[weblink]");
+		apiKeyEnable = 0;
+	}
+	if(apiKeyEnable == 1){
 let x = prompt("Enter API key", "");
 	if(x !== data){
 		alert("Sorry wrong API key. Please contact the administrator");
 		setTimeout(API_config, 0);
 		console.error("API key was Invalid");
 	}
-
-
+console.log("API: true[Manual]");
+	  }	  
 });
 
 	
 	
 	
 }
-
+	}
+	
 
 //Get Users Lang
     if(get_users_lang == true){
@@ -294,14 +429,17 @@ let x = prompt("Enter API key", "");
 	}
 	//ban IP
 	  
-	  $.getJSON("https://api.ipify.org?format=json", 
-                                          function(data) { 
-			//Add more or remove this
-			//Adding: make sure you change {current Number} to {current Number} + 1 
-            if(banIP[0] === data.ip){
-				setInterval(function(){alert("Your account is banned");}, 0);
+	  $.getJSON("https://api.ipify.org?format=json", function(data) { 
+		
+			for(setBanData=0;setBanData<banIP.length;setBanData++){
+				//alert(data.ip);
+            if(banIP[setBanData] === data.ip){
+				setInterval(function(){
+					window.open(BanLocation, "_self");
+					}, 0);
 			} 
 			
+			}
 			
         }); 
 	
@@ -369,7 +507,7 @@ setTimeout(MaxTitle, 0);
 //adblocker
 if(Allow_ad_blocker == true){
 	
-if(typeof(window.google_render_ad)=="undefined") 
+if(typeof(window.google_jobrunner)=="undefined") 
 { 
     document.querySelector(".con-ad-block").style.display = "block";
 }
@@ -381,9 +519,112 @@ else{
 if(Allow_ad_blocker == false){
 	console.log("Ad_blocker: false")
 }
+//url config
+if(templateSelect[0] === false){
+	console.log("url[template_selector]: false");
+}
+if(templateSelect[0] === true){
+	console.log("url[template_selector]: true");
+	if(window.location.href === templateSelect[1] + "?temp=blank" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=blank"){
+		document.querySelector(".blank_temp").click();
+	}
+	if(window.location.href === templateSelect[1] + "?temp=medical" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=medical"){
+		document.querySelector(".med_temp").click();
+	}
+	if(window.location.href === templateSelect[1] + "?temp=police" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=police"){
+		document.querySelector(".police_temp").click();
+	}
+}
 
+if(setPreview[0] === false){
+	console.log("url[setPreview]: false");
 }
+if(setPreview[0] === true){
+	if(window.location.href === setPreview[1] + "?setPreview=1" || window.location.href === setPreview[1] + setPreview[2] + setPreview[3] + "&setPreview=1"){
+			document.getElementById("CheckPre").click();
+	}
 }
+
+/*if(systemConsole[0] === false){
+	console.log("systemConsole is false");
+}
+if(systemConsole[0] === true){
+	if(systemConsole[2] === "" || systemConsole === "{attr:optional}"){
+		setTimeout(function(){
+		console.clear();
+	}, systemConsole[1]);
+	}
+	if(systemConsole[2] == "once"){
+	setTimeout(function(){
+		console.clear();
+	}, systemConsole[1]);
+	}
+	if(systemConsole[2] == "loop"){
+		setInterval(function(){
+			console.clear();
+		}, systemConsole[1]);
+	}
+	
+}
+
+
+if(clientSessionKey[2] === true){
+	
+	if(clientSessionKey[1] === "public"){
+   const lengths = 50;
+   const result           = '';
+   const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   const charactersLength = characters.length;
+   for ( var i = 0; i < lengths; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	  alert(result);
+   }
+   
+	}
+	
+	if(clientSessionKey[1] === "privite"){
+		
+	}
+	
+}
+if(clientSessionKey[2] === false){
+	
+}
+*/
+if(DarkTheme == false){
+	console.log("DarkTheme:false");
+	document.body.style.backgroundColor = "#9acd32";
+	document.body.style.color = "black";
+	document.querySelector("#yourTitle").style.color = "black";
+	document.querySelector(".line1").style.backgroundColor = "black";
+	document.querySelector(".line2").style.backgroundColor = "black";
+	document.querySelector(".line3").style.backgroundColor = "black";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "black";
+	document.querySelector("#Timedate").style.color = "black";
+	//document.querySelector("#Wcount").style.color = "black";
+	document.querySelector("#Tcolor").value = "#000000";
+	document.querySelector("#color").value = "#9acd32";
+}
+
+if(DarkTheme == true){
+	console.log("DarkTheme:true");
+	document.body.style.backgroundColor = "black";
+	document.body.style.color = "white";
+	document.querySelector("#yourTitle").style.color = "white";
+	document.querySelector(".line1").style.backgroundColor = "white";
+	document.querySelector(".line2").style.backgroundColor = "white";
+	document.querySelector(".line3").style.backgroundColor = "white";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "white";
+	document.querySelector("#Timedate").style.color = "white";
+	//document.querySelector("#Wcount").style.color = "white";
+	document.querySelector("#Tcolor").value = "#ffffff";
+	document.querySelector("#color").value = "#000000";
+}
+
+}	
+
 
 
 function Warning(){
@@ -391,6 +632,7 @@ function Warning(){
 	console.warn("Current Update: v16.0.0 - Is up-to-date");
 	
 }
+
 
 //title save
 
@@ -404,18 +646,29 @@ function savetitle(){
 	
 	var s = document.getElementById("titleSave");
 	var Title = document.getElementById("yourTitle");
-	var Displaytitle = document.getElementById("UserTitle");
+	var Displaytitle = document.getElementById("UserTitle"); 
 	let val = s.value;
 	//val = val.match( /\w+/g );
 	//val = val.length;
 	//document.getElementById("Wcount").innerHTML = val;
+	if(username === "" || username === null){
+			Displaytitle.innerText = "Untitled" + " - Survey Builder";
+		Title.innerText = "Untitled";
+		
+	var E = document.getElementById("Error");
+	E.hidden = false;
+	setTimeout(hideError, 10000);
+	return false;
+	}
 	if(val.length <= 0|| val.length > maxTitle){
+		
 		Displaytitle.innerText = "Untitled" + " - Survey Builder";
 		Title.innerText = "Untitled";
 	var E = document.getElementById("Error");
 	E.hidden = false;
 	setTimeout(hideError, 10000);
 	return false;
+		
 	}
 	
 	else{
@@ -449,7 +702,12 @@ function savetitle(){
 		document.getElementById("Wcount").style.color = "red";
 	}
 	if(now > 0 && now <= maxTitle){
+		if(DarkTheme == false){
 		document.getElementById("Wcount").style.color = "black";
+		}
+		if(DarkTheme == true){
+			document.getElementById("Wcount").style.color = "white";
+		}
 	}
 	
 	let loop = setInterval(function(){

@@ -1,0 +1,4 @@
+- Added Simple styling system in the editors container(Do this by Elements ID)
+- The console now only supports any .sbconsole(SurveyBuilderConsole) files
+- Added expand and dexpand all for the file/folder map
+- Smoother scrolls

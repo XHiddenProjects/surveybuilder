@@ -1,0 +1,4 @@
+- Added lang folder
+ * Supported Languages
+  - English(en)
+  - Spanish(es)

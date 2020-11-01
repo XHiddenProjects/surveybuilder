@@ -1,0 +1,2 @@
+- Added New App::3D Object Module
+- 3D Object Module can allow you to insert any PNG file and will allow to tile into a 3D object:: hover over image to see it tilt.

@@ -7,6 +7,7 @@
 <a href="https://github.com/surveybuilderteams/surveybuilder/archive/master.zip" target="_blank">
 <image src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/download.svg"/>
 </a>
+<a href="https://github.com/surveybuilderteams/surveybuilder/blob/master/LICENSE"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/License.svg"/></a>
 ***
 
 
@@ -16,9 +17,10 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
-# Notice:
 
-I won't be adding any extra downloads to the release ex. SurveyBuilderInstaller.exe
+# Custom File(.sbconsole)
+
+Check out how you can add .sbconsole file to your PC: <a href="https://github.com/surveybuilderteams/SurevyBuilderConsoleFile/tree/main">.sbconsole file</a>
 
 ***
 
@@ -110,3 +112,27 @@ Report any issues here [issues](https://github.com/MasterGames2020/SurveyBuilder
 # Bot
 
 We provide a bot that will read and commit on any issues.
+
+***
+
+# Security Policy
+
+## Supported Versions
+
+Use this section to tell people about which versions of your project are
+currently being supported with security updates.
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 5.1.x   | :x:                |
+| 5.0.x   | :x:                |
+| 4.0.x   | :white_check_mark: |
+| < 4.0   | :white_check_mark: |
+
+## Reporting a Vulnerability
+
+Use this section to tell people how to report a vulnerability.
+
+Tell them where to go, how often they can expect to get an update on a
+reported vulnerability, what to expect if the vulnerability is accepted or
+declined, etc.

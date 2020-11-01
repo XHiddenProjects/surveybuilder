@@ -35,7 +35,7 @@
 <script src="SurveyBuilder.js" type="text/javascript"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
 <script src="https://kit.fontawesome.com/46bb4793e2.js" crossorigin="anonymous"></script>
-<script src="serviceworker.js"></script>
+<script src="serviceworker.js" type="text/javascript"></script>
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
 <!--Templeates-->
@@ -76,6 +76,7 @@ if(!file_exists($file)){
 </div>
 
 <div id="Body-Container">
+
 <!--<style>
 .loading-temp{
 	z-index:1;
@@ -124,6 +125,7 @@ if(!file_exists($file)){
  <!--Editor container-->
 <br>
 <br>
+
 <br>
 <center id="Form-Center" onload="Autosave()">
 <form id="Editors-Form" method="post" action="">
@@ -203,11 +205,11 @@ function resetScore(){
  <!--Sidebar-->
               
 
-<div id="Sidebar" role="sidebar">
+<div id="Sidebar">
 <div class="toggle-sidebar-btn" role="sidebar-button"  onclick="togglesidebar()" title="Add Elements" style="cursor:pointer;">
-<span></span>                                                                                                                                       
-<span></span>
-<span></span>
+<span class="line1"></span>                                                                                                                                       
+<span class="line2"></span>
+<span class="line3"></span>
 </div>
 <ul>
 <li id="New" class="exit" onclick="togglesidebar()" title="Close Elements" style="cursor:pointer;">Exit Sidebar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X</li>
@@ -415,12 +417,32 @@ return false;
 }
 </script>
 
-
+<li id="Insert-Img3D" title="3D Image Module" onclick="ThreeDIM()" class="3DIM apps-config"><i class="fas fa-cube"></i>&nbsp;&nbsp;3D Image module
+<li class="InfoApp" onclick="ThreeDIMInfo()">Information</li>
+<li class="Unistall" onclick="ThreeDIMUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Info
+function ThreeDIMInfo(){
+alert("AppName: 3D Image Module\n\nCreator: SurveyBuilder \n\nDescription: Upload an PNG Image to show your image a 3D experince\n\nDependencies: tilt.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion:16.0.0\n\nNeedsCofig: No");
+}
+//Unistall
+function ThreeDIMUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top 3D Image Module on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".Threedim-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
 
 
 
 <!--Add Apps below-->
 
+</script>
 </span>
 <span id="cpanel-form">
 <span id="cPanel">
@@ -504,7 +526,8 @@ $(function(){
 				 var pluginSize = items[i].size;
 			}
 		}
-		if(pluginType !== "text/html"){
+		
+		if(pluginType !== ".sbconsole"){
 			alert("Invalid file");
 			return false;
 		}
@@ -623,8 +646,8 @@ y.action = "./Apps/appdata/BadWordBlocker.php";
 <span style="color:white;">Enter Console (<a href="https://github.com/" title="GitHub" target="_blank" style="cursor:pointer;background-color:transparent;color:white;"><i class="fab fa-github"></i></a> GitHub)</span><input type="textarea" class="import-code github-import github-import-code" placeholder="Enter GitHub Raw"/><button onclick="ImportConsoleRaw()" type="button">Import <i class="fas fa-upload"></i></button>
 <br/>
 <br/>
-<button type="button" class="import_console_btn" onclick="importTxtFile()"><i class="fas fa-file-alt"></i> Upload TXT file</button>
-<input type="file" class="import_console_file_text" accept=".txt"/>
+<button type="button" class="import_console_btn"><i class="fas fa-file-alt"></i> Upload .sbconsole file</button>
+<input type="file" class="import_console_file_text" accept=".sbconsole"/>
 <style>
 .import_console_file_text{ 
     width: 1px; 
@@ -637,23 +660,36 @@ $(function(){
         $('.import_console_file_text').click();
     });
 });
+
+
+
+</script>
+<script>
 $(function(){
 	$('.import_console_file_text').change(function(event){
 		let temppath = URL.createObjectURL(event.target.files[0]);
 		
 		//getFile
-		let fp = $('.import_console_file_text');
-		let lg = fp[0].files.length;
-		var items = fp[0].files;
-		
-		//testFile
-		if(lg>0){
-			for(let i=0;i<lg;i++){
-				 var fileName = items[i].type;
-			}
-		}
-		if(fileName !== "text/plain"){
-			alert("Invalid file");
+     let fp = $(".import_console_file_text");
+    let lg = fp[0].files.length; // get length
+    let items = fp[0].files;
+ 
+    
+    if (lg > 0) {
+        for (var i = 0; i < lg; i++) {
+            var fileName = items[i].name; // get file name  
+			
+        }
+	}
+	//Gets file type
+		let getFileName = fileName.split('.sbconsole');
+		let string = getFileName.toString();
+		let removeComma = string.replace(",", "");
+		   let submax = removeComma + ".sbconsole";
+		   //test fileName w/ submax
+		   
+		if(fileName !== submax){
+	alert("Invalid file");
 			return false;
 		}
 		
@@ -721,7 +757,7 @@ document.getElementById("Console").value = "";
 		 document.getElementById("Insert-Object").innerHTML = "";
 return false;
 	}
-	let FullURL = "/SurveyBuilder/Console/Console-" + ID + ".txt";
+	let FullURL = "/SurveyBuilder/Console/Console-" + ID + ".sbconsole";
 	$.get(FullURL, function(data){
 		
 	
@@ -1041,9 +1077,30 @@ return false;
 
 </style>
 <span class="Folder-Location">
+<button onclick="ExpandAll()">Expand all</button>&nbsp;&nbsp;<button onclick="DexpandAll()">Dexpand all</button>
+<script>
+function ExpandAll(){
+	let folders = document.querySelectorAll("details");
+	let i;
+	for (i = 0; i < folders.length; i++) {
+		folders[i].open=true;
+	}
+	
+}
+function DexpandAll(){
+	let folders = document.querySelectorAll("details");
+	let i;
+	for (i = 0; i < folders.length; i++) {
+		folders[i].open=false;
+	}
+	
+}
+</script>
+<br/>
+<br/>
 <details class="Folder-Location-Map">
 <summary><i class="fas fa-folder"></i> htdocs</summary>
-<details>
+<details class="Folder-Location-Map">
 <summary><i class="fas fa-folder"></i> SurveyBuilder</summary>
 <details>
 <summary><i class="fas fa-folder"></i> .vs</summary>
@@ -1378,14 +1435,14 @@ if(InternetStatus){
 	document.querySelector(".Internet-Status").style.fontSize = "32px";
 	document.querySelector(".Internet-Status").style.color = "green";
 	document.querySelector(".Internet-Status").style.textAlign = "center";
-	   document.querySelector("#Sidebar").hidden = false;
+	  // document.querySelector("#Sidebar").hidden = false;
 }else{
 	let codeWifiDisconnected = "<i class='fad fa-wifi-slash'></i>";
 	document.querySelector(".Internet-Status").innerHTML = codeWifiDisconnected + " Disconnected";
 	document.querySelector(".Internet-Status").style.fontSize = "32px";
 	document.querySelector(".Internet-Status").style.color = "red";
 	document.querySelector(".Internet-Status").style.textAlign = "center";
-    document.querySelector("#Sidebar").hidden = true;
+    //document.querySelector("#Sidebar").hidden = true;
 	
 }
 setTimeout(checkInternetConnection, 0);
@@ -1437,38 +1494,16 @@ setTimeout(checkInternetConnection, 0);
 <div id="Slider-text">Preview: </div>
 <label class="switch">
 <input type="checkbox" id="CheckPre" oninput="Preview()"> 
+
 <span class="slider round"></span></label> 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <button onclick="Publish()" id="Publish">Publish</button>
-</div>  
-</div>
 <script>
-function Publish(){
-	let a = document.getElementById("Sidebar");
-	let b = document.getElementById("Orgtitle");
-	let c = document.getElementById("titleSave");
-	let d = document.getElementById("wcc");
-	let e = document.getElementById("Editor-Control-Form");
-	let f = document.getElementById("titleSave-btn");
-	let g = document.getElementById("Insert-Object");
-	a.hidden = true;
-	b.hidden = true;
-	c.hidden = true;
-	d.hidden = true;
-	e.hidden = true;
-	f.hidden = true;
-	g.contentEditable = false;
-	let links = document.createElement("A");
-	links.href = "SurveyBuilder.php";
-	links.setAttribute("download", "YourPage.php");
-	links.id = "DownloadLinkNow";
-	document.getElementById("links-doc").appendChild(links);
-	
-
-
-}
 
 </script>
+</div>  
+</div>
+
 <br>
 <br>
 <br>
@@ -1482,7 +1517,7 @@ function Publish(){
 <!--<div id="save"><button title="Save" id="save-btn">Save<button></div>-->
 
 <!--Contact-->
-<div id="contact-btn"><a href="mailto:mcmastergames2020@gmail.com"><button id="contact-btn" title="Contact">Contact</button></a></div>
+<div id="contact-btn"><a href="mailto:surveybuildersbot@gmail.com"><button id="contact-btn" title="Contact">Contact</button></a></div>
 <br>
 <br>
 <br>
@@ -1543,7 +1578,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br/>
 <h1>Templeate's</h1>
 <br/>
-<button id="temp" onclick="setupBlank()" title="Blank Templeate">Blank Templeate</button>
+<button id="temp" onclick="setupBlank()" class="blank_temp" title="Blank Templeate">Blank Templeate</button>
 <br>
 <br>
 <br>
@@ -1556,7 +1591,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <br>
-<button id="temp" onclick="setupMedTemp()" title="Medical Templeate">Medical Templeate</button>
+<button id="temp" onclick="setupMedTemp()" class="med_temp" title="Medical Templeate">Medical Templeate</button>
 <br>
 <br>
 <br>
@@ -1569,8 +1604,8 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <br>
-<button id="temp" onclick="setupPoliceIncidentReportTemp()" title="Police Incident Report Template">Police Incident Report</button>
-<br>
+<button id="temp" onclick="setupPoliceIncidentReportTemp()" class="Police_temp" title="Police Incident Report Template">Police Incident Report</button>
+<!--<br>
 <br>
 <br>
 <br>
@@ -1758,6 +1793,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <div class="user username-con">
 <input type="text" placeholder="Enter Username" id="userCode" style="width:320px;font-size:25px;" class="username-input username-data" oninput="setUsername()"/>
 </div>
+
 <br/>
 <span class="label_config">banIp:</span>
 <div class="Warning-input">
@@ -1782,15 +1818,206 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
 </div>
 <br/>
-<span class="label_config">Allow_ad_blocker:</span>
+<span class="label_config">Allow_ad_blocker _annoyance:</span>
 <div class="checkbox">
 <input type="checkbox" class="checkbox-input ad-checkbox check13" onclick="setAdBlocker()"/>
 <label for="checkbox-input">
 <div class="checkbox-icons"></div>
 </label>
 </div>
-<!--<br/>
-<div id="google_translate_element"></div>-->
+<br/>
+<span class="label_config">DarkTheme:</span>
+<div class="checkbox">
+<input type="checkbox" class="checkbox-input check14" onclick="setdarkTheme()"/>
+<label for="checkbox-input">
+<div class="checkbox-icons"></div>
+</label>
+</div>-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<br>
+<h1>Stylist <i class="fas fa-palette"></i></h1>
+<br/>
+<i class="fas fa-asterisk" style="color:red;"></i> <span class="data-id-con">Enter ID: <input type="text" title="Enter ID" class="style-id" placeholder="Style ID"/></span>
+<br/>
+<br/>
+Bold(<i class="fas fa-bold" title="Bold"></i>): <input type="checkbox" class="style style-checkbox style-bold" onclick="setBold()"/><br/>
+Italic(<i class="fas fa-italic" title="Italic"></i>): <input type="checkbox" class="style style-checkbox style-italic" onclick="setItalic()"/><br/>
+Underline(<i class="fas fa-underline" title="Underline"></i>): <input type="checkbox" class="style style-checkbox style-underline" onclick="setUnderline()"/><br/>
+Strikethrough(<i class="fas fa-strikethrough" title="Strikethrough"></i>): <input type="checkbox" class="style style-checkbox style-strikethrough" onclick="setStrikethrough()"/><br/>
+Color(<i class="fas fa-paint-brush" title="Font Color"></i>): <input type="color" class="style style-color style-fontColor" oninput="setColor()"/><br/>
+BGColor(<i class="fas fa-paint-roller" title="Font Background Color"></i>): <input type="color" class="style style-color style-fontBgColor" oninput="setBgColor()"/> Transparent: <input type="checkbox" class="style style-checkbox style-fontBgColor-Transparent" onclick="setBgColor()"/><br/>
+Font Size(<i class="fas fa-text-height" title="Font Size"></i>) <input type="number" min="0" placeholder="Enter int(number[px])" class="style style-number style-fontSize" oninput="setFontSize()"/><br/>
+Font Family(<i class="fas fa-font" title="Font Family"></i>): <input type="text" value="" placeholder="Enter Font Family Name" class="style style-text style-fontFamily" oninput="setFontFamily()"/><br/>
+Text align:(<i class="fas fa-align-justify" title="Text Align"></i>):
+<select class="style style-select style-align" onchange="setTextAlign()">
+<option value="left-align">Left align</option>
+<option value="center-align">Center align</option>
+<option value="right-align">Right align</option>
+<option value="justify-align">Justify align</option>
+</select><br/>
+Text dents:(<i class="fas fa-indent" title="Text Dent"></i>): <input type="number" min="0" oninput="setTextDent()" placeholder="Enter a int(number[%])" class="style-dent"/>
+<!--Style script-->
+<script>
+//setData 
+var System = document.querySelector(".style-id");
+var Bold = document.querySelector(".style-bold");
+var Italic = document.querySelector(".style-italic");
+var Underline = document.querySelector(".style-underline");
+var Strikethrough = document.querySelector(".style-strikethrough");
+var Color = document.querySelector(".style-fontColor");
+var BgColor = document.querySelector(".style-fontBgColor");
+var BgColorTrans = document.querySelector(".style-fontBgColor-Transparent");
+var Fsize = document.querySelector(".style-fontSize");
+var Ffamily = document.querySelector(".style-fontFamily");
+var txtAlign = document.querySelector(".style-align");
+var txtDent = document.querySelector(".style-dent");
+//bold
+function setBold(){
+	if(Bold.checked){
+		document.getElementById(System.value).style.fontWeight = "bold";
+	}else{
+		document.getElementById(System.value).style.fontWeight = "normal";
+	}
+	
+}
+function setItalic(){
+	if(Italic.checked){
+		document.getElementById(System.value).style.fontStyle = "italic";
+	}else{
+		document.getElementById(System.value).style.fontStyle = "normal";
+	}
+	
+}
+function setUnderline(){
+	if(Underline.checked){
+		document.getElementById(System.value).style.textDecoration = "underline";
+	}else{
+		document.getElementById(System.value).style.textDecoration = "none";
+	}
+	
+}
+function setStrikethrough(){
+	if(Strikethrough.checked){
+		document.getElementById(System.value).style.textDecoration = "line-through";
+	}else{
+		document.getElementById(System.value).style.textDecoration = "none";
+	}
+	
+}
+function setColor(){
+document.getElementById(System.value).style.color = Color.value;
+}
+function setBgColor(){
+	if(BgColorTrans.checked){
+		document.getElementById(System.value).style.backgroundColor = "transparent";
+	}else{
+		BgColorTrans.checked = false;
+		document.getElementById(System.value).style.background = BgColor.value;
+	}
+
+}
+function setFontSize(){
+	document.getElementById(System.value).style.fontSize = Fsize.value;
+}
+function setFontFamily(){
+	document.getElementById(System.value).style.fontFamily = Ffamily.value;
+}
+function setTextAlign(){
+	if(txtAlign.selectedIndex == "0"){
+		document.getElementById(System.value).style.textAlign = "left";
+	}
+	if(txtAlign.selectedIndex == "1"){
+		document.getElementById(System.value).style.textAlign = "center";
+	}
+	if(txtAlign.selectedIndex == "2"){
+		document.getElementById(System.value).style.textAlign = "right";
+	}
+	if(txtAlign.selectedIndex == "3"){
+		document.getElementById(System.value).style.textAlign = "justify";
+	}
+}
+function setTextDent(){
+		let percent = txtDent.value + "%";
+		document.getElementById(System.value).style.textIndent = percent;	
+}
+</script>
+<!--Style script(End)-->
+<br>
+<br>
+<br>
+<br>
+<hr/>
+<br>
+<h1>Scripter <i class="fab fa-js-square"></i></h1>
+<br/>
+<i class="fas fa-asterisk" style="color:red;"></i> <span class="data-id-con">Enter ID: <input type="text" title="Enter ID" onchange="checkID" class="script-id" placeholder="script ID"/></span>
+<br/>
+<br/>
+Action: <input type="text" class="action" placeholder="Enter Action"/>
+<br/>
+Function: <input type="text" class="function"  placeholder="Enter Function"/>
+<br/>
+Script:
+<br/>
+<textarea class="script-editor" placeholder="Enter Script" onchange="setFunction()" style="margin: 0px; width: 308px; height: 53px;"></textarea>
+<br/>
+<br/>
+<button onclick="BuildFunction()" type="button">Add Function</button>&nbsp;<button onclick="BuildHiddenFunction()" type="button">Insert Hidden Function</button>
+<script>
+//Add items
+function BuildFunction(){
+	let x = document.querySelector(".function").value;
+	let Format = x.replace("()", "");
+	document.querySelector(".script-editor").value = "function " + Format + "(){\n\n}";
+	//alert("built");
+}
+function BuildHiddenFunction(selector){
+	selector = prompt("Enter element ID", "");
+	if(selector == null || selector == ""){
+		alert("Cannot be built... Canceled");
+	}
+	
+	let x = document.querySelector(".function").value;
+	let Format = x.replace("()", "");
+	document.querySelector(".script-editor").value = "function " + Format + "(){\n"+ "document.getElementById('"+ selector + "').hidden=true" +"\n}";
+}
+</script>
+<script>
+function checkID(ID){
+	ID = document.querySelector(".script-id").value;
+	console.assert(document.getElementById(ID), 'There is no such ID as: ' + ID);
+}
+function setFunction(Dataid, action, functions, script){
+	Dataid=document.querySelector(".script-id").value;
+	action=document.querySelector(".action").value;
+	functions=document.querySelector(".function").value;
+	script=document.querySelector(".script-editor").value;
+	
+	if(Dataid == "" || action == "" || functions == "" || script == ""){
+		alert("Make sure you fill out everything");
+		return false;
+	}
+	else{
+		functions.replace("()", "");
+		document.getElementById(Dataid).setAttribute(action, functions + "()");
+		
+		let setScript = document.createElement("SCRIPT");
+		setScript.innerHTML = script;
+		document.querySelector(".setFormScript").appendChild(setScript);
+	}
+	
+}
+</script>
+
 </span>
 </div>
 
@@ -1806,7 +2033,9 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <br>
+<div class="setFormScript">
 
+</div>
 <footer id="SurveyMakerBanner" role="banner"><div id="Banner"><span id="Icon"><img src="favicon.ico" width="50" height="50" title="SurveyMaker" alt="SurveyMaker Icon"/></span><span id="Text1">Join SurveyBuilder TODAY! <span id="Text2">Join Our <a id="FourmLink" title="Fourm" href="https://surveybuilder.boards.net/" target="_blank">Fourm</a></span><span id="Text3">&copy;SurveyBuilder</span></div></footer>
 <div id="copyright-print">&copy; SurveyBuilder</div>
 </div>
@@ -1819,9 +2048,11 @@ function googleTranslateElementInit(){
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
 <script src="./Config/Config.js" type="text/javascript"></script>
+<div class="setConfigDatabase">
 
+</div>
 
-<script>
+<!--<script>
 
 //coords:
 var check1 = document.querySelector(".check1");//banner
@@ -1837,6 +2068,7 @@ var check10 = document.querySelector(".check10");//cookie
 var check11 = document.querySelector(".check11");//ip
 var check12 = document.querySelector(".check12");//cpanel
 var check13 = document.querySelector(".check13");//adblocker
+var check14 = document.querySelector(".check14");//DarkTheme
 
 function setBanner(){
 	if(Allow_Banner_display == true && check1.checked == false){
@@ -1976,7 +2208,17 @@ function setUsername(){
 		setTimeout(testCorrospond, 0);
 	
 } 
-</script>
+
+function setdarkTheme(){
+	if(DarkTheme == false && check14.checked == true){
+		DarkTheme = true;
+		
+	} else{
+		DarkTheme = false;
+	}
+	setTimeout(testCorrospond, 0);
+}
+</script>-->
 
 </body>                                                                      
 </html>         
