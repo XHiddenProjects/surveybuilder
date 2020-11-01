@@ -10,7 +10,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "file-saver": "^2.0.2",
     "mysql": "^2.18.1"
   },
   "repository": {
