@@ -438,6 +438,47 @@ return false;
 }
 </script>
 
+<li id="Insert-txtEditor" title="Text Editor" onclick="txtEditor()" class="txtEdit apps-config"><i class="fas fa-pen-square"></i>&nbsp;&nbsp;Text Editor
+<li class="InfoApp" onclick="txtEditorInfo()">Information</li>
+<li class="Unistall" onclick="txtEditorUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Info
+function txtEditorInfo(){
+alert("AppName: Text Editor\n\nCreator: SurveyBuilder \n\nDescription: Use a free Build text editor and create your own files\n\nDependencies: FileSave.js, lined-textarea.css, lined-textarea.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion:16.0.0\n\nNeedsCofig: No");
+}
+//Unistall
+function txtEditorUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Text Editor on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".TxtEditor-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
+
+<li id="Insert-markdown" title="Markdown Editor" onclick="mdEditor()" class="mdEdit apps-config"><i class="fab fa-markdown"></i>&nbsp;&nbsp;Markdown Editor
+<li class="InfoApp" onclick="mdEditorInfo()">Information</li>
+<li class="Unistall" onclick="mdEditorUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Info
+function mdEditorInfo(){
+alert("AppName: Markdown Editor\n\nCreator: SurveyBuilder \n\nDescription: Build and Program your own Markdown code and go live\n\nDependencies: lined-textarea.css, lined-textarea.js, marked.min.js, jquery.textarea-markdown-editor.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion:16.0.0\n\nNeedsCofig: No");
+}
+//Unistall
+function mdEditorUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Text Editor on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".mdEditor-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
 
 
 <!--Add Apps below-->
