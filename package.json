@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/surveybuilderTeams/surveybuilder#readme",
   "devDependencies": {},
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
+  }
 }
 
