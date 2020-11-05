@@ -1,0 +1,3 @@
+- Added 2 new apps
+ 1. Text editor - Allows you to open any file to preview and edit files in the most basic format.
+ 2. Markdown editor - Allows you to make your own Markdown file (No download buttons)
