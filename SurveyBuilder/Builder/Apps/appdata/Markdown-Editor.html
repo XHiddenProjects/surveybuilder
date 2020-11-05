@@ -1,0 +1,85 @@
+<html>
+<head>
+<link href="/SurveyBuilder/favicon.ico" rel="shortcut icon"/>
+<title>Markdown Editor</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./Markdown-Editor/Textarea-Based-Markdown-Editor-with-jQuery/dist/marked.min.js"></script>
+<script src="./Markdown-Editor/Textarea-Based-Markdown-Editor-with-jQuery/dist/jquery.textarea-markdown-editor.js"></script>
+<link rel="stylesheet" href="./TextEditor/lined-textarea/css/jquery-linedtextarea.css"/>
+<script src="./TextEditor/lined-textarea/js/jquery-linedtextarea.js" type="text/javascript"></script>
+
+</head>
+<style>
+.preview{
+position:absolute;
+border:1px solid black;
+background:white;
+left:65%;
+top:0;
+width:320px;
+height:98%;
+overflow:auto;
+}
+body{
+margin:0;
+padding:0;
+background:black;
+
+}
+pre{
+border:1px solid gray;
+}
+.linedwrap, .linedtextarea{
+border:none;
+}
+table, th, td {
+  border: 1px solid black;
+}
+table{
+border-collapse: collapse;
+}
+
+blockquote{
+border-left:5px solid gray;
+}
+blockquote p{
+margin-left:5px;
+}
+</style>
+
+
+
+
+
+<body>
+<textarea id="editor" class="lined textarea" rows="31" cols="50"></textarea>
+
+<div id="preview" class="preview"></div>
+<script>
+$(document).ready(function(){
+
+   $(".lined").linedtextarea();
+
+});
+</script>
+<script>
+$(function(){
+  var $editor = $('#editor');
+  var $preview = $('#preview');
+
+  $editor.markdownEditor({
+    onInsertedList: function(){ console.log("inserted list"); },
+    onInsertedTable: function(){ console.log("inserted table"); },
+    onInsertedCodeblock: function(){ console.log("inserted codeblock"); }
+  }).focus();
+
+ t= setInterval(function(){
+    $preview.html(marked($editor[0].value));
+  }, 1000);
+});
+
+
+</script>
+
+</body>
+</html>

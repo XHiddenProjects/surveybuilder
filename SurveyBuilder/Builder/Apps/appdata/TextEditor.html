@@ -1,0 +1,759 @@
+<html>
+<title>TextEditor - SurveyBuilder</title>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<link rel="stylesheet" href="./TextEditor/lined-textarea/css/jquery-linedtextarea.css"/>
+<script src="./TextEditor/lined-textarea/js/jquery-linedtextarea.js" type="text/javascript"></script>
+<script src="./TextEditor/SaveAs/FileSaver.js"></script>
+<script src="https://kit.fontawesome.com/46bb4793e2.js" crossorigin="anonymous"></script>
+<!--Handed Script-->
+<style>
+ .linedwrap{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:32px;
+width:100% !important;
+color:black;
+border:none;
+}
+
+.Editors-code{
+position:absolute;
+left:6.6%;
+width:100%;0
+border:1px solid black;
+background-color:gray;
+color:white;
+}
+.Editors-code::selection{
+background-color:yellow;
+}
+body{
+margin:0;
+padding:0;
+
+background-color:black;
+}
+.file{
+position:absolute;
+left:1%;
+cursor:pointer;
+color:white;
+}
+.file span:hover{
+background:gray;
+
+}
+.file_child span{
+border-bottom:2px solid gray;
+}
+.open-file{
+width:1px; 
+visibility:hidden;
+}
+
+.edit{
+position:absolute;
+left:5%;
+cursor:pointer;
+color:white;
+}
+.edit span:hover{
+background:gray;
+
+}
+.edit_child span{
+border-bottom:2px solid gray;
+}
+
+.Search{
+position:absolute;
+left:9%;
+cursor:pointer;
+color:white;
+}
+.Search span:hover{
+background:gray;
+
+}
+.Search_child span{
+border-bottom:2px solid gray;
+}
+
+/*Prompt*/
+.prompt_area{
+position:absolute;
+z-index:2;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+border:1px solid black;
+width:820px;
+height:520px;
+background-color:green;
+}
+.image_editor{
+position:absolute;
+top:18%;
+left:0%;
+width:100%;
+background-color:cyan;
+}
+.image_editor h1{
+text-align:center;
+font-size:68px;
+}
+.image_editor input, .image_editor button{
+width:100%;
+font-size:32px;
+margin-bottom:25px;
+}
+.prompt_save_image_btn{
+width:100%;
+cursor:pointer;
+border-radius:25px;
+outline:none;
+border:none;
+}
+.prompt_save_image_btn:hover{
+background:#3dc4d6;
+
+
+}
+.close-btn{
+font-size:52px;
+color:red;
+position:absolute;
+cursor:pointer;
+}
+/*System*/
+.system_editor{
+position:absolute;
+top:18%;
+left:0%;
+width:100%;
+background-color:cyan;
+}
+.system_editor h1{
+text-align:center;
+font-size:68px;
+}
+.system_editor input, .system_editor button{
+width:100%;
+font-size:32px;
+margin-bottom:25px;
+}
+.prompt_save_system_btn{
+width:100%;
+cursor:pointer;
+border-radius:25px;
+outline:none;
+border:none;
+}
+.prompt_save_system_btn:hover{
+background:#3dc4d6;
+
+
+}
+/*Video*/
+.video_editor{
+position:absolute;
+top:18%;
+left:0%;
+width:100%;
+background-color:cyan;
+}
+.video_editor h1{
+text-align:center;
+font-size:68px;
+}
+.video_editor input, .video_editor select ,.video_editor button{
+width:100%;
+font-size:32px;
+margin-bottom:25px;
+}
+.prompt_save_video_btn{
+width:100%;
+cursor:pointer;
+border-radius:25px;
+outline:none;
+border:none;
+}
+.prompt_save_video_btn:hover{
+background:#3dc4d6;
+
+
+}
+/*Audio*/
+.audio_editor{
+position:absolute;
+top:18%;
+left:0%;
+width:100%;
+background-color:cyan;
+}
+.audio_editor h1{
+text-align:center;
+font-size:68px;
+}
+.audio_editor select, .audio_editor button{
+width:100%;
+font-size:32px;
+margin-bottom:25px;
+}
+.prompt_save_audio_btn{
+width:100%;
+cursor:pointer;
+border-radius:25px;
+outline:none;
+border:none;
+}
+.prompt_save_audio_btn:hover{
+background:#3dc4d6;
+
+
+}
+
+/*Search for word*/
+.Search_word_prompt{
+position:absolute;
+top:18%;
+left:0%;
+width:100%;
+background-color:cyan;
+}
+.Search_word_prompt h1{
+text-align:center;
+font-size:68px;
+}
+.Search_word_prompt input, .Search_word_prompt button{
+width:100%;
+font-size:32px;
+margin-bottom:25px;
+}
+.search_btn{
+width:100%;
+cursor:pointer;
+border-radius:25px;
+outline:none;
+border:none;
+}
+.search_btn:hover{
+background:#3dc4d6;
+
+
+}
+</style>
+
+<script>
+//file 
+function displayFile(element){
+element=document.querySelector(".file_child").hidden = false;
+}
+function displayFileOut(element){
+element=document.querySelector(".file_child").hidden = true;
+}
+function displayEdit(element){
+element=document.querySelector(".edit_child").hidden = false;
+}
+function displayEditOut(element){
+element=document.querySelector(".edit_child").hidden = true;
+}
+function displaySearch(){
+document.querySelector(".Search_child").hidden = false;
+}
+function displaySearchOut(){
+document.querySelector(".Search_child").hidden = true;
+}
+</script>
+<script>
+$(function(){
+//close prompt 
+$(".fa-times-circle").click(function(){
+$(".prompt_area").hide();
+$(".image_editor").hide();
+$(".video_editor").hide();
+$(".system_editor").hide();
+$(".audio_editor").hide();
+});
+});
+</script>
+<!--File Scripts-->
+<script>
+//Save as 
+$(function(){
+$(".save_as_btn").click(function(){
+
+let Data = $(".Editors-code").val();
+//alert(Data);
+
+let File = prompt("Select a file name and type, ex: example.html", "");
+if(File === "" || File === null){
+return false;
+}
+sessionStorage.setItem("fileName", File);
+let blob = new Blob([Data], {type: "text/plain;charset=UTF-8"});
+
+saveAs(blob, File);
+
+});
+
+});
+//open file
+$(function(){
+$(".open_btn").click(function(){
+$(".open-file").click();
+
+	
+		
+
+});
+});
+
+$(function(){
+$(".open-file").change(function(event){
+
+		let temppath = URL.createObjectURL(event.target.files[0]);
+		sessionStorage.setItem("dataURL", temppath);
+        
+		sessionStorage.setItem("fileName", "");
+        let fp = $('.open-file');
+		let lg = fp[0].files.length;
+		var items = fp[0].files;
+		
+		//testFile
+		if(lg>0){
+			for(let i=0;i<lg;i++){
+				 var fileName = items[i].name;
+				 var fileType = items[i].type;
+				 //
+				 //alert(fileType);
+				 sessionStorage.setItem("fileName", fileName);
+				 //test
+				 if(fileType === "image/png" || fileType === "image/jpg" || fileType === "image/gif" || fileType === "image/pdf" || fileType === "image/x-icon"){
+				  $.get(temppath, function(ImageData){
+			
+			document.querySelector(".Image_seeker").src = temppath;
+			document.querySelector(".Editors-code").value = "";
+			});
+			return false;
+				 }
+				  if(fileType === "video/mp4" || fileType === "video/ogg"){
+				  $.get(temppath, function(VideoData){
+			
+			document.querySelector(".Video_seeker").src = temppath;
+			document.querySelector(".Editors-code").value = "";
+			});
+			return false;
+				 }
+				 if(fileType === "audio/mpeg" || fileType === "audio/ogg" || fileType === "audio/wav"){
+				  $.get(temppath, function(AudioData){
+			
+			document.querySelector(".Audio_seeker").src = temppath;
+			document.querySelector(".Editors-code").value = "";
+			});
+			return false;
+				 }
+				 else{
+				 $.get(temppath, function(FileData){
+			document.querySelector(".Image_seeker").src = "";
+			document.querySelector(".Editors-code").value = FileData;
+			});
+			}
+		}
+		
+		
+		}
+
+	
+});
+});
+
+//clear
+$(function(){
+$(".clear_btn").click(function(){
+$(".Editors-code").val("");
+$(".Image_seeker").attr("src", "");
+$(".Video_seeker").attr("src", "");
+sessionStorage.setItem("dataURL", "");
+sessionStorage.setItem("fileName", "");
+
+
+});
+});
+
+//save 
+$(function(){
+ $(".save_btn").click(function(){
+         let Data = $(".Editors-code").val();
+    let blob = new Blob([Data], {type: "text/plain;charset=UTF-8"});
+let GetFileName = sessionStorage.getItem("fileName");
+      saveAs(blob, GetFileName);
+ 
+ });
+});
+
+</script>
+<script>
+$(function(){
+$(".Image_edit_btn").click(function(){
+$(".prompt_area").show();
+$(".image_editor").show();
+
+});
+});
+
+$(function(){
+$(".prompt_save_image_btn").click(function(width, height, prompt, prompt1, image, alt){
+ width = $(".Img_Width").val();
+ height = $(".Img_Height").val();
+ prompt = $(".image_editor");
+ prompt1 = $(".prompt_area");
+ image = $(".Image_seeker");
+ alt = $(".Img_Alt").val();
+ 
+ if(width === "" || height === ""){
+ alert("You must enter a number for Width and Height");
+ return false;
+ }else{
+ image.css({"width": width+"px"});
+ image.css({"height": height+"px"});
+ image.attr("alt", alt);
+ image.attr("title", alt);
+ prompt.hide();
+ prompt1.hide();
+ }
+});
+});
+
+
+</script>
+<script>
+$(function(){
+$(".System_edit_btn").click(function(){
+$(".prompt_area").show();
+$(".system_editor").show();
+});
+});
+
+$(function(){
+$(".prompt_save_System_btn").click(function(prompt, prompt1, color, bgcolor, editor){
+prompt = $(".prompt_area");
+prompt1 = $(".system_editor");
+color = $(".System_Color").val();
+bgcolor = $(".System_BGColor").val();
+editor = $(".Editors-code");
+
+editor.css({"color": color, "background-color": bgcolor});
+
+prompt.hide();
+prompt1.hide();
+
+});
+});
+</script>
+<script>
+$(function(){
+$(".Video_edit_btn").click(function(){
+$(".prompt_area").show();
+$(".video_editor").show();
+});
+});
+
+$(function(){
+$(".prompt_save_Video_btn").click(function(prompt, prompt1, width, height, autoplay, Controls, Loop, poster, setData, Valid, ValidOne, ValidTwo){
+prompt = $(".prompt_area");
+prompt1 = $(".video_editor");
+
+width = $(".Video_width").val();
+height = $(".Video_Height").val();
+
+autoplay = $(".AutoPlay_video").prop("selectedIndex");
+//alert(autoplay);
+controls = $(".Controls_Video").prop("selectedIndex");
+//alert(controls);
+loop = $(".Loop_Video").prop("selectedIndex");
+//alert(loop);
+
+if(autoplay == "0" || controls == "0" || loop == "0"){
+alert("You must select Autoplay, controls, and loop");
+return false;
+}
+
+
+
+$(".Video_seeker").css({"width":width + "px", "height":height + "px"});
+if(autoplay == "1"){
+$(".Video_seeker")[0].autoplay = false;
+}
+if(autoplay == "2"){
+$(".Video_seeker")[0].autoplay = true;
+$(".Video_seeker")[0].play();
+}
+if(controls == "1"){
+ValidOne = false;
+}
+if(controls == "2"){
+ValidOne = true;
+}
+if(loop == "1"){
+ValidTwo = false;
+}
+if(loop == "2"){
+ValidTwo = true;
+}
+
+
+
+$(".Video_seeker").attr("controls", ValidOne);
+$(".Video_seeker").attr("loop", ValidTwo);
+
+});
+});
+
+$(function(){
+$(".Poster").change(function(event){
+
+		let temppath = URL.createObjectURL(event.target.files[0]);
+		$(".Video_seeker").attr("poster", temppath);
+		});
+		});
+
+</script>
+<script>
+//audio
+$(function(){
+$(".Audio_edit_btn").click(function(){
+$(".prompt_area").show();
+$(".audio_editor").show();
+
+});
+});
+
+$(function(){
+$(".prompt_save_audio_btn").click(function(prompt, prompt1, controls, loop, autoplay, valid, validOne, validTwo){
+prompt = $(".prompt_area");
+prompt1 = $(".Audio_editor");
+
+controls = $(".Audio_Controls").prop("selectedIndex");
+loop = $(".Audio_Loop").prop("selectedIndex");
+autoplay = $(".Audio_Autoplay").prop("selectedIndex");
+
+if(controls == "0" || loop == "0" || autoplay == "0"){
+alert("You must fill out all (controls, loop, and autoplay)");
+return false;
+}
+
+if(controls == "1"){
+valid = false;
+}
+if(controls == "2"){
+valid = true;
+}
+
+if(loop == "1"){
+validOne = false;
+}
+if(loop == "2"){
+validOne = true;
+}
+
+if(autoplay == "1"){
+$(".Audio_seeker")[0].autoplay = false;
+}
+if(autoplay == "2"){
+$(".Audio_seeker")[0].autoplay = true;
+$(".Audio_seeker")[0].play();
+}
+
+$(".Audio_seeker").attr("controls", valid);
+$(".Audio_seeker").attr("loop", validOne);
+
+
+
+prompt.hide();
+prompt1.hide();
+});
+});
+
+</script>
+
+
+<script>
+//full screen
+$(function(){
+$(".FullScreen_btn").click(function(){
+let elem = document.querySelector("body");
+ if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+
+});
+});
+
+</script>
+<script>
+$(function(){
+$(".Search_word_btn").click(function(){
+$(".Search_word_prompt").show();
+$(".prompt_area").show();
+});
+});
+
+$(function(){
+$(".search_btn").click(function(prompt, prompt1, searchTxt){
+ prompt = $(".prompt_area");
+ prompt1 = $(".Search_word_prompt");
+ searchTxt = $(".Search_Word_Input").val();
+ 
+if(searchTxt === ""){
+alert("You must add a word into the textbox");
+return false;
+}
+
+if(!window.find(searchTxt)){
+alert("Can't find word");
+return false;
+}
+
+window.find(searchTxt, false, false, true, false, false, false);
+
+});
+});
+</script>
+<body>
+<div class="prompt_area" hidden="true">
+<div class="close-btn" title="Close Prompt">
+<i class="far fa-times-circle"></i>
+</div>
+<div class="image_editor" hidden="true">
+<h1>Image Editor</h1>
+<input type="number" class="Img_Width" placeholder="Width(px)"/><br/>
+<input type="number" class="Img_Height" placeholder="Height(px)"/><br/>
+<input type="text" class="Img_Alt" placeholder="Image Alt"/>
+<button class="prompt_save_image_btn">Save</button>
+</div>
+
+<div class="system_editor" hidden="true">
+<h1>System Editor</h1>
+<input type="color" class="System_Color" placeholder="Color" value="#ffffff"/><br/>
+<input type="color" class="System_BGColor" placeholder="Background Color" value="#808080"/><br/>
+<button class="prompt_save_System_btn">Save</button>
+</div>
+
+<div class="video_editor" hidden="true">
+<h1>Video Editor</h1>
+<input type="number" class="Video_width" placeholder="Width"/><br/>
+<input type="number" class="Video_Height" placeholder="Height"/><br/>
+<select class="AutoPlay_video">
+<option>--Select Boolean(Autoplay)--</option>
+<option>False</option>
+<option>True</option>
+</select>
+<br/>
+<select class="Controls_Video">
+<option>--Select Boolean(Controls)--</option>
+<option>False</option>
+<option>True</option>
+</select>
+<br/>
+<select class="Loop_Video">
+<option>--Select Boolean(Loop)--</option>
+<option>False</option>
+<option>True</option>
+</select>
+<br/>
+<input type="file" class="Poster" title="Poster" accept="image/*"/>
+<button class="prompt_save_Video_btn">Save</button>
+</div>
+
+<div class="audio_editor" hidden="true">
+<h1>Audio Editor</h1>
+<select class="Audio_Controls">
+<option>--Select Boolean(Controls)--</option>
+<option>False</option>
+<option>True</option>
+</select>
+<select class="Audio_Autoplay">
+<option>--Select Boolean(Autoplay)--</option>
+<option>False</option>
+<option>True</option>
+</select>
+<select class="Audio_Loop">
+<option>--Select Boolean(Loop)--</option>
+<option>False</option>
+<option>True</option>
+</select>
+
+<button class="prompt_save_audio_btn">Save</button>
+</div>
+
+<div class="Search_word_prompt" hidden="">
+<h1>Search By Word</h1><br/>
+<input type="search" placeholder="Search for word" class="Search_Word_Input"/><br/>
+<button class="search_btn">Search/Search Next</button>
+</div>
+
+
+</div>
+
+<div class="Editors-con">
+<div class="file" onmouseover="displayFile()" onmouseout="displayFileOut()">
+<span>File</span>
+<div class="file_child" hidden="">
+<span class="open_btn">Open</span><input type="file" class="file open-file"/><br/>
+<span class="save_as_btn">Save as</span><br/>
+<span class="save_btn">Save</span><br/>
+<span class="clear_btn">Clear</span><br/>
+</div>
+</div>
+
+<div class="edit" onmouseover="displayEdit()" onmouseout="displayEditOut()">
+<span>Edit</span>
+<div class="Edit_child" hidden="">
+<span class="Image_edit_btn">Image Edit</span><br/>
+<span class="Video_edit_btn">Video Edit</span><br/>
+<span class="Audio_edit_btn">Audio Edit</span><br/>
+<span class="System_edit_btn">System Edit</span><br/>
+<span class="FullScreen_btn">Full Screen</span><br/>
+</div>
+</div>
+<div class="search" onmouseover="displaySearch()" onmouseout="displaySearchOut()">
+<span>Search</span>
+<div class="Search_child" hidden="">
+<span class="Search_word_btn">Word</span>
+</div>
+</div>
+
+
+
+<br/>
+<br/>
+<textarea class="lined Editors-code" rows="10" cols="60"></textarea>
+
+
+<script>
+$(document).ready(function(){
+
+   $(".lined").linedtextarea();
+
+});
+
+</script>
+<br/>
+<div class="PreviewData">
+<img src="" class="Image_seeker" style="position:absolute;top:90%;background-color:transparent;"></img>
+<video src="" class="Video_seeker" style="position:absolute;top:90%;background-color:transparent;"></video>
+<audio src="" class="Audio_seeker" style="position:absolute;top:90%;background-color:transparent;"></audio>
+</div>
+
+</body>
+</html>
