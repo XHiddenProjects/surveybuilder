@@ -1,9 +1,9 @@
+# Ingore these striced files
 /banner
 /node_modules
 /.github
 /ignore
-CODE_OF_CONDUCT.md
-DESCRIPTION.md
-CONTRIBUTING.md
 Note.txt
+*.md
+
 
