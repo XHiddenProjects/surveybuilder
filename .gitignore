@@ -1,8 +1,7 @@
 # Ingore these striced files
-/banner
-/node_modules
-/.github
-/ignore
+banner
+node_modules
+.github
 Note.txt
 *.md
 
