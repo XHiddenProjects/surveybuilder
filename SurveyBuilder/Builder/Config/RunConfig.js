@@ -272,7 +272,9 @@ function config(){
 	/*List*/
 	//Copy code to keep add limited items
 	//Change '0' to any number (0 < #) this will take a certain ID and hide it
-	document.getElementById(limit_list[0]).hidden = true;
+	for(i=0;i<limit_list.length;i++){
+		document.getElementById(limit_list[i]).hidden = true;
+	}
 
 	/*End list here*/
 	
