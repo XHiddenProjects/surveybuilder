@@ -1,34 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Recorder - SurveyBuilder</title>
-    <meta name="viewport" content="width=device-width">
-	<link rel="shortcut icon" href="/SurveyBuilder/favicon.ico"/>
-   <style>
-   body{
-   background:white;
-   }
-   h1{
-   text-align:center;
-   font-size:52px;
-   }
-   </style>
+<title>ScreenRecorder - SurveyBuilder</title>
+<link rel="shortcut icon" href="/SurveyBuilder/favicon.ico"/>
+<script src="https://kit.fontawesome.com/46bb4793e2.js"></script>
+<style>
+h1{
+text-align:center;
+font-size:52px;
+}
+button{
+font-size:32px;
+}
+body{
+background-color:white;
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Recorder - SurveyBuilder</h1>
+<header>
+        <h1>ScreenRecorder</h1>
     </header>
     <main>
-       
-        <p><button id="btnStart">START RECORDING</button><br/>
-        <button id="btnStop">STOP RECORDING</button></p>
+        <p><button id="btnStart"><i class="fas fa-video"></i>&nbsp;START RECORDING</button><br/>
+        <button id="btnStop"><i class="fas fa-stop"></i>&nbsp;STOP RECORDING</button></p>
         <br/>
 		<h1>Stream</h1>
 		<br/>
         <video controls></video>
-         <br/>
-		<h1>Saved</h1>
+        <br/>
+		<h1>Preview</h1>
 		<br/>
         <video id="vid2" controls></video>
         
@@ -37,7 +37,7 @@
     <script>
         
         let constraintObj = { 
-            audio: true, 
+            audio: false, 
             video: { 
                 facingMode: "user", 
                 width: { min: 640, ideal: 1280, max: 1920 },
@@ -98,12 +98,10 @@
             
             start.addEventListener('click', (ev)=>{
                 mediaRecorder.start();
-				alert("Streaming starts");
                 console.log(mediaRecorder.state);
             })
             stop.addEventListener('click', (ev)=>{
                 mediaRecorder.stop();
-				alert("Streaming ends");
                 console.log(mediaRecorder.state);
             });
             mediaRecorder.ondataavailable = function(ev) {
