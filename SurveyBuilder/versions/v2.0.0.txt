@@ -1,3 +1,0 @@
-Removed Conditions
-
-Reason: Was worthless when you can code it
