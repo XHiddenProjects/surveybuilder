@@ -16,7 +16,7 @@ system corrnation:
 var Allow_Banner_display = true; //Allow to display SurveyBuilder footer(banner)
 var Allow_Console_attribute = true; //Enables the Console Log
 var Allow_Pop_up = false; //Allow alert_box to popup when a user joins
-var limit_list = ["not"]; //Removes any category on your choice. 
+var limit_list = []; //Removes any category on your choice. 
 var Allow_Inspect_element = true; //Allows users to use the Inspect Element
 var Allow_location_tracking = false; //Allows you to know there location.. sends this to the console.
 var Allow_API_config = [false, "{url}"]; //Enables a password that works only when a API is enabled. Password will popup when a player joins. type '?api={API}' in URL bar
