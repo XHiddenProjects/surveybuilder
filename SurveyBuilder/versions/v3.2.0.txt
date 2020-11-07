@@ -1,2 +1,0 @@
-Mobile friendly 
-- supports iPhone(6/7/8)
