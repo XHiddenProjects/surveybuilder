@@ -1,1 +1,0 @@
-Esignatures now download a data/png on done and can be added in into a file uploader
