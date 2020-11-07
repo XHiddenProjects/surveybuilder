@@ -176,6 +176,10 @@ width:100%;
 font-size:32px;
 margin-bottom:25px;
 }
+.video_editor span{
+font-size:25px;
+color:black;
+}
 .prompt_save_video_btn{
 width:100%;
 cursor:pointer;
@@ -520,6 +524,20 @@ $(".Poster").change(function(event){
 
 		let temppath = URL.createObjectURL(event.target.files[0]);
 		$(".Video_seeker").attr("poster", temppath);
+		
+		});
+		});
+		
+		
+</script>
+<script>
+$(function(){
+		$(".Subtitles").change(function(event){
+		let temppath = URL.createObjectURL(event.target.files[0]);
+		let langAberv = prompt("Enter Language(abervated)", "en");
+		let langFull = prompt("Enter Language(Full)", "English");
+		fullCode = "<track label='" + langFull + "' kind='subtitles' srclang='" + langAberv + "' src='" + temppath + "'/>";
+		$(fullCode).appendTo(".Video_seeker");
 		});
 		});
 
@@ -671,7 +689,9 @@ window.find(searchTxt, false, false, true, false, false, false);
 <option>True</option>
 </select>
 <br/>
-<input type="file" class="Poster" title="Poster" accept="image/*"/>
+<span>Poster:</span> <input type="file" class="Poster" title="Poster" accept="image/*"/>
+<br/>
+<span>Subtitles:</span> <input type="file" class="Subtitles" title="Subtitles" accept=".vtt"/>
 <button class="prompt_save_Video_btn">Save</button>
 </div>
 
