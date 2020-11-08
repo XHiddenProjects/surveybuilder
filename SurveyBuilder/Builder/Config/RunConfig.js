@@ -477,13 +477,13 @@ if(templateSelect[0] === false){
 }
 if(templateSelect[0] === true){
 	console.log("url[template_selector]: true");
-	if(window.location.href === templateSelect[1] + "?temp=blank" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=blank"){
+	if(window.location.href === templateSelect[1] + "?temp=blank" || window.location.href === templateSelect[1] + "&temp=blank"){
 		document.querySelector(".blank_temp").click();
 	}
-	if(window.location.href === templateSelect[1] + "?temp=medical" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=medical"){
+	if(window.location.href === templateSelect[1] + "?temp=medical" || window.location.href === templateSelect[1] + "&temp=medical"){
 		document.querySelector(".med_temp").click();
 	}
-	if(window.location.href === templateSelect[1] + "?temp=police" || window.location.href === templateSelect[1] + templateSelect[2] + templateSelect[3] + "&temp=police"){
+	if(window.location.href === templateSelect[1] + "?temp=police" || window.location.href === templateSelect[1] + "&temp=police"){
 		document.querySelector(".police_temp").click();
 	}
 }
@@ -492,7 +492,7 @@ if(setPreview[0] === false){
 	console.log("url[setPreview]: false");
 }
 if(setPreview[0] === true){
-	if(window.location.href === setPreview[1] + "?setPreview=1" || window.location.href === setPreview[1] + setPreview[2] + setPreview[3] + "&setPreview=1"){
+	if(window.location.href === setPreview[1] + "?setPreview=1" || window.location.href === setPreview[1] + "&setPreview=1"){
 			document.getElementById("CheckPre").click();
 	}
 }

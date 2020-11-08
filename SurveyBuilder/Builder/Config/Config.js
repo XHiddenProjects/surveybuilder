@@ -1,17 +1,3 @@
-//Admin Config Panel
-//Allow and disable certain items
-//Everything is eaither True/False
-/*
-system corrnation:
-{url} = url,
-{seperator} = '?' or '&',
-{:string} = text,
-{:int} = number,
-{:boolean} = true/false(most of this already has a boolean...
-(ex:templateSelect:0) has a boolean of true) just to stop any error from occuring you will see tag if boolean is optional, 
-{:optional[string]} = optional format{null(blank)/string(value)}
-
-*/
 //web Config	
 var Allow_Banner_display = true; //Allow to display SurveyBuilder footer(banner)
 var Allow_Console_attribute = true; //Enables the Console Log
@@ -24,7 +10,7 @@ var get_users_lang = true; //Gives the user lang. to the console
 var get_users_platform = true; //Give the users platform to the console.
 var get_users_usersAngent = true; //Give the users userAgent to the console.
 var test_users_cookieEnable = true; //Displays if the console should replay back if the cookie was enable
-var Collect_IP = false; //The Console will display there IP_address. 
+var Collect_IP = true; //The Console will display there IP_address. 
 var Allow_cPanel = true; //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
 var username = ""; //Enter username 
@@ -35,17 +21,9 @@ var Allow_Database = "mySQL"; //- this supports [mySQL] --SQLite is not supporte
 var redirFormLink = "false"; //Enter URL to execute the form to add. Use 'false' to deny action
 var Allow_ad_blocker = false; //Gives an error if a person is using any ad-blockers(Used as a annoyence it really doesn't detect adblockers)
 var DarkTheme = false; //Allows Dark Theme
-//Config URL(Note this config how to url is preformed, there always set to an array) '?|&' API has the same function. This will automaticall add '?'|'&'
-var templateSelect = [true, "{url}", "{seperator:optional}", "{value:optional}"]; 
-/*
-- Allows the url to have '?temp={default template}' or '&temp={default template}'
-- format: enable:boolean, url:string, seperator:string, value:string
-*/
-var setPreview = [true, "{url}", "{seperator:optional}", "{value:optional}"]; 
-/*
-- Allows to set preview to form on join
-- format: enable:boolean, url:string, seperator:string, value:string
-*/
+var templateSelect = [true, "{url}"]; //Allows user to set a default template
+var setPreview = [true, "{url}"]; //Allows Users to preview on join
+
 
 
 
