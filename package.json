@@ -15,14 +15,12 @@
   "repository": {
     "url": "git@github.com:surveybuilderteams/surveybuilder.git"
   },
-  
   "bugs": {
     "url": "https://github.com/surveybuilderTeams/surveybuilder/issues"
   },
   "homepage": "https://github.com/surveybuilderTeams/surveybuilder#readme",
   "devDependencies": {},
-  "publishConfig": { 
-    "registry": "https://npm.pkg.github.com/" 
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
-
