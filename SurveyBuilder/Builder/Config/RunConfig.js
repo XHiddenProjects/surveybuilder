@@ -1,10 +1,5 @@
 //ingore these code below[Unless something goes wrong] or needs config:ex:limit_list
 
-//Do not mess with variable
-var skip = false; 
-var skip1 = false;
-
-//var skip2 = false;
 //Test any error of a none corrosponding data
 setTimeout(testCorrospond, 0);
 console.time();
@@ -117,17 +112,9 @@ function testCorrospond(){
 		console.error("templateSelect:1 must be a string");
 		return false;
 	}
-	if(typeof(templateSelect[2]) !== "string" || templateSelect[2] === "" || templateSelect[2] === "{seperator:optional}"){
-		console.warn("templateSelect:2 doesn't have a seperator");
-	 skip = true;
-	}
-	if(templateSelect[2] !== "?" && skip == false){
-		console.error("templateSelect:2 doesn't have a matching selector '?' ");
-		return false;
-	}
-	if(typeof(templateSelect[3]) !== "string" || templateSelect[3] === "" || templateSelect[3] === "{value:optional}"){
-		console.warn("templateSelect:3 doesn't have a value");
-	}
+	
+	
+
 	//preview URL
 	if(Array.isArray(setPreview) !== true){
 		console.error("setPreview must be an array");
@@ -140,18 +127,7 @@ function testCorrospond(){
 		console.error("setPreview:1 must be a string");
 		return false;
 	}
-	if(typeof(setPreview[2]) !== "string" || setPreview[2] === "" || setPreview[2] === "{seperator:optional}"){
-		console.warn("setPreview:2 must be a string");
-		skip1 = true;
-	}
-	if(setPreview[2] !== "?" && skip1 == false){
-		console.error("setPreview:2 doesn't have a matching selector '?' ");
-		return false;
-	}
-	if(typeof(setPreview[3]) !== "string" || setPreview[3] === "" || setPreview[3] === "{value:optional}"){
-		console.warn("setPreview:3 must be a string");
-		
-	}
+	
 	if(typeof(DarkTheme) !== "boolean"){
 		console.error("DarkTheme must be a boolean");
 		return false;
@@ -473,10 +449,10 @@ if(Allow_ad_blocker == false){
 }
 //url config
 if(templateSelect[0] === false){
-	console.log("url[template_selector]: false");
+	console.log("Templateurl[templateSelect]: false");
 }
 if(templateSelect[0] === true){
-	console.log("url[template_selector]: true");
+	console.log("Templateurl[templateSelect]: true");
 	if(window.location.href === templateSelect[1] + "?temp=blank" || window.location.href === templateSelect[1] + "&temp=blank"){
 		document.querySelector(".blank_temp").click();
 	}
@@ -489,9 +465,10 @@ if(templateSelect[0] === true){
 }
 
 if(setPreview[0] === false){
-	console.log("url[setPreview]: false");
+	console.log("Previewurl[setPreview]: false");
 }
 if(setPreview[0] === true){
+	console.log("Previewurl[setPreview]: true");
 	if(window.location.href === setPreview[1] + "?setPreview=1" || window.location.href === setPreview[1] + "&setPreview=1"){
 			document.getElementById("CheckPre").click();
 	}

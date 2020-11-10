@@ -1,3 +1,5 @@
+"use strict";
+
 //web Config	
 var Allow_Banner_display = true; //Allow to display SurveyBuilder footer(banner)
 var Allow_Console_attribute = true; //Enables the Console Log
@@ -10,7 +12,7 @@ var get_users_lang = true; //Gives the user lang. to the console
 var get_users_platform = true; //Give the users platform to the console.
 var get_users_usersAngent = true; //Give the users userAgent to the console.
 var test_users_cookieEnable = true; //Displays if the console should replay back if the cookie was enable
-var Collect_IP = true; //The Console will display there IP_address. 
+var Collect_IP = false; //The Console will display there IP_address. 
 var Allow_cPanel = true; //Allow's users to have cPanel
 var maxTitle = 25; //Change the length of the title
 var username = ""; //Enter username 
@@ -23,10 +25,3 @@ var Allow_ad_blocker = false; //Gives an error if a person is using any ad-block
 var DarkTheme = false; //Allows Dark Theme
 var templateSelect = [true, "{url}"]; //Allows user to set a default template
 var setPreview = [true, "{url}"]; //Allows Users to preview on join
-
-
-
-
-
-
-    
