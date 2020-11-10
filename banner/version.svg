@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="198.5" height="28" role="img" aria-label="Version:4.0.2">
-    <title>Version:4.0.2</title><g shape-rendering="crispEdges"><rect width="113.5" height="28" fill="#555"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="198.5" height="28" role="img" aria-label="Version:4.1.1">
+    <title>Version:4.1.1</title><g shape-rendering="crispEdges"><rect width="113.5" height="28" fill="#555"/>
     <rect x="113.5" width="85" height="28" fill="#1ad1ff"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="100">
     <text fill="#fff" x="567.5" y="175" transform="scale(.1)" textLength="450">Version</text>
-    <text fill="#fff" x="1560" y="175" font-weight="bold" transform="scale(.1)" textLength="320">4.1.0</text>
+    <text fill="#fff" x="1560" y="175" font-weight="bold" transform="scale(.1)" textLength="320">4.1.1</text>
     </g>
 </svg>

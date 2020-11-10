@@ -1,1 +1,0 @@
-Fixed tab title when title is saved

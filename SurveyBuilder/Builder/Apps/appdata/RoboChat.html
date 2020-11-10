@@ -195,7 +195,7 @@ outline:none;
 <div class="msg-header">
 <div class="msg-header-img">
 <!--Enter any image here-->
-<img src="./RoboChat/Robo.jpg"/>
+<img src="./RoboChat/assets/Robo.jpg"/>
 
 </div>
 <div class="active">
@@ -243,6 +243,7 @@ alert(x)
 -->
 
 <!--Outgoing-->
+
 <!--
 <div class='outgoing-chats'>
 
@@ -394,7 +395,7 @@ var months = ["January","February","March","April","May","June","July","August",
 		Min = "0" + Min;
 	}
 	let val = document.getElementById("Message-Text").value;
-setup1.innerHTML = "<div class='received-chats'> <div class='received-chats-img'> <img src='./RoboChat/Person.png'/> </div> <div class='received-msg'> <div class='received-msg-inbox'> <p>" + val + "</p> <span class='time'>" + Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y +"</span> </div> </div> </div>"
+setup1.innerHTML = "<div class='received-chats'> <div class='received-chats-img'> <img src='./RoboChat/assets/Person.png'/> </div> <div class='received-msg'> <div class='received-msg-inbox'> <p>" + val + "</p> <span class='time'>" + Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y +"</span> </div> </div> </div>"
 document.getElementById("msg-Page").appendChild(setup1);
 setTimeout(AIrespond, 0);
 }
@@ -438,7 +439,7 @@ var months = ["January","February","March","April","May","June","July","August",
 	// Add/remove AI repsponce here
 
 	if(x.value.match("Hi") || x.value.match("Hello") || x.value.match("hi") || x.value.match("hello")){
-	setup2.innerHTML = "<div class='outgoing-chats-msg'> <p>Hi User. What can I help you today?</p> <span class='time'>"+ Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y + "</span> </div> <div class='outgoing-chats-img'> <img src='./RoboChat/Robo.jpg'/> </div>";
+	setup2.innerHTML = "<div class='outgoing-chats-msg'> <p>Hi User. What can I help you today?</p> <span class='time'>"+ Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y + "</span> </div> <div class='outgoing-chats-img'> <img src='./RoboChat/assets/Robo.jpg'/> </div>";
 	
 	}
 	if(x.value.match("/clearmsg") || x.value.match("/cmsg")){
@@ -447,7 +448,7 @@ var months = ["January","February","March","April","May","June","July","August",
 	
 
 	//Don't go pass here
-	let audio = new Audio("./RoboChat/Ring.mp3");
+	let audio = new Audio("./RoboChat/assets/Ring.mp3");
 	audio.play();
 	document.getElementById("msg-Page").appendChild(setup2);
 	document.getElementById("Message-Text").value = "";

@@ -1,7 +1,7 @@
 <?php
 
 
-$file = fopen("recorder.html", "w") or die("Unable to open");
+$file = fopen("screenrecoder.html", "w") or die("Unable to open");
 
 $text = $_POST['configbox'];
 
