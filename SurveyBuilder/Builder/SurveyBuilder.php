@@ -43,9 +43,8 @@
 <script src="./templetes/blank_temp.js"></script>
 <script src="./templetes/police_incident_report_temp.js"></script>
 <!--end Templeate script-->
-
-
-
+<!--Custom Script-->
+<script src="./ScriptConstructor/CustomCode.js" type="text/javascript"></script>
 </head>
 <div id="not"></div>
 
@@ -59,6 +58,10 @@ if(!file_exists($file)){
 }else{
 	echo "";
 }
+
+?>
+
+<?php
 
 ?>
 <style type="text/css" rel="stylesheet" id="customCSS">
@@ -481,6 +484,27 @@ return false;
 </script>
 
 
+<li id="Insert-barChart" title="Bar Chart" onclick="barChart()" class="barChart apps-config"><i class="fas fa-chart-bar"></i>&nbsp;&nbsp;Bar Chart
+<li class="InfoApp" onclick="barChartInfo()">Information</li>
+<li class="Unistall" onclick="barChartUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Info
+function barChartInfo(){
+alert("AppName: Bar Chart\n\nCreator: AnyChart \n\nDescription: A bar chart is a chart that visualizes data as a set of rectangular bars, their lengths being proportional to the values they represent. The horizontal axis shows the values, and the vertical axis shows the categories they belong to. So, the bar chart is a vertical version of the column chart. In multiple-series bar charts, values are grouped by categories.\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript, JSON\n\nVersion: 8.9.0\n\nNeedsCofig: Yes");
+}
+//Unistall
+function barChartUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Text Editor on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".barChart-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
+
 <!--Add Apps below-->
 
 </script>
@@ -607,6 +631,7 @@ $(function(){
 <option value="GoogleMaps">Google Maps</option>
 <option value="RoboChat">RoboChat</option>
 <option value="Recorder">Recorder</option>
+<option value="BarChart">Bar Chart</option>
 </select>
 <br/>
 <br/>
@@ -640,7 +665,12 @@ x.value = data;
 });
 }
 
+if(x.value == "/app Bar_Chart"){
+$.get("./Apps/appdata/BarChart.html", function(data){
 
+x.value = data;
+});
+}
 
 }
 
@@ -661,7 +691,7 @@ if(x.selectedIndex == 3){
 y.action = "./Apps/appdata/recorder.php";
 }
 if(x.selectedIndex == 4){
-y.action = "./Apps/appdata/BadWordBlocker.php";
+y.action = "./Apps/appdata/BarChart.php";
 }
 
 }
@@ -2089,6 +2119,7 @@ function googleTranslateElementInit(){
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
 <script src="./Config/Config.js" type="text/javascript"></script>
+<script src="./Config/RunConfig.js" type="text/javascript"></script>
 <div class="setConfigDatabase">
 
 </div>
