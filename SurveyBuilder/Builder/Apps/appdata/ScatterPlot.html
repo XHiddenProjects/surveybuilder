@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>SurveyBuilder-ScatterPlot</title>
+<script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.9.0/themes/dark_earth.min.js" type="text/javascript"></script>
+</head>
+<div id="ScatterPlotContainer" style="width:100%;height:100%;"></div>
+
+<script>
+
+var enableXYGrid = true; //Enables X and Y grid
+var enableXYMinorGrid = true; //Enables X and Y Minor Grid
+var dateTime = false; //Enables DateTime on scatterplot
+var darkThemeChart = true; //Enables darkThemeChart
+
+anychart.onDocumentReady(function() {
+
+   if(darkThemeChart){
+              anychart.theme(anychart.themes.darkEarth);
+               }
+
+var data_1 = [
+  {x: 0.6, value: 15},
+  {x: 3, value: 20},
+  {x: 2.5, value: 35},
+  {x: 3.5, value: 31},
+  {x: 3.6, value: 32},
+  {x: 1, value: 34},
+  {x: 1, value: 23},
+  {x: 3, value: 42},
+  {x: 2, value: 32}
+];
+
+// create data for the second series
+var data_2 = [
+  {x: 0.5, value: 17.5},
+  {x: 4.75, value: 100}
+];
+
+// create a chart
+chart = anychart.scatter();
+
+// create the first series (marker) and set the data
+var series1 = chart.marker(data_1);
+
+// create the second series (line) and set the data
+var series2 = chart.line(data_2);
+
+// set the container id
+chart.container("ScatterPlotContainer");
+
+// initiate drawing the chart
+chart.draw();
+
+
+
+
+
+
+// enable major grids
+chart.xGrid(enableXYGrid);
+chart.yGrid(enableXYGrid);
+
+// configure the visual settings of major grids
+chart.xGrid().stroke({color: "#85adad", thickness: 0.7});
+chart.yGrid().stroke({color: "#85adad", thickness: 0.7});
+
+// enable minor grids
+chart.xMinorGrid(enableXYMinorGrid);
+chart.yMinorGrid(enableXYMinorGrid);
+
+// configure the visual settings of minor grids
+chart.xMinorGrid().stroke({color: "#85adad", thickness: 0.3, dash: 5});
+chart.yMinorGrid().stroke({color: "#85adad", thickness: 0.3, dash: 5});
+
+
+
+
+
+if(dateTime){
+// create a date/time scale
+var dateScale = anychart.scales.dateTime();
+
+// configure major and minor ticks on the date/time scale
+dateScale.ticks().interval(1);
+dateScale.minorTicks().interval(0, 2);
+
+// set the date/time as the x-scale
+chart.xScale(dateScale);
+}
+
+
+});
+
+
+
+
+
+
+
+
+</script>
+</html>

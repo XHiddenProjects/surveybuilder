@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" type="text/css" href="FormInsert.css"/>
 <link rel="shortcut icon" href="favicon.ico"/>
-<link rel="stylesheet" href="https://proicons.netlify.app/css/icons.min.css"/>
+
 <script src="SurveyBuilder.js" type="text/javascript"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
 <script src="https://kit.fontawesome.com/46bb4793e2.js" crossorigin="anonymous"></script>
@@ -43,8 +43,8 @@
 <script src="./templetes/blank_temp.js"></script>
 <script src="./templetes/police_incident_report_temp.js"></script>
 <!--end Templeate script-->
-<!--Custom Script-->
-<script src="./ScriptConstructor/CustomCode.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="https://proicons.netlify.app/css/icons.min.css"/>
 </head>
 <div id="not"></div>
 
@@ -491,11 +491,11 @@ return false;
 <script type="text/javascript">
 //Info
 function barChartInfo(){
-alert("AppName: Bar Chart\n\nCreator: AnyChart \n\nDescription: A bar chart is a chart that visualizes data as a set of rectangular bars, their lengths being proportional to the values they represent. The horizontal axis shows the values, and the vertical axis shows the categories they belong to. So, the bar chart is a vertical version of the column chart. In multiple-series bar charts, values are grouped by categories.\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript, JSON\n\nVersion: 8.9.0\n\nNeedsCofig: Yes");
+alert("AppName: Bar Chart\n\nCreator: AnyChart JS\n\nDescription: A bar chart is a chart that visualizes data as a set of rectangular bars, their lengths being proportional to the values they represent. The horizontal axis shows the values, and the vertical axis shows the categories they belong to. So, the bar chart is a vertical version of the column chart. In multiple-series bar charts, values are grouped by categories.\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript, JSON\n\nVersion: 8.9.0\n\nNeedsCofig: Yes");
 }
 //Unistall
 function barChartUnistall(){
-let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Text Editor on your display sheet.");
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Bar Chart on your display sheet.");
 if(confirms == true){
 let find = document.querySelector(".barChart-app");
 document.getElementById("Insert-Object").removeChild(find);
@@ -504,6 +504,28 @@ return false;
 }
 }
 </script>
+
+<li id="Insert-scatterPlot" title="Scatter Plot Chart" onclick="scattChart()" class="scatterPlot apps-config"><i class="fas fa-chart-scatter"></i>&nbsp;&nbsp;Scatter Plot Chart
+<li class="InfoApp" onclick="scattChartInfo()">Information</li>
+<li class="Unistall" onclick="scattChartUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Info
+function scattChartInfo(){
+alert("AppName: Scatter Plot Chart\n\nCreator: AnyChart JS\n\nDescription: AnyChart allows you to create scatter charts by using a special scatter chart constructor. It processes data points as-is: sets of arguments from different series don't influence each other, points are shown in the exact order they are set, and lines can be vertical and cross themselves. While the Cartesian constructor distributes points along the X-axis at equal intervals (categories), the scatter constructor distributes points according to their values.\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript, JSON\n\nVersion: 8.9.0\n\nNeedsCofig: Yes");
+}
+//Unistall
+function scattChartUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Scatter Plot Chart on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".scattChart-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
+
 
 <!--Add Apps below-->
 
@@ -632,6 +654,7 @@ $(function(){
 <option value="RoboChat">RoboChat</option>
 <option value="Recorder">Recorder</option>
 <option value="BarChart">Bar Chart</option>
+<option value="ScatterChart">Scatter Plot Chart</option>
 </select>
 <br/>
 <br/>
@@ -672,6 +695,13 @@ x.value = data;
 });
 }
 
+if(x.value == "/app ScatterPlot_Chart"){
+$.get("./Apps/appdata/ScatterPlot.html", function(data){
+
+x.value = data;
+});
+}
+
 }
 
 //Action
@@ -693,7 +723,9 @@ y.action = "./Apps/appdata/recorder.php";
 if(x.selectedIndex == 4){
 y.action = "./Apps/appdata/BarChart.php";
 }
-
+if(x.selectedIndex == 5){
+y.action = "./Apps/appdata/ScatterPlot.php";
+}
 }
 </script>
 

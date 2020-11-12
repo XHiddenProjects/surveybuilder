@@ -1,7 +1,7 @@
 <?php
 echo "<head>Saving Completed...</head>";
 
-$file = fopen("BarChart.html", "w") or die("Unable to open");
+$file = fopen("ScatterPlot.html", "w") or die("Unable to open");
 
 $text = $_POST['configbox'];
 
