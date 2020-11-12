@@ -40,7 +40,7 @@ You can use a batch file to use to find the dependicys, otherwise here is what i
 * Windows(any version)
 * Mac
 
-### Mobile [Not Supported, due to lack of influence]
+### Mobile [Not Supported for builder, but can be used as previewed]
 
 * iPhone 6/7/8
 * iPhone 6/7/8 Plus
