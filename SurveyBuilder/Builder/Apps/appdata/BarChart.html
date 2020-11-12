@@ -7,8 +7,12 @@
 <body>
 <div id="container" stye="width:100:height:100%;"></div>
 <script>
+//Config
+var graph = "bar";// Use bar/column
+var Graphtitle = "" //Enter A title
+var darkThemeChart = true; 
  anychart.onDocumentReady(function() {
-        anychart.theme(anychart.themes.darkEarth);
+        
         // set the data
         var data = {
             header: ["Name", "Year"],
@@ -21,14 +25,24 @@
         ]};
  
         // create the chart
+		if(graph == "bar"){
         var chart = anychart.bar();
-            /*chart = anychart.column();*/
-          
+		}
+		if(graph == "column")
+           chart = anychart.column(); 
+         if(!darkThemeChart){
+		   //Nothing here
+		 }
+        if(darkThemeChart){
+              anychart.theme(anychart.themes.darkEarth);
+               }              		 
+		  
+		  
         // add the data
         chart.data(data);
  
         // set the chart title
-        chart.title("People born(in years)");
+        chart.title(Graphtitle);
  
         // draw
         chart.container("container");
