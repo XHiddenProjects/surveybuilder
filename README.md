@@ -18,6 +18,11 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
+# NPM Installment
+
+Type "npm i surveybuilder" to get the package
+
+***
 
 # Custom File(.sbconsole)
 
