@@ -1,14 +1,12 @@
 <a href="http://surveybuilder.epizy.com/Home.php" target="_blank"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/banner.png?raw=true"/></a>
 
 
-<a href="https://github.com/surveybuilderteams/surveybuilder/releases" target="_blank"><image src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/version.svg"/></a>
-![build](https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/build_pass.svg)
-![Dev Release](https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/DevRelease.svg)
-<a href="https://github.com/surveybuilderteams/surveybuilder/archive/master.zip" target="_blank">
-<image src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/download.svg"/>
-</a>
-<a href="https://github.com/surveybuilderteams/surveybuilder/blob/master/LICENSE"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/License.svg"/></a>
-<a href="https://www.npmjs.com/package/surveybuilder"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/npmjs.svg"/></a>
+<a href="https://github.com/surveybuilderteams/surveybuilder/releases" target="_blank"><image src="https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/version.svg"/></a>
+![build](https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/build_pass.svg)
+![Dev Release](https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/DevRelease.svg)
+<a href="https://github.com/surveybuilderteams/surveybuilder/archive/master.zip" target="_blank"><image src="https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/download.svg"/></a>
+<a href="https://github.com/surveybuilderteams/surveybuilder/blob/master/LICENSE"><img src="https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/License.svg"/></a>
+<a href="https://www.npmjs.com/package/surveybuilder"><img src="https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/npmjs.svg"/></a>
 ***
 
 
