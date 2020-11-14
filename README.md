@@ -8,6 +8,7 @@
 <image src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/download.svg"/>
 </a>
 <a href="https://github.com/surveybuilderteams/surveybuilder/blob/master/LICENSE"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/License.svg"/></a>
+<a href="https://www.npmjs.com/package/surveybuilder"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/npmjs.svg"/></a>
 ***
 
 
