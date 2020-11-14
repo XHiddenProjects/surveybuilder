@@ -1,26 +1,26 @@
 {
-  "name": "SurveyBuilder",
-  "version": "4.1.1",
+  "name": "surveybuilder",
+  "version": "4.1.2",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
-  "main": "",
+  "main": "Index.js",
   "scripts": {
     "test": "echo \"Error:no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "surveybuilderteams",
   "license": "MIT",
   "dependencies": {
     "mysql": "^2.18.1"
   },
   "repository": {
-    "url": "git@github.com:surveybuilderteams/surveybuilder.git"
+    "url": "git+ssh://git@github.com/surveybuilderteams/surveybuilder.git"
   },
   "bugs": {
     "url": "https://github.com/surveybuilderTeams/surveybuilder/issues"
   },
   "homepage": "https://github.com/surveybuilderTeams/surveybuilder#readme",
-  "devDependencies": {},
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  }
+  "devDependencies": {}
+  
+ 
 }
+
