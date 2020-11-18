@@ -1,6 +1,6 @@
 {
   "name": "surveybuilder",
-  "version": "4.1.7",
+  "version": "4.2.0",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
   "main": "Index.js",
   "scripts": {
@@ -17,12 +17,11 @@
   "license": "MIT",
   "dependencies": {
     "mysql": "^2.18.1"
-
-},
-"repository": {
-  "type" : "git",
-  "url" : "https://github.com/surveybuilderteams/surveybuilder.git"
-},
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/surveybuilderteams/surveybuilder.git"
+  },
   "bugs": {
     "url": "https://github.com/surveybuilderTeams/surveybuilder/issues"
   },
