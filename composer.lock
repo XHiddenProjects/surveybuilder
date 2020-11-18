@@ -1,3 +1,16 @@
 {
-"license":"MIT"
+    "authors": [
+        {
+            "name": "SurveyBuilder-Admin",
+            "email": "surveybuildersbot@gmail.com",
+            "homepage": "https://surveybuilder.epizy.com/Home.php",
+            "role": "Developer"
+        },
+        {
+            "name": "SurveyBuilder-Bot",
+            "email": "surveybuilderbot@gmail.com",
+            "homepage": "https://surveybuilder.epizy.com/Home.php",
+            "role": "Bot"
+        }
+    ]
 }
