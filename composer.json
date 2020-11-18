@@ -12,5 +12,8 @@
             "homepage": "https://surveybuilder.epizy.com/Home.php",
             "role": "Bot"
         }
-    ]
+    ],
+    {
+   "license": "MIT"
+}
 }
