@@ -1,4 +1,6 @@
 {
+    "name": "SurveyBuilder",
+    "description": "Build Surveys in the most perfessional way.",
     "authors": [
         {
             "name": "SurveyBuilder-Admin",
@@ -13,5 +15,8 @@
             "role": "Bot"
         }
     ],
-    "license": "MIT"
+    
+   "license": "MIT"
+
+
 }
