@@ -1,0 +1,12 @@
+{
+  "name": "SurveyBuilder",
+  "version": "4.1.2",
+  "description": "SurveyBuilder is a easy survey builder for both Personal",
+  "manifest_version": 2,
+  "browser_action":{
+  "default_icon": "./images/icon/favicon.png",
+  "default_popup": "./Builder/SurveyBuilder.php"
+  },
+  "permissions":["activeTab"]
+  
+}
