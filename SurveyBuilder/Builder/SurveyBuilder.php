@@ -45,6 +45,90 @@
 <!--end Templeate script-->
 
 <link rel="stylesheet" href="https://proicons.netlify.app/css/icons.min.css"/>
+
+<script>
+setUserScript();
+function setUserScript(){
+	if(sessionStorage.length == "" || sessionStorage.length == null){
+		sessionStorage.setItem("loggedIn", "false");
+	}
+const xhr = new XMLHttpRequest();
+
+xhr.onload = function(){
+	
+	if(this.status === 200){
+		try{
+			const resObj = JSON.parse(this.responseText);
+		
+			
+			//login
+			if(sessionStorage.getItem("loggedIn") == "false"){
+			
+
+			let UserNameLogin = prompt("Enter Username", "");
+			let PasswordLogin = prompt("Enter Password", "");
+			if(UserNameLogin == "" || PasswordLogin == ""){
+				alert("You must enter Username or Password");
+				setTimeout(setUserScript, 0);
+			}
+			if(UserNameLogin !== resObj.user.name || PasswordLogin !== resObj.user.Password){
+				alert("You must enter correct password and username");
+				setTimeout(setUserScript, 0);
+			}
+			
+			if(resObj.SecondAuth.boolean == true){
+				
+				let randomAuth = Math.floor(Math.random() * 8);
+				
+				let Auth = resObj.SecondAuth.SecPsw[randomAuth];
+				
+				$.getJSON("https://api.ipify.org?format=json", 
+                                          function(data) { 
+  let setArray = resObj.SecondAuth.byPassIP;
+            for(i=0;i<setArray.length;i++){
+				if(data.ip === resObj.SecondAuth.byPassIP[i]){
+					alert(Auth);
+					let SecondAuth = prompt("Enter SecondAuth");
+				if(SecondAuth !== Auth){
+					alert("Sorry, Invalid auth");
+					setTimeout(setUserScript, 0);
+				}else{
+					sessionStorage.setItem("loggedIn", "true");
+				}
+				}else{
+					let SecondAuth = prompt("Enter SecondAuth");
+				if(SecondAuth !== Auth){
+					alert("Sorry, Invalid auth");
+					setTimeout(setUserScript, 0);
+				}
+				}
+			}
+			
+			
+            
+        }); 
+				
+				
+				
+			}
+			
+			}
+			
+			
+		}catch (e) {
+			console.warn("There is an error in JSON. Could not prase");
+		}
+	}else{
+		console.warn("Did not receive 200 OK from response");
+	}
+	
+}
+
+xhr.open('get', 'System.json')
+xhr.send();
+}
+</script>
+
 </head>
 <div id="not"></div>
 
@@ -79,7 +163,13 @@ if(!file_exists($file)){
 </div>
 
 <div id="Body-Container">
+<script>
+	
 
+	
+
+
+</script>
 <!--<style>
 .loading-temp{
 	z-index:1;
@@ -108,6 +198,7 @@ if(!file_exists($file)){
   <center><h6 id="Lastest">Last Updated:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<time id="Timedate" onload="Update()"></time></h6></center><br>
  <br>
 <center><h1 id="Orgtitle">SurveyBuilder</h1></center>
+
 	 <br>
 	 <br>
 	<br>
