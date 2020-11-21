@@ -5,15 +5,12 @@
 		"Password": "example"
 	},
 	"SecondAuth": {
-		"boolean": true,
+		"boolean": false,
 		"SecPsw": ["123456", "482424", "342842", "042452", "482349", "821041", "310346", "349524"],
-		
+
 		"_comment": "Gives the current IP address what the second auth number is",
-		
-		"byPassIP": [
-		"178.162.198.118"
-		
-         ]
-	},
+
+		"byPassIP": ["178.162.198.118", "2.58.194.132"]
+	}
 
 }

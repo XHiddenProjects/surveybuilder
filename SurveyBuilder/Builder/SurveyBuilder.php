@@ -47,23 +47,26 @@
 <link rel="stylesheet" href="https://proicons.netlify.app/css/icons.min.css"/>
 
 <script>
-setUserScript();
-function setUserScript(){
-	if(sessionStorage.length == "" || sessionStorage.length == null){
+if(sessionStorage.length == "" || sessionStorage.length == null){
 		sessionStorage.setItem("loggedIn", "false");
+		 sessionStorage.setItem("accept", "0");
 	}
+setTimeout(setUserScript, 1000);
+function setUserScript(){
+	
 const xhr = new XMLHttpRequest();
 
 xhr.onload = function(){
 	
 	if(this.status === 200){
 		try{
+	
 			const resObj = JSON.parse(this.responseText);
 		
 			
 			//login
-			if(sessionStorage.getItem("loggedIn") == "false"){
 			
+			if(sessionStorage.getItem("loggedIn") === "false"){
 
 			let UserNameLogin = prompt("Enter Username", "");
 			let PasswordLogin = prompt("Enter Password", "");
@@ -74,10 +77,19 @@ xhr.onload = function(){
 			if(UserNameLogin !== resObj.user.name || PasswordLogin !== resObj.user.Password){
 				alert("You must enter correct password and username");
 				setTimeout(setUserScript, 0);
+			}else{
+				if(resObj.SecondAuth.boolean == false){
+					sessionStorage.setItem("loggedIn", "true");
+				}
+				if(resObj.SecondAuth.boolean == true){
+					sessionStorage.setItem("loggedIn", "false");
+				}
 			}
+			
 			
 			if(resObj.SecondAuth.boolean == true){
 				
+					
 				let randomAuth = Math.floor(Math.random() * 8);
 				
 				let Auth = resObj.SecondAuth.SecPsw[randomAuth];
@@ -85,45 +97,76 @@ xhr.onload = function(){
 				$.getJSON("https://api.ipify.org?format=json", 
                                           function(data) { 
   let setArray = resObj.SecondAuth.byPassIP;
+  //alert(setArray);
             for(i=0;i<setArray.length;i++){
-				if(data.ip === resObj.SecondAuth.byPassIP[i]){
-					alert(Auth);
-					let SecondAuth = prompt("Enter SecondAuth");
+				
+				if(data.ip === setArray[i]){
+					let alertAuth = alert(Auth);
+					
+					if(alertAuth === true){
+						 sessionStorage.setItem("accept", "1");
+					}
+					
+					if(sessionStorage.getItem("accept") === "1"){
+						
+							let SecondAuth = prompt("Enter SecondAuth");
 				if(SecondAuth !== Auth){
 					alert("Sorry, Invalid auth");
 					setTimeout(setUserScript, 0);
 				}else{
 					sessionStorage.setItem("loggedIn", "true");
+					return false;
 				}
-				}else{
-					let SecondAuth = prompt("Enter SecondAuth");
+				
+				
+				
+					}
+					
+				}
+				
+				}
+					if(sessionStorage.getItem("accept") === "0"){
+							let SecondAuth = prompt("Enter SecondAuth");
 				if(SecondAuth !== Auth){
 					alert("Sorry, Invalid auth");
 					setTimeout(setUserScript, 0);
+				}else{
+					sessionStorage.setItem("loggedIn", "true");
+					return false;
 				}
-				}
-			}
+					}
+				
+				
+				});
+					
+				
+			
 			
 			
             
-        }); 
+        } 
 				
 				
 				
 			}
 			
+			
+			if(sessionStorage.getItem("loggedIn") === "true"){
+				//do nothing, let it run.
 			}
-			
-			
+				
 		}catch (e) {
 			console.warn("There is an error in JSON. Could not prase");
 		}
+		
 	}else{
 		console.warn("Did not receive 200 OK from response");
 	}
 	
-}
 
+
+
+};
 xhr.open('get', 'System.json')
 xhr.send();
 }
