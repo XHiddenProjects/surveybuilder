@@ -23,8 +23,11 @@
     "url": "https://github.com/surveybuilderteams/surveybuilder.git"
   },
   "bugs": {
-    "url": "https://github.com/surveybuilderTeams/surveybuilder/issues"
+    "url": "https://github.com/surveybuilderteams/surveybuilder/issues"
   },
-  "homepage": "https://github.com/surveybuilderTeams/surveybuilder#readme",
-  "devDependencies": {}
+  "homepage": "https://github.com/surveybuilderteams/surveybuilder#readme",
+  "devDependencies": {},
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
+  }
 }
