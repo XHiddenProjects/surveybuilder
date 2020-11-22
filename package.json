@@ -26,8 +26,6 @@
     "url": "https://github.com/surveybuilderteams/surveybuilder/issues"
   },
   "homepage": "https://github.com/surveybuilderteams/surveybuilder#readme",
-  "devDependencies": {},
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  }
+  "devDependencies": {}
+  
 }
