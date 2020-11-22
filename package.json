@@ -1,6 +1,6 @@
 {
   "name": "surveybuilder",
-  "version": "4.4.1",
+  "version": "4.5.0",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
   "main": "Index.js",
   "scripts": {
@@ -28,7 +28,6 @@
   "homepage": "https://github.com/surveybuilderteams/surveybuilder#readme",
   "devDependencies": {},
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   }
 }
-
