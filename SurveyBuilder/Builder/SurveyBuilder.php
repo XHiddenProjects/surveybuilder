@@ -68,16 +68,14 @@ xhr.onload = function(){
 		 //console.log(d.version);
 		 
 		 if(resObj.versions !== d.version){
-			 console.log(resObj.versions + "[Outdated]");
-			 alert("Can't function properly, not correct version, click next to go to the newer version");
-			 window.close();
-			 window.open("https://github.com/surveybuilderteams/surveybuilder/blob/master/package.json", "_blank");
+			 console.log(resObj.versions + "[Outdated/Overdated]");
+			 alert("Your thin needs an update, click to update");
+			  window.open("Updater.php", "_self");
+			 document.querySelector("html").innerHTML = "";
+			 
 			 return false;
 		 }
-	      if(resObj.versions === d.version){
-			  console.log(resObj.versions + "[Current]");
-			  //return null
-		  }
+	     
                       });
 
 			//login
