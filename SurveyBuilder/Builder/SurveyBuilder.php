@@ -63,7 +63,23 @@ xhr.onload = function(){
 	
 			const resObj = JSON.parse(this.responseText);
 		
-			
+			$.getJSON("https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/package.json", function(d){
+	
+		 //console.log(d.version);
+		 
+		 if(resObj.versions !== d.version){
+			 console.log(resObj.versions + "[Outdated]");
+			 alert("Can't function properly, not correct version, click next to go to the newer version");
+			 window.close();
+			 window.open("https://github.com/surveybuilderteams/surveybuilder/blob/master/package.json", "_blank");
+			 return false;
+		 }
+	      if(resObj.versions === d.version){
+			  console.log(resObj.versions + "[Current]");
+			  //return null
+		  }
+                      });
+
 			//login
 			
 			if(sessionStorage.getItem("loggedIn") === "false"){
