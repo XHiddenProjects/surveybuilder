@@ -69,8 +69,8 @@ xhr.onload = function(){
 		 
 		 if(resObj.versions !== d.version){
 			 console.log(resObj.versions + "[Outdated/Overdated]");
-			 alert("Your thin needs an update, click to update");
-			  window.open("Updater.php", "_self");
+			 alert("Your thing needs an update, click to download update");
+			  window.open("https://github.com/surveybuilderteams/surveybuilder/archive/master.zip", "_blank");
 			 document.querySelector("html").innerHTML = "";
 			 
 			 return false;
