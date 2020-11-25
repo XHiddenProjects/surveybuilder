@@ -220,13 +220,55 @@ if(!file_exists($file)){
 </div>
 
 <div id="Body-Container">
-<script>
+<style>
+.Loading_data_bar, .Saving_data_bar{
+	position:absolute;
+	border:1px solid black;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+	width:520px;
+	height:320px;
+	background:cyan;
+	font-size:42px;
+	text-align:center;
+}
+.Loading_data_progress progress, .Saving_data_progress progress{
+	position:absolute;
+	left:0;
+	width:100%;
+	bottom:30%;
+}
+.Loading_data_progress .Loading_data_value, .Saving_data_progress .Saving_data_value{
+	position:absolute;
+	bottom:0;
+	left:45%;
+}
+.Loading_data_progress progress::-moz-progress-bar, .Saving_data_progress progress::-moz-progress-bar{
+	background:green;
+}
+.Loading_data_progress progress::-webkit-progress-bar, .Saving_data_progress progress::-webkit-progress-bar{
+	background:green;
+}
+</style>
 	
 
-	
+	<div class="Loading_data_bar" hidden="true">
+	<div class="Loading_data_title">Loading Saved Attributes</div>
+	<div class="Loading_data_progress">
+	<progress class="progress_load" value="0" max="100"></progress>
+	<div class="Loading_data_value">0%</div>
+	</div>
+	</div>
 
+<div class="Saving_data_bar" hidden="true">
+	<div class="Saving_data_title">Saving Attributes</div>
+	<div class="Saving_data_progress">
+	<progress class="progress_save" value="0" max="100"></progress>
+	<div class="Saving_data_value">0%</div>
+	</div>
+	</div>
 
-</script>
 <!--<style>
 .loading-temp{
 	z-index:1;
