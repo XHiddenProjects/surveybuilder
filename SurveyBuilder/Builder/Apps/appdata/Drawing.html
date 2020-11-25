@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Drawing-SurveyBuilder</title>
+<script>
+
+function writeCode(){
+let x = document.querySelector(".SVGProg");
+let picture = document.querySelector(".picture");
+
+picture.innerHTML = x.value;
+
+}
+
+console.clear();
+
+//builders
+
+//snowman
+function buildSnowman(code){
+ code = '<g><circle cx="750" cy="450" r="80" stroke="gray" stroke-width="2" fill="white"></circle><circle cx="750" cy="320" r="60" stroke="gray" stroke-width="2" fill="white"></circle><circle cx="750" cy="480" r="10" stroke="gray" stroke-width="2" fill="white"></circle><circle cx="750" cy="450" r="10" stroke="gray" stroke-width="2" fill="white"></circle><circle cx="750" cy="420" r="10" stroke="gray" stroke-width="2" fill="white"></circle><circle cx="720" cy="300" r="10" stroke="gray" stroke-width="2" fill="white"></circle><circle cx="780" cy="300" r="10" stroke="gray" stroke-width="2" fill="white"></circle><circle cx="750" cy="350" r="20" stroke="gray" stroke-width="2" fill="brown"></circle><circle cx="750" cy="340" r="20" stroke="transparent" stroke-width="2" fill="white"></circle><line x1="680" y1="413" x2="554" y2="320" stroke="blue" stroke-width="2" width="320" height="345"/><line x1="820" y1="413" x2="954" y2="320" stroke="blue" stroke-width="2" width="320" height="345"/></g>';
+document.querySelector(".SVGProg").value = code;
+document.querySelector(".picture").innerHTML = code;
+}
+</script>
+<style>
+.SVGProg{
+width:100%;
+height:150px;
+}
+.picture{
+border:1px solid black;
+width:100%;
+overflow:auto !important;
+height:100%;
+background-color:white;
+}
+
+</style>
+
+</head>
+<body>
+<div class="Upper_Sidebar" >
+<textarea class="SVGProg" placeholder="Enter SVG code(Include <> & </> as well)" oninput="writeCode()"></textarea>
+</div>
+<br/>
+<div class="button">
+<button onclick="buildSnowman()">Snowman</button>
+</div>
+<br/>
+<svg class="picture">
+
+
+</svg>
+</body>
+</html>
