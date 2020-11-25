@@ -674,7 +674,26 @@ return false;
 }
 </script>
 
-
+<li id="Insert-drawing" title="Drawing" onclick="Drawing()" class="drawing apps-config"><i class="fas fa-paint-roller"></i>&nbsp;&nbsp;Drawing
+<li class="InfoApp" onclick="drawingInfo()">Information</li>
+<li class="Unistall" onclick="drawingUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Info
+function drawingInfo(){
+alert("AppName: Drawing\n\nCreator: SurveyBuilder\n\nDescription: Allows you to draw anything using SVG program the drawing\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript\n\nVersion: 16.0.0\n\nNeedsCofig: No");
+}
+//Unistall
+function drawingUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Drawing on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".drawing-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
 <!--Add Apps below-->
 
 </script>
