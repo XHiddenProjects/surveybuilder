@@ -24,6 +24,7 @@
 	font-size:32px;
 	font-weight:bold;
 	padding:2px;
+	
 }
 /*IFrames*/
 iframe{
@@ -430,6 +431,9 @@ border:1px solid black;
 	font-weight:bold;
 	padding:2px;
 }
+.scriptData{
+	display:none;
+}
 
 /*Widgets*/
 .Widgets{
@@ -441,3 +445,11 @@ border:1px solid black;
 	font-weight:bold;
 	padding:2px;
 }
+
+video::-moz-progress-bar{
+	background-color:skyblue !important;
+}
+video::-webkit-progress-bar{
+	background-color:skyblue !important;
+}
+

@@ -977,6 +977,71 @@ $(function(){
 
 </script>
 <script>
+//Custom HTML tag
+setInterval(function(){
+	x = document.querySelectorAll("sbcon");
+	for (i = 0; i < x.length; i++) {
+		let dataType = x[i].getAttribute("data-type");
+		if(dataType === "container" || dataType === "con"){
+			x[i].setAttribute("class", "container");
+		}
+	}
+	
+}, 0); 
+</script>
+<script>
+setInterval(function(){
+	x = document.querySelectorAll("sbconsole");
+for (i = 0; i < x.length; i++) {
+	
+	//Not Supported Attributes
+	
+	if(x[i].getAttribute("id") === "" || x[i].getAttribute("id") !== ""){
+		x[i].removeAttribute("id");
+	}
+	if(x[i].getAttribute("class") === "" || x[i].getAttribute("class") !== ""){
+		x[i].removeAttribute("class");
+	}
+	if(x[i].getAttribute("style") === "" || x[i].getAttribute("style") !== ""){
+		x[i].removeAttribute("style");
+	}
+	if(x[i].innerHTML !== ""){
+		x[i].innerHTML = "";
+	}
+	
+	//Supported Attributes
+	if(x[i].getAttribute("sandbox") === "true" || x[i].getAttribute("sandbox") === ""){
+		
+		return false;
+	}
+	
+	if(x[i].getAttribute("export") === "file"){
+		
+	let FileData = "/SurveyBuilder/Console/Console-" + x[i].getAttribute("value") + ".sbconsole";
+		$.get(FileData, function(data){
+			document.querySelector("#Console").value = data;
+			document.getElementById("Insert-Object").innerHTML = data;
+		});
+			
+			
+		}
+		
+		if(x[i].getAttribute("export") === "url"){
+			let FileData =  x[i].getAttribute("value");
+		$.get(FileData, function(data){
+			document.querySelector("#Console").value = data;
+			document.getElementById("Insert-Object").innerHTML = data;
+		});
+	
+}
+	
+}
+}, 0);
+
+
+
+</script>
+<script>
 $(function(){
 	$('.import_console_file_text').change(function(event){
 		let temppath = URL.createObjectURL(event.target.files[0]);
