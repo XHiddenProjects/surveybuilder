@@ -31,6 +31,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" type="text/css" href="FormInsert.css"/>
 <link rel="shortcut icon" href="favicon.ico"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.js.map"></script>
 
 <script src="SurveyBuilder.js" type="text/javascript"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
@@ -70,7 +72,7 @@ xhr.onload = function(){
 		 if(resObj.versions !== d.version){
 			 console.log(resObj.versions + "[Outdated/Overdated]");
 			 alert("Your thing needs an update, click to download update");
-			  window.open("https://github.com/surveybuilderteams/surveybuilder/archive/master.zip", "_blank");
+			  window.open("http://surveybuilder.epizy.com/Download/v4.5.2/SurveyBuilder.zip", "_blank");
 			 document.querySelector("html").innerHTML = "";
 			 
 			 return false;
@@ -989,6 +991,7 @@ setInterval(function(){
 	
 }, 0); 
 </script>
+
 <script>
 setInterval(function(){
 	x = document.querySelectorAll("sbconsole");
