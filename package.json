@@ -1,6 +1,6 @@
 {
   "name": "surveybuilder",
-  "version": "4.5.2",
+  "version": "4.5.3",
   "description": "Build surveys in the most advanced, flexable, and more moderated way, for all users to build and see.",
   "main": "Index.js",
   "scripts": {
