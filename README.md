@@ -16,9 +16,11 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
-# NPM Installment
+# Installment
 
-Type "npm i surveybuilder" to get the package
+```npm
+$ npm install surveybuilder
+```
 
 ***
 
