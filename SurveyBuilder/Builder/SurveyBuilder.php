@@ -47,7 +47,16 @@
 <!--end Templeate script-->
 
 <link rel="stylesheet" href="https://proicons.netlify.app/css/icons.min.css"/>
+<script>
+setTimeout(function(){
+	if(localStorage.getItem("Notify") === "" || localStorage.length === ""){
+	localStorage.setItem("Notify", "true");	
+	}
+	
+}, 0);
+	
 
+</script>
 <script>
 if(sessionStorage.length == "" || sessionStorage.length == null){
 		sessionStorage.setItem("loggedIn", "false");
@@ -72,13 +81,26 @@ xhr.onload = function(){
 		 if(resObj.versions !== d.version){
 			 console.log(resObj.versions + "[Outdated/Overdated]");
 			 alert("Your thing needs an update, click to download update");
-			  window.open("http://surveybuilder.epizy.com/Download/v4.5.2/SurveyBuilder.zip", "_blank");
+			  window.open("https://github.com/surveybuilderteams/surveybuilder/archive/master.zip", "_blank");
 			 document.querySelector("html").innerHTML = "";
 			 
 			 return false;
 		 }
-	     
-                      });
+	     if(localStorage.getItem("Notify") === "true" || localStorage.getItem("Notify") === ""){
+		 Push.create("SurveyBuilder",{
+			body: "Version: " + d.version + "\nSee More Info here",
+            icon: "/SurveyBuilder/images/icon/favicon.png",
+            link: "https://github.com/surveybuilderteams/surveybuilder/releases",
+            requireInteraction: true,
+            vibrate: [200, 100],
+            onClick:function(){
+				window.open("https://github.com/surveybuilderteams/surveybuilder/releases", "_blank");
+			}			
+		 });
+		 
+		 } 
+
+         });
 
 			//login
 			
@@ -766,34 +788,35 @@ return false;
 <!--<a href="./db/EditDatabase.php">-->
 <button type="button" onclick="EditData()">Edit Database</button>
 </span>
-<!--
-<span id="sqlite" hidden="true">
-<li id="New">Add Database(SQLite)</li>
-<button onclick="CreateFolder()">Create Folder(Required)</button>
-<button onclick="RemoveFolder()">Remove Folder</button>
-<button onclick="AddPublished()">Add Publish Survey(Required)</button>
-
-//Write database script//
-
+<span id="Notify">
+<li id="New">Notifications&nbsp;&nbsp;<i id="setNotifyBell" class="fas fa-bell" title="Enable"></i></li>
+<button class="EnableNotify">Enable Notifications <i class="fas fa-bell"></i></button><br/>
+<button class="DisableNotify">Disable Notifications <i class="fas fa-bell-slash"></i></button>
 <script>
-//SQLite
-function CreateFolder(){
-	window.open("./db/SQLite/CreateFolder.php", "", "width=320", "height=320");
-}
-function RemoveFolder(){
-	window.open("./db/SQLite/Users/RemoveFolder.php", "", "width=320", "height=320");
-}
-function AddPublished(){
-	window.open("./db/SQLite/Users/AddPublished.php", "", "width=320", "height=320");
-}
+setTimeout(function(){
+	if(localStorage.getItem("Notify") === "true"){
+		document.querySelector("#setNotifyBell").className = "fas fa-bell";
+		document.querySelector("#setNotifyBell").title = "Enabled";
+	}
+	if(localStorage.getItem("Notify") === "false"){
+		document.querySelector("#setNotifyBell").className = "fas fa-bell-slash";
+		document.querySelector("#setNotifyBell").title = "Disabled";
+	}
+}, 0);
+$(".EnableNotify").click(function(){
+	localStorage.setItem("Notify", "true");
+	document.querySelector("#setNotifyBell").className = "fas fa-bell";
+	document.querySelector("#setNotifyBell").title = "Enabled";
+	alert("Notifications are enabled");
+});
+$(".DisableNotify").click(function(){
+	localStorage.setItem("Notify", "false");
+	document.querySelector("#setNotifyBell").className = "fas fa-bell-slash";
+	document.querySelector("#setNotifyBell").title = "Disabled";
+	alert("Notifications are disabled(You will receive loading, saved, and clear data notifactions tho.)");
+});
 </script>
-
 </span>
--->
-<!--<span id="API">
-<li id="New">Add Your API(Custom JS)</li>
-<textarea rows="10" cols="30" placeholder="Custom API system" spellcheck="false"  autocorrect="off" id="APIFormat" onchange="APIInserts()">{&#10;&#10;}</textarea>
-</span>-->
 <span id="Form-edit">
 <li id="New">Edit Form&nbsp;&nbsp;<i class="fas fa-edit"></i></li>
 
@@ -953,11 +976,11 @@ y.action = "./Apps/appdata/ScatterPlot.php";
 <input type="search" class="search search-word serach-input" placeholder="Search"/><button type="button" class="search-btn" onclick="SearchValue()">Search <i class="fas fa-search"></i></button>
 <br/>
 <br/>
-<span style="color:white;">Enter Console ID: ex(PC7VbBpG)</span><input type="textarea" class="import import-code" placeholder="Enter Console ID"/><button onclick="ImportConsole()" type="button">Import <i class="fas fa-upload"></i></button>
+<span style="color:white;">Enter Console ID: ex(PC7VbBpG)</span><input type="textarea" class="import import-code" placeholder="Enter Console ID"/><button onclick="ImportConsole()" type="button">Import <i class="fas fa-file-import"></i></button>
 
 <br/>
 <br/>
-<span style="color:white;">Enter Console (<a href="https://github.com/" title="GitHub" target="_blank" style="cursor:pointer;background-color:transparent;color:white;"><i class="fab fa-github"></i></a> GitHub)</span><input type="textarea" class="import-code github-import github-import-code" placeholder="Enter GitHub Raw"/><button onclick="ImportConsoleRaw()" type="button">Import <i class="fas fa-upload"></i></button>
+<span style="color:white;">Enter Console (<a href="https://github.com/" title="GitHub" target="_blank" style="cursor:pointer;background-color:transparent;color:white;"><i class="fab fa-github"></i></a> GitHub)</span><input type="textarea" class="import-code github-import github-import-code" placeholder="Enter GitHub Raw"/><button onclick="ImportConsoleRaw()" type="button">Import <i class="fas fa-file-import"></i></button>
 <br/>
 <br/>
 <button type="button" class="import_console_btn"><i class="fas fa-file-alt"></i> Upload .sbconsole file</button>
