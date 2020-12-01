@@ -78,7 +78,7 @@ xhr.onload = function(){
 	
 		 //console.log(d.version);
 		 
-		 if(resObj.versions !== d.version){
+		 if(resObj.versions !== d.version && requiredVersion === true){
 			 console.log(resObj.versions + "[Outdated/Overdated]");
 			 alert("Your thing needs an update, click to download update");
 			  window.open("https://github.com/surveybuilderteams/surveybuilder/archive/master.zip", "_blank");
@@ -848,7 +848,7 @@ $(function(){
 			}
 		}
 		
-		if(pluginType !== ".sbconsole"){
+		if(pluginType !== "text/html"){
 			alert("Invalid file");
 			return false;
 		}
@@ -1013,6 +1013,10 @@ setInterval(function(){
 	}
 	
 }, 0); 
+
+
+
+
 </script>
 
 <script>
@@ -1440,6 +1444,9 @@ setTimeout(loop1, 0);
 }
 
 </script>
+
+
+
 </span>
 
 <span id="remove-element">
@@ -1941,6 +1948,13 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <button id="Save" onclick="Save()" title="Save Data">Save</button>
 <br>
 <br>
@@ -1977,6 +1991,156 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <br>
 <br>
 <br>
+<hr/>
+<br/>
+<div id="Themes-con">
+<br/>
+<h1>Themes</h1>
+<br/>
+<style>
+#themes{
+	overflow-y:auto;
+	overflow-x:hidden;
+	height:200px;
+}
+#Themes-con{
+	overflow:hidden;
+}
+</style>
+<select id="themes" name="themes">
+<option value="default-theme" data-description="A bright default theme" data-imagesrc="./Themes/DefaultTheme.png">Defualt Theme</option>
+<option value="dark-theme" data-description="A dark and non-blinding theme" data-imagesrc="./Themes/DarkTheme.png">Dark Theme</option>
+<option value="wavey-theme" data-description="A wavey and ocean-like theme" data-imagesrc="./Themes/WaveyTheme.png">Wavey Theme</option>
+<option value="halloween-theme" data-description="A spooky theme" data-imagesrc="./Themes/HalloweenTheme.png">Halloween Theme</option>
+<option value="thanksgiving-theme" data-description="A turkey and giving theme" data-imagesrc="./Themes/ThanksgivingTheme.png">Thanksgiving Theme</option>
+<option value="christmas-theme" data-description="A happy holiday theme" data-imagesrc="./Themes/ChristmasTheme.png">Christmas Theme</option>
+<option value="luxury-theme" data-description="A luxury place theme" data-imagesrc="./Themes/LuxuryTheme.png">Luxury Theme</option>
+<option value="neon-theme" data-description="A neon looking theme" data-imagesrc="./Themes/NeonTheme.png">Neon Theme</option>
+</select>
+</div>
+<script src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" type="text/javascript"></script>
+<script>
+$("#themes").ddslick({
+	
+	width:"100%",
+	imagePosition: "left",
+	selectText: "Select Theme",
+	onSelected: function(data){
+		//alert(data.selectedData.value);
+		if(data.selectedData.value === "default-theme"){
+	document.body.style.background = "#9acd32";
+	document.body.style.color = "black";
+	document.querySelector("#yourTitle").style.color = "black";
+	document.querySelector(".line1").style.backgroundColor = "black";
+	document.querySelector(".line2").style.backgroundColor = "black";
+	document.querySelector(".line3").style.backgroundColor = "black";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "black";
+	document.querySelector("#Timedate").style.color = "black";
+	document.querySelector("#Tcolor").value = "#000000";
+	document.querySelector("#color").value = "#9acd32";
+		}
+		if(data.selectedData.value === "dark-theme"){
+	document.body.style.background = "black";
+	document.body.style.color = "white";
+	document.querySelector("#yourTitle").style.color = "white";
+	document.querySelector(".line1").style.backgroundColor = "white";
+	document.querySelector(".line2").style.backgroundColor = "white";
+	document.querySelector(".line3").style.backgroundColor = "white";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "white";
+	document.querySelector("#Timedate").style.color = "white";
+	
+	document.querySelector("#Tcolor").value = "#ffffff";
+	document.querySelector("#color").value = "#000000";
+			
+		}
+		if(data.selectedData.value === "wavey-theme"){
+	document.body.style.background = "url('https://th.bing.com/th/id/OIP.QLF8QfhCkc3EX7v-0bH_GQHaEo?pid=Api&rs=1')";
+	document.body.style.color = "#1521cb";
+	document.querySelector("#yourTitle").style.color = "#1521cb";
+	document.querySelector(".line1").style.backgroundColor = "#1521cb";
+	document.querySelector(".line2").style.backgroundColor = "#1521cb";
+	document.querySelector(".line3").style.backgroundColor = "#1521cb";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "#1521cb";
+	document.querySelector("#Timedate").style.color = "#1521cb";
+	document.querySelector("#Tcolor").value = "#1521cb";
+	document.querySelector("#color").value = "#000000";
+		}
+		if(data.selectedData.value === "halloween-theme"){
+	document.body.style.background = "url('https://th.bing.com/th/id/OIP.YDxxmP1FXdmzSCAM2h8GGgHaE6?pid=Api&rs=1')";
+	document.body.style.color = "#ff4000";
+	document.querySelector("#yourTitle").style.color = "#ff4000";
+	document.querySelector(".line1").style.backgroundColor = "#ff4000";
+	document.querySelector(".line2").style.backgroundColor = "#ff4000";
+	document.querySelector(".line3").style.backgroundColor = "#ff4000";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "#ff4000";
+	document.querySelector("#Timedate").style.color = "#ff4000";
+	document.querySelector("#Tcolor").value = "#ff4000";
+	document.querySelector("#color").value = "#000000";
+		}
+		if(data.selectedData.value === "thanksgiving-theme"){
+			document.body.style.background = "url('http://2.bp.blogspot.com/-v9e4N9KMJcA/Tswf5BpF3hI/AAAAAAAAB_g/XRaPzKB9X6o/s1600/CornucopiaThanksgiving.jpg')";
+	document.body.style.color = "#972b2b";
+	document.querySelector("#yourTitle").style.color = "#972b2b";
+	document.querySelector(".line1").style.backgroundColor = "#972b2b";
+	document.querySelector(".line2").style.backgroundColor = "#972b2b";
+	document.querySelector(".line3").style.backgroundColor = "#972b2b";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "#972b2b";
+	document.querySelector("#Timedate").style.color = "#972b2b";
+	document.querySelector("#Tcolor").value = "#972b2b";
+	document.querySelector("#color").value = "#000000";
+		}
+		if(data.selectedData.value === "christmas-theme"){
+			document.body.style.background = "url('https://th.bing.com/th/id/OIP.7DlBuodtDPxZzVor1afdlAHaFj?pid=Api&rs=1')";
+	document.body.style.color = "#0cd709";
+	document.querySelector("#yourTitle").style.color = "#0cd709";
+	document.querySelector(".line1").style.backgroundColor = "#0cd709";
+	document.querySelector(".line2").style.backgroundColor = "#0cd709";
+	document.querySelector(".line3").style.backgroundColor = "#0cd709";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "#0cd709";
+	document.querySelector("#Timedate").style.color = "#0cd709";
+	document.querySelector("#Tcolor").value = "#0cd709";
+	document.querySelector("#color").value = "#000000";
+		}
+		if(data.selectedData.value === "luxury-theme"){
+			document.body.style.background = "url('https://th.bing.com/th/id/OIP.wVQwbjJsJTlihd9FahFZcwHaEa?pid=Api&rs=1')";
+	document.body.style.color = "#ff00c8";
+	document.querySelector("#yourTitle").style.color = "#ff00c8";
+	document.querySelector(".line1").style.backgroundColor = "#ff00c8";
+	document.querySelector(".line2").style.backgroundColor = "#ff00c8";
+	document.querySelector(".line3").style.backgroundColor = "#ff00c8";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "#ff00c8";
+	document.querySelector("#Timedate").style.color = "#ff00c8";
+	document.querySelector("#Tcolor").value = "#ff00c8";
+	document.querySelector("#color").value = "#000000";
+		}
+		if(data.selectedData.value === "neon-theme"){
+			document.body.style.background = "url('http://getwallpapers.com/wallpaper/full/2/9/b/1157321-vertical-black-and-neon-color-wallpaper-2560x1440.jpg')";
+	document.body.style.color = "#ffee00";
+	document.querySelector("#yourTitle").style.color = "#ffee00";
+	document.querySelector(".line1").style.backgroundColor = "#ffee00";
+	document.querySelector(".line2").style.backgroundColor = "#ffee00";
+	document.querySelector(".line3").style.backgroundColor = "#ffee00";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Lastest").style.color = "#ffee00";
+	document.querySelector("#Timedate").style.color = "#ffee00";
+	document.querySelector("#Tcolor").value = "#ffee00";
+	document.querySelector("#color").value = "#000000";
+		}
+		
+		$("#themes").prop("title", data.selectedData.value);
+		
+	}
+	
+});
+</script>
+<br/>
 <hr/>
 <br/>
 <h1>Templeate's</h1>
@@ -2420,6 +2584,9 @@ function setFunction(Dataid, action, functions, script){
 	
 }
 </script>
+
+
+
 
 </span>
 </div>
