@@ -32,7 +32,7 @@
 <link rel="stylesheet" type="text/css" href="FormInsert.css"/>
 <link rel="shortcut icon" href="favicon.ico"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.js.map"></script>
+
 
 <script src="SurveyBuilder.js" type="text/javascript"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
@@ -2618,7 +2618,7 @@ function googleTranslateElementInit(){
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
 <script src="./Config/Config.js" type="text/javascript"></script>
-<script src="./Config/RunConfig.js" type="text/javascript"></script>
+<script src="./Config/RunConfig.min.js" type="text/javascript"></script>
 <div class="setConfigDatabase">
 
 </div>
