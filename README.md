@@ -72,19 +72,19 @@ take out "surveybuilder" folder
 
 # How can I add in my own app?
 
-> Go to this link: [AppsCode](https://github.com/MasterGames2020/SurveyBuilder-Apps-code) - To get the Javascript and HTML code
+> Go to this link: [AppsCode](https://github.com/SurveyBuilderTeams/SurveyBuilder-Apps-code) - To get the Javascript and HTML code
 
 ***
 
 # Wiki 
 
-> Use the wiki for any help [Wiki](https://github.com/MasterGames2020/SurveyBuilder/wiki)
+> Use the wiki for any help [Wiki](https://github.com/SurveyBuilderTeams/SurveyBuilder/wiki)
 
 ***
 
 # Website
 
-> Here is a website [SurveyBuilder](http://linkshorty.epizy.com/SurveyBuilder) - You can now build your form on the website
+> Here is a website [SurveyBuilder](http://surveybuilder.epizy.com/Home) - You can now build your form on the website
 
 ***
 
@@ -111,7 +111,7 @@ Public can do:
 
 # Issues
 
-Report any issues here [issues](https://github.com/MasterGames2020/SurveyBuilder/issues)
+Report any issues here [issues](https://github.com/SurveyBuilderTeams/SurveyBuilder/issues)
 
 ***
 
