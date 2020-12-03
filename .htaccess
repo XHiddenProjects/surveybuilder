@@ -1,5 +1,17 @@
+# Errors
+
 ErrorDocument 400 /SurveyBuilder/errors/error400.php
 ErrorDocument 401 /SurveyBuilder/errors/error401.php
 ErrorDocument 403 /SurveyBuilder/errors/error403.php
 ErrorDocument 404 /SurveyBuilder/errors/error404.php
 ErrorDocument 500 /SurveyBuilder/errors/error500.php
+
+# Rewrite URLs
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Dictionary Listing
+
+ Options -Indexes
