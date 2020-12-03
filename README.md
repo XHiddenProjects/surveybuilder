@@ -72,7 +72,7 @@ take out "surveybuilder" folder
 
 # How can I add in my own app?
 
-> Go to this link: [AppsCode](https://github.com/SurveyBuilderTeams/SurveyBuilder-Apps-code) - To get the Javascript and HTML code
+> Go to this link: [AppsCode](https://github.com/SurveyBuilder-Admin/SurveyBuilder-Apps-code) - To get the Javascript and HTML code
 
 ***
 
