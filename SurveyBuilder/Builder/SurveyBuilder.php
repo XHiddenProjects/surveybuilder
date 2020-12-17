@@ -44,6 +44,7 @@
 <script src="./templetes/Medical_temp.js"></script>
 <script src="./templetes/blank_temp.js"></script>
 <script src="./templetes/police_incident_report_temp.js"></script>
+
 <!--end Templeate script-->
 
 <link rel="stylesheet" href="https://proicons.netlify.app/css/icons.min.css"/>
@@ -92,7 +93,6 @@ xhr.onload = function(){
             icon: "/SurveyBuilder/images/icon/favicon.png",
             link: "https://github.com/surveybuilderteams/surveybuilder/releases",
             requireInteraction: true,
-            vibrate: [200, 100],
             onClick:function(){
 				window.open("https://github.com/surveybuilderteams/surveybuilder/releases", "_blank");
 			}			
@@ -205,7 +205,7 @@ xhr.onload = function(){
 
 
 };
-xhr.open('get', 'System.json')
+xhr.open('get', './libs/System.json')
 xhr.send();
 }
 </script>
@@ -232,6 +232,7 @@ if(!file_exists($file)){
 <style type="text/css" rel="stylesheet" id="customCSS">
 
 </style>
+<div class="animations-list"></div>
 <div id="custom-scripts"></div>
 <div id="custom-addons"></div>
 <!--<div id="custom-alertbox" style="display:none;">
@@ -737,6 +738,7 @@ document.getElementById("Insert-Object").removeChild(find);
 }else{
 return false;
 }
+
 }
 </script>
 
@@ -866,6 +868,7 @@ $(function(){
 	});
 });
 </script>
+
 </span>
 
 </span>
@@ -1112,7 +1115,10 @@ $(function(){
 </script>
 <br/>
 <br/>
+
+
 <textarea placeholder="Console" required="true" name="Console" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditFormFromConsole()" class="lined" id="Console"></textarea>
+
 
 <script type="text/javascript">
 autodisplay();
@@ -1138,6 +1144,8 @@ setTimeout(loop, 0);
 
 
 </script>
+<!--placemark-->
+
 <script>
 function SearchValue(){
 	var SearchTerm = document.querySelector(".search").value;
@@ -1305,10 +1313,10 @@ function EditCmdPrompt(){
 		"\n\nclsmsg command - clears cmd promt: format: clsmsg.<no|auto|yes>" +
 		"\n\nhelp command - gives you the list of commands: format: help" +
 		"\n\ntrigger command - triggers a function/option: format: trigger.<click|focus>.<element>[.<subelement>(optional)]" +
-		"\n\nAutohelp command - fills in the command in the command prompt: format: autohelp.<command>"+
+		"\n\nAutofill command - fills in the command in the command prompt: format: autohelp.<command>"+
 		"\n\nHidden command - hides a element. This is in a UI: format: hidden.<ui|UI>"+
-		"\n\ncmd command - styles the command prompt: format: cmd.<style>"
-		
+		"\n\ncmd command - styles the command prompt: format: cmd.<style>" +
+		"\n\npkg command - installs and extracts packages: format: pkg.install(i).packagename(@version::optional)"
 		
 		);
 	}
@@ -1346,24 +1354,26 @@ function EditCmdPrompt(){
 	document.querySelector("#Data").click();	
 	}
 	
+	
+	
 	/*Autohelp*/
 	
-	if(getMsg.value.match("autohelp.clear")){
+	if(getMsg.value.match("autofill.clear")){
 		getMsg.value = "clear.<id|all>";
 	}
-	if(getMsg.value.match("autohelp.clsmsg")){
+	if(getMsg.value.match("autofill.clsmsg")){
 		getMsg.value = "clsmsg.<no|auto|yes>";
 	}
-	if(getMsg.value.match("autohelp.help")){
+	if(getMsg.value.match("autofill.help")){
 		getMsg.value = "cmd.<help|?>";
 	}
-	if(getMsg.value.match("autohelp.trigger")){
+	if(getMsg.value.match("autofill.trigger")){
 		getMsg.value = "trigger.<click|focus>.<element>[.<subelement>(optional)]";
 	}
-	if(getMsg.value.match("autohelp.hidden")){
+	if(getMsg.value.match("autofill.hidden")){
 		getMsg.value = "hidden.<ui|UI>";
 	}
-	if(getMsg.value.match("autohelp.cmd")){
+	if(getMsg.value.match("autofill.cmd")){
 		getMsg.value = "cmd.<style>";
 	}
 	/*hidden*/
@@ -1393,7 +1403,7 @@ function EditCmdPrompt(){
 			document.querySelector(mainClassName).hidden = false
 		}
 		if(sel == "ID"){
-			let ID = prompt("Enter element's className");
+			let ID = prompt("Enter element's ID");
 			let mainID = "#" + ID;
 			document.querySelector(mainID).hidden = false;
 		}
@@ -1560,6 +1570,20 @@ echo "<br/>";
 <summary><i class="fas fa-folder"></i> API</summary>
 <?php
 $pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/API/";
+$fileList = glob($pattern . "*.*");
+foreach($fileList as $filename){
+	$size = filesize($filename);
+	$filename = basename($filename);
+   //Simply print them out onto the screen.
+   echo "<p> <i class='fas fa-file-code'></i> " . $filename . "(" . $size . "B)" . "</p>";
+}
+echo "<br/>";
+?>
+</details>
+<details>
+<summary><i class="fas fa-folder"></i> libs</summary>
+<?php
+$pattern = $_SERVER['DOCUMENT_ROOT'] . "/SurveyBuilder/Builder/libs/";
 $fileList = glob($pattern . "*.*");
 foreach($fileList as $filename){
 	$size = filesize($filename);
@@ -2037,6 +2061,7 @@ $("#themes").ddslick({
 	document.querySelector("#Editor-Control-Form").style.color = "black";
 	document.querySelector("#Lastest").style.color = "black";
 	document.querySelector("#Timedate").style.color = "black";
+	document.querySelector("#Wcount").style.background = "transparent";
 	document.querySelector("#Tcolor").value = "#000000";
 	document.querySelector("#color").value = "#9acd32";
 		}
@@ -2050,7 +2075,7 @@ $("#themes").ddslick({
 	document.querySelector("#Editor-Control-Form").style.color = "black";
 	document.querySelector("#Lastest").style.color = "white";
 	document.querySelector("#Timedate").style.color = "white";
-	
+	document.querySelector("#Wcount").style.background = "white";
 	document.querySelector("#Tcolor").value = "#ffffff";
 	document.querySelector("#color").value = "#000000";
 			
@@ -2065,6 +2090,7 @@ $("#themes").ddslick({
 	document.querySelector("#Editor-Control-Form").style.color = "black";
 	document.querySelector("#Lastest").style.color = "#1521cb";
 	document.querySelector("#Timedate").style.color = "#1521cb";
+	document.querySelector("#Wcount").style.background = "transparent";
 	document.querySelector("#Tcolor").value = "#1521cb";
 	document.querySelector("#color").value = "#000000";
 		}
@@ -2077,6 +2103,7 @@ $("#themes").ddslick({
 	document.querySelector(".line3").style.backgroundColor = "#ff4000";
 	document.querySelector("#Editor-Control-Form").style.color = "black";
 	document.querySelector("#Lastest").style.color = "#ff4000";
+	document.querySelector("#Wcount").style.background = "transparent";
 	document.querySelector("#Timedate").style.color = "#ff4000";
 	document.querySelector("#Tcolor").value = "#ff4000";
 	document.querySelector("#color").value = "#000000";
@@ -2089,6 +2116,7 @@ $("#themes").ddslick({
 	document.querySelector(".line2").style.backgroundColor = "#972b2b";
 	document.querySelector(".line3").style.backgroundColor = "#972b2b";
 	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Wcount").style.background = "transparent";
 	document.querySelector("#Lastest").style.color = "#972b2b";
 	document.querySelector("#Timedate").style.color = "#972b2b";
 	document.querySelector("#Tcolor").value = "#972b2b";
@@ -2103,6 +2131,7 @@ $("#themes").ddslick({
 	document.querySelector(".line3").style.backgroundColor = "#0cd709";
 	document.querySelector("#Editor-Control-Form").style.color = "black";
 	document.querySelector("#Lastest").style.color = "#0cd709";
+	document.querySelector("#Wcount").style.background = "transparent";
 	document.querySelector("#Timedate").style.color = "#0cd709";
 	document.querySelector("#Tcolor").value = "#0cd709";
 	document.querySelector("#color").value = "#000000";
@@ -2115,6 +2144,7 @@ $("#themes").ddslick({
 	document.querySelector(".line2").style.backgroundColor = "#ff00c8";
 	document.querySelector(".line3").style.backgroundColor = "#ff00c8";
 	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Wcount").style.background = "transparent";
 	document.querySelector("#Lastest").style.color = "#ff00c8";
 	document.querySelector("#Timedate").style.color = "#ff00c8";
 	document.querySelector("#Tcolor").value = "#ff00c8";
@@ -2128,6 +2158,7 @@ $("#themes").ddslick({
 	document.querySelector(".line2").style.backgroundColor = "#ffee00";
 	document.querySelector(".line3").style.backgroundColor = "#ffee00";
 	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Wcount").style.background = "transparent";
 	document.querySelector("#Lastest").style.color = "#ffee00";
 	document.querySelector("#Timedate").style.color = "#ffee00";
 	document.querySelector("#Tcolor").value = "#ffee00";
@@ -2431,7 +2462,22 @@ Text align:(<i class="fas fa-align-justify" title="Text Align"></i>):
 <option value="right-align">Right align</option>
 <option value="justify-align">Justify align</option>
 </select><br/>
-Text dents:(<i class="fas fa-indent" title="Text Dent"></i>): <input type="number" min="0" oninput="setTextDent()" placeholder="Enter a int(number[%])" class="style-dent"/>
+Text dents:(<i class="fas fa-indent" title="Text Dent"></i>): <input type="number" min="0" oninput="setTextDent()" placeholder="Enter a int(number[%])" class="style-dent"/><br/>
+<span>
+Animation:(<i class="fas fa-film"></i>):  <br/>
+<ol>
+<li style="border-bottom:2px solid black;">1. Name: <input type="text" class="anime_name" placeholder="Enter Animation Name"/></li>
+<li style="border-bottom:2px solid black;">2. Duration: <input type="number" min="0" placeholder="Enter Number" class="anime_dur"/>&nbsp;<input type="text" placeholder="Enter Time(ex: seconds(s))" class="anime_dur_time"/></li>
+<li style="border-bottom:2px solid black;">3. TimingFunction: <input type="text" placeholder="Enter function" class="anime_timing_fun"/></li>
+<li style="border-bottom:2px solid black;">4. Delay: <input type="number" min="0" placeholder="Enter Number" class="anime_delay"/>&nbsp;<input type="text" placeholder="Enter Time(ex: seconds(s))" class="anime_delay_time"/></li>
+<li style="border-bottom:2px solid black;">5. IterationCount: <input type="text" placeholder="Enter Count" class="anime_i"/></li>
+<br/>
+<br/>
+<textarea class="anime" placeholder="create Animation" style="margin: 0px; width: 314px; height: 89px;"></textarea>
+</ol><br/>
+<button type="button" onclick="setAnimation()">Create Animation</button>
+</span>
+
 <!--Style script-->
 <script>
 //setData 
@@ -2447,6 +2493,40 @@ var Fsize = document.querySelector(".style-fontSize");
 var Ffamily = document.querySelector(".style-fontFamily");
 var txtAlign = document.querySelector(".style-align");
 var txtDent = document.querySelector(".style-dent");
+//animation
+function setAnimation(anime_name, dur, dur_time, timeFun, delay, delay_time, IteCount ,animation){
+anime_name = document.querySelector(".anime_name");
+dur = document.querySelector(".anime_dur");
+dur_time = name = document.querySelector(".anime_dur_time");
+timeFun = document.querySelector(".anime_timing_fun");
+delay = document.querySelector(".anime_delay");
+delay_time = document.querySelector(".anime_delay_time");
+IteCount = document.querySelector(".anime_iteCount");
+animation = document.querySelector(".anime");
+
+
+if(anime_name.value === "" || dur.value === "" || dur_time.value === "" || timeFun.value === "" || delay.value === "" || delay_time.value === "" || IteCount.value ==="" || animation.value === ""){
+	alert("You must fill out all of the data");
+	return false;
+}
+else{
+	
+	
+
+	let createAnimation = document.createElement("STYLE"); 
+	createAnimation.className = "animation";
+	createAnimation.innerHTML = animation.value;
+	document.querySelector(".animations-list").appendChild(createAnimation);
+	let x = document.getElementById(System.value).children;
+
+       for(i=0;i<x.length;i++){
+		x[i].style.animation = anime_name.value + " " + dur.value + dur_time.value + " " + timeFun.value + " " + delay.value + delay_time.value + " " + IteCount.value;
+	   }
+	
+	
+}
+
+}
 //bold
 function setBold(){
 	if(Bold.checked){
@@ -2496,7 +2576,12 @@ function setFontSize(){
 	document.getElementById(System.value).style.fontSize = Fsize.value;
 }
 function setFontFamily(){
-	document.getElementById(System.value).style.fontFamily = Ffamily.value;
+	let x = document.getElementById(System.value).children;
+
+       for(i=0;i<x.length;i++){
+		x[i].style.fontFamily = Ffamily.value;
+	   }
+	
 }
 function setTextAlign(){
 	if(txtAlign.selectedIndex == "0"){
