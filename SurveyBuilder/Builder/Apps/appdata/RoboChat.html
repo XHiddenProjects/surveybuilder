@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/46bb4793e2.js" crossorigin="anonymous"></script>
 <style type="text/css">
 .container{
 max-width:500 !important;
@@ -87,6 +88,7 @@ width:92%;
 }
 .received-msg-inbox{
 width:57%;
+
 }
 .received-msg-inbox p{
 background: #efefef none repeat scroll 0 0;
@@ -145,15 +147,23 @@ background-color: #fff;
 .form-control{
 border:none !important;
 border-radius: 20px !important;
-
+margin-top: 0px !important; 
+margin-bottom: 0px !important; 
+height: 37px !important;
 }
 .input-group-text{
 background:transparent !important;
 border: none !important;
 }
 .input-group .fa{
-color:#007bff;
+color:gray;
 float:right;
+}
+.input-group-text[sent="true"] .fa{
+color:gray;
+}
+.input-group-text[sent="false"] .fa{
+color:#007bff;
 }
 .bottom-icons{
 float:left;
@@ -185,6 +195,26 @@ overflow:auto;
 .Emoji-field Icon{
 cursor:pointer;
 outline:none;
+}
+.sending-spinner{
+position:absolute;
+top:55%;
+left:45%;
+font-size:72px;
+animation: rotate 5s infinite;
+animation-timing-function: linear;
+}
+@keyframes rotate{
+from{
+transform:rotate(0deg);
+}
+to{
+transform:rotate(360deg);
+}
+}
+.fa-spinner{
+animation: rotate 1s infinite;
+animation-timing-function: linear;
 }
 </style>
 <link rel="shortcut icon" href="/SurveyBuilder/favicon.ico"/>
@@ -223,6 +253,9 @@ alert(x)
 </div>
 </div>
 <div class="chat-page">
+<div class="sending-spinner" hidden>
+<i class="fas fa-spinner"></i>
+</div>
 <div class="msg-inbox">
 <div class="chats">
 <div class="msg-page" id="msg-Page">
@@ -292,7 +325,7 @@ alert(x)
 </span>
 </div>
 <div class="input-group">
-<input type="text" class="form-control" id="Message-Text" placeholder="Write message..." />
+<textarea class="form-control" id="Message-Text" placeholder="Write message..." /></textarea>
 <div class="input-group-append">
 <span class="input-group-text" onclick="sendMessage()"><i class="fa fa-paper-plane"></i></span>
 </div>
@@ -361,12 +394,32 @@ x.value = x.value + "🤧";
 </script>
     
 <script type="text/javascript">
+setInterval(function(){
+let x = document.querySelector("#Message-Text").value;
+let y = document.querySelector(".input-group-text").getAttribute("sent");
+if(x=="" || y == "true" || y == ""){
+document.querySelector(".fa-paper-plane").style.color = "gray";
+}else{
+document.querySelector(".fa-paper-plane").style.color = "#007bff";
+}
+
+
+},0);
+
+
 function sendMessage(){
 if(document.getElementById("Message-Text").value == ""){
 alert("You must enter a messgae");
 return false;
 }
+let attr = document.querySelector(".input-group-text").getAttribute("sent");
+if(attr == "true"){
+alert("Wait till message is sent");
+return false;
+}
+
 //step 1
+document.querySelector(".input-group-text").setAttribute("sent", "true");
 let setup1 = document.createElement("DIV");
 setup1.className = "received-chats";
 let d = new Date();
@@ -395,13 +448,110 @@ var months = ["January","February","March","April","May","June","July","August",
 		Min = "0" + Min;
 	}
 	let val = document.getElementById("Message-Text").value;
+	
+	
+	
+	
+	
 setup1.innerHTML = "<div class='received-chats'> <div class='received-chats-img'> <img src='./RoboChat/assets/Person.png'/> </div> <div class='received-msg'> <div class='received-msg-inbox'> <p>" + val + "</p> <span class='time'>" + Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y +"</span> </div> </div> </div>"
+/*KeyWords*/
+//spinner
+const replaceSpinner = setup1.innerHTML.replace('icons:spinner', '<i class="fas fa-spinner"></i>');
+setup1.innerHTML = replaceSpinner;
+//snowman
+const replaceSnowman = setup1.innerHTML.replace('icons:snowman', '<i class="fas fa-snowman"></i>');
+setup1.innerHTML = replaceSnowman;
+//snowflake
+const replaceSnowflake = setup1.innerHTML.replace('icons:snowflake', '<i class="fas fa-snowflake"></i>');
+setup1.innerHTML = replaceSnowflake;
+//sleigh
+const replaceSleigh = setup1.innerHTML.replace('icons:sleigh', '<i class="fas fa-sleigh"></i>');
+setup1.innerHTML = replaceSleigh;
+//igloo
+const replaceIgloo = setup1.innerHTML.replace('icons:igloo', '<i class="fas fa-igloo"></i>');
+setup1.innerHTML = replaceIgloo;
+//box-tissues
+const replaceBox_Tissues = setup1.innerHTML.replace('icons:box_tissues', '<i class="fas fa-box-tissue"></i>');
+setup1.innerHTML = replaceBox_Tissues;
+//snowboarding
+const replaceSnowboarding = setup1.innerHTML.replace('icons:snowboarding', '<i class="fas fa-snowboarding"></i>');
+setup1.innerHTML = replaceSnowboarding;
+//500px
+const replace500px = setup1.innerHTML.replace('icons:500px', '<i class="fab fa-500px"></i>');
+setup1.innerHTML = replace500px;
+//accessible
+const replaceAccessible_icon = setup1.innerHTML.replace('icons:accessible_icon', '<i class="fab fa-accessible-icon"></i>');
+setup1.innerHTML = replaceAccessible_icon;
+//accusoft
+const replaceAccusoft = setup1.innerHTML.replace('icons:accusoft', '<i class="fab fa-accusoft"></i>');
+setup1.innerHTML = replaceAccusoft;
+//acquisitions-incorporated
+const replaceAcquisitions_Incorporated = setup1.innerHTML.replace('icons:acquisitions_incorporated', '<i class="fab fa-acquisitions-incorporated"></i>');
+setup1.innerHTML = replaceAcquisitions_Incorporated;
+//AD
+const replaceAd = setup1.innerHTML.replace('icons:ad', '<i class="fas fa-ad"></i>');
+setup1.innerHTML = replaceAd;
+//address-book
+const replaceAddress_Book = setup1.innerHTML.replace('icons:address_book', '<i class="fas fa-address-book"></i>');
+setup1.innerHTML = replaceAddress_Book;
+//address-card
+const replaceAddress_Card = setup1.innerHTML.replace('icons:address_card', '<i class="fas fa-address-card"></i>');
+setup1.innerHTML = replaceAddress_Card;
+//bed
+const replaceBed = setup1.innerHTML.replace('icons:bed', '<i class="fas fa-bed"></i>');
+setup1.innerHTML = replaceBed;
+//ban
+const replaceBan = setup1.innerHTML.replace('icons:ban', '<i class="fas fa-ban"></i>');
+setup1.innerHTML = replaceBan;
+//chart-line
+const replaceChartLine = setup1.innerHTML.replace('icons:chart_line', '<i class="fas fa-chart-line"></i>');
+setup1.innerHTML = replaceChartLine;
+//paypal
+const replacePayPal = setup1.innerHTML.replace('icons:cc_paypal', '<i class="fab fa-cc-paypal"></i>');
+setup1.innerHTML = replacePayPal;
+//stripe
+const replaceStripe = setup1.innerHTML.replace('icons:cc_stripe', '<i class="fab fa-cc-stripe"></i>');
+setup1.innerHTML = replaceStripe;
+//Visa
+const replaceVisa = setup1.innerHTML.replace('icons:cc_visa', '<i class="fab fa-cc-visa"></i>');
+setup1.innerHTML = replaceVisa;
+//Apple-Pay
+const replaceApplePay = setup1.innerHTML.replace('icons:cc_apple_pay', '<i class="fab fa-cc-apple-pay"></i>');
+setup1.innerHTML = replaceApplePay;
+//Mastercard
+const replaceMastercard = setup1.innerHTML.replace('icons:cc_mastercard', '<i class="fab fa-cc-mastercard"></i>');
+setup1.innerHTML = replaceMastercard;
+//discover
+const replaceDiscover = setup1.innerHTML.replace('icons:cc_discover', '<i class="fab fa-cc-discover"></i>');
+setup1.innerHTML = replaceDiscover;
+//american express
+const replaceAmex = setup1.innerHTML.replace('icons:cc_amex', '<i class="fab fa-cc-amex"></i>');
+setup1.innerHTML = replaceAmex;
+//Amazon_Pay
+const replaceAmazonPay= setup1.innerHTML.replace('icons:cc_amazon_pay', '<i class="fab fa-cc-amex"></i>');
+setup1.innerHTML = replaceAmazonPay;
+//JCB
+const replaceJBC= setup1.innerHTML.replace('icons:cc_jbc', '<i class="fab fa-cc-jcb"></i>');
+setup1.innerHTML = replaceJBC;
+//church
+const replaceChurch= setup1.innerHTML.replace('icons:church', '<i class="fas fa-church"></i>');
+setup1.innerHTML = replaceChurch;
+//Creative commons
+const replaceCC= setup1.innerHTML.replace('icons:creative_commons', '<i class="fab fa-creative-commons"></i>');
+setup1.innerHTML = replaceCC;
+
+
+/*End KeyWords*/
 document.getElementById("msg-Page").appendChild(setup1);
 setTimeout(AIrespond, 0);
+
 }
 </script>
 <script type="text/javascript">
 function AIrespond(){
+document.querySelector(".sending-spinner").hidden = false;
+setTimeout(function(){ 
+document.querySelector(".input-group-text").setAttribute("sent", "false");
 let x = document.getElementById("Message-Text");
 let setup2 = document.createElement("DIV");
 setup2.className = "outgoing-chats";
@@ -438,11 +588,38 @@ var months = ["January","February","March","April","May","June","July","August",
     */
 	// Add/remove AI repsponce here
 
+//basic responce
 	if(x.value.match("Hi") || x.value.match("Hello") || x.value.match("hi") || x.value.match("hello")){
 	setup2.innerHTML = "<div class='outgoing-chats-msg'> <p>Hi User. What can I help you today?</p> <span class='time'>"+ Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y + "</span> </div> <div class='outgoing-chats-img'> <img src='./RoboChat/assets/Robo.jpg'/> </div>";
 	
 	}
-	if(x.value.match("/clearmsg") || x.value.match("/cmsg")){
+	
+	if(x.value.match("How are you?") || x.value.match("how are you?")){
+	let say = [
+	"good",
+	"bad",
+	"average",
+	"meh",
+	"Amazing",
+	"Not to shabby",
+	"fine",
+	"excited"
+	];
+	let random = Math.floor((Math.random()*say.length) +0);
+	setup2.innerHTML = "<div class='outgoing-chats-msg'> <p>"+say[random]+"</p> <span class='time'>"+ Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y + "</span> </div> <div class='outgoing-chats-img'> <img src='./RoboChat/assets/Robo.jpg'/> </div>";
+	
+	}
+	
+	
+	if(x.value.match("How do you work surveybuilder?") || x.value.match("How do you work SurveyBuilder?") || x.value.match("how do you work surveybuilder?") || x.value.match("how do you work SurveyBuilder?")){
+	setup2.innerHTML = "<div class='outgoing-chats-msg'> <p>Click on the element and fill out the prompt to insert element.</p> <span class='time'>"+ Hrs + ":" + Min + " " + en + " | " + M + "/" + D + "/" + Y + "</span> </div> <div class='outgoing-chats-img'> <img src='./RoboChat/assets/Robo.jpg'/> </div>";
+	
+	}
+	
+	
+	
+	//commands
+	if(x.value.match("/clearmsg") || x.value.match("/cmsg") || x.value.match("/clsmsg")){
 	document.getElementById("msg-Page").innerHTML = "";
 	}
 	
@@ -452,6 +629,8 @@ var months = ["January","February","March","April","May","June","July","August",
 	audio.play();
 	document.getElementById("msg-Page").appendChild(setup2);
 	document.getElementById("Message-Text").value = "";
+	document.querySelector(".sending-spinner").hidden = true;
+	}, 3000);
 }
 </script>
 </body>
