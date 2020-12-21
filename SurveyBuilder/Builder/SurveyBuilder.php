@@ -32,8 +32,8 @@
 <link rel="stylesheet" type="text/css" href="FormInsert.css"/>
 <link rel="shortcut icon" href="favicon.ico"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
-
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="Packages/pkgstyle.min.css" rel="stylesheet"/>
 <script src="SurveyBuilder.js" type="text/javascript"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
 <script src="https://kit.fontawesome.com/46bb4793e2.js" crossorigin="anonymous"></script>
@@ -235,6 +235,11 @@ if(!file_exists($file)){
 <div class="animations-list"></div>
 <div id="custom-scripts"></div>
 <div id="custom-addons"></div>
+
+<!--Packages css-->
+<div class='pkgcss'></div>
+<!--Package js-->
+<div class='pkgjs'></div>
 <!--<div id="custom-alertbox" style="display:none;">
 <div></div>
 </div>-->
@@ -246,7 +251,7 @@ if(!file_exists($file)){
 
 <div id="Body-Container">
 <style>
-.Loading_data_bar, .Saving_data_bar{
+.Loading_data_bar, .Saving_data_bar, .Install_bar, .uninstall_bar{
 	position:absolute;
 	border:1px solid black;
 	top:50%;
@@ -257,22 +262,23 @@ if(!file_exists($file)){
 	background:cyan;
 	font-size:42px;
 	text-align:center;
+	z-index:3;
 }
-.Loading_data_progress progress, .Saving_data_progress progress{
+.Loading_data_progress progress, .Saving_data_progress progress, install_data_progress progress, .uninstall_data_progress progress{
 	position:absolute;
 	left:0;
 	width:100%;
 	bottom:30%;
 }
-.Loading_data_progress .Loading_data_value, .Saving_data_progress .Saving_data_value{
+.Loading_data_progress .Loading_data_value, .Saving_data_progress .Saving_data_value, .install_data_progress .install_data_value, .uninstall_data_progress .uninstall_data_value{
 	position:absolute;
 	bottom:0;
 	left:45%;
 }
-.Loading_data_progress progress::-moz-progress-bar, .Saving_data_progress progress::-moz-progress-bar{
+.Loading_data_progress progress::-moz-progress-bar, .Saving_data_progress progress::-moz-progress-bar, install_data_progress progress::-moz-progress-bar,uninstall_data_progress progress::-moz-progress-bar{
 	background:green;
 }
-.Loading_data_progress progress::-webkit-progress-bar, .Saving_data_progress progress::-webkit-progress-bar{
+.Loading_data_progress progress::-webkit-progress-bar, .Saving_data_progress progress::-webkit-progress-bar, install_data_progress progress::-moz-progress-bar, uninstall_data_progress progress::-moz-progress-bar{
 	background:green;
 }
 </style>
@@ -293,7 +299,22 @@ if(!file_exists($file)){
 	<div class="Saving_data_value">0%</div>
 	</div>
 	</div>
-
+	
+<div class="Install_bar" hidden="true">
+	<div class="install_data_title">Installing Packages</div>
+	<div class="install_data_progress">
+	<progress class="progress_install" value="0" max="100"></progress>
+	<div class="install_data_value">0%</div>
+	</div>
+	</div>
+	
+	<div class="uninstall_bar" hidden="true">
+	<div class="uninstall_data_title">Uninstalling Packages</div>
+	<div class="uninstall_data_progress">
+	<progress class="progress_uninstall" value="0" max="100"></progress>
+	<div class="uninstall_data_value">0%</div>
+	</div>
+	</div>
 <!--<style>
 .loading-temp{
 	z-index:1;
@@ -420,6 +441,40 @@ function resetScore(){
 <div class="heading-ad-error-subtitle">Please disable your ad blocker to activate this.</div>
 <div class="close-ad-btn"><button class="btn-ad-con" onclick="closeAdError()">Continue <span class="countdown"></span></button></div>
 </div>
+
+<!--package catelog-->
+
+<div class="catelog catelog-container" hidden="">
+<div class="cate-header">Select a Package</div>
+<div class="cate-close" onclick="hideManager()"><i class="far fa-times-circle" aria-hidden="true" title="close package manager"></i></div>
+<!--.pkg are seperators of packages-->
+<div class="pkg">
+<div class="pkg-icon"><img src='/SurveyBuilder/images/icon/favicon.png'/></div>
+<div class="pkg-heading">testpackage</div>
+<div class="pkg-description">This is a test package</div>
+<div class="pkg-rate">
+<input type='checkbox' name='star' id='star5' disabled=""/><label for="star1"></label>
+<input type='checkbox' name='star' id='star4' disabled=""/><label for="star2"></label>
+<input type='checkbox' name='star' id='star3' disabled=""/><label for="star3"></label>
+<input type='checkbox' name='star' id='star2' disabled=""/><label for="star4"></label>
+<input type='checkbox' name='star' id='star1' checked="" disabled=""/><label for="star5"></label>
+</div>
+<br/>
+<div class="pkg-install" onclick="installtestpackage()">Install</div>
+<br/>
+<div class="pkg-uninstall" onclick="unistalltestpackage()">Uninstall</div>
+<br/>
+<div class="pkg-setup" onclick="setuptestpackage()">Setup</div>
+</div>
+<script>
+//pkg manager
+function hideManager(){
+	document.querySelector(".catelog").hidden = true;
+}
+
+</script>
+<script src="./Packages/pkgjs.js"></script>
+</div>
  <!--Sidebar-->
               
 
@@ -521,6 +576,25 @@ function removeRow(){
 <li id="New" name="eCommerce">eCommerce</li>
 <li id="Insert-PayPal" title="PayPal" onclick="InsertPayPal()" class="Upgrade"><i class="fab fa-paypal"></i>&nbsp;&nbsp;PayPal</li>
 <li id="Insert-Stripe" title="Stripe" onclick="InsertStripe()" class="Upgrade"><i class="fab fa-stripe"></i>&nbsp;&nbsp;Stripe</li>
+</span>
+<!--Packages-->
+<span id="pkgs">
+<style>
+.pkg-show p{
+	margin-top:5px;
+	margin-bottom:5px;
+	color:white;
+}
+</style>
+<li id="New" name="pkg">Packages</li>
+<span class="pkg-show">
+<?php
+if(is_dir("./Packages/libs/testpackage/")){
+	echo "<p><i class='fas fa-file-archive'></i> testpackage</p>"; 
+}
+
+?>
+</span>
 </span>
 <!--Apps-->
 <span id="Apps">
@@ -1316,10 +1390,19 @@ function EditCmdPrompt(){
 		"\n\nAutofill command - fills in the command in the command prompt: format: autohelp.<command>"+
 		"\n\nHidden command - hides a element. This is in a UI: format: hidden.<ui|UI>"+
 		"\n\ncmd command - styles the command prompt: format: cmd.<style>" +
-		"\n\npkg command - installs and extracts packages: format: pkg.install(i).packagename(@version::optional)"
+		"\n\npkg command - installs and extracts packages: format: pkg.install(i).packagename"
 		
 		);
 	}
+	/*packages*/
+	
+	//opens catalog 
+	if(getMsg.value.match("pkg.open")){
+		document.querySelector(".catelog").hidden = false;
+	}
+	
+	
+	
 	
 	/*trigger*/
 	
@@ -1871,7 +1954,7 @@ if(InternetStatus){
 	document.querySelector(".Internet-Status").style.textAlign = "center";
 	  // document.querySelector("#Sidebar").hidden = false;
 }else{
-	let codeWifiDisconnected = "<i class='fad fa-wifi-slash'></i>";
+	let codeWifiDisconnected = "<i class='fas fa-wifi-slash'></i>";
 	document.querySelector(".Internet-Status").innerHTML = codeWifiDisconnected + " Disconnected";
 	document.querySelector(".Internet-Status").style.fontSize = "32px";
 	document.querySelector(".Internet-Status").style.color = "red";
