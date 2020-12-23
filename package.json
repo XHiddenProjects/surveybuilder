@@ -14,7 +14,7 @@
     "surveybuilder-admin"
   ],
   "author": "surveybuilderteams",
-  "license": "Apache-2.0",
+  "license": "Apache-2.0 License",
   "dependencies": {
     "mysql": "^2.18.1"
   },
