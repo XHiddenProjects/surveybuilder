@@ -84,7 +84,8 @@ $(function(){
 	$(".pkg-setup").click(function(){
 			let scriptCode = "&lt;script src='./Packages/libs/testpackage/v0.0.1/testpackage.js' type='text/javascript'&gt;&lt;/script&gt;";
 	let decodeCode = htmlDecode(scriptCode);
-	prompt("copy and paste code into console", decodeCode);
+	prompt("copy and paste code into this source code", decodeCode);
+	
 	});
 
 });
@@ -93,3 +94,5 @@ $(function(){
 function htmlDecode(value) {
         return $("<textarea/>").html(value).text();
       }
+	  
+	 
