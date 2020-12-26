@@ -58,6 +58,7 @@ setTimeout(function(){
 	
 
 </script>
+
 <script>
 if(sessionStorage.length == "" || sessionStorage.length == null){
 		sessionStorage.setItem("loggedIn", "false");
@@ -209,6 +210,9 @@ xhr.open('get', './libs/System.json')
 xhr.send();
 }
 </script>
+
+
+
 
 </head>
 <div id="not"></div>
@@ -464,7 +468,9 @@ function resetScore(){
 <br/>
 <div class="pkg-uninstall" onclick="unistalltestpackage()">Uninstall</div>
 <br/>
-<div class="pkg-setup" onclick="setuptestpackage()">Setup</div>
+<div class="pkg-setup">Setup</div>
+<br/>
+<a href="https://github.com/surveybuilderteams/packages/blob/masters/libs/testpackage/info.md" target="_blank" class="pkg-info-link"><div class="pkg-info">Info</div></a>
 </div>
 <script>
 //pkg manager
@@ -2787,6 +2793,43 @@ function googleTranslateElementInit(){
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
 <script src="./Config/Config.js" type="text/javascript"></script>
 <script src="./Config/RunConfig.min.js" type="text/javascript"></script>
+<script>
+//used as package config
+setTimeout(testpackageConfig, 0);
+function testpackageConfig(){
+	
+const xhr = new XMLHttpRequest();
+
+xhr.onload = function(){
+	if(this.status === 200){
+		
+		try{
+		const resObj = JSON.parse(this.responseText);
+ 
+            maxTitle = resObj.config.maxTitle;
+			requiredVersion = resObj.config.requiredVersion;
+			DarkTheme = resObj.config.DarkTheme;
+			setTimeout(testCorrospond, 0);
+			
+		}
+		catch (e){
+			console.warn("Failed JSON file")
+		}
+		
+	}
+	else{
+		console.warn("Data failed to recive 200 OK");
+	}
+	
+}
+ xhr.open("get","./Packages/libs/testpackage/v0.0.2/testpackage.json");
+ xhr.send();
+ 
+
+}
+
+
+</script>
 <div class="setConfigDatabase">
 
 </div>
