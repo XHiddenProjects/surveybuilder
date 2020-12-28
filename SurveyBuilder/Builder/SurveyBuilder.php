@@ -13,7 +13,7 @@
 
 
 
-<script src="Apps_Insert.js" type="text/javascript"></script>
+<script src="Apps_Insert.js" type="text/javascript" crossorigin="anonymous"></script>
 <!-- Google Tag Manager -->
 
 
@@ -33,17 +33,16 @@
 <link rel="shortcut icon" href="favicon.ico"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link href="Packages/pkgstyle.min.css" rel="stylesheet"/>
-<script src="SurveyBuilder.js" type="text/javascript"></script>
+
+<script src="SurveyBuilder.js" type="text/javascript" crossorigin="anonymous"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
-<script src="https://kit.fontawesome.com/46bb4793e2.js" crossorigin="anonymous"></script>
 <script src="serviceworker.js" type="text/javascript"></script>
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
 <!--Templeates-->
-<script src="./templetes/Medical_temp.js"></script>
-<script src="./templetes/blank_temp.js"></script>
-<script src="./templetes/police_incident_report_temp.js"></script>
+<script src="./templetes/Medical_temp.js" crossorigin="anonymous"></script>
+<script src="./templetes/blank_temp.js" crossorigin="anonymous"></script>
+<script src="./templetes/police_incident_report_temp.js" crossorigin="anonymous"></script>
 
 <!--end Templeate script-->
 
@@ -240,10 +239,7 @@ if(!file_exists($file)){
 <div id="custom-scripts"></div>
 <div id="custom-addons"></div>
 
-<!--Packages css-->
-<div class='pkgcss'></div>
-<!--Package js-->
-<div class='pkgjs'></div>
+
 <!--<div id="custom-alertbox" style="display:none;">
 <div></div>
 </div>-->
@@ -446,41 +442,7 @@ function resetScore(){
 <div class="close-ad-btn"><button class="btn-ad-con" onclick="closeAdError()">Continue <span class="countdown"></span></button></div>
 </div>
 
-<!--package catelog-->
 
-<div class="catelog catelog-container" hidden="">
-<div class="cate-header">Select a Package</div>
-<div class="cate-close" onclick="hideManager()"><i class="far fa-times-circle" aria-hidden="true" title="close package manager"></i></div>
-<!--.pkg are seperators of packages-->
-<div class="pkg">
-<div class="pkg-icon"><img src='/SurveyBuilder/images/icon/favicon.png'/></div>
-<div class="pkg-heading">testpackage</div>
-<div class="pkg-description">This is a test package</div>
-<div class="pkg-rate">
-<input type='checkbox' name='star' id='star5' disabled=""/><label for="star1"></label>
-<input type='checkbox' name='star' id='star4' disabled=""/><label for="star2"></label>
-<input type='checkbox' name='star' id='star3' disabled=""/><label for="star3"></label>
-<input type='checkbox' name='star' id='star2' disabled=""/><label for="star4"></label>
-<input type='checkbox' name='star' id='star1' checked="" disabled=""/><label for="star5"></label>
-</div>
-<br/>
-<div class="pkg-install" onclick="installtestpackage()">Install</div>
-<br/>
-<div class="pkg-uninstall" onclick="unistalltestpackage()">Uninstall</div>
-<br/>
-<div class="pkg-setup">Setup</div>
-<br/>
-<a href="https://github.com/surveybuilderteams/packages/blob/masters/libs/testpackage/info.md" target="_blank" class="pkg-info-link"><div class="pkg-info">Info</div></a>
-</div>
-<script>
-//pkg manager
-function hideManager(){
-	document.querySelector(".catelog").hidden = true;
-}
-
-</script>
-<script src="./Packages/pkgjs.js"></script>
-</div>
  <!--Sidebar-->
               
 
@@ -583,25 +545,8 @@ function removeRow(){
 <li id="Insert-PayPal" title="PayPal" onclick="InsertPayPal()" class="Upgrade"><i class="fab fa-paypal"></i>&nbsp;&nbsp;PayPal</li>
 <li id="Insert-Stripe" title="Stripe" onclick="InsertStripe()" class="Upgrade"><i class="fab fa-stripe"></i>&nbsp;&nbsp;Stripe</li>
 </span>
-<!--Packages-->
-<span id="pkgs">
-<style>
-.pkg-show p{
-	margin-top:5px;
-	margin-bottom:5px;
-	color:white;
-}
-</style>
-<li id="New" name="pkg">Packages</li>
-<span class="pkg-show">
-<?php
-if(is_dir("./Packages/libs/testpackage/")){
-	echo "<p><i class='fas fa-file-archive'></i> testpackage</p>"; 
-}
 
-?>
-</span>
-</span>
+
 <!--Apps-->
 <span id="Apps">
 <style>
@@ -1396,16 +1341,11 @@ function EditCmdPrompt(){
 		"\n\nAutofill command - fills in the command in the command prompt: format: autohelp.<command>"+
 		"\n\nHidden command - hides a element. This is in a UI: format: hidden.<ui|UI>"+
 		"\n\ncmd command - styles the command prompt: format: cmd.<style>" +
-		"\n\npkg command - installs and extracts packages: format: pkg.install(i).packagename"
+		
 		
 		);
 	}
-	/*packages*/
 	
-	//opens catalog 
-	if(getMsg.value.match("pkg.open")){
-		document.querySelector(".catelog").hidden = false;
-	}
 	
 	
 	
@@ -2791,45 +2731,9 @@ function googleTranslateElementInit(){
 }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
-<script src="./Config/Config.js" type="text/javascript"></script>
-<script src="./Config/RunConfig.min.js" type="text/javascript"></script>
-<script>
-//used as package config
-setTimeout(testpackageConfig, 0);
-function testpackageConfig(){
-	
-const xhr = new XMLHttpRequest();
+<script src="./Config/Config.js" type="text/javascript" crossorigin="anonymous"></script>
+<script src="./Config/RunConfig.min.js" type="text/javascript" crossorigin="anonymous"></script>
 
-xhr.onload = function(){
-	if(this.status === 200){
-		
-		try{
-		const resObj = JSON.parse(this.responseText);
- 
-            maxTitle = resObj.config.maxTitle;
-			requiredVersion = resObj.config.requiredVersion;
-			DarkTheme = resObj.config.DarkTheme;
-			setTimeout(testCorrospond, 0);
-			
-		}
-		catch (e){
-			console.warn("Failed JSON file")
-		}
-		
-	}
-	else{
-		console.warn("Data failed to recive 200 OK");
-	}
-	
-}
- xhr.open("get","./Packages/libs/testpackage/v0.0.2/testpackage.json");
- xhr.send();
- 
-
-}
-
-
-</script>
 <div class="setConfigDatabase">
 
 </div>
