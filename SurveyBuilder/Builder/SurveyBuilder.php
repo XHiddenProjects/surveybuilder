@@ -34,9 +34,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+
+
 <script src="SurveyBuilder.js" type="text/javascript" crossorigin="anonymous"></script>
 <script src="InsertItems.js" type="text/javascript"></script>
 <script src="serviceworker.js" type="text/javascript"></script>
+
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
 <!--Templeates-->
@@ -45,6 +48,11 @@
 <script src="./templetes/police_incident_report_temp.js" crossorigin="anonymous"></script>
 
 <!--end Templeate script-->
+
+
+<!--constructor-->
+
+<script src="assets/constructor.min.js"></script>
 
 <link rel="stylesheet" href="https://proicons.netlify.app/css/icons.min.css"/>
 <script>
@@ -368,7 +376,9 @@ if(!file_exists($file)){
 <br>
 <center id="Form-Center" onload="Autosave()">
 <form id="Editors-Form" method="post" action="">
-<div id="Insert-Object" contenteditable="true"></div>
+<div id="Insert-Object" contenteditable="true">
+
+</div>
 </form>
 </center
 	 <!--Ad blocker Check-->
@@ -1340,11 +1350,11 @@ function EditCmdPrompt(){
 		"\n\ntrigger command - triggers a function/option: format: trigger.<click|focus>.<element>[.<subelement>(optional)]" +
 		"\n\nAutofill command - fills in the command in the command prompt: format: autohelp.<command>"+
 		"\n\nHidden command - hides a element. This is in a UI: format: hidden.<ui|UI>"+
-		"\n\ncmd command - styles the command prompt: format: cmd.<style>" +
+		"\n\ncmd command - styles the command prompt: format: cmd.<style>" 
 		
 		
-		);
-	}
+		
+	)};
 	
 	
 	
