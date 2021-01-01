@@ -372,7 +372,6 @@ if(!file_exists($file)){
  <!--Editor container-->
 <br>
 <br>
-
 <br>
 <center id="Form-Center" onload="Autosave()">
 <form id="Editors-Form" method="post" action="">
@@ -2079,6 +2078,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 <option value="christmas-theme" data-description="A happy holiday theme" data-imagesrc="./Themes/ChristmasTheme.png">Christmas Theme</option>
 <option value="luxury-theme" data-description="A luxury place theme" data-imagesrc="./Themes/LuxuryTheme.png">Luxury Theme</option>
 <option value="neon-theme" data-description="A neon looking theme" data-imagesrc="./Themes/NeonTheme.png">Neon Theme</option>
+<option value="new-year-theme" data-description="A happy new year theme 2021" data-imagesrc="./Themes/NewYear.png">NewYear Theme</option>
 </select>
 </div>
 <script src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" type="text/javascript"></script>
@@ -2203,7 +2203,20 @@ $("#themes").ddslick({
 	document.querySelector("#Tcolor").value = "#ffee00";
 	document.querySelector("#color").value = "#000000";
 		}
-		
+			if(data.selectedData.value === "new-year-theme"){
+			document.body.style.background = "url('https://poetryclubs.com/wp-content/uploads/2020/06/2021-happy-new-year.jpg')";
+	document.body.style.color = "#cfd945";
+	document.querySelector("#yourTitle").style.color = "#cfd945";
+	document.querySelector(".line1").style.backgroundColor = "#cfd945";
+	document.querySelector(".line2").style.backgroundColor = "#cfd945";
+	document.querySelector(".line3").style.backgroundColor = "#cfd945";
+	document.querySelector("#Editor-Control-Form").style.color = "black";
+	document.querySelector("#Wcount").style.background = "transparent";
+	document.querySelector("#Lastest").style.color = "#cfd945";
+	document.querySelector("#Timedate").style.color = "#cfd945";
+	document.querySelector("#Tcolor").value = "#cfd945";
+	document.querySelector("#color").value = "#000000";
+		}
 		$("#themes").prop("title", data.selectedData.value);
 		
 	}
