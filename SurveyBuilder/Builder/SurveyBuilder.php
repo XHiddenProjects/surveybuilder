@@ -33,7 +33,16 @@
 <link rel="shortcut icon" href="favicon.ico"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+<style>
+#Insert-Object .ads_con{
+	width:100%;
+	height:150px;
+	cursor:pointer;
+}
+#Insert-Object .ad-vid{
+	background:black;
+}
+</style>
 
 
 <script src="SurveyBuilder.js" type="text/javascript" crossorigin="anonymous"></script>
@@ -375,9 +384,7 @@ if(!file_exists($file)){
 <br>
 <center id="Form-Center" onload="Autosave()">
 <form id="Editors-Form" method="post" action="">
-<div id="Insert-Object" contenteditable="true">
-
-</div>
+<div id="Insert-Object" contenteditable="true"></div>
 </form>
 </center
 	 <!--Ad blocker Check-->
@@ -612,7 +619,7 @@ return false;
 <script type="text/javascript">
 //Info
 function RoboChatInfo(){
-alert("AppName: RoboChat\n\nCreator: SurveyBuilder \n\nDescription: Create and Edit your own 24/7 chat station w/ an AI\n\nDependencies: Boostrap Css(v4.5.0), Boostrap FontAwesome Icons(v4.7.0)\n\nLanguages: HTML, CSS, JS\n\nVersion: 16.0.0\n\nNeedsCofig: yes");
+alert("AppName: RoboChat\n\nCreator: SurveyBuilder \n\nDescription: Create and Edit your own 24/7 chat station w/ an AI\n\nDependencies: Boostrap Css(v4.5.0), Boostrap FontAwesome Icons(v4.7.0)\n\nLanguages: HTML, CSS, JS\n\nVersion: 0.0.2\n\nNeedsCofig: yes");
 }
 //Unistall
 function RoboChatUnistall(){
@@ -634,7 +641,7 @@ return false;
 <script type="text/javascript">
 //Info
 function eSignInfo(){
-alert("AppName: eSignature\n\nCreator: SurveyBuilder \n\nDescription: Get Users signature\n\nDependencies: jQuery 3.5.1+, Sign.js\n\nLanguages: JQuery, JavaScript, HTML, CSS\n\nVersion:16.0.0\n\nNeedsCofig: No");
+alert("AppName: eSignature\n\nCreator: SurveyBuilder \n\nDescription: Get Users signature\n\nDependencies: jQuery 3.5.1+, Sign.js\n\nLanguages: JQuery, JavaScript, HTML, CSS\n\nVersion: 0.0.1\n\nNeedsCofig: No");
 }
 //Unistall
 function eSignUnistall(){
@@ -655,7 +662,7 @@ return false;
 <script type="text/javascript">
 //Info
 function recInfo(){
-alert("AppName: Recorder\n\nCreator: SurveyBuilder \n\nDescription: Capture audio and facecam video, make it downloadable\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript\n\nVersion:16.0.0\n\nNeedsCofig: Yes");
+alert("AppName: Recorder\n\nCreator: SurveyBuilder \n\nDescription: Capture audio and facecam video, make it downloadable\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript\n\nVersion: 0.0.1\n\nNeedsCofig: Yes");
 }
 //Unistall
 function recUnistall(){
@@ -676,7 +683,7 @@ return false;
 <script type="text/javascript">
 //Info
 function ThreeDIMInfo(){
-alert("AppName: 3D Image Module\n\nCreator: SurveyBuilder \n\nDescription: Upload an PNG Image to show your image a 3D experince\n\nDependencies: tilt.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion:16.0.0\n\nNeedsCofig: No");
+alert("AppName: 3D Image Module\n\nCreator: SurveyBuilder \n\nDescription: Upload an PNG Image to show your image a 3D experince\n\nDependencies: tilt.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion: 0.0.1\n\nNeedsCofig: No");
 }
 //Unistall
 function ThreeDIMUnistall(){
@@ -697,7 +704,7 @@ return false;
 <script type="text/javascript">
 //Info
 function txtEditorInfo(){
-alert("AppName: Text Editor\n\nCreator: SurveyBuilder \n\nDescription: Use a free Build text editor and create your own files\n\nDependencies: FileSave.js, lined-textarea.css, lined-textarea.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion:16.0.0\n\nNeedsCofig: No");
+alert("AppName: Text Editor\n\nCreator: SurveyBuilder \n\nDescription: Use a free Build text editor and create your own files\n\nDependencies: FileSave.js, lined-textarea.css, lined-textarea.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion: 0.0.1\n\nNeedsCofig: No");
 }
 //Unistall
 function txtEditorUnistall(){
@@ -718,7 +725,7 @@ return false;
 <script type="text/javascript">
 //Info
 function mdEditorInfo(){
-alert("AppName: Markdown Editor\n\nCreator: SurveyBuilder \n\nDescription: Build and Program your own Markdown code and go live\n\nDependencies: lined-textarea.css, lined-textarea.js, marked.min.js, jquery.textarea-markdown-editor.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion:16.0.0\n\nNeedsCofig: No");
+alert("AppName: Markdown Editor\n\nCreator: SurveyBuilder \n\nDescription: Build and Program your own Markdown code and go live\n\nDependencies: lined-textarea.css, lined-textarea.js, marked.min.js, jquery.textarea-markdown-editor.js\n\nLanguages: HTML, CSS, JavaScript, JQuery\n\nVersion: 0.0.1\n\nNeedsCofig: No");
 }
 //Unistall
 function mdEditorUnistall(){
@@ -783,13 +790,35 @@ return false;
 <script type="text/javascript">
 //Info
 function drawingInfo(){
-alert("AppName: Drawing\n\nCreator: SurveyBuilder\n\nDescription: Allows you to draw anything using SVG program the drawing\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript\n\nVersion: 16.0.0\n\nNeedsCofig: No");
+alert("AppName: Drawing\n\nCreator: SurveyBuilder\n\nDescription: Allows you to draw anything using SVG program the drawing\n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript\n\nVersion: 0.0.1\n\nNeedsCofig: No");
 }
 //Unistall
 function drawingUnistall(){
 let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Drawing on your display sheet.");
 if(confirms == true){
 let find = document.querySelector(".drawing-app");
+document.getElementById("Insert-Object").removeChild(find);
+}else{
+return false;
+}
+}
+</script>
+
+
+<li id="Insert-ads" title="Custom Ads" onclick="Ads()" class="ads apps-config"><i class="fas fa-ad"></i>&nbsp;&nbsp;Custom Ad's
+<li class="InfoApp" onclick="adsInfo()">Information</li>
+<li class="Unistall" onclick="adsUnistall()">Unistall APP</li>
+</li>
+<script type="text/javascript">
+//Info
+function adsInfo(){
+alert("AppName: Custom Ad's\n\nCreator: SurveyBuilder\n\nDescription: Add you own custom AD's to your survey (note: you won't get ANY money for this.) You can use this for banners. This also includes ONCLICK action to your 'located ad website(L.A.W)' \n\nDependencies: N/A\n\nLanguages: HTML, CSS, JavaScript\n\nVersion: 0.0.1\n\nNeedsCofig: No");
+}
+//Unistall
+function adsUnistall(){
+let confirms = confirm("Are you sure you want to unistall this app?\nWarning it will remove the top Ad on your display sheet.");
+if(confirms == true){
+let find = document.querySelector(".ads-app");
 document.getElementById("Insert-Object").removeChild(find);
 }else{
 return false;
@@ -2082,6 +2111,7 @@ Message: <textarea name="message" required="true" placeholder="Message"></textar
 </select>
 </div>
 <script src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" type="text/javascript"></script>
+
 <script>
 $("#themes").ddslick({
 	
