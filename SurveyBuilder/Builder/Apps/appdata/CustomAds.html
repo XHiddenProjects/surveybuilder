@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>SurveyBuilder - Custom Ad's</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+body{
+margin:0;
+padding:0;
+background:lime;
+}
+.ad-editor, .ad-preview{
+border:1px solid black;
+width:98%;
+height:320px;
+margin-bottom:25px;
+background:#176992;
+}
+.ad-editor{
+font-size:25px;
+overflow:auto;
+}
+.ad-editor input[type=radio]{
+width:20px;
+height:20px;
+}
+.ad-step{
+border-bottom:8px solid black;
+width:100%;
+}
+.ad-editor input[type=url]{
+font-size:25px;
+}
+.ad-editor input[type=checkbox]{
+width:20px;
+height:20px;
+}
+.ad-editor button{
+font-size:25px;
+cursor:pointer;
+}
+.ad-preview img, .ad-preview a{
+width:100%;
+height:100%;
+}
+.ad-preview video, .ad-preview a{
+width:100%;
+height:100%;
+}
+</style>
+<script>
+setInterval(function(){
+let imgBanner = document.querySelector(".banner_type_img").checked;
+let vidBanner = document.querySelector(".banner_type_vid").checked;
+if(imgBanner){
+document.querySelector(".banner_url_img").hidden = false;
+document.querySelector(".banner_url_vid").hidden = true;
+}
+if(vidBanner){
+document.querySelector(".banner_url_img").hidden = true;
+document.querySelector(".banner_url_vid").hidden = false;
+}
+})
+</script>
+<script>
+function previewAd(){
+let imgBanner = document.querySelector(".banner_type_img").checked;
+let vidBanner = document.querySelector(".banner_type_vid").checked;
+
+if(imgBanner){
+
+let setupImg = "<a href='" + document.querySelector('.banner_url_redirect').value + "' target='_blank' ><img class='ads_con' src='" + document.querySelector(".banner_url_img").value + "' alt='ad img' title='click to go oringinal website'/></a>";
+document.querySelector(".ad-preview").innerHTML = setupImg;
+document.querySelector(".ad_step_4_a").hidden = false;
+
+}
+if(vidBanner){
+let setupVid = "<a href='" + document.querySelector('.banner_url_redirect').value + "' target='_blank'><video class='ads_con ad-vid' autoplay='' controls='' src='" + document.querySelector(".banner_url_vid").value + "' title='click to go to oringinal website'></video></a>";
+document.querySelector(".ad-preview").innerHTML = setupVid;
+document.querySelector(".ad_step_4_a").hidden = false;
+}
+
+}
+</script>
+<script>
+function copyAd(){
+let collect = "<div class='container'>" + document.querySelector(".ad-preview").innerHTML + "</div>";
+navigator.clipboard.writeText(collect).then(function(){
+alert("code copied to clipboard");
+}, function(){
+alert("Error: cannot copy to clipboard");
+});
+}
+</script>
+<body>
+<div class="ad-editor">
+<div class="ad_step_1 ad-step">
+<input type="radio" name="banner_type" class="banner_type_img"/>Image<br/>
+<input type="radio" name="banner_type" class="banner_type_vid"/>Video<br/>
+</div>
+
+<div class="ad_step_2 ad-step" >
+<input type="url" class="banner_url_img" hidden="" placeholder="Image URL"/>
+<input type="url" class="banner_url_vid" hidden="" placeholder="Video URL"/>
+</div> 
+<div class="ad_step_3 ad-step" >
+<input type="url" class="banner_url_redirect" placeholder="Redirect URL"/>
+</div> 
+<div class="ad_step_4 ad-step" >
+<button onclick="previewAd()">Preview Ad</button>
+</div> 
+<div class="ad_step_4_a ad-step" hidden="">
+<button onclick="copyAd()">Copy Code Ad</button>
+</div> 
+</div>
+<div class="ad-preview">
+
+</div>
+
+</body>
+</html>
