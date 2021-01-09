@@ -2513,6 +2513,24 @@ $("#themes").ddslick({
 <div class="checkbox-icons"></div>
 </label>
 </div>
+<span class="label_config">templateSelect:</span>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
+</div>
+<br/>
+<span class="label_config">setPreview:</span>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
+</div>
+<br/>
+<span class="label_config">requiredVersion:</span>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
+</div>
+
+
+
+
 <br>
 <br>
 <hr>
