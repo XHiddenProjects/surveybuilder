@@ -9,8 +9,7 @@
 </script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <!--<script src="https://kit.fontawesome.com/46bb4793e2.js"></script>-->
-
+<script src="https://kit.fontawesome.com/46bb4793e2.js"></script>
 
 
 <script src="Apps_Insert.js" type="text/javascript" crossorigin="anonymous"></script>
@@ -1179,7 +1178,8 @@ $(function(){
 <br/>
 <br/>
 
-
+<button onclick="insertTag()" type="button">Insert HTML tag</button>
+<br/><br/>
 <textarea placeholder="Console" required="true" name="Console" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditFormFromConsole()" class="lined" id="Console"></textarea>
 
 
@@ -2285,7 +2285,7 @@ $("#themes").ddslick({
 <br>
 <br>
 <button id="temp" onclick="setupPoliceIncidentReportTemp()" class="Police_temp" title="Police Incident Report Template">Police Incident Report</button>
-<!--<br>
+<br>
 <br>
 <br>
 <br>
@@ -2388,7 +2388,7 @@ $("#themes").ddslick({
 <br/>
 <span class="label_config">limit_list:</span>
 <div class="Warning-input">
-<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
 </div>
 <br/>
 <span class="label_config">Allow_Inspect_element:</span>
@@ -2477,12 +2477,12 @@ $("#themes").ddslick({
 <br/>
 <span class="label_config">banIp:</span>
 <div class="Warning-input">
-<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
 </div>
 <br/>
 <span class="label_config">Enable_Config_File:</span>
 <div class="Warning-input">
-<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
 </div>
 <br/>
 <span class="label_config">Allow_Database:</span>
@@ -2495,7 +2495,7 @@ $("#themes").ddslick({
 <br/>
 <span class="label_config">redirFormLink:</span>
 <div class="Warning-input">
-<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to ./Config/Config.js
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
 </div>
 <br/>
 <span class="label_config">Allow_ad_blocker _annoyance:</span>
@@ -2512,14 +2512,7 @@ $("#themes").ddslick({
 <label for="checkbox-input">
 <div class="checkbox-icons"></div>
 </label>
-</div>-->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+</div>
 <br>
 <br>
 <hr>
@@ -2552,7 +2545,7 @@ Animation:(<i class="fas fa-film"></i>):  <br/>
 <li style="border-bottom:2px solid black;">2. Duration: <input type="number" min="0" placeholder="Enter Number" class="anime_dur"/>&nbsp;<input type="text" placeholder="Enter Time(ex: seconds(s))" class="anime_dur_time"/></li>
 <li style="border-bottom:2px solid black;">3. TimingFunction: <input type="text" placeholder="Enter function" class="anime_timing_fun"/></li>
 <li style="border-bottom:2px solid black;">4. Delay: <input type="number" min="0" placeholder="Enter Number" class="anime_delay"/>&nbsp;<input type="text" placeholder="Enter Time(ex: seconds(s))" class="anime_delay_time"/></li>
-<li style="border-bottom:2px solid black;">5. IterationCount: <input type="text" placeholder="Enter Count" class="anime_i"/></li>
+<li style="border-bottom:2px solid black;">5. IterationCount: <input type="text" placeholder="Enter Count" class="anime_iteCount"/></li>
 <br/>
 <br/>
 <textarea class="anime" placeholder="create Animation" style="margin: 0px; width: 314px; height: 89px;"></textarea>
@@ -2587,7 +2580,7 @@ IteCount = document.querySelector(".anime_iteCount");
 animation = document.querySelector(".anime");
 
 
-if(anime_name.value === "" || dur.value === "" || dur_time.value === "" || timeFun.value === "" || delay.value === "" || delay_time.value === "" || IteCount.value ==="" || animation.value === ""){
+if(anime_name.value === "" || dur.value === "" || dur_time.value === "" || timeFun.value === "" || delay.value === "" || delay_time.value === "" || IteCount.value === "" || animation.value === ""){
 	alert("You must fill out all of the data");
 	return false;
 }
@@ -2791,7 +2784,7 @@ function googleTranslateElementInit(){
 
 </div>
 
-<!--<script>
+<script>
 
 //coords:
 var check1 = document.querySelector(".check1");//banner
@@ -2842,7 +2835,7 @@ function setInspectElement(){
 	setTimeout(testCorrospond, 0);
 }
 function setLocationTrack(){
-		if(Allow_location_tracking == true && check5.checked == true){
+		if(Allow_location_tracking == true && check5.checked == false){
 		Allow_location_tracking = false;
 	}else{
 		Allow_location_tracking = true;
@@ -2850,7 +2843,7 @@ function setLocationTrack(){
 	setTimeout(testCorrospond, 0);
 }
 function setApiConfig(){
-	if(Allow_API_config == true && check6.checked == true){
+	if(Allow_API_config == true && check6.checked == false){
 		Allow_API_config = false;
 	}else{
 		Allow_API_config = true;
@@ -2890,7 +2883,7 @@ function setTestCookie(){
 	setTimeout(testCorrospond, 0);
 }
 function setCollectIP(){
-	if(Collect_IP == true && check11.checked == true){
+	if(Collect_IP == true && check11.checked == false){
 		Collect_IP = false;
 	}else{
 		Collect_IP = true;
@@ -2957,7 +2950,7 @@ function setdarkTheme(){
 	}
 	setTimeout(testCorrospond, 0);
 }
-</script>-->
+</script>
 
 </body>                                                                      
 </html>         
