@@ -245,9 +245,7 @@ if(!file_exists($file)){
 
 ?>
 
-<?php
 
-?>
 <style type="text/css" rel="stylesheet" id="customCSS">
 
 </style>
@@ -1336,6 +1334,39 @@ function EditCmdPrompt(){
 	let getMsg = document.getElementById("cmdPrompt");
 	let getData = document.getElementById("Insert-Object");
 	
+	/*start of cmd settings*/
+	
+	//banip
+	
+	if(getMsg.value.match("banip.ui") || getMsg.value.match("banip.UI")){
+		let setIP = prompt("enter IP address | re-enter IP address to remove");
+		if(banIP.length === null || banIP === "" || banIP.length === 0){
+				banIP.push(setIP);
+				return false;
+			}
+		for(i=0;i<banIP.length;i++){
+			
+			if(banIP[i] === setIP){
+				let check = confirm("IP: " + setIP + " is already set\n\nWant to remove IP?");
+				if(check === true){
+					const testIndex = banIP.indexOf(setIP);
+					if(testIndex > -1){
+					banIP.splice(testIndex, 1);
+					}
+				}if(check === false){
+					return false;
+				}
+			}else{
+				banIP.push(setIP);
+				return false;
+			}
+		}
+	}
+	
+	
+	
+	/*end of cmd settings*/
+	
 	/*clear*/
 	if(getMsg.value.match("clear.all") || getMsg.value.match("cls.all")){
 		document.getElementById("Insert-Object").innerHTML = "";
@@ -1378,7 +1409,8 @@ function EditCmdPrompt(){
 		"\n\ntrigger command - triggers a function/option: format: trigger.<click|focus>.<element>[.<subelement>(optional)]" +
 		"\n\nAutofill command - fills in the command in the command prompt: format: autohelp.<command>"+
 		"\n\nHidden command - hides a element. This is in a UI: format: hidden.<ui|UI>"+
-		"\n\ncmd command - styles the command prompt: format: cmd.<style>" 
+		"\n\ncmd command - styles the command prompt: format: cmd.<style>" +
+		"\n\nbanip command - sets ban ip address to the banip list: format: banip.<ui|UI>"
 		
 		
 		
@@ -1431,9 +1463,6 @@ function EditCmdPrompt(){
 	if(getMsg.value.match("autofill.clsmsg")){
 		getMsg.value = "clsmsg.<no|auto|yes>";
 	}
-	if(getMsg.value.match("autofill.help")){
-		getMsg.value = "cmd.<help|?>";
-	}
 	if(getMsg.value.match("autofill.trigger")){
 		getMsg.value = "trigger.<click|focus>.<element>[.<subelement>(optional)]";
 	}
@@ -1442,6 +1471,9 @@ function EditCmdPrompt(){
 	}
 	if(getMsg.value.match("autofill.cmd")){
 		getMsg.value = "cmd.<style>";
+	}
+	if(getMsg.value.match("autofill.banip")){
+		getMsg.value = "banip.<ui|UI>";
 	}
 	/*hidden*/
 	if(getMsg.value.match("hidden.ui") || getMsg.value.match("hidden.UI")){
@@ -2408,11 +2440,8 @@ $("#themes").ddslick({
 </div>
 <br/>
 <span class="label_config">Allow_API_config:</span>
-<div class="checkbox">
-<input type="checkbox" class="checkbox-input check6" onclick="setApiConfig()"/>
-<label for="checkbox-input">
-<div class="checkbox-icons"></div>
-</label>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
 </div>
 <br/>
 <span class="label_config">get_users_lang:</span>
@@ -2480,6 +2509,11 @@ $("#themes").ddslick({
 <i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
 </div>
 <br/>
+<span class="label_config">BanLocation:</span>
+<div class="Warning-input">
+<i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
+</div>
+<br/>
 <span class="label_config">Enable_Config_File:</span>
 <div class="Warning-input">
 <i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
@@ -2528,10 +2562,102 @@ $("#themes").ddslick({
 <i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
 </div>
 
+<br/>
+<br/>
+<textarea class="collect_config" style="margin: 0px; width: 315px; height: 325px;" placeholder="js code">
+"use strict";
+
+//web config
+var Allow_Banner_display = true;
+var Allow_Console_attribute = true;
+var Allow_Pop_up = false;
+var limit_list = [];
+var Allow_Inspect_element = true;
+var Allow_location_tracking = false;
+var Allow_API_config = [false, "{url}"];
+var get_users_lang = true;
+var get_users_platform = true;
+var get_users_usersAngent = true;
+var test_users_cookieEnable = true;
+var Collect_IP = false;
+var Allow_cPanel = true;
+var maxTitle = 25;
+var username = "Admin";
+var banIP = [];
+var BanLocation = "{url}"
+var Enable_Config_File = "Enable";
+var Allow_Database = "mySQL";
+var redirFormLink = "false";
+var Allow_ad_blocker = false;
+var DarkTheme = false;
+var templateSelect = [true, "{url}"];
+var setPreview = [true, "{url}"];
+var requiredVersion = true; 
+</textarea>
+<br/>
+<br/>
+<button type="button" onclick="changeUpdate()">Check for Input updates&nbsp;<i class="fas fa-sync-alt"></i></button>
+<br/>
+<br/>
+<button type="button" class="download_config">Copy Config Code</button>
+<script>
+function changeUpdate(){
+	let keyWord = "var";
+	
+	let str = '"use strict";' + 
+	"\n\n" +
+	"//web config\n" +
+	keyWord + " Allow_Banner_display = "  + Allow_Banner_display + ";\n" + 
+	keyWord + " Allow_Console_attribute = " + Allow_Console_attribute + ";\n" +
+	keyWord + " Allow_Pop_up = " + Allow_Pop_up + ";\n" +
+	keyWord + " limit_list = []" + "\n" +
+	keyWord + " Allow_Inspect_element = " + Allow_Inspect_element + ";\n" +
+	keyWord + " Allow_location_tracking = " + Allow_location_tracking + ";\n" + 
+	keyWord + ' Allow_API_config = [false, "{url}"]' + ";\n" + 
+	keyWord + " get_users_lang = " + get_users_lang + ";\n" +
+	keyWord + " get_users_platform = " + get_users_platform + ";\n" +
+	keyWord + " get_users_usersAngent = " + get_users_usersAngent + ";\n" +
+	keyWord + " test_users_cookieEnable = " + test_users_cookieEnable + ";\n" +
+	keyWord + " Collect_IP = " + Collect_IP + ";\n" +
+	keyWord + " Allow_cPanel = " + Allow_cPanel + ";\n" +
+	keyWord + " maxTitle = " + maxTitle + ";\n" +
+	keyWord + " username = " + '"' + username + '"' + ";\n" +
+	keyWord + " banIP = [" + banIP + "];\n" +
+	keyWord + ' BanLocation = "{url}"' + ";\n" +
+	keyWord + ' Enable_Config_File = "Enable"' + ";\n" +
+	keyWord + " Allow_Database = " + '"' + Allow_Database + '"' + ";\n" +
+	keyWord + ' redirFormLink = "false"' + ";\n" +
+	keyWord + " Allow_ad_blocker = " + Allow_ad_blocker + ";\n" +
+	keyWord + " DarkTheme = " + DarkTheme + ";\n" +
+	keyWord + ' templateSelect = [true, "{url}"]' + ";\n" +
+	keyWord + ' setPreview = [true, "{url}"]' + ";\n" +
+	keyWord + " requiredVersion = true;";
+	
+	
+		document.querySelector(".collect_config").value = str;
+	
+	
+	
+}
+</script>
+<script>
+$(function(){
+$(".download_config").click(function(){
+
+let txt = document.querySelector(".collect_config");
+
+txt.select();
+txt.setSelectionRange(0, 99999);
 
 
+document.execCommand("copy");
 
-<br>
+alert("Copied to clipboard");
+
+});
+});
+</script>
+<br/>
 <br>
 <hr>
 <br>
