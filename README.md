@@ -16,6 +16,12 @@ Builder your own Survey's to your website or Allow other users to use this on yo
 
 ***
 
+# SurveyBuilder-JS
+
+New SurveyBuilder-JS is out check it out [SurveyBuilder-JS](https://github.com/surveybuilderteams/SurveyBuilder-JS)
+
+***
+
 # Installment
 
 ```npm
