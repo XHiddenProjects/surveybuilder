@@ -340,6 +340,7 @@ alert(x)
    document.getElementById("Message-Text").addEventListener("keypress", function(e){
         if(e.which == 13){
             setTimeout(sendMessage, 0);
+		e.preventDefault();
         }
    });
 </script>
