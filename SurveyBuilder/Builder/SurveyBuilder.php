@@ -12,7 +12,7 @@
 <script src="https://kit.fontawesome.com/46bb4793e2.js"></script>
 
 
-<script src="Apps_Insert.js" type="text/javascript" crossorigin="anonymous"></script>
+<script src="Apps_Insert.min.js" type="text/javascript" crossorigin="anonymous"></script>
 <!-- Google Tag Manager -->
 
 
@@ -44,8 +44,8 @@
 </style>
 
 
-<script src="SurveyBuilder.js" type="text/javascript" crossorigin="anonymous"></script>
-<script src="InsertItems.js" type="text/javascript"></script>
+<script src="SurveyBuilder.min.js" type="text/javascript" crossorigin="anonymous"></script>
+<script src="InsertItems.min.js" type="text/javascript"></script>
 <script src="serviceworker.js" type="text/javascript"></script>
 
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
@@ -235,7 +235,7 @@ xhr.send();
 
 <body onload="Update()" id="SurveyBuilderBody">
 <?php
-$file = "./API/API.txt";
+$file = "./API/Public_API.txt";
 
 if(!file_exists($file)){
 	echo "<script>document.body.hidden = true;setInterval(function(){alert('You are missing API key')}, 0);</script>";
@@ -329,26 +329,203 @@ if(!file_exists($file)){
 	<div class="uninstall_data_value">0%</div>
 	</div>
 	</div>
-<!--<style>
-.loading-temp{
-	z-index:1;
-	position:absolute;
-	font-size:60px;
-	top:30%;
-	left:10%;
-	border:1px solid black;
-	background-color:lightgray;
-	display:none;
-}
-.loading-temp .fa{
-	color:#00ccff;
-}
-</style>
-<div class="loading-temp" id="loading-temp-id">
-<i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;<span class="loading-title">Loading Templeate... This will take 30 sec.</span>
-</div>-->
+	<style>
+	.packageManager{
+		z-index:2;
+		border:3px solid gray;
+		background:cyan;
+		width:820px;
+		height:420px;
+		overflow:auto;
+		position:absolute;
+		top:20%;
+		left:20%;
+		animation: bgbanner 10s linear infinite;  
+	}
+	@keyframes bgbanner{
+		0%{
+			background:cyan;
+		}
+		50%{
+			background:gray;
+		}
+		100%{
+			background:cyan;
+		}
+	}
+	
+	/*package*/
+	.package{
+		margin-left:3px;
+		border:1px solid black;
+		width:320px;
+		list-style:none;
+		background:#baf613;
+		height:220px;
+		overflow:auto;
+		text-align:center;
+	}
+	.package .packageName{
+		font-size:32px;
+        font-weight:bold;
+	}
+	.package .packageVersion{
+		font-weight:500px;
+	}
+	.package .packageURL a{
+		 text-decoration:none;
+		 color:blue;
+		 transition:0.5s;
+	}
+	.package .packageURL a:hover{
+		color:gray;
+	}
+	.package .packageAuthor{
+		color:#07a68c;
+	}
+	.package .packageDescription{
+		border:1px solid black;
+		height:150px;
+		width:auto;
+		background:#8f7e0f;
+		overflow:auto;
+	}
+	.package .packageInstallBtn button{
+		width:100%;
+		font-size:32px;
+		background:green;
+		transition:0.5s;
+		border-radius:25px;
+		outline:none;
+	}
+	.package .packageInstallBtn button:hover{
+		background:gray;
+	}
+	.package .packageUninstallBtn button{
+		width:100%;
+		font-size:32px;
+		background:red;
+		transition:0.5s;
+		border-radius:25px;
+		outline:none;
+	}
+	.package .packageUninstallBtn button:hover{
+		background:gray;
+	}
+	.package .packageFiles{
+		color:gray;
+	}
+	.package .packageSetupBtn button{
+		width:100%;
+		font-size:32px;
+		background:lightgray;
+		transition:0.5s;
+		border-radius:25px;
+		outline:none;
+	}
+	.package .packageSetupBtn button:hover{
+		background:gray;
+	}
+	.packageClose{
+		float:right;
+		font-size:45px;
+		cursor:pointer;
+		margin-left:98%;
+		color:red;
+	}
+	</style>
+	<script>
+	$(function(){
+	$.getJSON("./package/TestPackage/package.json", function(data){
+		$(".packageAuthor").html(data.name);
+		$(".packageVersion").html("v"+data.version);
+		$(".packageName").html(data.package_title);
+		$(".packageURL").html("<a href='" + data.home_url + "' target='_blank'>" + data.home_url + "</a>");
+		$(".packageDescription").html(data.description);
+		$(".packageFiles").html("files:[" + data.files + "]");
+		
+		if(!data.setup.enable){
+			document.querySelector(".packageSetupBtn").hidden = true;
+		}else{
+			$(".packageSetupBtn").click(function(){
+				alert("Instructions:\n\n" + data.setup.str);
+			});
+		}
+		
+	});	
+	});
+	
+	</script>
+	<script>
+	function closeManager(){
+		document.querySelector(".packageManager").hidden = true;
+	}
+	</script>
+<div class="packageManager" hidden="">
+<div class="packageClose"><i class="far fa-times-circle" title="close package manager" onclick="closeManager()"></i></div>
+<ul>
 
-<!-- End Google Tag Manager (noscript) -->
+<li>
+<div class="package">
+<div class="packageName"></div>
+<div class="packageVersion"></div>
+<div class="packageURL"></div>
+<div class="packageAuthor"></div>
+<div class="packageFiles"></div>
+<div class="packageDescription"></div>
+<div class="packageInstallBtn"><button onclick="installTestPkg()">Install</button></div>
+<div class="packageUninstallBtn"><button onclick="uninstallTestPkg()">Uninstall</button></div>
+<div class="packageSetupBtn"><button>Setup</button></div>
+</div>
+</li>
+
+</ul>
+</div>
+<script>
+/*Package Install*/
+function installTestPkg(){
+	let collectFilter = 0;
+	document.querySelector(".Install_bar").hidden = false;
+	let bar = document.querySelector(".progress_install");
+	let percent = document.querySelector(".install_data_value");
+	let inter = setInterval(function(){
+		if(collectFilter < 101){
+			bar.value = collectFilter;
+			percent.innerHTML = collectFilter + "%";
+			collectFilter += 1;
+			
+		}else{
+			window.open("./packageManager/TestPackage/installpkg.php", "", "width=320", "height=250");
+			collectFilter = 0;
+			bar.value = 0;
+			percent.innerHTML="0%";
+			document.querySelector(".Install_bar").hidden = true;
+			clearInterval(inter);
+		}
+	},1000);
+}
+/*Package Uninstall*/
+function uninstallTestPkg(){
+	let collectFilter = 0;
+	document.querySelector(".Uninstall_bar").hidden = false;
+	let bar = document.querySelector(".progress_uninstall");
+	let percent = document.querySelector(".uninstall_data_value");
+	let inter = setInterval(function(){
+		if(collectFilter < 101){
+			bar.value = collectFilter;
+			percent.innerHTML = collectFilter + "%";
+			collectFilter += 1;
+		}else{
+			window.open("./packageManager/TestPackage/uninstallpkg.php", "", "width=320", "height=250");
+			collectFilter = 0;
+			bar.value = 0;
+			percent.innerHTML="0%";
+			document.querySelector(".Uninstall_bar").hidden = true;
+			clearInterval(inter);
+		}
+	},1000);
+}
+</script>
 <div id="body-container" onload="changeBGcolor()">
 <br>
 <br>
@@ -1366,7 +1543,13 @@ function EditCmdPrompt(){
 	
 	
 	/*end of cmd settings*/
-	
+	/*pkg manager*/
+	if(getMsg.value.match("pkg.open")){
+		document.querySelector(".packageManager").hidden = false;
+	}
+	if(getMsg.value.match("pkg.close")){
+		document.querySelector(".packageManager").hidden = true;
+	}
 	/*clear*/
 	if(getMsg.value.match("clear.all") || getMsg.value.match("cls.all")){
 		document.getElementById("Insert-Object").innerHTML = "";
