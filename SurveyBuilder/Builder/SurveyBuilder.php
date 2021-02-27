@@ -73,8 +73,54 @@ setTimeout(function(){
 	
 
 </script>
-
 <script>
+setTimeout(function(){
+	const xhr = new XMLHttpRequest();
+
+xhr.onload = function(){
+	
+	if(this.status === 200){
+		try{
+			const resObj = JSON.parse(this.responseText);
+	$.getJSON("https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/package.json", function(d){
+	
+		 //console.log(d.version);
+		 
+		 if(resObj.versions !== d.version && requiredVersion === true){
+			 console.log(resObj.versions + "[Outdated/Overdated]");
+			 alert("Your thing needs an update, click to download update");
+			  window.open("https://github.com/surveybuilderteams/surveybuilder/archive/master.zip", "_blank");
+			 document.querySelector("html").innerHTML = "";
+			 
+			 return false;
+		 }
+	     if(localStorage.getItem("Notify") === "true" || localStorage.getItem("Notify") === ""){
+		 Push.create("SurveyBuilder",{
+			body: "Version: " + d.version + "\nSee More Info here",
+            icon: "/SurveyBuilder/images/icon/logo_48x48.png",
+            link: "https://github.com/surveybuilderteams/surveybuilder/releases",
+            requireInteraction: true,
+            onClick:function(){
+				window.open("https://github.com/surveybuilderteams/surveybuilder/releases", "_blank");
+			}			
+		 });
+		 
+		 } 
+
+         });
+		} catch (e){
+			console.warn("Cannot connet to json");
+		}
+	} else{
+		console.warn("cannot connect to 200 OK");
+	}
+}
+xhr.open('get', './libs/System.json')
+xhr.send();
+},0);
+
+</script>
+<script class="Loginstorage">
 if(sessionStorage.length == "" || sessionStorage.length == null){
 		sessionStorage.setItem("loggedIn", "false");
 		 sessionStorage.setItem("accept", "0");
@@ -91,32 +137,7 @@ xhr.onload = function(){
 	
 			const resObj = JSON.parse(this.responseText);
 		
-			$.getJSON("https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/package.json", function(d){
-	
-		 //console.log(d.version);
-		 
-		 if(resObj.versions !== d.version && requiredVersion === true){
-			 console.log(resObj.versions + "[Outdated/Overdated]");
-			 alert("Your thing needs an update, click to download update");
-			  window.open("https://github.com/surveybuilderteams/surveybuilder/archive/master.zip", "_blank");
-			 document.querySelector("html").innerHTML = "";
-			 
-			 return false;
-		 }
-	     if(localStorage.getItem("Notify") === "true" || localStorage.getItem("Notify") === ""){
-		 Push.create("SurveyBuilder",{
-			body: "Version: " + d.version + "\nSee More Info here",
-            icon: "/SurveyBuilder/images/icon/favicon.png",
-            link: "https://github.com/surveybuilderteams/surveybuilder/releases",
-            requireInteraction: true,
-            onClick:function(){
-				window.open("https://github.com/surveybuilderteams/surveybuilder/releases", "_blank");
-			}			
-		 });
-		 
-		 } 
-
-         });
+			
 
 			//login
 			
@@ -426,6 +447,17 @@ if(!file_exists($file)){
 	.package .packageSetupBtn button:hover{
 		background:gray;
 	}
+	.package .packageSetupConfig button{
+		width:100%;
+		font-size:32px;
+		background:lime;
+		transition:0.5s;
+		border-radius:25px;
+		outline:none;
+	}
+	.package .packageSetupConfig button:hover{
+		background:gray;
+	}
 	.packageClose{
 		float:right;
 		font-size:45px;
@@ -433,22 +465,52 @@ if(!file_exists($file)){
 		margin-left:98%;
 		color:red;
 	}
+	.package .packageDepended, .package .packageIsDependable{
+		font-weight:bold;
+		color:#0091ff;
+	}
+	.package-list li{
+		display:inline-block;
+	}
 	</style>
 	<script>
 	$(function(){
 	$.getJSON("./package/TestPackage/package.json", function(data){
-		$(".packageAuthor").html(data.name);
-		$(".packageVersion").html("v"+data.version);
-		$(".packageName").html(data.package_title);
-		$(".packageURL").html("<a href='" + data.home_url + "' target='_blank'>" + data.home_url + "</a>");
-		$(".packageDescription").html(data.description);
-		$(".packageFiles").html("files:[" + data.files + "]");
+		$(".testpackageAuthor").html(data.name);
+		$(".testpackageVersion").html("v"+data.version);
+		$(".testpackageName").html(data.package_title);
+		$(".testpackageURL").html("<a href='" + data.home_url + "' target='_blank'>" + data.home_url + "</a>");
+		$(".testpackageDescription").html(data.description);
+		$(".testpackageFiles").html("files:[" + data.files + "]");
+		$(".testpackageDependicy").html("Dependency: " + data.dependency);
+		$(".testpackageIsDependable").html("Dependable: " + data.dependedable);
 		
+			let bool = data.config.allow;
+			let str = data.config.path;
+			if(typeof(bool) !== "boolean"){
+				console.error("Enable must be a boolean");
+			}
+			if(typeof(str) !== "string"){
+				console.error("path must be a string");
+			}
+			
+   switch(bool){
+	   case true: 
+	   bool = false;
+	   break;
+	   case false:
+	   bool = true;
+	   break;
+	   default: 
+	   bool = true;
+   }
+			document.querySelector(".TestConfig").hidden = bool;
+		    
 		if(!data.setup.enable){
-			document.querySelector(".packageSetupBtn").hidden = true;
+			document.querySelector(".TestSetup").hidden = true;
 		}else{
-			$(".packageSetupBtn").click(function(){
-				alert("Instructions:\n\n" + data.setup.str);
+			$(TestSetup).click(function(){
+				alert("Instructions:\n\n" + data.setup.str, data.setup.code);
 			});
 		}
 		
@@ -457,28 +519,95 @@ if(!file_exists($file)){
 	
 	</script>
 	<script>
+	$(function(){
+	$.getJSON("./package/Register&Login/package.json", function(data){
+		$(".r_lAuthor").html(data.name);
+		$(".r_lVersion").html("v"+data.version);
+		$(".r_lName").html(data.package_title);
+		$(".r_lURL").html("<a href='" + data.home_url + "' target='_blank'>" + data.home_url + "</a>");
+		$(".r_lDescription").html(data.description);
+		$(".r_lFiles").html("files:[" + data.files + "]");
+		$(".r_lDependicy").html("Dependency: " + data.dependency);
+		$(".r_lIsDependable").html("Dependable: " + data.dependedable);
+		
+			let bool = data.config.allow;
+			let str = data.config.path;
+			if(typeof(bool) !== "boolean"){
+				console.error("Enable must be a boolean");
+			}
+			if(typeof(str) !== "string"){
+				console.error("path must be a string");
+			}
+			
+   switch(bool){
+	   case true: 
+	   bool = false;
+	   break;
+	   case false:
+	   bool = true;
+	   break;
+	   default: 
+	   bool = true;
+   }
+			document.querySelector(".r_lConfig").hidden = bool;
+		    
+		if(!data.setup.enable){
+			document.querySelector(".r_lSetup").hidden = true;
+		}else{
+			$(".r_lSetup").click(function(){
+				prompt("Instructions:\n\n" + data.setup.str, data.setup.code);
+			});
+		}
+		//config
+		$(".r_lConfig").click(function(){
+			window.open(data.config.path, "", "width=320", "height=320");
+		});
+	
+	});	
+	});
+	</script>
+	<script>
 	function closeManager(){
 		document.querySelector(".packageManager").hidden = true;
 	}
 	</script>
 <div class="packageManager" hidden="">
 <div class="packageClose"><i class="far fa-times-circle" title="close package manager" onclick="closeManager()"></i></div>
-<ul>
+<ul class="package-list">
 
 <li>
 <div class="package">
-<div class="packageName"></div>
-<div class="packageVersion"></div>
-<div class="packageURL"></div>
-<div class="packageAuthor"></div>
-<div class="packageFiles"></div>
-<div class="packageDescription"></div>
+<div class="packageName testpackageName"></div>
+<div class="packageVersion testpackageVersion"></div>
+<div class="packageURL testpackageURL"></div>
+<div class="packageAuthor testpackageAuthor"></div>
+<div class="packageFiles testpackageFiles"></div>
+<div class="packageDescription testpackageDescription"></div>
+<div class="packageDepended testpackageDependicy"></div>
+<div class="packageIsDependable testpackageIsDependable"></div>
 <div class="packageInstallBtn"><button onclick="installTestPkg()">Install</button></div>
 <div class="packageUninstallBtn"><button onclick="uninstallTestPkg()">Uninstall</button></div>
-<div class="packageSetupBtn"><button>Setup</button></div>
+<div class="packageSetupBtn TestSetup"><button>Setup</button></div>
+<div class="packageSetupConfig TestConfig"><button>Configuration</button></div>
 </div>
 </li>
 
+<li>
+<div class="package">
+<div class="packageName r_lName"></div>
+<div class="packageVersion r_lVersion"></div>
+<div class="packageURL r_lURL"></div>
+<div class="packageAuthor r_lAuthor"></div>
+<div class="packageFiles r_lFiles"></div>
+<div class="packageDescription r_lDescription"></div>
+<div class="packageDepended r_lDependicy"></div>
+<div class="packageIsDependable r_lIsDependable"></div>
+<div class="packageInstallBtn"><button onclick="installr_lPkg()">Install</button></div>
+<div class="packageUninstallBtn"><button onclick="uninstallr_lPkg()">Uninstall</button></div>
+<div class="packageSetupBtn r_lSetup"><button>Setup</button></div>
+<div class="packageSetupConfig r_lConfig"><button>Configuration</button></div>
+</div>
+</li>
 </ul>
 </div>
 <script>
@@ -517,6 +646,52 @@ function uninstallTestPkg(){
 			collectFilter += 1;
 		}else{
 			window.open("./packageManager/TestPackage/uninstallpkg.php", "", "width=320", "height=250");
+			collectFilter = 0;
+			bar.value = 0;
+			percent.innerHTML="0%";
+			document.querySelector(".Uninstall_bar").hidden = true;
+			clearInterval(inter);
+		}
+	},1000);
+}
+</script>
+<script>
+//installPackge
+
+function installr_lPkg(){
+	let collectFilter = 0;
+	document.querySelector(".Install_bar").hidden = false;
+	let bar = document.querySelector(".progress_install");
+	let percent = document.querySelector(".install_data_value");
+	let inter = setInterval(function(){
+		if(collectFilter < 101){
+			bar.value = collectFilter;
+			percent.innerHTML = collectFilter + "%";
+			collectFilter += 1;
+			
+		}else{
+			window.open("./packageManager/Register&Login/installpkg.php", "", "width=320", "height=250");
+			collectFilter = 0;
+			bar.value = 0;
+			percent.innerHTML="0%";
+			document.querySelector(".Install_bar").hidden = true;
+			clearInterval(inter);
+		}
+	},1000);
+}
+/*Package Uninstall*/
+function uninstallr_lPkg(){
+	let collectFilter = 0;
+	document.querySelector(".Uninstall_bar").hidden = false;
+	let bar = document.querySelector(".progress_uninstall");
+	let percent = document.querySelector(".uninstall_data_value");
+	let inter = setInterval(function(){
+		if(collectFilter < 101){
+			bar.value = collectFilter;
+			percent.innerHTML = collectFilter + "%";
+			collectFilter += 1;
+		}else{
+			window.open("./packageManager/Register&Login/uninstallpkg.php", "", "width=320", "height=250");
 			collectFilter = 0;
 			bar.value = 0;
 			percent.innerHTML="0%";
@@ -1204,6 +1379,25 @@ y.action = "./Apps/appdata/ScatterPlot.php";
 </script>
 
 </span>
+<span id="pkg-sel">
+<li id="New">Package Manager</li>
+<li class="pkgtogglebtn"><button onclick="openManager()">Open Package Manager</button></li>
+<script>
+function openManager(){
+	let bool = document.querySelector(".packageManager").hidden;
+	switch(bool){
+		case true:
+		document.querySelector(".packageManager").hidden = false;
+		document.querySelector(".pkgtogglebtn>button").innerHTML = "Close Package Manager";
+		break;
+		case false:
+		document.querySelector(".packageManager").hidden = true;
+		document.querySelector(".pkgtogglebtn>button").innerHTML = "Open Package Manager";
+		break;
+	}
+}
+</script>
+</span>
 <span id="Cosnole-Log">
 <form action="/SurveyBuilder/Console/Console.php" method="post">
 <li id="New">Console Log &nbsp;&nbsp;<button type="submit" title="Share Log" style="outline:none;border:none;font-size:15px;"><i class="fas fa-share-square"></i></button></li>
@@ -1353,8 +1547,7 @@ $(function(){
 <br/>
 <br/>
 
-<button onclick="insertTag()" type="button">Insert HTML tag</button>
-<br/><br/>
+
 <textarea placeholder="Console" required="true" name="Console" spellcheck="false" style="margin: 0px; width: 203px; height: 225px;" onchange="EditFormFromConsole()" class="lined" id="Console"></textarea>
 
 
