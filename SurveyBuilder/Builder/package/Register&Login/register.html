@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Register</title>
+<link rel="shortcut icon" href="/SurveyBuilder/favicon.ico"/>
+<link rel="stylesheet" href="style/style.css"/>
+<script src="script/script.js"></script>
+</head>
+<body>
+<form method="post" action="lib/Register">
+<h1>Register Forum</h1>
+<label for="fName">First Name: </label><input type="text" required="true" name="fName" placeholder="First Name" id="fName"/><br/>
+<label for="lName">Last Name: </label><input type="text" placeholder="Last Name" required="true" name="lName" id="lName"/><br/>
+<label for="user">Username: </label><input type="text" required="true" placeholder="Enter Username" name="user" id="user"/><br/>
+<label for="email">Email: </label><input type="email" required="true" placeholder="Email Address" name="email" id="email"/><br/>
+<label for="psw">Password: </label><input type="password" required="true" placeholder="Password" name="psw" id="psw"/><br/>
+<label for="Confirmpsw">Confirm Password: </label><input type="password" placeholder="Confirm Password" required="true" name="Confirmpsw" id="Confirmpsw"/><br/>
+<label for="robot">Are you not a Robot: </label><input type="checkbox" name="robot" required="" id="robot"/><br/>
+<input value="Register" type="submit" class="submitbtn" disabled=""/>
+</form>
+</body>
+</html>

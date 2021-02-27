@@ -1,0 +1,36 @@
+{
+	"name": "SurveyBuilderTeams",
+	"version": "0.0.1",
+	"package_title": "Register&Login",
+	"home_url": "https://surveybuilder.epizy.com/packages/pkgstore#Register&Login",
+	"description": "Allows user to authicate into your survey without having the prompt showing up.",
+	"files": [
+		"package.js",
+		"Register.html",
+		"login.html",
+		"login.html",
+		"style/style.css",
+		"script/script.js",
+		"script/setup.js",
+		"lib/config.php",
+		"lib/connect.php",
+		"lib/forgotpassword.php",
+		"lib/Register.php",
+		"lib/Login.php",
+		"lib/saveConfig.php",
+		"lib/settings.php",
+		"lib/uninstall.php"
+	],
+	"setup": {
+		"enable": true,
+		"str": "Use JS code:",
+		"code": "<script src='./Installedpackage/Register&Login/lib/settings'></script>"
+	},
+	"config": {
+		"allow": true,
+		"path": "/SurveyBuilder/Builder/Installedpackage/Register&Login/lib/settings"
+	},
+	"dependency": "",
+	"dependedable": true
+     
+}

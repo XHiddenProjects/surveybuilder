@@ -1,0 +1,56 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background-color:#257598;
+}
+form{
+	border:1px solid black;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	width:820px;
+	height:630px;
+	background-color:#09aa14;
+	font-size:32px;
+	text-align:center;
+}
+form h1{
+	text-align:center;
+	font-size:52px;
+	color:yellow;
+	font-weight:bold;
+	background-color:#0d58e3;
+}
+form input[type=text], form input[type=password], form input[type=email], form input[type=submit], form a button[type=button]{
+	width:100%;
+	font-size:32px;
+}
+form input[type=checkbox]{
+	width:32px;
+	height:32px;
+	position:absolute;
+	bottom:11%;
+}
+form input[type=submit]{
+	border-radius:25px;
+	cursor:pointer;
+	transition: all 0.5s linear;
+	border:0;
+	outline:none;
+}
+form input[type=submit]:hover{
+	background-color:gray;
+}
+form a button{
+	border-radius:25px;
+	cursor:pointer;
+	transition: all 0.5s linear;
+	border:0;
+	outline:none;
+}
+form a button:hover{
+	background-color:gray;
+}
