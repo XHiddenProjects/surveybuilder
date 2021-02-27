@@ -3,7 +3,7 @@
 
 
 
-
+* # [v5.3.0](https://github.com/surveybuilderteams/surveybuilder/blob/master/SurveyBuilder/versions/v5.3.0.md)
 * # [v5.2.0](https://github.com/surveybuilderteams/surveybuilder/blob/master/SurveyBuilder/versions/v5.2.0.md)
 * # [v5.1.2](https://github.com/surveybuilderteams/surveybuilder/blob/master/SurveyBuilder/versions/v5.1.2.md)
 * # [v5.1.1](https://github.com/surveybuilderteams/surveybuilder/blob/master/SurveyBuilder/versions/v5.1.1.md)
