@@ -11,7 +11,7 @@
  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/46bb4793e2.js"></script>
 
-
+<script src="./Config/Config.js" type="text/javascript"></script>
 <script src="Apps_Insert.min.js" type="text/javascript" crossorigin="anonymous"></script>
 <!-- Google Tag Manager -->
 
@@ -118,6 +118,8 @@ xhr.onload = function(){
 xhr.open('get', './libs/System.json')
 xhr.send();
 },0);
+
+
 
 </script>
 <script class="Loginstorage">
@@ -577,6 +579,16 @@ if(!file_exists($file)){
 
 <li>
 <div class="package">
+<div style="background-color:gray;">
+<?php
+$file = $_SERVER["DOCUMENT_ROOT"]."/SurveyBuilder/Builder/Installedpackage/TestPackage/package.json";
+if(file_exists($file)){
+	echo "<span style='color:green;font-weight:bold;'>Installed</span>";
+}else{
+	
+}
+?>
+</div>
 <div class="packageName testpackageName"></div>
 <div class="packageVersion testpackageVersion"></div>
 <div class="packageURL testpackageURL"></div>
@@ -594,6 +606,16 @@ if(!file_exists($file)){
 
 <li>
 <div class="package">
+<div style="background-color:gray;">
+<?php
+$file = $_SERVER["DOCUMENT_ROOT"]."/SurveyBuilder/Builder/Installedpackage/Register&Login/package.json";
+if(file_exists($file)){
+	echo "<span style='color:green;font-weight:bold;'>Installed</span>";
+}else{
+	
+}
+?>
+</div>
 <div class="packageName r_lName"></div>
 <div class="packageVersion r_lVersion"></div>
 <div class="packageURL r_lURL"></div>
@@ -3290,15 +3312,12 @@ function setFunction(Dataid, action, functions, script){
 <div id="copyright-print">&copy; SurveyBuilder</div>
 </div>
 
-<!--<div class="langDataSec"></div>-->
-<!--<script>
-function googleTranslateElementInit(){
-	new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');	
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
-<script src="./Config/Config.js" type="text/javascript" crossorigin="anonymous"></script>
-<script src="./Config/RunConfig.min.js" type="text/javascript" crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="./Config/RunConfig.min.js" type="text/javascript"></script>
 
 <div class="setConfigDatabase">
 
