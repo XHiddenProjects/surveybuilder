@@ -7,7 +7,7 @@ $db = $_POST['db'];
 $file = fopen("./config.php", "w");
 fwrite($file, "<?php $".'servername="'.$server.'";$'.'username="'.$user.'";$'.'password="'.$psw.'";$'.'db="'.$db.'";?>');
 fclose($file);
-echo "Config Saved";
+echo "Config Saved<br/>";
 
-
+include("./connect.php");
 ?>

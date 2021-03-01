@@ -1,14 +1,10 @@
 <?php
-if(!unlink($_SERVER['DOCUMENT_ROOT']."/SurveyBuilder/Builder/Installedpackage/TestPackage/package.html")){
-	echo "failed to delete package.html<br/>";
+$files = glob($_SERVER['DOCUMENT_ROOT'].'/SurveyBuilder/Builder/Installedpackage/TestPackage/*'); //get all file names
+foreach($files as $file){
+    if(is_file($file)){
+		unlink($file); //delete file
+	}
+    
 }
-if(!unlink($_SERVER['DOCUMENT_ROOT']."/SurveyBuilder/Builder/Installedpackage/TestPackage/package.css")){
-	echo "failed to delete package.css<br/>";
-}
-if(!unlink($_SERVER['DOCUMENT_ROOT']."/SurveyBuilder/Builder/Installedpackage/TestPackage/package.js")){
-	echo "failed to delete package.js<br/>";
-}
-if(!unlink($_SERVER['DOCUMENT_ROOT']."/SurveyBuilder/Builder/Installedpackage/TestPackage/package.json")){
-	echo "failed to delete package.json<br/>";
-}
+echo "Package uninstalled successfully";
 ?>

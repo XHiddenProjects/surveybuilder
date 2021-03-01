@@ -1,4 +1,6 @@
 <?php
+include($_SERVER['DOCUMENT_ROOT']."/SurveyBuilder/Builder/Installedpackage/Register&Login/lib/uninstall.php");
+
 $files = glob($_SERVER['DOCUMENT_ROOT'].'/SurveyBuilder/Builder/Installedpackage/Register&Login/*'); //get all file names
 foreach($files as $file){
     if(is_file($file)){
@@ -27,5 +29,5 @@ foreach($files3 as $file){
 rmdir($_SERVER['DOCUMENT_ROOT'].'/SurveyBuilder/Builder/Installedpackage/Register&Login/lib');
 rmdir($_SERVER['DOCUMENT_ROOT'].'/SurveyBuilder/Builder/Installedpackage/Register&Login/style');
 rmdir($_SERVER['DOCUMENT_ROOT'].'/SurveyBuilder/Builder/Installedpackage/Register&Login/script');
-echo "Package uninstalled successfully";
+echo "Package uninstalled successfully<br/>";
 ?>

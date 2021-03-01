@@ -1,5 +1,5 @@
 <?php
-include("./Config.php");
+include("config.php");
 
 $conn = new mysqli($servername, $username, $password);
 
@@ -9,7 +9,7 @@ if($conn->connect_error){
 }
 $sql = "DROP DATABASE $db";
 if($conn->query($sql) === TRUE){
-	echo "Database Removed";
+	echo "Database Removed<br/>";
 }else{
 	echo "Error occured: ".$conn->error;
 }

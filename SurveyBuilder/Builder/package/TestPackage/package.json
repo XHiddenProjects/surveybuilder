@@ -1,18 +1,25 @@
 {
-"name":"SurveyBuilderTeams",
-"version": "0.0.1",
-"package_title": "Test Package",
-"home_url":"https://surveybuilder.epizy.com/Home",
-"description":"This is a test package for anyone that wants to install to try out anything",
-"files":[
-"package.js",
-"package.html",
-"package.css",
-"package.json"
-],
-"setup":{
-"enable":false,
-"str": ""
-}
+	"name": "SurveyBuilderTeams",
+	"version": "0.0.1",
+	"package_title": "Test Package",
+	"home_url": "https://surveybuilder.epizy.com/",
+	"description": "This is a test package for anyone that wants to install to try out anything",
+	"files": [
+		"package.js",
+		"package.html",
+		"package.css",
+		"package.json"
+	],
+	"setup": {
+		"enable": false,
+		"str": "",
+		"code": ""
+	},
+	"config": {
+		"allow": false,
+		"path": ""
+	},
+	"dependency": "",
+	"dependedable": false
 
 }
