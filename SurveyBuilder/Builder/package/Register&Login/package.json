@@ -1,6 +1,6 @@
 {
 	"name": "SurveyBuilderTeams",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"package_title": "Register&Login",
 	"home_url": "https://surveybuilder.epizy.com/",
 	"description": "Allows user to authicate into your survey without having the prompt showing up.",
