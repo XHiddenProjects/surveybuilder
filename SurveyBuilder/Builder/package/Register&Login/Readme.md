@@ -42,3 +42,4 @@ Type:
 # Release status 
 
 * v0.0.1
+* v0.0.2 [Current]
