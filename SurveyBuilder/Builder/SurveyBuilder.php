@@ -115,7 +115,7 @@ xhr.onload = function(){
 		console.warn("cannot connect to 200 OK");
 	}
 }
-xhr.open('get', './libs/System.json')
+xhr.open('get', './libs/system.json')
 xhr.send();
 },0);
 
@@ -270,8 +270,11 @@ if(!file_exists($file)){
 
 
 <style type="text/css" rel="stylesheet" id="customCSS">
-
 </style>
+<script src="./bot/js/script.js"></script>
+<div class="PhPFileUploader">
+
+</div>
 <div class="animations-list"></div>
 <div id="custom-scripts"></div>
 <div id="custom-addons"></div>
@@ -748,7 +751,7 @@ function uninstallr_lPkg(){
 <div id="wcc" style="position:absolute;left:65%; top:13.5%;font-size:25px;"><span id="Wcount" style="color:red;">0</span><span>/</span><span id="maxTitle">25</span>&nbsp;<span>char.</span></div>
 
  </div>
- 
+
  <!--Editor container-->
 <br>
 <br>
@@ -1774,6 +1777,49 @@ function EditCmdPrompt(){
 				let seek = document.getElementById(idData);
 			document.getElementById("Insert-Object").removeChild(seek);
 
+	}
+	if(getMsg.value.match("bot.status")){
+		$.getJSON("bot/BotConfig.json", function(d){
+			let time = d.config.threshold;
+			if(time <= 0){
+				time = "NeN";
+			}
+			if(time > 0 && time < 60){
+				time = "log/" + time + " second(s)";
+			}
+			if(time >= 60 && time < 3600){
+				time = "log/" + time/60 + " minute(s)";
+			}
+			if(time >= 3600 && time < 86400){
+				time = "log/" + time/3600 + " hour(s)";
+			}
+			if(time >= 86400 && time < 604800){
+				time = "log/" + time/86400 + " day(s)";
+			}
+			if(time >= 604800 && time < 2628000){
+				time = "log/" + time/604800 + " week(s)";
+			}
+			if(time >= 2628000 && time < 31536000){
+				time = "log/" + time/2628000 + " month(s)";
+			}
+			if(time >= 31536000){
+				time = "log/" + time/31536000 + " year(s)";
+			}
+			
+			alert("Bot Status: \n\n Status: Online\nName:"
+			+ d.name 
+			+ "\nVersion: " 
+			+ d.version
+			+ "\nLog: "
+			+ d.config.log
+			+ "\nThreshold: "
+			+ time
+			+ "\nTimeZone: "
+			+ d.config.TimeZone
+			);
+		});
+		
+		
 	}
 	
 	/*clsmsg*/
