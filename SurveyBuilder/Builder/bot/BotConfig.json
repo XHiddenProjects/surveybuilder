@@ -1,0 +1,10 @@
+{
+"status": true,
+"name":"Bot",
+"version":1,
+"config":{
+"log": "LOG",
+"threshold": 60,
+"TimeZone": "America/New_York"
+}
+}
