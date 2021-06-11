@@ -30,16 +30,7 @@
 <br/>
 <br/>
 <input type="submit" value="Edit"/>
-<script>
-function dbUse(){
-	
-	$.ajax({url:"File_Get_Contents_URL.php",success:function(resaults){
-		document.querySelector("#Editor").value = resaults;
-	}
-	});
-	
-}
-</script>
+
 </form>
 
 </body>

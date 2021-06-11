@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Create A Database - SurveyBuilder</title>
-<link rel="shortcut icon" href="http://localhost/SurveyBuilder/favicon.ico"/>
+<link rel="shortcut icon" href="/SurveyBuilder/favicon.ico"/>
 </head>
 <body>
 <form method="post" action="ActionData.php">

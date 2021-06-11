@@ -3,7 +3,7 @@ $title = $_POST['title-data'];
 
 $text = $_POST['Editor'];
 
-$newT = "$title.php";
+$newT = "storage/$title.php";
 
 $edit = fopen("$newT", "r+");
 
