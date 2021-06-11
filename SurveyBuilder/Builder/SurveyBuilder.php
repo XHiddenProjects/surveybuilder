@@ -11,8 +11,8 @@
  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/46bb4793e2.js"></script>
 
-<script src="./Config/Config.js" type="text/javascript"></script>
-<script src="Apps_Insert.min.js" type="text/javascript" crossorigin="anonymous"></script>
+<script src="./Config/Config.js?update=<?php echo time();?>" type="text/javascript"></script>
+<script src="Apps_Insert.min.js?update=<?php echo time();?>" type="text/javascript" crossorigin="anonymous"></script>
 <!-- Google Tag Manager -->
 
 
@@ -23,7 +23,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  <meta name content="SurveyMaker"/>
  <meta name="UsersForm" hidden="hidden" content="SurveyBuilderId:19494sbybfdyfuy47grfrfureuyervchfiuerhgyuer748gryru435943578347f"/>
- <meta name="Forum" property="og:url" content="https://surveymaker.boards.net"/>
+ <meta name="Forum" property="og:url" content="https://surveybuilder.epizy.com/forum/"/>
 <title id="UserTitle">Untitled - Survey Builder</title>
 <link rel="stylesheet" type="text/css" href="SurveyBuilder.css"/>
 <link rel="stylesheet" href="SurveyBuilderMobile.css"/>
@@ -44,9 +44,9 @@
 </style>
 
 
-<script src="SurveyBuilder.min.js" type="text/javascript" crossorigin="anonymous"></script>
-<script src="InsertItems.min.js" type="text/javascript"></script>
-<script src="serviceworker.js" type="text/javascript"></script>
+<script src="SurveyBuilder.min.js?update=<?php echo time();?>" type="text/javascript" crossorigin="anonymous"></script>
+<script src="InsertItems.min.js?update=<?php echo time();?>" type="text/javascript"></script>
+<script src="serviceworker.js?update=<?php echo time();?>" type="text/javascript"></script>
 
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
@@ -269,9 +269,10 @@ if(!file_exists($file)){
 ?>
 
 
+
 <style type="text/css" rel="stylesheet" id="customCSS">
 </style>
-<script src="./bot/js/script.js"></script>
+<script src="./bot/js/script.js?update=<?php echo time();?>"></script>
 <div class="PhPFileUploader">
 
 </div>
@@ -572,8 +573,57 @@ if(!file_exists($file)){
 	});
 	</script>
 	<script>
+	$(function(){
+	$.getJSON("./package/CustomLibary/package.json", function(data){
+		$(".CLAuthor").html(data.name);
+		$(".CLVersion").html("v"+data.version);
+		$(".CLName").html(data.package_title);
+		$(".CLURL").html("<a href='" + data.home_url + "' target='_blank'>" + data.home_url + "</a>");
+		$(".CLDescription").html(data.description);
+		$(".CLFiles").html("files:[" + data.files + "]");
+		$(".CLDependicy").html("Dependency: " + data.dependency);
+		$(".CLIsDependable").html("Dependable: " + data.dependedable);
+		
+			let bool = data.config.allow;
+			let str = data.config.path;
+			if(typeof(bool) !== "boolean"){
+				console.error("Enable must be a boolean");
+			}
+			if(typeof(str) !== "string"){
+				console.error("path must be a string");
+			}
+			
+   switch(bool){
+	   case true: 
+	   bool = false;
+	   break;
+	   case false:
+	   bool = true;
+	   break;
+	   default: 
+	   bool = true;
+   }
+			document.querySelector(".CLConfig").hidden = bool;
+		    
+		if(!data.setup.enable){
+			document.querySelector(".CLSetup").hidden = true;
+		}else{
+			$(".CLSetup").click(function(){
+				prompt("Instructions:\n\n" + data.setup.str, data.setup.code);
+			});
+		}
+		//config
+		$(".CLConfig").click(function(){
+			window.open(data.config.path, "", "width=320", "height=320");
+		});
+	
+	});	
+	});
+	</script>
+	<script>
 	function closeManager(){
 		document.querySelector(".packageManager").hidden = true;
+		document.querySelector(".pkgtogglebtn>button").innerHTML = "Open Package Manager";
 	}
 	</script>
 <div class="packageManager" hidden="">
@@ -631,6 +681,33 @@ if(file_exists($file)){
 <div class="packageUninstallBtn"><button onclick="uninstallr_lPkg()">Uninstall</button></div>
 <div class="packageSetupBtn r_lSetup"><button>Setup</button></div>
 <div class="packageSetupConfig r_lConfig"><button>Configuration</button></div>
+</div>
+</li>
+
+<li>
+<div class="package">
+<div style="background-color:gray;">
+<?php
+$file = $_SERVER["DOCUMENT_ROOT"]."/SurveyBuilder/Builder/Installedpackage/CustomLibary/package.json";
+if(file_exists($file)){
+	echo "<span style='color:green;font-weight:bold;'>Installed</span>";
+}else{
+	
+}
+?>
+</div>
+<div class="packageName CLName"></div>
+<div class="packageVersion CLVersion"></div>
+<div class="packageURL CLURL"></div>
+<div class="packageAuthor CLAuthor"></div>
+<div class="packageFiles CLFiles"></div>
+<div class="packageDescription CLDescription"></div>
+<div class="packageDepended CLDependicy"></div>
+<div class="packageIsDependable CLIsDependable"></div>
+<div class="packageInstallBtn"><button onclick="installCLPkg()">Install</button></div>
+<div class="packageUninstallBtn"><button onclick="uninstallCLPkg()">Uninstall</button></div>
+<div class="packageSetupBtn CLSetup"><button>Setup</button></div>
+<div class="packageSetupConfig CLConfig"><button>Configuration</button></div>
 </div>
 </li>
 </ul>
@@ -717,6 +794,51 @@ function uninstallr_lPkg(){
 			collectFilter += 1;
 		}else{
 			window.open("./packageManager/Register&Login/uninstallpkg.php", "", "width=320", "height=250");
+			collectFilter = 0;
+			bar.value = 0;
+			percent.innerHTML="0%";
+			document.querySelector(".Uninstall_bar").hidden = true;
+			clearInterval(inter);
+		}
+	},1000);
+}
+</script>
+<script>
+/*Package Install*/
+function installCLPkg(){
+	let collectFilter = 0;
+	document.querySelector(".Install_bar").hidden = false;
+	let bar = document.querySelector(".progress_install");
+	let percent = document.querySelector(".install_data_value");
+	let inter = setInterval(function(){
+		if(collectFilter < 101){
+			bar.value = collectFilter;
+			percent.innerHTML = collectFilter + "%";
+			collectFilter += 1;
+			
+		}else{
+			window.open("./packageManager/CustomLibary/installpkg.php", "", "width=320", "height=250");
+			collectFilter = 0;
+			bar.value = 0;
+			percent.innerHTML="0%";
+			document.querySelector(".Install_bar").hidden = true;
+			clearInterval(inter);
+		}
+	},1000);
+}
+/*Package Uninstall*/
+function uninstallCLPkg(){
+	let collectFilter = 0;
+	document.querySelector(".Uninstall_bar").hidden = false;
+	let bar = document.querySelector(".progress_uninstall");
+	let percent = document.querySelector(".uninstall_data_value");
+	let inter = setInterval(function(){
+		if(collectFilter < 101){
+			bar.value = collectFilter;
+			percent.innerHTML = collectFilter + "%";
+			collectFilter += 1;
+		}else{
+			window.open("./packageManager/CustomLibary/uninstallpkg.php", "", "width=320", "height=250");
 			collectFilter = 0;
 			bar.value = 0;
 			percent.innerHTML="0%";
@@ -1224,6 +1346,9 @@ return false;
 <li id="New">Database(SQL)&nbsp;&nbsp;<i class="fas fa-database"></i></li>
 <!--<a href="./db/AddDatabase.php">-->
 <button type="button" onclick="CreateData()">Add Database</button>
+<button type="button" onclick="RemoveData()">Remove Database</button>
+<!--Configeration-->
+<button type="button" onclick="ConfigData()">Config Database</button>
 <!--<a href="./db/EditDatabase.php">-->
 <button type="button" onclick="EditData()">Edit Database</button>
 </span>
@@ -1761,13 +1886,6 @@ function EditCmdPrompt(){
 	
 	
 	/*end of cmd settings*/
-	/*pkg manager*/
-	if(getMsg.value.match("pkg.open")){
-		document.querySelector(".packageManager").hidden = false;
-	}
-	if(getMsg.value.match("pkg.close")){
-		document.querySelector(".packageManager").hidden = true;
-	}
 	/*clear*/
 	if(getMsg.value.match("clear.all") || getMsg.value.match("cls.all")){
 		document.getElementById("Insert-Object").innerHTML = "";
@@ -2623,7 +2741,7 @@ $("#themes").ddslick({
 	document.querySelector("#Wcount").style.background = "white";
 	document.querySelector("#Tcolor").value = "#ffffff";
 	document.querySelector("#color").value = "#000000";
-			
+		
 		}
 		if(data.selectedData.value === "wavey-theme"){
 	document.body.style.background = "url('https://th.bing.com/th/id/OIP.QLF8QfhCkc3EX7v-0bH_GQHaEo?pid=Api&rs=1')";
@@ -2984,13 +3102,6 @@ $("#themes").ddslick({
 </label>
 </div>
 <br/>
-<span class="label_config">DarkTheme:</span>
-<div class="checkbox">
-<input type="checkbox" class="checkbox-input check14" onclick="setdarkTheme()"/>
-<label for="checkbox-input">
-<div class="checkbox-icons"></div>
-</label>
-</div>
 <span class="label_config">templateSelect:</span>
 <div class="Warning-input">
 <i class="fas fa-exclamation-circle"></i> Sorry, this configuration must be manually edited go to Config/Config.js
@@ -3033,7 +3144,6 @@ var Enable_Config_File = "Enable";
 var Allow_Database = "mySQL";
 var redirFormLink = "false";
 var Allow_ad_blocker = false;
-var DarkTheme = false;
 var templateSelect = [true, "{url}"];
 var setPreview = [true, "{url}"];
 var requiredVersion = true; 
@@ -3054,10 +3164,10 @@ function changeUpdate(){
 	keyWord + " Allow_Banner_display = "  + Allow_Banner_display + ";\n" + 
 	keyWord + " Allow_Console_attribute = " + Allow_Console_attribute + ";\n" +
 	keyWord + " Allow_Pop_up = " + Allow_Pop_up + ";\n" +
-	keyWord + " limit_list = []" + "\n" +
+	keyWord + " limit_list = [" + limit_list + "];\n" +
 	keyWord + " Allow_Inspect_element = " + Allow_Inspect_element + ";\n" +
 	keyWord + " Allow_location_tracking = " + Allow_location_tracking + ";\n" + 
-	keyWord + ' Allow_API_config = [false, "{url}"]' + ";\n" + 
+	keyWord + " Allow_API_config = [" + Allow_API_config[0] + ", " + '"' + Allow_API_config[1] + '"' + "];\n" + 
 	keyWord + " get_users_lang = " + get_users_lang + ";\n" +
 	keyWord + " get_users_platform = " + get_users_platform + ";\n" +
 	keyWord + " get_users_usersAngent = " + get_users_usersAngent + ";\n" +
@@ -3067,15 +3177,14 @@ function changeUpdate(){
 	keyWord + " maxTitle = " + maxTitle + ";\n" +
 	keyWord + " username = " + '"' + username + '"' + ";\n" +
 	keyWord + " banIP = [" + banIP + "];\n" +
-	keyWord + ' BanLocation = "{url}"' + ";\n" +
-	keyWord + ' Enable_Config_File = "Enable"' + ";\n" +
+	keyWord + " BanLocation = " + '"' + BanLocation  + '"' + ";\n" +
+	keyWord + " Enable_Config_File = " + '"' + Enable_Config_File + '"' + ";\n" +
 	keyWord + " Allow_Database = " + '"' + Allow_Database + '"' + ";\n" +
-	keyWord + ' redirFormLink = "false"' + ";\n" +
+	keyWord + " redirFormLink = " + '"' + redirFormLink + '"' + ";\n" +
 	keyWord + " Allow_ad_blocker = " + Allow_ad_blocker + ";\n" +
-	keyWord + " DarkTheme = " + DarkTheme + ";\n" +
-	keyWord + ' templateSelect = [true, "{url}"]' + ";\n" +
-	keyWord + ' setPreview = [true, "{url}"]' + ";\n" +
-	keyWord + " requiredVersion = true;";
+	keyWord + " templateSelect = [" + templateSelect[0] + ", " + '"' + templateSelect[1] + '"' + "];\n" +
+	keyWord + " setPreview = [" + setPreview[0] + ", " + '"' + setPreview[1] + '"' + ";\n" +
+	keyWord + " requiredVersion = " + requiredVersion + ";";
 	
 	
 		document.querySelector(".collect_config").value = str;
@@ -3354,7 +3463,7 @@ function setFunction(Dataid, action, functions, script){
 <div class="setFormScript">
 
 </div>
-<footer id="SurveyMakerBanner" role="banner"><div id="Banner"><span id="Icon"><img src="favicon.ico" width="50" height="50" title="SurveyMaker" alt="SurveyMaker Icon"/></span><span id="Text1">Join SurveyBuilder TODAY! <span id="Text2">Join Our <a id="FourmLink" title="Fourm" href="https://surveybuilder.boards.net/" target="_blank">Fourm</a></span><span id="Text3">&copy;SurveyBuilder</span></div></footer>
+<footer id="SurveyMakerBanner" role="banner"><div id="Banner"><span id="Icon"><img src="favicon.ico" width="50" height="50" title="SurveyBuilder" alt="SurveyBuilder Icon"/></span><span id="Text1">Join SurveyBuilder TODAY! <span id="Text2">Join Our <a id="FourmLink" title="Fourm" href="https://surveybuilder.epizy.com/forum/" target="_blank">Fourm</a></span><span id="Text3">&copy;SurveyBuilder</span></div></footer>
 <div id="copyright-print">&copy; SurveyBuilder</div>
 </div>
 
@@ -3363,7 +3472,7 @@ function setFunction(Dataid, action, functions, script){
 
 
 
-<script src="./Config/RunConfig.min.js" type="text/javascript"></script>
+<script src="./Config/RunConfig.min.js?update=<?php echo time();?>" type="text/javascript"></script>
 
 <div class="setConfigDatabase">
 
