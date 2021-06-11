@@ -1,20 +1,14 @@
 {
-
 	"user": {
-		"name": "SurveyBuilder-Admin",
-		"Password": "A49Hs3593",
+		"name": "example",
+		"Password": "example",
 		"account_type": "free"
 	},
 	"SecondAuth": {
 		"boolean": false,
-		"SecPsw": ["123456", "482424", "342842", "042452", "482349", "821041", "310346", "349524"],
-
+		"SecPsw": [],
 		"_comment": "Gives the current IP address what the second auth number is",
-
-		"byPassIP": ["178.162.198.118", "2.58.194.132", "93.177.75.250", "92.38.148.61"]
+		"byPassIP": []
 	},
-	
 	"versions": "5.4.1"
-	
-
 }
