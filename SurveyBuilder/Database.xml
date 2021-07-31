@@ -32,7 +32,7 @@ Format:
 <!--Example-->
 <users>
 <name>
-SurveyBuilder-Admin
+Example_user
 </name>
 <cpanel>
 True
