@@ -13,9 +13,7 @@ Addons:
         
     HESK:
         - Klemen Stirn & team
-Modded:
-    - [Enter Name]
-
-    - [Enter Name]
-
-    - [Enter Name]
+    Modded:
+        - [Enter Name]
+        - [Enter Name]
+        - [Enter Name]
