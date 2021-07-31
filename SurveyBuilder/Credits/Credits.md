@@ -3,6 +3,7 @@
 Owner:
     - SurveyBuilderTeams
 
+--- Website ---
 Addons:
 
     Vanilla Forum:
@@ -13,7 +14,7 @@ Addons:
         
     HESK:
         - Klemen Stirn & team
-
+--- File Editor ---
     Modded:
         - [Enter Name]
         - [Enter Name]
