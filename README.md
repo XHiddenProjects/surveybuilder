@@ -12,6 +12,8 @@
 
 # SurveyBuilder
 
+[![Join the chat at https://gitter.im/surveybuilderteams/SurveyBuilder](https://badges.gitter.im/surveybuilderteams/SurveyBuilder.svg)](https://gitter.im/surveybuilderteams/SurveyBuilder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Builder your own Survey's to your website or Allow other users to use this on your website
 
 ***
