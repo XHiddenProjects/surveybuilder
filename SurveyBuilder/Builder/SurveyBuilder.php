@@ -115,7 +115,7 @@ xhr.onload = function(){
 		console.warn("cannot connect to 200 OK");
 	}
 }
-xhr.open('get', './libs/system.json')
+xhr.open('get', './libs/system.json?update=<?php echo time()?>')
 xhr.send();
 },0);
 
@@ -440,7 +440,7 @@ if(!file_exists($file)){
 		background:gray;
 	}
 	.package .packageFiles{
-		color:gray;
+		color:black;
 	}
 	.package .packageSetupBtn button{
 		width:100%;
@@ -621,6 +621,55 @@ if(!file_exists($file)){
 	});
 	</script>
 	<script>
+	$(function(){
+	$.getJSON("./package/IP_Storage/package.json", function(data){
+		$(".IPSAuthor").html(data.name);
+		$(".IPSVersion").html("v"+data.version);
+		$(".IPSName").html(data.package_title);
+		$(".IPSURL").html("<a href='" + data.home_url + "' target='_blank'>" + data.home_url + "</a>");
+		$(".IPSDescription").html(data.description);
+		$(".IPSFiles").html("files:[" + data.files + "]");
+		$(".IPSDependicy").html("Dependency: " + data.dependency);
+		$(".IPSIsDependable").html("Dependable: " + data.dependedable);
+		
+			let bool = data.config.allow;
+			let str = data.config.path;
+			if(typeof(bool) !== "boolean"){
+				console.error("Enable must be a boolean");
+			}
+			if(typeof(str) !== "string"){
+				console.error("path must be a string");
+			}
+			
+   switch(bool){
+	   case true: 
+	   bool = false;
+	   break;
+	   case false:
+	   bool = true;
+	   break;
+	   default: 
+	   bool = true;
+   }
+			document.querySelector(".IPSConfig").hidden = bool;
+		    
+		if(!data.setup.enable){
+			document.querySelector(".IPSSetup").hidden = true;
+		}else{
+			$(".IPSSetup").click(function(){
+				prompt("Instructions:\n\n" + data.setup.str, data.setup.code);
+			});
+		}
+		//config
+		$(".IPSConfig").click(function(){
+			window.open(data.config.path, "", "width=320", "height=320");
+		});
+	
+	});	
+	});
+	</script>
+	
+	<script>
 	function closeManager(){
 		document.querySelector(".packageManager").hidden = true;
 		document.querySelector(".pkgtogglebtn>button").innerHTML = "Open Package Manager";
@@ -710,6 +759,34 @@ if(file_exists($file)){
 <div class="packageSetupConfig CLConfig"><button>Configuration</button></div>
 </div>
 </li>
+
+<li>
+<div class="package">
+<div style="background-color:gray;">
+<?php
+$file = $_SERVER["DOCUMENT_ROOT"]."/SurveyBuilder/Builder/Installedpackage/IP_Storage/package.json";
+if(file_exists($file)){
+	echo "<span style='color:green;font-weight:bold;'>Installed</span>";
+}else{
+	
+}
+?>
+</div>
+<div class="packageName IPSName"></div>
+<div class="packageVersion IPSVersion"></div>
+<div class="packageURL IPSURL"></div>
+<div class="packageAuthor IPSAuthor"></div>
+<div class="packageFiles IPSFiles"></div>
+<div class="packageDescription IPSDescription"></div>
+<div class="packageDepended IPSDependicy"></div>
+<div class="packageIsDependable IPSIsDependable"></div>
+<div class="packageInstallBtn"><button onclick="installIPSPkg()">Install</button></div>
+<div class="packageUninstallBtn"><button onclick="uninstallIPSPkg()">Uninstall</button></div>
+<div class="packageSetupBtn IPSSetup"><button>Setup</button></div>
+<div class="packageSetupConfig IPSConfig"><button>Configuration</button></div>
+</div>
+</li>
+
 </ul>
 </div>
 <script>
@@ -839,6 +916,51 @@ function uninstallCLPkg(){
 			collectFilter += 1;
 		}else{
 			window.open("./packageManager/CustomLibary/uninstallpkg.php", "", "width=320", "height=250");
+			collectFilter = 0;
+			bar.value = 0;
+			percent.innerHTML="0%";
+			document.querySelector(".Uninstall_bar").hidden = true;
+			clearInterval(inter);
+		}
+	},1000);
+}
+</script>
+<script>
+/*Package Install*/
+function installIPSPkg(){
+	let collectFilter = 0;
+	document.querySelector(".Install_bar").hidden = false;
+	let bar = document.querySelector(".progress_install");
+	let percent = document.querySelector(".install_data_value");
+	let inter = setInterval(function(){
+		if(collectFilter < 101){
+			bar.value = collectFilter;
+			percent.innerHTML = collectFilter + "%";
+			collectFilter += 1;
+			
+		}else{
+			window.open("./packageManager/IP_Storage/installpkg.php", "", "width=320", "height=250");
+			collectFilter = 0;
+			bar.value = 0;
+			percent.innerHTML="0%";
+			document.querySelector(".Install_bar").hidden = true;
+			clearInterval(inter);
+		}
+	},1000);
+}
+/*Package Uninstall*/
+function uninstallIPSPkg(){
+	let collectFilter = 0;
+	document.querySelector(".Uninstall_bar").hidden = false;
+	let bar = document.querySelector(".progress_uninstall");
+	let percent = document.querySelector(".uninstall_data_value");
+	let inter = setInterval(function(){
+		if(collectFilter < 101){
+			bar.value = collectFilter;
+			percent.innerHTML = collectFilter + "%";
+			collectFilter += 1;
+		}else{
+			window.open("./packageManager/IP_Storage/uninstallpkg.php", "", "width=320", "height=250");
 			collectFilter = 0;
 			bar.value = 0;
 			percent.innerHTML="0%";
@@ -1531,7 +1653,7 @@ y.action = "./Apps/appdata/ScatterPlot.php";
 </span>
 <span id="pkg-sel">
 <li id="New">Package Manager</li>
-<li class="pkgtogglebtn"><button onclick="openManager()">Open Package Manager</button></li>
+<li class="pkgtogglebtn"><button onclick="openManager()"  style="font-size:15px;font-weight:bold;background:cyan;">Open Package Manager</button></li>
 <script>
 function openManager(){
 	let bool = document.querySelector(".packageManager").hidden;
@@ -3119,38 +3241,19 @@ $("#themes").ddslick({
 
 <br/>
 <br/>
+<script>
+setTimeout(function(){
+	$.get("./Config/Config.js", function(configData){
+		document.querySelector(".collect_config").value = configData;
+	});
+}, 0);
+</script>
 <textarea class="collect_config" style="margin: 0px; width: 315px; height: 325px;" placeholder="js code">
-"use strict";
 
-//web config
-var Allow_Banner_display = true;
-var Allow_Console_attribute = true;
-var Allow_Pop_up = false;
-var limit_list = [];
-var Allow_Inspect_element = true;
-var Allow_location_tracking = false;
-var Allow_API_config = [false, "{url}"];
-var get_users_lang = true;
-var get_users_platform = true;
-var get_users_usersAngent = true;
-var test_users_cookieEnable = true;
-var Collect_IP = false;
-var Allow_cPanel = true;
-var maxTitle = 25;
-var username = "Admin";
-var banIP = [];
-var BanLocation = "{url}"
-var Enable_Config_File = "Enable";
-var Allow_Database = "mySQL";
-var redirFormLink = "false";
-var Allow_ad_blocker = false;
-var templateSelect = [true, "{url}"];
-var setPreview = [true, "{url}"];
-var requiredVersion = true; 
 </textarea>
 <br/>
 <br/>
-<button type="button" onclick="changeUpdate()">Check for Input updates&nbsp;<i class="fas fa-sync-alt"></i></button>
+<!--<button type="button" onclick="changeUpdate()">Check for Input updates&nbsp;<i class="fas fa-sync-alt"></i></button>-->
 <br/>
 <br/>
 <button type="button" class="download_config">Copy Config Code</button>
