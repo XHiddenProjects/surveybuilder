@@ -1,0 +1,23 @@
+{
+	"name": "SurveyBuilderTeams",
+	"version": "0.0.1",
+	"package_title": "IP Storage",
+	"home_url": "https://surveybuilder.epizy.com/",
+	"description": "Allows you to collect users IP and makes it into a JSON file for any actions",
+	"files": [
+		"lib/getIP.php",
+		"lib/ips/*",
+		"package.json"
+	],
+	"setup": {
+		"enable": true,
+		"str": "use PhP code",
+		"code": "<?php include($_SERVER['DOCUMENT__ROOT'].'/SurveyBuilder/Builder/Installedpackage/IP_Storage/lib/getIP.php')?>"
+	},
+	"config": {
+		"allow": false,
+		"path": ""
+	},
+	"dependency": "",
+	"dependedable": false
+}
