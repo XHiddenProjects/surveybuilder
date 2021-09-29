@@ -1,0 +1,22 @@
+{
+	"name": "SurveyBuilderTeams",
+	"version": "0.0.1",
+	"package_title": "Custom Libary",
+	"home_url": "https://surveybuilder.epizy.com/",
+	"description": "Allows you to make a Custom JS libary for anyone to use",
+	"files": [
+		"package.js",
+		"package.json"
+	],
+	"setup": {
+		"enable": true,
+		"str": "use JS code",
+		"code": "<script src='./Installedpackage/CustomLibary/package.js'></script>"
+	},
+	"config": {
+		"allow": false,
+		"path": ""
+	},
+	"dependency": "",
+	"dependedable": false
+}
