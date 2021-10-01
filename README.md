@@ -125,8 +125,4 @@ Report any issues here [issues](https://github.com/SurveyBuilderTeams/SurveyBuil
 
 # Bot
 
-We provide a bot that will read and commit on any issues.
-
-go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+We added bots to the builder to track how much data you saved onto the server, this can be configed and updated to whatever you want, timestamp of how long each log is built/change. It will rewrite a file each time and can be set to a `.log` or `.txt`
