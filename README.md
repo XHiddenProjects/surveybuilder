@@ -1,4 +1,4 @@
-<a href="http://surveybuilder.epizy.com/Home.php" target="_blank"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/banner.png?raw=true"/></a>
+<a href="https://surveybuilder.epizy.com/" target="_blank"><img src="https://github.com/surveybuilderteams/surveybuilder/blob/master/banner/banner.png?raw=true"/></a>
 
 
 <a href="https://github.com/surveybuilderteams/surveybuilder/releases" target="_blank"><image src="https://raw.githubusercontent.com/surveybuilderteams/surveybuilder/master/banner/version.svg"/></a>
