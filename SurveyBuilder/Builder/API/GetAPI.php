@@ -1,3 +1,3 @@
 <?php
-echo "<script>window.open('http://surveybuilder.epizy.com/API/GetAPI.php')</script>";
+echo "<script>window.open('https://surveybuilder.epizy.com/API/GetAPI.php')</script>";
 ?>
