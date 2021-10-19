@@ -13,6 +13,7 @@
 
 <script src="./Config/Config.js?update=<?php echo time();?>" type="text/javascript"></script>
 <script src="Apps_Insert.min.js?update=<?php echo time();?>" type="text/javascript" crossorigin="anonymous"></script>
+
 <!-- Google Tag Manager -->
 
 
@@ -51,10 +52,10 @@
  <!--<link href="./app.webmanifest" rel="manifest" crossorigin="use-credentials"/>-->
 <noscript><img src="/SurveyBuilder/images/icon/favicon.png" width="20" height="20"/>Sorry JavaScript is off, make sure it is on due to a lot of functions needing to be triggered</noscript>
 <!--Templeates-->
-<script src="./templetes/Medical_temp.js" crossorigin="anonymous"></script>
-<script src="./templetes/blank_temp.js" crossorigin="anonymous"></script>
-<script src="./templetes/police_incident_report_temp.js" crossorigin="anonymous"></script>
-
+<script src="./templetes/Medical_temp.min.js" crossorigin="anonymous"></script>
+<script src="./templetes/blank_temp.min.js" crossorigin="anonymous"></script>
+<script src="./templetes/police_incident_report_temp.min.js" crossorigin="anonymous"></script>
+<script src="./templetes/invitation_temp.min.js" crossorigin="anonymous"></script>
 <!--end Templeate script-->
 
 
@@ -1480,11 +1481,11 @@ return false;
 <button class="DisableNotify">Disable Notifications <i class="fas fa-bell-slash"></i></button>
 <script>
 setTimeout(function(){
-	if(localStorage.getItem("Notify") === "true"){
+	if(localStorage.getItem("Notify") === "true" || Push.Permission.get() === "granted"){
 		document.querySelector("#setNotifyBell").className = "fas fa-bell";
 		document.querySelector("#setNotifyBell").title = "Enabled";
 	}
-	if(localStorage.getItem("Notify") === "false"){
+	if(localStorage.getItem("Notify") === "false" || Push.Permission.get() === "denined"){
 		document.querySelector("#setNotifyBell").className = "fas fa-bell-slash";
 		document.querySelector("#setNotifyBell").title = "Disabled";
 	}
@@ -3001,6 +3002,19 @@ $("#themes").ddslick({
 <br>
 <br>
 <button id="temp" onclick="setupPoliceIncidentReportTemp()" class="Police_temp" title="Police Incident Report Template">Police Incident Report</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<button id="temp" onclick="setupInvitationTemp()" class="Inviatation_temp" title="Invitation Template">Invitation Report</button>
 <br>
 <br>
 <br>
