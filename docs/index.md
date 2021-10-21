@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## SurveyBuilder - GitHub page
 
 You can use the [editor on GitHub](https://github.com/surveybuilderteams/surveybuilder/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
