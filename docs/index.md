@@ -1,37 +1,17 @@
-## SurveyBuilder - GitHub page
+# SurveyBuilder - GitHub page
 
 You can use the [editor on GitHub](https://github.com/surveybuilderteams/surveybuilder/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+***
 
-### Markdown
+## About us 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+**@SurveyBuidersTeam** built a advanced/modern Survey Building software, over the pass 1½ years on this project, **@SurveyBuilderTeams** also is starting to make a online web hosting soon at [our webpage](https://surveybuilder.epizy.com). This took a lot of time and effort to make, so I hope you enjoy it.
 
-```markdown
-Syntax highlighted code block
+***
 
-# Header 1
-## Header 2
-### Header 3
+## Projects(Current/Feuture)
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/surveybuilderteams/surveybuilder/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+* [SurveyBuilder - Current](https://github.com/surveybuilderteams/surveybuilder) - Builds surveys easier and more advanced/modern looks
+* [Social Media - Feuture] - Only on our webpage this is going to be a fun, active social media.
+* More...
