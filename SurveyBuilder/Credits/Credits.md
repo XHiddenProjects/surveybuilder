@@ -8,11 +8,8 @@ Owner:
 
 Addons:
 
-    Vanilla Forum:
-        - Todd Burry
-        - Tim Gunter
-        - Matt Lincoln Russell 
-        - Klaus Burton
+    Flatboard:
+        - Frédéric K.
         
     HESK:
         - Klemen Stirn & team
